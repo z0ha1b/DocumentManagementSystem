@@ -1,0 +1,17 @@
+C:\GitHub\DocumentManagementSystem\services\DocumentManagement\DocumentManagement.Persistence\bin\Debug\net7.0\DocumentManagement.Persistence.deps.json
+C:\GitHub\DocumentManagementSystem\services\DocumentManagement\DocumentManagement.Persistence\bin\Debug\net7.0\DocumentManagement.Persistence.runtimeconfig.json
+C:\GitHub\DocumentManagementSystem\services\DocumentManagement\DocumentManagement.Persistence\bin\Debug\net7.0\DocumentManagement.Persistence.dll
+C:\GitHub\DocumentManagementSystem\services\DocumentManagement\DocumentManagement.Persistence\bin\Debug\net7.0\DocumentManagement.Persistence.pdb
+C:\GitHub\DocumentManagementSystem\services\DocumentManagement\DocumentManagement.Persistence\bin\Debug\net7.0\DocumentManagement.Core.dll
+C:\GitHub\DocumentManagementSystem\services\DocumentManagement\DocumentManagement.Persistence\bin\Debug\net7.0\DocumentManagement.Core.pdb
+C:\GitHub\DocumentManagementSystem\services\DocumentManagement\DocumentManagement.Persistence\obj\Debug\net7.0\DocumentManagement.Persistence.csproj.AssemblyReference.cache
+C:\GitHub\DocumentManagementSystem\services\DocumentManagement\DocumentManagement.Persistence\obj\Debug\net7.0\DocumentManagement.Persistence.GeneratedMSBuildEditorConfig.editorconfig
+C:\GitHub\DocumentManagementSystem\services\DocumentManagement\DocumentManagement.Persistence\obj\Debug\net7.0\DocumentManagement.Persistence.AssemblyInfoInputs.cache
+C:\GitHub\DocumentManagementSystem\services\DocumentManagement\DocumentManagement.Persistence\obj\Debug\net7.0\DocumentManagement.Persistence.AssemblyInfo.cs
+C:\GitHub\DocumentManagementSystem\services\DocumentManagement\DocumentManagement.Persistence\obj\Debug\net7.0\DocumentManagement.Persistence.csproj.CoreCompileInputs.cache
+C:\GitHub\DocumentManagementSystem\services\DocumentManagement\DocumentManagement.Persistence\obj\Debug\net7.0\DocumentManagement.Persistence.csproj.CopyComplete
+C:\GitHub\DocumentManagementSystem\services\DocumentManagement\DocumentManagement.Persistence\obj\Debug\net7.0\DocumentManagement.Persistence.dll
+C:\GitHub\DocumentManagementSystem\services\DocumentManagement\DocumentManagement.Persistence\obj\Debug\net7.0\refint\DocumentManagement.Persistence.dll
+C:\GitHub\DocumentManagementSystem\services\DocumentManagement\DocumentManagement.Persistence\obj\Debug\net7.0\DocumentManagement.Persistence.pdb
+C:\GitHub\DocumentManagementSystem\services\DocumentManagement\DocumentManagement.Persistence\obj\Debug\net7.0\DocumentManagement.Persistence.genruntimeconfig.cache
+C:\GitHub\DocumentManagementSystem\services\DocumentManagement\DocumentManagement.Persistence\obj\Debug\net7.0\ref\DocumentManagement.Persistence.dll

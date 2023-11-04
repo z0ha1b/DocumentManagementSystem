@@ -1,0 +1,30 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net7.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+
+    <ItemGroup>
+        <ProjectReference Include="..\DocumentManagement.Core\DocumentManagement.Core.csproj"/>
+    </ItemGroup> 
+    
+    <ItemGroup>
+        <PackageReference Include="Elsa" Version="3.0.0-preview.727" />
+        <PackageReference Include="Elsa.EntityFrameworkCore.Sqlite" Version="3.0.0-preview.727" />
+        <PackageReference Include="Elsa.Http" Version="3.0.0-preview.727" />
+        <PackageReference Include="Elsa.Identity" Version="3.0.0-preview.727" />
+        <PackageReference Include="Elsa.Liquid" Version="3.0.0-preview.727" />
+        <PackageReference Include="Elsa.Workflows.Api" Version="3.0.0-preview.727" />
+        <PackageReference Include="Elsa.Workflows.Core" Version="3.0.0-preview.727" />
+        <PackageReference Include="Elsa.Workflows.Management" Version="3.0.0-preview.727" />
+        <PackageReference Include="Elsa.Workflows.Runtime" Version="3.0.0-preview.727" />
+    </ItemGroup> 
+    
+    <ItemGroup>
+      <Folder Include="Scripting\Liquid\" />
+    </ItemGroup>
+
+</Project>
