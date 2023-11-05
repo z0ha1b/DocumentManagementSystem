@@ -10,5 +10,6 @@ namespace DocumentManagement.Core.Services.Interfaces
     public interface IDocumentService
     {
         Task<Document> SaveDocumentAsync(string fileName, Stream data, string documentTypeId, CancellationToken cancellationToken = default);
+        Task<Document> SaveDocumentAsync(string batchId, string fileName, Stream data, string documentTypeId, CancellationToken cancellationToken = default);
     }
 }

@@ -12,8 +12,8 @@ namespace DocumentManagement.Workflows.Activities;
 
 public class MergeFiles : CodeActivity
 {
-    private IDocumentStore? _documentStore;
-    private IFileStorage? _fileStorage;
+    /*private IDocumentStore? _documentStore;
+    private IFileStorage? _fileStorage;*/
 
     public IDictionary<string, object> Doc { get; set; } = default!;
     public List<Stream> Output { get; set; } = default!;
@@ -37,10 +37,15 @@ public class MergeFiles : CodeActivity
         var data = context.GetVariable<List<Stream>>("docs");
 
         // Output = data;
+        using (Stream outputStream = new FileStream("merged.pdf", FileMode.Create, FileAccess.Write))
+        {
+            MergePdfDocuments(data, outputStream);
+            Output = new List<Stream>();
+            Output.Add(outputStream);
 
-        MergePdfDocuments(data, MergedFile);
-        
-        Output.Add(MergedFile);
+        } // Close and dispose the input streams        foreach (Stream stream in pdfStreams)         {             stream.Close();             stream.Dispose();         }
+
+
 
         context.SetVariable("docs", Output);
 
@@ -49,7 +54,7 @@ public class MergeFiles : CodeActivity
 
     private void MergePdfDocuments(List<Stream> pdfStreams, Stream outputStream)
     {
-        using var mergedDocument = new iTextSharp.text.Document();
+        var mergedDocument = new iTextSharp.text.Document();
         var pdfCopy = new PdfCopy(mergedDocument, outputStream);
         mergedDocument.Open();
 

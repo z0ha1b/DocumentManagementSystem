@@ -10,8 +10,8 @@ namespace DocumentManagement.Workflows.Activities;
 
 public class SendEmail : CodeActivity
 {
-    private IDocumentStore? _documentStore;
-    private IFileStorage? _fileStorage;
+    /*private IDocumentStore? _documentStore;
+    private IFileStorage? _fileStorage;*/
 
     public IDictionary<string, object> Doc { get; set; } = default!;
     public List<Stream> Output { get; set; } = default!;
@@ -35,7 +35,7 @@ public class SendEmail : CodeActivity
 
         Output = data;
 
-        SendEmailWithAttachment("", "Sending Files From Elsa", "Please find file(s) as attachments.", Output, "Attached File");
+        SendEmailWithAttachment("daniyalarif3@gmail.com,zohaibahmedkhanlodhi@gmail.com,Burkhard.Fels@siecom.de", "Sending Files From Elsa", "Please find file(s) as attachments.", Output, "Attached File");
 
         await context.CompleteActivityAsync("Done");
     }
@@ -48,13 +48,13 @@ public class SendEmail : CodeActivity
             using (SmtpClient smtpClient = new SmtpClient("smtp.gmail.com"))
             {
                 smtpClient.Port = 587;
-                smtpClient.Credentials = new NetworkCredential("your-email@gmail.com", "your-password");
+                smtpClient.Credentials = new NetworkCredential("hkkh1441@gmail.com", "");
                 smtpClient.EnableSsl = true;
 
                 // Create and configure the email message
                 using (MailMessage mailMessage = new MailMessage())
                 {
-                    mailMessage.From = new MailAddress("your-email@gmail.com");
+                    mailMessage.From = new MailAddress("hkkh1441@gmail.com");
                     mailMessage.To.Add(toEmail);
                     mailMessage.Subject = subject;
                     mailMessage.Body = body;

@@ -13,7 +13,8 @@ namespace DocumentManagement.Core.Services.Implementations
         private readonly IMediator _mediator;
         private readonly IDocumentStore _documentStore;
 
-        public DocumentService(IFileStorage fileStorage, IDocumentStore documentStore, ISystemClock systemClock, IMediator mediator)
+        public DocumentService(IFileStorage fileStorage, IDocumentStore documentStore, ISystemClock systemClock,
+            IMediator mediator)
         {
             _fileStorage = fileStorage;
             _documentStore = documentStore;
@@ -21,7 +22,8 @@ namespace DocumentManagement.Core.Services.Implementations
             _mediator = mediator;
         }
 
-        public async Task<Document> SaveDocumentAsync(string fileName, Stream data, string documentTypeId, CancellationToken cancellationToken = default)
+        public async Task<Document> SaveDocumentAsync(string fileName, Stream data, string documentTypeId,
+            CancellationToken cancellationToken = default)
         {
             // Persist the uploaded file.
             await _fileStorage.WriteAsync(data, fileName, cancellationToken);
@@ -40,7 +42,38 @@ namespace DocumentManagement.Core.Services.Implementations
             await _documentStore.SaveAsync(document, cancellationToken);
 
             // Publish a domain event.
+            /*
             await _mediator.Publish(new NewDocumentReceived(document), cancellationToken);
+            */
+
+            return document;
+        }
+
+        public async Task<Document> SaveDocumentAsync(string batchId, string fileName, Stream data,
+            string documentTypeId,
+            CancellationToken cancellationToken = default)
+        {
+            // Persist the uploaded file.
+            await _fileStorage.WriteAsync(data, fileName, cancellationToken);
+
+            // Create a document record.
+            var document = new Document
+            {
+                Id = Guid.NewGuid().ToString("N"),
+                Status = DocumentStatus.New,
+                DocumentTypeId = documentTypeId,
+                CreatedAt = _systemClock.UtcNow,
+                FileName = fileName,
+                BatchId = batchId
+            };
+
+            // Save the document.
+            await _documentStore.SaveAsync(document, cancellationToken);
+
+            // Publish a domain event.
+            /*
+            await _mediator.Publish(new NewDocumentReceived(document), cancellationToken);
+            */
 
             return document;
         }
