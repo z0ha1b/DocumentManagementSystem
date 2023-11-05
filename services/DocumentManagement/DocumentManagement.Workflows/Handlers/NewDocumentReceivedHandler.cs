@@ -24,8 +24,8 @@ public class NewDocumentReceivedHandler : INotificationHandler<NewDocumentReceiv
 
     public async Task Handle(NewDocumentReceived notification, CancellationToken cancellationToken)
     {
-        var document = notification.Document;
-        
+        var documents = notification.Documents;
+
         var workflow = await _workflowDefinitionStore.FindAsync(new WorkflowDefinitionFilter
         {
             SearchTerm = "NewDocument"
@@ -36,14 +36,14 @@ public class NewDocumentReceivedHandler : INotificationHandler<NewDocumentReceiv
             return; // Do nothing.
         }
 
-        var docDict = new Dictionary<string, object> { { "doc", document } };
+        var docDict = new Dictionary<string, object> { { "docs", documents } };
 
         // Dispatch the workflow.
         await _workflowDispatcher.DispatchAsync(new DispatchWorkflowDefinitionRequest
         {
             Input = docDict,
             DefinitionId = workflow!.DefinitionId,
-            CorrelationId = document.Id
+            CorrelationId = Guid.NewGuid().ToString()
         }, cancellationToken);
     }
 }

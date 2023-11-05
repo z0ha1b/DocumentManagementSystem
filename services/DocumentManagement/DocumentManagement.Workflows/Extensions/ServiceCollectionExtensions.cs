@@ -46,7 +46,7 @@ public static class ServiceCollectionExtensions
             elsa.UseLiquid();
             elsa.UseWorkflowsApi();
             elsa.UseHttp(http => http.ConfigureHttpOptions = options => options.BasePath = "/workflows");
-            elsa.AddActivitiesFrom<GetDocument>();
+            elsa.AddActivitiesFrom<GetDocuments>();
             elsa.AddActivitiesFrom<ArchiveDocument>();
             elsa.AddActivitiesFrom<ZipFile>();
         });

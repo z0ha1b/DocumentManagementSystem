@@ -6,7 +6,6 @@ using DocumentManagement.Core.Services.Interfaces;
 using Elsa.Extensions;
 using Elsa.Workflows.Core;
 
-
 namespace DocumentManagement.Workflows.Activities;
 
 public class ZipFile : CodeActivity
