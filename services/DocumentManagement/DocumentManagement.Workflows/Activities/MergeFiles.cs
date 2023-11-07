@@ -37,14 +37,23 @@ public class MergeFiles : CodeActivity
         var data = context.GetVariable<List<Stream>>("docs");
 
         // Output = data;
-        using (Stream outputStream = new FileStream("merged.pdf", FileMode.Create, FileAccess.Write))
+        var outputStream = new FileStream("merged.pdf", FileMode.Create, FileAccess.Write);
+
+        MergePdfDocuments(data, outputStream);
+
+
+        foreach
+            (Stream stream in data)
         {
-            MergePdfDocuments(data, outputStream);
-            Output = new List<Stream>();
-            Output.Add(outputStream);
+            stream.Close();
+            stream.Dispose();
+        }
+        
+        outputStream.Close();
+        outputStream.Dispose();
 
-        } // Close and dispose the input streams        foreach (Stream stream in pdfStreams)         {             stream.Close();             stream.Dispose();         }
-
+        Output = new List<Stream>();
+        Output.Add(outputStream);
 
 
         context.SetVariable("docs", Output);

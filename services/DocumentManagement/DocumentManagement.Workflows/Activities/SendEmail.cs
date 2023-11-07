@@ -5,6 +5,7 @@ using DocumentManagement.Core.Repositories.Interfaces;
 using DocumentManagement.Core.Services.Interfaces;
 using Elsa.Extensions;
 using Elsa.Workflows.Core;
+using Org.BouncyCastle.Utilities.IO;
 
 namespace DocumentManagement.Workflows.Activities;
 
@@ -48,29 +49,25 @@ public class SendEmail : CodeActivity
             using (SmtpClient smtpClient = new SmtpClient("smtp.gmail.com"))
             {
                 smtpClient.Port = 587;
-                smtpClient.Credentials = new NetworkCredential("hkkh1441@gmail.com", "");
+
+                smtpClient.Credentials = new NetworkCredential("zk70007@gmail.com", "uacblegucvjcuefk");
                 smtpClient.EnableSsl = true;
 
                 // Create and configure the email message
                 using (MailMessage mailMessage = new MailMessage())
                 {
-                    mailMessage.From = new MailAddress("hkkh1441@gmail.com");
+                    mailMessage.From = new MailAddress("zk70007@gmail.com");
                     mailMessage.To.Add(toEmail);
                     mailMessage.Subject = subject;
                     mailMessage.Body = body;
                     mailMessage.IsBodyHtml = true;
 
-                    foreach (var file in attachmentStreams)
-                    {
-                        // Create the attachment
-                        using (var attachment = new Attachment(file, attachmentFileName))
-                        {
-                            mailMessage.Attachments.Add(attachment);
+                    var attachment = new Attachment(@"C:\GitHub\DocumentManagementSystem\apps\DocumentManagement.Web\merged.pdf");
+                    mailMessage.Attachments.Add(attachment);
 
-                            // Send the email
-                            smtpClient.Send(mailMessage);
-                        }
-                    }
+
+                    // Send the email
+                    smtpClient.Send(mailMessage);
                 }
             }
         }
