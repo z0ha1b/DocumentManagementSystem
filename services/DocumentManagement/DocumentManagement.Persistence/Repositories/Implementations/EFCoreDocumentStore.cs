@@ -33,6 +33,13 @@ public class EFCoreDocumentStore : IDocumentStore
         return await dbContext.Documents.FirstOrDefaultAsync(x => x.Id == id, cancellationToken);
     }
 
+    public async Task<Document?> GetByBatchId(string batchId, CancellationToken cancellationToken = default)
+    {
+        await using var dbContext = await _dbContextFactory.CreateDbContextAsync(cancellationToken);
+        return await dbContext.Documents.FirstOrDefaultAsync(x => x.BatchId == batchId, cancellationToken: cancellationToken);
+
+    }
+
     public async Task<List<Document?>> GetDocsAsync(string batchId, CancellationToken cancellationToken = default)
     {
         await using var dbContext = await _dbContextFactory.CreateDbContextAsync(cancellationToken);

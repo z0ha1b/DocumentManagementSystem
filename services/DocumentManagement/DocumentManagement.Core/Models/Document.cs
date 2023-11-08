@@ -15,6 +15,8 @@ namespace DocumentManagement.Core.Models
         public DateTime CreatedAt { get; set; }
         public string? Notes { get; set; }
         public DocumentStatus Status { get; set; }
-        public string BatchId { get; set; }
+        public string? BatchId { get; set; }
+        public bool IsMerged { get; set; }
+        
     }
 }

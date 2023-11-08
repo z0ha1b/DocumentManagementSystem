@@ -18,6 +18,7 @@ public class GetDocuments : CodeActivity
     {
         Doc = context.Input;
 
+        /*
         var docs = (List<Document>)Doc["docs"];
         var listOfFileStreams = new List<Stream>();
 
@@ -34,7 +35,7 @@ public class GetDocuments : CodeActivity
         Output = listOfFileStreams;
 
         // we should not save streams in the context but it is only POC.
-        context.SetVariable("docs", Output);
+        context.SetVariable("docs", Output);*/
 
         await context.CompleteActivityAsync("Done");
     }

@@ -11,20 +11,20 @@ namespace DocumentManagement.Workflows.Activities;
 
 public class SendEmail : CodeActivity
 {
-    /*private IDocumentStore? _documentStore;
-    private IFileStorage? _fileStorage;*/
+    private IDocumentStore? _documentStore;
+    private IFileStorage? _fileStorage;
 
     public IDictionary<string, object> Doc { get; set; } = default!;
     public List<Stream> Output { get; set; } = default!;
 
     protected override async ValueTask ExecuteAsync(ActivityExecutionContext context)
     {
-        // Doc = context.Input;
-        //
-        // var doc = (Document)Doc["doc"];
+        Doc = context.Input;
+        
+        var docs = (List<Document>)Doc["docs"];
 
-        // _documentStore = context.GetRequiredService<IDocumentStore>();
-        // _fileStorage = context.GetRequiredService<IFileStorage>();
+        _documentStore = context.GetRequiredService<IDocumentStore>(); 
+        _fileStorage = context.GetRequiredService<IFileStorage>();
         //
         // var document = await _documentStore.GetAsync(doc.Id, context.CancellationToken);
         // var fileStream = await _fileStorage.ReadAsync(document!.FileName, context.CancellationToken);
@@ -35,13 +35,17 @@ public class SendEmail : CodeActivity
         var data = context.GetVariable<List<Stream>>("docs");
 
         Output = data;
-
-        SendEmailWithAttachment("daniyalarif3@gmail.com,zohaibahmedkhanlodhi@gmail.com,Burkhard.Fels@siecom.de", "Sending Files From Elsa", "Please find file(s) as attachments.", Output, "Attached File");
-
+        var fileList = await _documentStore.GetDocsAsync(docs.First().BatchId, context.CancellationToken);
+        var mergefile = fileList.FirstOrDefault(x => x.IsMerged);
+        var stream = await _fileStorage.ReadAsync(mergefile!.FileName, context.CancellationToken);
+     
+        SendEmailWithAttachment("daniyalarif3@gmail.com,zohaibahmedkhanlodhi@gmail.com,Burkhard.Fels@siecom.de", "Sending Files From Elsa", "Please find file(s) as attachments.", stream, mergefile.FileName);
+        stream.Close();
+        stream.Dispose();
         await context.CompleteActivityAsync("Done");
     }
 
-    private void SendEmailWithAttachment(string toEmail, string subject, string body, List<Stream> attachmentStreams, string attachmentFileName)
+    private void SendEmailWithAttachment(string toEmail, string subject, string body, Stream attachmentStreams, string attachmentFileName)
     {
         try
         {
@@ -62,7 +66,7 @@ public class SendEmail : CodeActivity
                     mailMessage.Body = body;
                     mailMessage.IsBodyHtml = true;
 
-                    var attachment = new Attachment(@"C:\GitHub\DocumentManagementSystem\apps\DocumentManagement.Web\merged.pdf");
+                    var attachment = new Attachment(attachmentStreams, attachmentFileName);
                     mailMessage.Attachments.Add(attachment);
 
 

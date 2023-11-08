@@ -23,7 +23,6 @@ namespace DocumentManagement.Persistence.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<string>("BatchId")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<DateTime>("CreatedAt")
@@ -36,6 +35,9 @@ namespace DocumentManagement.Persistence.Migrations
                     b.Property<string>("FileName")
                         .IsRequired()
                         .HasColumnType("TEXT");
+
+                    b.Property<bool>("IsMerged")
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("Notes")
                         .HasColumnType("TEXT");

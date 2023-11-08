@@ -9,6 +9,7 @@
 
     <ItemGroup>
         <ProjectReference Include="..\DocumentManagement.Core\DocumentManagement.Core.csproj"/>
+        <ProjectReference Include="..\DocumentManagement.Persistence\DocumentManagement.Persistence.csproj" />
     </ItemGroup> 
     
     <ItemGroup>
