@@ -7,7 +7,7 @@ using Storage.Net;
 var builder = WebApplication.CreateBuilder(args);
 
 var configuration = builder.Configuration;
-var dbConnectionString = configuration.GetConnectionString("Sqlite");
+var dbConnectionString = configuration.GetConnectionString("ElsaConnection");
 
 var services = builder.Services;
 
@@ -22,7 +22,7 @@ builder.Services.AddControllers();
 
 builder.Services.AddRazorPages();
 
-builder.Services.AddWorkflowServices();
+builder.Services.AddWorkflowServices(dbConnectionString);
 
 
 var app = builder.Build();

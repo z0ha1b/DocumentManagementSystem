@@ -4,6 +4,7 @@ using DocumentManagement.Core.Services.Implementations;
 using DocumentManagement.Core.Services.Interfaces;
 using DocumentManagement.Workflows.Activities;
 using DocumentManagement.Workflows.Handlers;
+using Elsa.EntityFrameworkCore.Extensions;
 using Elsa.EntityFrameworkCore.Modules.Management;
 using Elsa.EntityFrameworkCore.Modules.Runtime;
 using Elsa.Extensions;
@@ -15,7 +16,7 @@ namespace DocumentManagement.Workflows.Extensions;
 
 public static class ServiceCollectionExtensions
 {
-    public static IServiceCollection AddWorkflowServices(this IServiceCollection services)
+    public static IServiceCollection AddWorkflowServices(this IServiceCollection services, string dbConnection)
     {
         services.AddCors(options =>
         {
@@ -40,15 +41,14 @@ public static class ServiceCollectionExtensions
             });
 
             elsa.UseDefaultAuthentication();
-            elsa.UseWorkflowManagement(management => management.UseEntityFrameworkCore());
-            elsa.UseWorkflowRuntime(runtime => runtime.UseEntityFrameworkCore());
+            elsa.UseWorkflowManagement(management => management.UseEntityFrameworkCore(x => x.UseSqlServer(dbConnection)));
+            elsa.UseWorkflowRuntime(runtime => runtime.UseEntityFrameworkCore(x => x.UseSqlServer(dbConnection)));
             elsa.UseJavaScript();
             elsa.UseLiquid();
             elsa.UseWorkflowsApi();
             elsa.UseHttp(http => http.ConfigureHttpOptions = options => options.BasePath = "/workflows");
-            elsa.AddActivitiesFrom<GetDocuments>();
-            elsa.AddActivitiesFrom<ArchiveDocument>();
-            elsa.AddActivitiesFrom<ZipFile>();
+            elsa.AddActivitiesFrom<MergeFiles>();
+            elsa.AddActivitiesFrom<SendEmail>();
         });
 
         services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly()));

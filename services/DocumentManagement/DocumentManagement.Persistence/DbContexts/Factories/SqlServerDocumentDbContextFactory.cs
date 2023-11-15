@@ -3,14 +3,14 @@ using Microsoft.EntityFrameworkCore.Design;
 
 namespace DocumentManagement.Persistence.DbContexts.Factories;
 
-public class SqliteDocumentDbContextFactory : IDesignTimeDbContextFactory<DocumentDbContext>
+public class SqlServerDocumentDbContextFactory : IDesignTimeDbContextFactory<DocumentDbContext>
 {
     public DocumentDbContext CreateDbContext(string[] args)
     {
         var builder = new DbContextOptionsBuilder<DocumentDbContext>();
-        var connectionString = "Data Source=elsa.db;Cache=Shared";
+        var connectionString = "Server=.;Database=Elsa;TrustServerCertificate=true;Trusted_Connection=True;MultipleActiveResultSets=true";
 
-        builder.UseSqlite(connectionString);
+        builder.UseSqlServer(connectionString);
 
         return new DocumentDbContext(builder.Options);
     }
