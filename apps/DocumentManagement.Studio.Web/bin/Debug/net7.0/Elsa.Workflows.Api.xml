@@ -1,0 +1,800 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Elsa.Workflows.Api</name>
+    </assembly>
+    <members>
+        <member name="M:Elsa.Workflows.Api.Endpoints.ActivityDescriptorOptions.Get.Get.#ctor(System.IServiceProvider,Elsa.Workflows.Core.Contracts.IActivityRegistry,Elsa.Workflows.Core.Contracts.IPropertyOptionsResolver)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Workflows.Api.Endpoints.ActivityDescriptorOptions.Get.Get.Configure">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Workflows.Api.Endpoints.ActivityDescriptorOptions.Get.Get.HandleAsync(Elsa.Workflows.Api.Endpoints.ActivityDescriptorOptions.Get.Request,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Workflows.Api.Endpoints.ActivityDescriptors.Get.Get.#ctor(Elsa.Workflows.Core.Contracts.IActivityRegistry)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Workflows.Api.Endpoints.ActivityDescriptors.Get.Get.Configure">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Workflows.Api.Endpoints.ActivityDescriptors.Get.Get.HandleAsync(Elsa.Workflows.Api.Endpoints.ActivityDescriptors.Get.Request,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.Workflows.Api.Endpoints.ActivityExecutions.Count.Count">
+            <summary>
+            Counts the number of executions for a given activity.
+            </summary>
+        </member>
+        <member name="M:Elsa.Workflows.Api.Endpoints.ActivityExecutions.Count.Count.#ctor(Elsa.Workflows.Runtime.Contracts.IActivityExecutionStore)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Workflows.Api.Endpoints.ActivityExecutions.Count.Count.Configure">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Workflows.Api.Endpoints.ActivityExecutions.Count.Count.ExecuteAsync(Elsa.Workflows.Api.Endpoints.ActivityExecutions.Count.Request,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.Workflows.Api.Endpoints.ActivityExecutions.Count.Request">
+            <summary>
+            Represents a request for list of activity execution log records for a given activity in a workflow instance.
+            </summary>
+        </member>
+        <member name="P:Elsa.Workflows.Api.Endpoints.ActivityExecutions.Count.Request.WorkflowInstanceId">
+            <summary>
+            The ID of the workflow instance to get the execution log for.
+            </summary>
+        </member>
+        <member name="P:Elsa.Workflows.Api.Endpoints.ActivityExecutions.Count.Request.ActivityId">
+            <summary>
+            The ID of the activity to get the execution record for.
+            </summary>
+        </member>
+        <member name="P:Elsa.Workflows.Api.Endpoints.ActivityExecutions.Count.Request.Completed">
+            <summary>
+            Whether to include completed activity execution records. If not specified, all activity execution records will be included.
+            </summary>
+        </member>
+        <member name="T:Elsa.Workflows.Api.Endpoints.ActivityExecutions.List.List">
+            <summary>
+            Lists the executions for a given activity.
+            </summary>
+        </member>
+        <member name="M:Elsa.Workflows.Api.Endpoints.ActivityExecutions.List.List.#ctor(Elsa.Workflows.Runtime.Contracts.IActivityExecutionStore)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Workflows.Api.Endpoints.ActivityExecutions.List.List.Configure">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Workflows.Api.Endpoints.ActivityExecutions.List.List.ExecuteAsync(Elsa.Workflows.Api.Endpoints.ActivityExecutions.List.Request,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.Workflows.Api.Endpoints.ActivityExecutions.List.Request">
+            <summary>
+            Represents a request for list of activity execution log records for a given activity in a workflow instance.
+            </summary>
+        </member>
+        <member name="P:Elsa.Workflows.Api.Endpoints.ActivityExecutions.List.Request.WorkflowInstanceId">
+            <summary>
+            The ID of the workflow instance to get the execution log for.
+            </summary>
+        </member>
+        <member name="P:Elsa.Workflows.Api.Endpoints.ActivityExecutions.List.Request.ActivityNodeId">
+            <summary>
+            The node ID of the activity to get the execution record for.
+            </summary>
+        </member>
+        <member name="P:Elsa.Workflows.Api.Endpoints.ActivityExecutions.List.Request.Completed">
+            <summary>
+            Whether to include completed activity execution records. If not specified, all activity execution records will be included.
+            </summary>
+        </member>
+        <member name="T:Elsa.Workflows.Api.Endpoints.ActivityExecutions.Report.Report">
+            <summary>
+            Gets a report for the specified set of activities that includes number of executions, split by completed and non-completed executions as well as blocking activities.
+            </summary>
+        </member>
+        <member name="M:Elsa.Workflows.Api.Endpoints.ActivityExecutions.Report.Report.#ctor(Elsa.Workflows.Runtime.Contracts.IActivityExecutionStore,Elsa.Workflows.Runtime.Contracts.IActivityExecutionStatsService)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Workflows.Api.Endpoints.ActivityExecutions.Report.Report.Configure">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Workflows.Api.Endpoints.ActivityExecutions.Report.Report.ExecuteAsync(Elsa.Workflows.Api.Endpoints.ActivityExecutions.Report.Request,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.Workflows.Api.Endpoints.ActivityExecutions.Report.Request">
+            <summary>
+            Represents a request for a list of activity execution log records for a given activity in a workflow instance.
+            </summary>
+        </member>
+        <member name="P:Elsa.Workflows.Api.Endpoints.ActivityExecutions.Report.Request.WorkflowInstanceId">
+            <summary>
+            The ID of the workflow instance to get the execution log for.
+            </summary>
+        </member>
+        <member name="P:Elsa.Workflows.Api.Endpoints.ActivityExecutions.Report.Request.ActivityNodeIds">
+            <summary>
+            The node IDs of the activities to get the execution records for.
+            </summary>
+        </member>
+        <member name="T:Elsa.Workflows.Api.Endpoints.Events.TriggerAuthenticated.Trigger">
+            <summary>
+            Triggers all workflows that are waiting for the specified event.
+            </summary>
+        </member>
+        <member name="M:Elsa.Workflows.Api.Endpoints.Events.TriggerAuthenticated.Trigger.#ctor(Elsa.Workflows.Runtime.Contracts.IEventPublisher,Elsa.Http.Contracts.IHttpBookmarkProcessor)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Workflows.Api.Endpoints.Events.TriggerAuthenticated.Trigger.Configure">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Workflows.Api.Endpoints.Events.TriggerAuthenticated.Trigger.HandleAsync(Elsa.Workflows.Api.Endpoints.Events.TriggerAuthenticated.Request,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.Workflows.Api.Endpoints.Events.TriggerPublic.Trigger">
+            <summary>
+            Resumes a workflow instance blocked by a specified event encoded in the provided SAS token.
+            </summary>
+        </member>
+        <member name="M:Elsa.Workflows.Api.Endpoints.Events.TriggerPublic.Trigger.#ctor(Elsa.SasTokens.Contracts.ITokenService,Elsa.Workflows.Runtime.Contracts.IEventPublisher,Elsa.Http.Contracts.IHttpBookmarkProcessor)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Workflows.Api.Endpoints.Events.TriggerPublic.Trigger.Configure">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Workflows.Api.Endpoints.Events.TriggerPublic.Trigger.HandleAsync(System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.Workflows.Api.Endpoints.Features.Get.Get">
+            <summary>
+            Returns the specified installed feature.
+            </summary>
+        </member>
+        <member name="M:Elsa.Workflows.Api.Endpoints.Features.Get.Get.#ctor(Elsa.Features.Contracts.IInstalledFeatureRegistry)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Workflows.Api.Endpoints.Features.Get.Get.Configure">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Workflows.Api.Endpoints.Features.Get.Get.HandleAsync(System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.Workflows.Api.Endpoints.Features.List.List">
+            <summary>
+            Returns a list of installed features.
+            </summary>
+        </member>
+        <member name="M:Elsa.Workflows.Api.Endpoints.Features.List.List.#ctor(Elsa.Features.Contracts.IInstalledFeatureRegistry)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Workflows.Api.Endpoints.Features.List.List.Configure">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Workflows.Api.Endpoints.Features.List.List.ExecuteAsync(System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.Workflows.Api.Endpoints.IncidentStrategies.List.List">
+            <summary>
+            Returns list of available <see cref="T:Elsa.Workflows.Core.Contracts.IIncidentStrategy" /> implementations.
+            </summary>
+        </member>
+        <member name="T:Elsa.Workflows.Api.Endpoints.Package.Version">
+            <summary>
+            Returns the package informational version.
+            </summary>
+        </member>
+        <member name="T:Elsa.Workflows.Api.Endpoints.Scripting.JavaScript.TypeDefinitions.Get">
+            <summary>
+            Returns a TypeScript definition that is used by the Monaco editor to display intellisense for JavaScript expressions.
+            </summary>
+        </member>
+        <member name="M:Elsa.Workflows.Api.Endpoints.Scripting.JavaScript.TypeDefinitions.Get.#ctor(Elsa.JavaScript.TypeDefinitions.Contracts.ITypeDefinitionService,Elsa.Workflows.Management.Contracts.IWorkflowDefinitionService)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Workflows.Api.Endpoints.Scripting.JavaScript.TypeDefinitions.Get.Configure">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Workflows.Api.Endpoints.Scripting.JavaScript.TypeDefinitions.Get.HandleAsync(Elsa.Workflows.Api.Endpoints.Scripting.JavaScript.TypeDefinitions.Request,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.Workflows.Api.Endpoints.StorageDrivers.List.Constants">
+            <summary>
+            Provides policy names accepted by the <see cref="T:Elsa.Workflows.Api.Endpoints.StorageDrivers.List.List"/> endpoint.
+            </summary>
+        </member>
+        <member name="F:Elsa.Workflows.Api.Endpoints.StorageDrivers.List.Constants.PolicyName">
+            <summary>
+            The policy name accepted by this endpoint.
+            </summary>
+        </member>
+        <member name="T:Elsa.Workflows.Api.Endpoints.StorageDrivers.List.List">
+            <summary>
+            Returns a list of registered <see cref="T:Elsa.Workflows.Core.Contracts.IStorageDriver"/> implementations.
+            </summary>
+        </member>
+        <member name="M:Elsa.Workflows.Api.Endpoints.StorageDrivers.List.List.#ctor(Elsa.Workflows.Core.Contracts.IStorageDriverManager)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Workflows.Api.Endpoints.StorageDrivers.List.List.Configure">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Workflows.Api.Endpoints.StorageDrivers.List.List.ExecuteAsync(System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.Workflows.Api.Endpoints.Tasks.Complete.Constants">
+            <summary>
+            Provides policy names accepted by the <see cref="T:Elsa.Workflows.Api.Endpoints.Tasks.Complete.Complete"/> endpoint.
+            </summary>
+        </member>
+        <member name="F:Elsa.Workflows.Api.Endpoints.Tasks.Complete.Constants.PolicyName">
+            <summary>
+            The policy name accepted by this endpoint.
+            </summary>
+        </member>
+        <member name="T:Elsa.Workflows.Api.Endpoints.Tasks.Complete.Complete">
+            <summary>
+            Resumes the <see cref="T:Elsa.Workflows.Runtime.Activities.RunTask"/> activity matching the received Task ID.
+            </summary>
+        </member>
+        <member name="M:Elsa.Workflows.Api.Endpoints.Tasks.Complete.Complete.#ctor(Elsa.Workflows.Runtime.Contracts.ITaskReporter)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Workflows.Api.Endpoints.Tasks.Complete.Complete.Configure">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Workflows.Api.Endpoints.Tasks.Complete.Complete.HandleAsync(Elsa.Workflows.Api.Endpoints.Tasks.Complete.Request,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.Workflows.Api.Endpoints.VariableTypes.List.List">
+            <summary>
+            Returns a list of available variable types.
+            </summary>
+        </member>
+        <member name="M:Elsa.Workflows.Api.Endpoints.VariableTypes.List.List.#ctor(Microsoft.Extensions.Options.IOptions{Elsa.Workflows.Management.Options.ManagementOptions},Elsa.Expressions.Contracts.IWellKnownTypeRegistry)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Workflows.Api.Endpoints.VariableTypes.List.List.Configure">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Workflows.Api.Endpoints.VariableTypes.List.List.ExecuteAsync(System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.Workflows.Api.Endpoints.WorkflowActivationStrategies.List.List">
+            <summary>
+            Returns list of available <see cref="T:Elsa.Workflows.Core.Contracts.IWorkflowActivationStrategy" /> implementations.
+            </summary>
+        </member>
+        <member name="T:Elsa.Workflows.Api.Endpoints.WorkflowDefinitions.Count.Count">
+            <summary>
+            An endpoint for counting workflow definitions.
+            </summary>
+        </member>
+        <member name="T:Elsa.Workflows.Api.Endpoints.WorkflowDefinitions.Execute.Execute">
+            <summary>
+            An API endpoint that executes a given workflow definition.
+            </summary>
+        </member>
+        <member name="M:Elsa.Workflows.Api.Endpoints.WorkflowDefinitions.Execute.Execute.#ctor(Elsa.Workflows.Management.Contracts.IWorkflowDefinitionStore,Elsa.Workflows.Runtime.Contracts.IWorkflowRuntime,Elsa.Http.Contracts.IHttpBookmarkProcessor,Elsa.Workflows.Core.Contracts.IApiSerializer,Elsa.Workflows.Core.Contracts.IIdentityGenerator)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Workflows.Api.Endpoints.WorkflowDefinitions.Execute.Execute.Configure">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Workflows.Api.Endpoints.WorkflowDefinitions.Execute.Execute.HandleAsync(Elsa.Workflows.Api.Endpoints.WorkflowDefinitions.Execute.Request,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.Workflows.Api.Endpoints.WorkflowDefinitions.Export.Export">
+            <summary>
+            Exports the specified workflow definition as JSON download.
+            </summary>
+        </member>
+        <member name="M:Elsa.Workflows.Api.Endpoints.WorkflowDefinitions.Export.Export.#ctor(Elsa.Workflows.Management.Contracts.IWorkflowDefinitionStore,Elsa.Workflows.Management.Contracts.IWorkflowDefinitionService,Elsa.Workflows.Core.Contracts.IApiSerializer,Elsa.Workflows.Management.Mappers.VariableDefinitionMapper)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Workflows.Api.Endpoints.WorkflowDefinitions.Export.Export.Configure">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Workflows.Api.Endpoints.WorkflowDefinitions.Export.Export.HandleAsync(Elsa.Workflows.Api.Endpoints.WorkflowDefinitions.Export.Request,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="P:Elsa.Workflows.Api.Endpoints.WorkflowDefinitions.GetByDefinitionId.Request.IncludeCompositeRoot">
+            <summary>
+            True if the response should include the root activity of composite activities.
+            </summary>
+        </member>
+        <member name="P:Elsa.Workflows.Api.Endpoints.WorkflowDefinitions.GetById.Request.IncludeCompositeRoot">
+            <summary>
+            True if the response should include the root activity of composite activities.
+            </summary>
+        </member>
+        <member name="P:Elsa.Workflows.Api.Endpoints.WorkflowDefinitions.GetManyById.Request.IncludeCompositeRoot">
+            <summary>
+            True if the response should include the root activity of composite activities.
+            </summary>
+        </member>
+        <member name="T:Elsa.Workflows.Api.Endpoints.WorkflowDefinitions.Import.Import">
+            <summary>
+            Imports a JSON file containing a workflow definition.
+            </summary>
+        </member>
+        <member name="M:Elsa.Workflows.Api.Endpoints.WorkflowDefinitions.Import.Import.#ctor(Elsa.Workflows.Management.Contracts.IWorkflowDefinitionService,Elsa.Workflows.Management.Contracts.IWorkflowDefinitionImporter,Elsa.Workflows.Management.Mappers.WorkflowDefinitionMapper)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Workflows.Api.Endpoints.WorkflowDefinitions.Import.Import.Configure">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Workflows.Api.Endpoints.WorkflowDefinitions.Import.Import.HandleAsync(Elsa.Workflows.Management.Models.WorkflowDefinitionModel,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.Workflows.Api.Endpoints.WorkflowDefinitions.IsNameUnique.IsNameUnique">
+            <summary>
+            Checks if a workflow definition name is unique.
+            </summary>
+        </member>
+        <member name="P:Elsa.Workflows.Api.Endpoints.WorkflowDefinitions.IsNameUnique.Request.Name">
+            <summary>
+            The name to check.
+            </summary>
+        </member>
+        <member name="P:Elsa.Workflows.Api.Endpoints.WorkflowDefinitions.IsNameUnique.Request.DefinitionId">
+            <summary>
+            Optional. If provided, the name will be checked against all workflow definitions except the one with the specified ID.
+            </summary>
+        </member>
+        <member name="T:Elsa.Workflows.Api.Endpoints.WorkflowDefinitions.IsNameUnique.Response">
+            <summary>
+            Represents a response indicating whether a workflow definition name is unique.
+            </summary>
+            <param name="IsUnique">A value indicating whether the name is unique.</param>
+        </member>
+        <member name="M:Elsa.Workflows.Api.Endpoints.WorkflowDefinitions.IsNameUnique.Response.#ctor(System.Boolean)">
+            <summary>
+            Represents a response indicating whether a workflow definition name is unique.
+            </summary>
+            <param name="IsUnique">A value indicating whether the name is unique.</param>
+        </member>
+        <member name="P:Elsa.Workflows.Api.Endpoints.WorkflowDefinitions.IsNameUnique.Response.IsUnique">
+            <summary>A value indicating whether the name is unique.</summary>
+        </member>
+        <member name="T:Elsa.Workflows.Api.Endpoints.WorkflowDefinitions.Version.DeleteVersion">
+            <summary>
+            Deletes a specific version of a workflow definition.
+            </summary>
+        </member>
+        <member name="M:Elsa.Workflows.Api.Endpoints.WorkflowDefinitions.Version.DeleteVersion.#ctor(Elsa.Workflows.Management.Contracts.IWorkflowDefinitionManager)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Workflows.Api.Endpoints.WorkflowDefinitions.Version.DeleteVersion.Configure">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Workflows.Api.Endpoints.WorkflowDefinitions.Version.DeleteVersion.HandleAsync(System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.Workflows.Api.Endpoints.WorkflowInstances.Get.WorkflowInstanceMapper">
+            <summary>
+            Maps a <see cref="T:Elsa.Workflows.Management.Entities.WorkflowInstance"/> to <see cref="T:Elsa.Workflows.Api.Endpoints.WorkflowInstances.Get.Response"/>.
+            </summary>
+        </member>
+        <member name="M:Elsa.Workflows.Api.Endpoints.WorkflowInstances.Get.WorkflowInstanceMapper.FromEntity(Elsa.Workflows.Management.Entities.WorkflowInstance)">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.Workflows.Api.Endpoints.WorkflowInstances.Journal.FilteredList.Get">
+            <summary>
+            Gets the journal for a workflow instance.
+            </summary>
+        </member>
+        <member name="M:Elsa.Workflows.Api.Endpoints.WorkflowInstances.Journal.FilteredList.Get.#ctor(Elsa.Workflows.Runtime.Contracts.IWorkflowExecutionLogStore)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Workflows.Api.Endpoints.WorkflowInstances.Journal.FilteredList.Get.Configure">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Workflows.Api.Endpoints.WorkflowInstances.Journal.FilteredList.Get.ExecuteAsync(Elsa.Workflows.Api.Endpoints.WorkflowInstances.Journal.FilteredList.Request,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.Workflows.Api.Endpoints.WorkflowInstances.Journal.FilteredList.Request">
+            <summary>
+            Represents a request for a page of workflow execution log records.
+            </summary>
+        </member>
+        <member name="P:Elsa.Workflows.Api.Endpoints.WorkflowInstances.Journal.FilteredList.Request.WorkflowInstanceId">
+            <summary>
+            The ID of the workflow instance to get the execution log for.
+            </summary>
+        </member>
+        <member name="P:Elsa.Workflows.Api.Endpoints.WorkflowInstances.Journal.FilteredList.Request.Filter">
+            <summary>
+            The filter to apply.
+            </summary>
+        </member>
+        <member name="P:Elsa.Workflows.Api.Endpoints.WorkflowInstances.Journal.FilteredList.Request.Page">
+            <summary>
+            The zero-based page number to get.
+            </summary>
+        </member>
+        <member name="P:Elsa.Workflows.Api.Endpoints.WorkflowInstances.Journal.FilteredList.Request.PageSize">
+            <summary>
+            The size of the page to get.
+            </summary>
+        </member>
+        <member name="P:Elsa.Workflows.Api.Endpoints.WorkflowInstances.Journal.FilteredList.Request.Skip">
+            <summary>
+            The number of records to skip.
+            </summary>
+        </member>
+        <member name="P:Elsa.Workflows.Api.Endpoints.WorkflowInstances.Journal.FilteredList.Request.Take">
+            <summary>
+            The number of records to take.
+            </summary>
+        </member>
+        <member name="T:Elsa.Workflows.Api.Endpoints.WorkflowInstances.Journal.GetLastEntry.Get">
+            <summary>
+            Return the last log entry for the specified workflow instance and activity ID.
+            </summary>
+        </member>
+        <member name="M:Elsa.Workflows.Api.Endpoints.WorkflowInstances.Journal.GetLastEntry.Get.#ctor(Elsa.Workflows.Runtime.Contracts.IWorkflowExecutionLogStore)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Workflows.Api.Endpoints.WorkflowInstances.Journal.GetLastEntry.Get.Configure">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Workflows.Api.Endpoints.WorkflowInstances.Journal.GetLastEntry.Get.HandleAsync(Elsa.Workflows.Api.Endpoints.WorkflowInstances.Journal.GetLastEntry.Request,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.Workflows.Api.Endpoints.WorkflowInstances.Journal.GetLastEntry.Request">
+            <summary>
+            A request to get the last entry for the specified workflow instance and activity ID.
+            </summary>
+        </member>
+        <member name="P:Elsa.Workflows.Api.Endpoints.WorkflowInstances.Journal.GetLastEntry.Request.WorkflowInstanceId">
+            <summary>
+            The ID of the workflow instance to get the last entry for.
+            </summary>
+        </member>
+        <member name="P:Elsa.Workflows.Api.Endpoints.WorkflowInstances.Journal.GetLastEntry.Request.ActivityId">
+            <summary>
+            The ID of the activity to get the last entry for.
+            </summary>
+        </member>
+        <member name="T:Elsa.Workflows.Api.Endpoints.WorkflowInstances.Journal.List.Get">
+            <summary>
+            Gets the journal for a workflow instance.
+            </summary>
+        </member>
+        <member name="M:Elsa.Workflows.Api.Endpoints.WorkflowInstances.Journal.List.Get.#ctor(Elsa.Workflows.Runtime.Contracts.IWorkflowExecutionLogStore)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Workflows.Api.Endpoints.WorkflowInstances.Journal.List.Get.Configure">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Workflows.Api.Endpoints.WorkflowInstances.Journal.List.Get.ExecuteAsync(Elsa.Workflows.Api.Endpoints.WorkflowInstances.Journal.List.Request,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.Workflows.Api.Endpoints.WorkflowInstances.Journal.List.Request">
+            <summary>
+            Represents a request for a page of workflow execution log records.
+            </summary>
+        </member>
+        <member name="P:Elsa.Workflows.Api.Endpoints.WorkflowInstances.Journal.List.Request.WorkflowInstanceId">
+            <summary>
+            The ID of the workflow instance to get the execution log for.
+            </summary>
+        </member>
+        <member name="P:Elsa.Workflows.Api.Endpoints.WorkflowInstances.Journal.List.Request.Page">
+            <summary>
+            The zero-based page number to get.
+            </summary>
+        </member>
+        <member name="P:Elsa.Workflows.Api.Endpoints.WorkflowInstances.Journal.List.Request.PageSize">
+            <summary>
+            The size of the page to get.
+            </summary>
+        </member>
+        <member name="P:Elsa.Workflows.Api.Endpoints.WorkflowInstances.Journal.List.Request.Skip">
+            <summary>
+            The number of records to skip.
+            </summary>
+        </member>
+        <member name="P:Elsa.Workflows.Api.Endpoints.WorkflowInstances.Journal.List.Request.Take">
+            <summary>
+            The number of records to take.
+            </summary>
+        </member>
+        <member name="T:Elsa.Workflows.Api.Features.RealTimeWorkflowUpdatesFeature">
+            <summary>
+            Sets up a SignalR hub for receiving workflow events on the client.
+            </summary>
+        </member>
+        <member name="M:Elsa.Workflows.Api.Features.RealTimeWorkflowUpdatesFeature.#ctor(Elsa.Features.Services.IModule)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Workflows.Api.Features.RealTimeWorkflowUpdatesFeature.Apply">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.Workflows.Api.Features.WorkflowsApiFeature">
+            <summary>
+            Adds workflows API features.
+            </summary>
+        </member>
+        <member name="M:Elsa.Workflows.Api.Features.WorkflowsApiFeature.#ctor(Elsa.Features.Services.IModule)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Workflows.Api.Features.WorkflowsApiFeature.Configure">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Workflows.Api.Features.WorkflowsApiFeature.Apply">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.Workflows.Api.Middleware.JsonSerializationErrorHandlerMiddleware">
+            <summary>
+            Catches JSON serialization errors during POST requests and returns Bad Request responses.
+            </summary>
+        </member>
+        <member name="T:Elsa.Workflows.Api.Models.OrderByWorkflowDefinition">
+            <summary>
+            Defines the order by options for workflow definitions.
+            </summary>
+        </member>
+        <member name="F:Elsa.Workflows.Api.Models.OrderByWorkflowDefinition.Created">
+            <summary>
+            Order by the date the workflow definition was created.
+            </summary>
+        </member>
+        <member name="F:Elsa.Workflows.Api.Models.OrderByWorkflowDefinition.Name">
+            <summary>
+            Order by the name of the workflow definition.
+            </summary>
+        </member>
+        <member name="F:Elsa.Workflows.Api.Models.OrderByWorkflowDefinition.Version">
+            <summary>
+            Order by the version of the workflow definition.
+            </summary>
+        </member>
+        <member name="T:Elsa.Workflows.Api.Models.OrderByWorkflowInstance">
+            <summary>
+            Defines the order by options for workflow instances.
+            </summary>
+        </member>
+        <member name="F:Elsa.Workflows.Api.Models.OrderByWorkflowInstance.Created">
+            <summary>
+            Order by the date the workflow instance was created.
+            </summary>
+        </member>
+        <member name="F:Elsa.Workflows.Api.Models.OrderByWorkflowInstance.UpdatedAt">
+            <summary>
+            Order by the date the workflow instance was last executed.
+            </summary>
+        </member>
+        <member name="F:Elsa.Workflows.Api.Models.OrderByWorkflowInstance.Finished">
+            <summary>
+            Order by the date the workflow instance was finished.
+            </summary>
+        </member>
+        <member name="F:Elsa.Workflows.Api.Models.OrderByWorkflowInstance.Name">
+            <summary>
+            Order by the name of the workflow instance.
+            </summary>
+        </member>
+        <member name="T:Elsa.Workflows.Api.RealTime.Contracts.IWorkflowInstanceClient">
+            <summary>
+            Represents a client for receiving workflow events on the client.
+            </summary>
+        </member>
+        <member name="M:Elsa.Workflows.Api.RealTime.Contracts.IWorkflowInstanceClient.ActivityExecutingAsync(Elsa.Workflows.Api.RealTime.Messages.ActivityExecutingMessage,System.Threading.CancellationToken)">
+            <summary>
+            Notifies the client that an activity is executing.
+            </summary>
+            <param name="message">The message containing activity information to send.</param>
+            <param name="cancellationToken">An optional cancellation token.</param>
+        </member>
+        <member name="M:Elsa.Workflows.Api.RealTime.Contracts.IWorkflowInstanceClient.ActivityExecutedAsync(Elsa.Workflows.Api.RealTime.Messages.ActivityExecutedMessage,System.Threading.CancellationToken)">
+            <summary>
+            Notifies the client that an activity has executed.
+            </summary>
+            <param name="message">The message containing activity information to send.</param>
+            <param name="cancellationToken">An optional cancellation token.</param>
+        </member>
+        <member name="M:Elsa.Workflows.Api.RealTime.Contracts.IWorkflowInstanceClient.ActivityExecutionLogUpdatedAsync(Elsa.Workflows.Api.RealTime.Messages.ActivityExecutionLogUpdatedMessage,System.Threading.CancellationToken)">
+            <summary>
+            Notifies the client that activity execution log entries for a given workflow instance have been updated.
+            </summary>
+            <param name="message">The message containing the workflow instance ID.</param>
+            <param name="cancellationToken">An optional cancellation token.</param>
+        </member>
+        <member name="M:Elsa.Workflows.Api.RealTime.Contracts.IWorkflowInstanceClient.WorkflowExecutionLogUpdatedAsync(Elsa.Workflows.Api.RealTime.Messages.WorkflowExecutionLogUpdatedMessage,System.Threading.CancellationToken)">
+            <summary>
+            Notifies the client that the workflow execution log has been updated. 
+            </summary>
+            <param name="message">Tge message representing the workflow execution log update.</param>
+            <param name="cancellationToken">An optional cancellation token.</param>
+        </member>
+        <member name="M:Elsa.Workflows.Api.RealTime.Contracts.IWorkflowInstanceClient.WorkflowInstanceUpdatedAsync(Elsa.Workflows.Api.RealTime.Messages.WorkflowInstanceUpdatedMessage,System.Threading.CancellationToken)">
+            <summary>
+            Notifies the client that the workflow instance was updated.
+            </summary>
+            <param name="message">The message containing the updated workflow instance ID.</param>
+            <param name="cancellationToken">An optional cancellation token.</param>
+            <returns></returns>
+        </member>
+        <member name="T:Elsa.Workflows.Api.RealTime.Handlers.BroadcastWorkflowProgress">
+            <summary>
+            Broadcasts workflow progress to clients.
+            </summary>
+        </member>
+        <member name="M:Elsa.Workflows.Api.RealTime.Handlers.BroadcastWorkflowProgress.#ctor(Microsoft.AspNetCore.SignalR.IHubContext{Elsa.Workflows.Api.RealTime.Hubs.WorkflowInstanceHub,Elsa.Workflows.Api.RealTime.Contracts.IWorkflowInstanceClient},Elsa.Workflows.Runtime.Contracts.IActivityExecutionStatsService)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Elsa.Workflows.Api.RealTime.Handlers.BroadcastWorkflowProgress"/> class.
+            </summary>
+        </member>
+        <member name="M:Elsa.Workflows.Api.RealTime.Handlers.BroadcastWorkflowProgress.HandleAsync(Elsa.Workflows.Runtime.Notifications.ActivityExecutionLogUpdated,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Workflows.Api.RealTime.Handlers.BroadcastWorkflowProgress.HandleAsync(Elsa.Workflows.Runtime.Notifications.ActivityExecutionRecordDeleted,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Workflows.Api.RealTime.Handlers.BroadcastWorkflowProgress.HandleAsync(Elsa.Workflows.Runtime.Notifications.ActivityExecutionRecordUpdated,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Workflows.Api.RealTime.Handlers.BroadcastWorkflowProgress.HandleAsync(Elsa.Workflows.Runtime.Notifications.WorkflowExecutionLogUpdated,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Workflows.Api.RealTime.Handlers.BroadcastWorkflowProgress.HandleAsync(Elsa.Workflows.Management.Notifications.WorkflowInstanceSaved,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.Workflows.Api.RealTime.Hubs.WorkflowInstanceHub">
+            <summary>
+            Represents a SignalR hub for receiving workflow events on the client.
+            </summary>
+        </member>
+        <member name="M:Elsa.Workflows.Api.RealTime.Hubs.WorkflowInstanceHub.#ctor(Elsa.Workflows.Runtime.Contracts.IWorkflowRuntime)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Workflows.Api.RealTime.Hubs.WorkflowInstanceHub.ObserveInstanceAsync(System.String)">
+            <summary>
+            Observes a workflow instance.
+            </summary>
+            <param name="instanceId">The ID of the workflow instance to observe.</param>
+        </member>
+        <member name="T:Elsa.Workflows.Api.RealTime.Messages.ActivityExecutedMessage">
+            <summary>
+            Contains information about the activity executed event.
+            </summary>
+            <param name="ActivityId">The ID of the activity.</param>
+            <param name="Stats">Execution stats about the activity.</param>
+        </member>
+        <member name="M:Elsa.Workflows.Api.RealTime.Messages.ActivityExecutedMessage.#ctor(System.String,Elsa.Workflows.Runtime.Models.ActivityExecutionStats)">
+            <summary>
+            Contains information about the activity executed event.
+            </summary>
+            <param name="ActivityId">The ID of the activity.</param>
+            <param name="Stats">Execution stats about the activity.</param>
+        </member>
+        <member name="P:Elsa.Workflows.Api.RealTime.Messages.ActivityExecutedMessage.ActivityId">
+            <summary>The ID of the activity.</summary>
+        </member>
+        <member name="P:Elsa.Workflows.Api.RealTime.Messages.ActivityExecutedMessage.Stats">
+            <summary>Execution stats about the activity.</summary>
+        </member>
+        <member name="T:Elsa.Workflows.Api.RealTime.Messages.ActivityExecutingMessage">
+            <summary>
+            Contains information about the activity executing event.
+            </summary>
+            <param name="ActivityId">The ID of the activity.</param>
+            <param name="Stats">Execution stats about the activity.</param>
+        </member>
+        <member name="M:Elsa.Workflows.Api.RealTime.Messages.ActivityExecutingMessage.#ctor(System.String,Elsa.Workflows.Runtime.Models.ActivityExecutionStats)">
+            <summary>
+            Contains information about the activity executing event.
+            </summary>
+            <param name="ActivityId">The ID of the activity.</param>
+            <param name="Stats">Execution stats about the activity.</param>
+        </member>
+        <member name="P:Elsa.Workflows.Api.RealTime.Messages.ActivityExecutingMessage.ActivityId">
+            <summary>The ID of the activity.</summary>
+        </member>
+        <member name="P:Elsa.Workflows.Api.RealTime.Messages.ActivityExecutingMessage.Stats">
+            <summary>Execution stats about the activity.</summary>
+        </member>
+        <member name="T:Elsa.Workflows.Api.RealTime.Messages.ActivityExecutionLogUpdatedMessage">
+            <summary>
+            Contains information about the activity execution logs updated event.
+            </summary>
+            <param name="Stats">Execution stats about a set of activities.</param>
+        </member>
+        <member name="M:Elsa.Workflows.Api.RealTime.Messages.ActivityExecutionLogUpdatedMessage.#ctor(System.Collections.Generic.ICollection{Elsa.Workflows.Runtime.Models.ActivityExecutionStats})">
+            <summary>
+            Contains information about the activity execution logs updated event.
+            </summary>
+            <param name="Stats">Execution stats about a set of activities.</param>
+        </member>
+        <member name="P:Elsa.Workflows.Api.RealTime.Messages.ActivityExecutionLogUpdatedMessage.Stats">
+            <summary>Execution stats about a set of activities.</summary>
+        </member>
+        <member name="T:Elsa.Workflows.Api.RealTime.Messages.WorkflowExecutionLogUpdatedMessage">
+            <summary>
+            Represents a message that is sent when the workflow execution log is updated.
+            </summary>
+        </member>
+        <member name="M:Elsa.Workflows.Api.RealTime.Messages.WorkflowExecutionLogUpdatedMessage.#ctor">
+            <summary>
+            Represents a message that is sent when the workflow execution log is updated.
+            </summary>
+        </member>
+        <member name="T:Elsa.Workflows.Api.RealTime.Messages.WorkflowInstanceUpdatedMessage">
+            <summary>
+            A message representing that a workflow instance was updated. 
+            </summary>
+            <param name="WorkflowInstanceId">The ID of the workflow instance that was updated.</param>
+        </member>
+        <member name="M:Elsa.Workflows.Api.RealTime.Messages.WorkflowInstanceUpdatedMessage.#ctor(System.String)">
+            <summary>
+            A message representing that a workflow instance was updated. 
+            </summary>
+            <param name="WorkflowInstanceId">The ID of the workflow instance that was updated.</param>
+        </member>
+        <member name="P:Elsa.Workflows.Api.RealTime.Messages.WorkflowInstanceUpdatedMessage.WorkflowInstanceId">
+            <summary>The ID of the workflow instance that was updated.</summary>
+        </member>
+        <member name="T:Elsa.Workflows.Api.Serialization.ArgumentJsonConverter">
+            <summary>
+            Converts <see cref="T:Elsa.Workflows.Core.Models.ArgumentDefinition"/> derivatives from and to JSON
+            </summary>
+        </member>
+        <member name="M:Elsa.Workflows.Api.Serialization.ArgumentJsonConverter.#ctor(Elsa.Expressions.Contracts.IWellKnownTypeRegistry)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Workflows.Api.Serialization.ArgumentJsonConverter.Write(System.Text.Json.Utf8JsonWriter,Elsa.Workflows.Core.Models.ArgumentDefinition,System.Text.Json.JsonSerializerOptions)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Workflows.Api.Serialization.ArgumentJsonConverter.Read(System.Text.Json.Utf8JsonReader@,System.Type,System.Text.Json.JsonSerializerOptions)">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.Extensions.ApplicationBuilderExtensions">
+            <summary>
+            Provides extensions to <see cref="T:Microsoft.AspNetCore.Builder.IApplicationBuilder"/>.
+            </summary>
+        </member>
+        <member name="M:Elsa.Extensions.ApplicationBuilderExtensions.UseJsonSerializationErrorHandler(Microsoft.AspNetCore.Builder.IApplicationBuilder)">
+            <summary>
+            Adds middleware that handles JSON serialization errors.
+            </summary>
+        </member>
+        <member name="T:Elsa.Extensions.ModuleExtensions">
+            <summary>
+            Provides extensions to <see cref="T:Elsa.Features.Services.IModule"/>.
+            </summary>
+        </member>
+        <member name="M:Elsa.Extensions.ModuleExtensions.UseWorkflowsApi(Elsa.Features.Services.IModule,System.Action{Elsa.Workflows.Api.Features.WorkflowsApiFeature})">
+            <summary>
+            Configures the workflows API feature.
+            </summary>
+        </member>
+        <member name="M:Elsa.Extensions.ModuleExtensions.UseRealTimeWorkflows(Elsa.Features.Services.IModule,System.Action{Elsa.Workflows.Api.Features.RealTimeWorkflowUpdatesFeature})">
+            <summary>
+            Configures the real time workflow updates feature
+            </summary>
+        </member>
+        <member name="T:Elsa.Extensions.WorkflowsApiFeatureExtensions">
+            <summary>
+            Provides extensions to <see cref="T:Elsa.Workflows.Api.Features.WorkflowsApiFeature"/>.
+            </summary>
+        </member>
+        <member name="M:Elsa.Extensions.WorkflowsApiFeatureExtensions.AddFastEndpointsAssembly``1(Elsa.Workflows.Api.Features.WorkflowsApiFeature)">
+            <summary>
+            Adds FastEndpoint endpoints from the assembly containing <typeparamref name="TMarker"/>.
+            </summary>
+        </member>
+        <member name="T:Elsa.Extensions.RealTimeApplicationBuilderExtensions">
+            <summary>
+            Provides extensions to <see cref="T:Microsoft.AspNetCore.Builder.IApplicationBuilder"/>.
+            </summary>
+        </member>
+        <member name="M:Elsa.Extensions.RealTimeApplicationBuilderExtensions.UseWorkflowsSignalRHubs(Microsoft.AspNetCore.Builder.IApplicationBuilder)">
+            <summary>
+            Adds SignalR hubs for receiving workflow events on the client.
+            </summary>
+        </member>
+    </members>
+</doc>

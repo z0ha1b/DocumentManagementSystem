@@ -1,0 +1,218 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Elsa.Liquid</name>
+    </assembly>
+    <members>
+        <member name="T:Elsa.Liquid.Contracts.ILiquidFilter">
+            <summary>
+            Represents a Liquid filter.
+            </summary>
+        </member>
+        <member name="M:Elsa.Liquid.Contracts.ILiquidFilter.ProcessAsync(Fluid.Values.FluidValue,Fluid.FilterArguments,Fluid.TemplateContext)">
+            <summary>
+            Processes the specified input.
+            </summary>
+            <param name="input">The input to process.</param>
+            <param name="arguments">Any arguments passed to the filter.</param>
+            <param name="context">The template context.</param>
+            <returns>The processed input.</returns>
+        </member>
+        <member name="T:Elsa.Liquid.Contracts.ILiquidTemplateManager">
+            <summary>
+            Provides services to render Liquid templates.
+            </summary>
+        </member>
+        <member name="M:Elsa.Liquid.Contracts.ILiquidTemplateManager.RenderAsync(System.String,Elsa.Expressions.Models.ExpressionExecutionContext,System.Threading.CancellationToken)">
+            <summary>
+            Renders a Liquid template as a <see cref="T:System.String"/>.
+            </summary>
+        </member>
+        <member name="M:Elsa.Liquid.Contracts.ILiquidTemplateManager.Validate(System.String,System.String@)">
+            <summary>
+            Validates a Liquid template.
+            </summary>
+        </member>
+        <member name="T:Elsa.Liquid.Expressions.LiquidExpression">
+            <summary>
+            Represents a Liquid expression.
+            </summary>
+        </member>
+        <member name="M:Elsa.Liquid.Expressions.LiquidExpression.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Elsa.Liquid.Expressions.LiquidExpression"/> class.
+            </summary>
+            <param name="value">The Liquid expression.</param>
+        </member>
+        <member name="P:Elsa.Liquid.Expressions.LiquidExpression.Value">
+            <summary>
+            Gets the Liquid expression.
+            </summary>
+        </member>
+        <member name="T:Elsa.Liquid.Expressions.LiquidExpressionBlockReference">
+            <summary>
+            A reference to a <see cref="T:Elsa.Liquid.Expressions.LiquidExpression"/> block.
+            </summary>
+        </member>
+        <member name="M:Elsa.Liquid.Expressions.LiquidExpressionBlockReference.#ctor(Elsa.Liquid.Expressions.LiquidExpression)">
+            <summary>
+            Creates a new instance of the <see cref="T:Elsa.Liquid.Expressions.LiquidExpressionBlockReference"/> class.
+            </summary>
+        </member>
+        <member name="P:Elsa.Liquid.Expressions.LiquidExpressionBlockReference.Expression">
+            <summary>
+            Gets the <see cref="T:Elsa.Liquid.Expressions.LiquidExpression"/>.
+            </summary>
+        </member>
+        <member name="M:Elsa.Liquid.Expressions.LiquidExpressionBlockReference.Declare">
+            <summary>
+            Declares a new <see cref="T:Elsa.Expressions.Models.MemoryBlock"/>.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Elsa.Liquid.Expressions.LiquidExpressionHandler">
+            <summary>
+            Evaluates a Liquid expression.
+            </summary>
+        </member>
+        <member name="M:Elsa.Liquid.Expressions.LiquidExpressionHandler.#ctor(Elsa.Liquid.Contracts.ILiquidTemplateManager)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Elsa.Liquid.Expressions.LiquidExpressionHandler"/> class.
+            </summary>
+        </member>
+        <member name="M:Elsa.Liquid.Expressions.LiquidExpressionHandler.EvaluateAsync(Elsa.Expressions.Contracts.IExpression,System.Type,Elsa.Expressions.Models.ExpressionExecutionContext)">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.Liquid.Features.LiquidFeature">
+            <summary>
+            Configures liquid functionality.
+            </summary>
+        </member>
+        <member name="M:Elsa.Liquid.Features.LiquidFeature.#ctor(Elsa.Features.Services.IModule)">
+            <inheritdoc />
+        </member>
+        <member name="P:Elsa.Liquid.Features.LiquidFeature.FluidOptions">
+            <summary>
+            Configures the Fluid options.
+            </summary>
+        </member>
+        <member name="M:Elsa.Liquid.Features.LiquidFeature.Apply">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.Liquid.Filters.Base64Filter">
+            <summary>
+            A liquid filter that converts a value into a base 64 string representation.
+            </summary>
+        </member>
+        <member name="M:Elsa.Liquid.Filters.Base64Filter.ProcessAsync(Fluid.Values.FluidValue,Fluid.FilterArguments,Fluid.TemplateContext)">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.Liquid.Filters.DictionaryKeysFilter">
+            <summary>
+            A liquid filter that extracts the key values from a <see cref="T:Fluid.Values.DictionaryValue"/> value.
+            </summary>
+        </member>
+        <member name="M:Elsa.Liquid.Filters.DictionaryKeysFilter.ProcessAsync(Fluid.Values.FluidValue,Fluid.FilterArguments,Fluid.TemplateContext)">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.Liquid.Filters.JsonFilter">
+            <summary>
+            A liquid filter that converts a value into a JSON string representation.
+            </summary>
+        </member>
+        <member name="T:Elsa.Liquid.Handlers.ConfigureLiquidEngine">
+            <summary>
+            Configures the liquid templating engine before evaluating a liquid expression.
+            </summary>
+        </member>
+        <member name="M:Elsa.Liquid.Handlers.ConfigureLiquidEngine.#ctor(Microsoft.Extensions.Configuration.IConfiguration,Microsoft.Extensions.Options.IOptions{Elsa.Liquid.Options.FluidOptions},Microsoft.Extensions.Options.IOptions{Elsa.Workflows.Management.Options.ManagementOptions})">
+            <summary>
+            Constructor.
+            </summary>
+        </member>
+        <member name="M:Elsa.Liquid.Handlers.ConfigureLiquidEngine.HandleAsync(Elsa.Liquid.Notifications.RenderingLiquidTemplate,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.Liquid.Helpers.LiquidObjectAccessor`1">
+            <summary>
+            Can be used to provide a factory to return an object based on a property name that is unknown at registration time. 
+            </summary>
+        </member>
+        <member name="T:Elsa.Liquid.Helpers.LiquidPropertyAccessor">
+            <summary>
+            Can be used to provide a factory to return a value based on a property name 
+            that is unknown at registration time. 
+            
+            e.g. {{ LiquidPropertyAccessor.MyPropertyName }} (MyPropertyName will be passed as the identifier argument to the factory)
+            </summary>
+        </member>
+        <member name="T:Elsa.Liquid.Options.FluidOptions">
+            <summary>
+            Options for configuring the Liquid templating engine.
+            </summary>
+        </member>
+        <member name="P:Elsa.Liquid.Options.FluidOptions.FilterRegistrations">
+            <summary>
+            A dictionary of filter registrations.
+            </summary>
+        </member>
+        <member name="P:Elsa.Liquid.Options.FluidOptions.ParserConfiguration">
+            <summary>
+            A list of parser configurations.
+            </summary>
+        </member>
+        <member name="P:Elsa.Liquid.Options.FluidOptions.AllowConfigurationAccess">
+            <summary>
+            Gets or sets a value indicating whether to allow access to the configuration object.
+            </summary>
+        </member>
+        <member name="P:Elsa.Liquid.Options.FluidOptions.Encoder">
+            <summary>
+            Gets or sets the default encoder to use when rendering a template.
+            </summary>
+        </member>
+        <member name="T:Elsa.Liquid.Services.LiquidParser">
+            <summary>
+            A parser for the Liquid templating engine.
+            </summary>
+        </member>
+        <member name="M:Elsa.Liquid.Services.LiquidParser.#ctor(Microsoft.Extensions.Options.IOptions{Elsa.Liquid.Options.FluidOptions})">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.Liquid.Services.LiquidTemplateManager">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Liquid.Services.LiquidTemplateManager.#ctor(Elsa.Liquid.Services.LiquidParser,Microsoft.Extensions.Caching.Memory.IMemoryCache,Elsa.Mediator.Contracts.INotificationSender,Microsoft.Extensions.Options.IOptions{Elsa.Liquid.Options.FluidOptions})">
+            <summary>
+            Constructor.
+            </summary>
+        </member>
+        <member name="M:Elsa.Liquid.Services.LiquidTemplateManager.RenderAsync(System.String,Elsa.Expressions.Models.ExpressionExecutionContext,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Liquid.Services.LiquidTemplateManager.Validate(System.String,System.String@)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Extensions.ModuleExtensions.UseLiquid(Elsa.Features.Services.IModule,System.Action{Elsa.Liquid.Features.LiquidFeature})">
+            <summary>
+            Setup the <see cref="T:Elsa.Liquid.Features.LiquidFeature"/> feature.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Extensions.DependencyInjection.DependencyInjectionExtensions.AddLiquidFilter``1(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.String)">
+            <summary>
+            Register a custom Liquid filter.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Extensions.DependencyInjection.DependencyInjectionExtensions.RegisterLiquidTag(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.Action{Elsa.Liquid.Services.LiquidParser})">
+            <summary>
+            Register a custom Liquid tag.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Extensions.DependencyInjection.DependencyInjectionExtensions.EnableLiquidConfigurationAccess(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            Enables access to .NET configuration via the Configuration keyword.
+            Do not enable this option if you execute user supplied (or otherwise untrusted) workflows.
+            </summary>
+        </member>
+    </members>
+</doc>

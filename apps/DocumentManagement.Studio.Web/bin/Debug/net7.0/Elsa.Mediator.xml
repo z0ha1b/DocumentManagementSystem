@@ -1,0 +1,1434 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Elsa.Mediator</name>
+    </assembly>
+    <members>
+        <member name="T:Elsa.Mediator.Abstractions.ChannelBase`1">
+            <summary>
+            A base class for channels.
+            </summary>
+            <typeparam name="T">The type of the items in the channel.</typeparam>
+        </member>
+        <member name="M:Elsa.Mediator.Abstractions.ChannelBase`1.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Elsa.Mediator.Abstractions.ChannelBase`1"/> class.
+            </summary>
+        </member>
+        <member name="P:Elsa.Mediator.Abstractions.ChannelBase`1.Writer">
+            <summary>
+            Gets the writer for the channel.
+            </summary>
+        </member>
+        <member name="P:Elsa.Mediator.Abstractions.ChannelBase`1.Reader">
+            <summary>
+            Gets the reader for the channel.
+            </summary>
+        </member>
+        <member name="T:Elsa.Mediator.Channels.CommandsChannel">
+            <inheritdoc cref="T:Elsa.Mediator.Contracts.ICommandsChannel" />
+        </member>
+        <member name="T:Elsa.Mediator.Channels.JobsChannel">
+            <inheritdoc cref="T:Elsa.Mediator.Contracts.IJobsChannel" />
+        </member>
+        <member name="T:Elsa.Mediator.Channels.NotificationsChannel">
+            <inheritdoc cref="T:Elsa.Mediator.Contracts.INotificationsChannel" />
+        </member>
+        <member name="T:Elsa.Mediator.CommandStrategies.BackgroundStrategy">
+            <summary>
+            Invokes command handlers in the background and does not wait for the result.
+            </summary>
+        </member>
+        <member name="M:Elsa.Mediator.CommandStrategies.BackgroundStrategy.ExecuteAsync``1(Elsa.Mediator.Contexts.CommandStrategyContext)">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.Mediator.CommandStrategies.DefaultStrategy">
+            <summary>
+            Invokes command handlers using the default strategy. 
+            </summary>
+        </member>
+        <member name="M:Elsa.Mediator.CommandStrategies.DefaultStrategy.ExecuteAsync``1(Elsa.Mediator.Contexts.CommandStrategyContext)">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.Mediator.CommandStrategy">
+            <summary>
+            Provides a set of strategies for publishing events.
+            </summary>
+        </member>
+        <member name="F:Elsa.Mediator.CommandStrategy.Default">
+            <summary>
+            Invokes command handlers in parallel and waits for the result.
+            </summary>
+        </member>
+        <member name="F:Elsa.Mediator.CommandStrategy.Background">
+            <summary>
+            Invokes command handlers in the background and does not wait for the result.
+            </summary>
+        </member>
+        <member name="T:Elsa.Mediator.Contexts.CommandStrategyContext">
+            <summary>
+            Represents a context for executing a command.
+            </summary>
+            <param name="Command">The command to execute.</param>
+            <param name="Handler">The command handler.</param>
+            <param name="ServiceProvider">The service provider to resolve services from.</param>
+            <param name="CancellationToken">The cancellation token.</param>
+        </member>
+        <member name="M:Elsa.Mediator.Contexts.CommandStrategyContext.#ctor(Elsa.Mediator.Contracts.ICommand,Elsa.Mediator.Contracts.ICommandHandler,System.IServiceProvider,System.Threading.CancellationToken)">
+            <summary>
+            Represents a context for executing a command.
+            </summary>
+            <param name="Command">The command to execute.</param>
+            <param name="Handler">The command handler.</param>
+            <param name="ServiceProvider">The service provider to resolve services from.</param>
+            <param name="CancellationToken">The cancellation token.</param>
+        </member>
+        <member name="P:Elsa.Mediator.Contexts.CommandStrategyContext.Command">
+            <summary>The command to execute.</summary>
+        </member>
+        <member name="P:Elsa.Mediator.Contexts.CommandStrategyContext.Handler">
+            <summary>The command handler.</summary>
+        </member>
+        <member name="P:Elsa.Mediator.Contexts.CommandStrategyContext.ServiceProvider">
+            <summary>The service provider to resolve services from.</summary>
+        </member>
+        <member name="P:Elsa.Mediator.Contexts.CommandStrategyContext.CancellationToken">
+            <summary>The cancellation token.</summary>
+        </member>
+        <member name="T:Elsa.Mediator.Contexts.NotificationStrategyContext">
+            <summary>
+            Represents a context for publishing events.
+            </summary>
+            <param name="Notification">The notification to publish.</param>
+            <param name="Handlers">The handlers to publish the notification to.</param>
+            <param name="Logger">The logger.</param>
+            <param name="ServiceProvider">The service provider to resolve services from.</param>
+            <param name="CancellationToken">The cancellation token.</param>
+        </member>
+        <member name="M:Elsa.Mediator.Contexts.NotificationStrategyContext.#ctor(Elsa.Mediator.Contracts.INotification,Elsa.Mediator.Contracts.INotificationHandler[],Microsoft.Extensions.Logging.ILogger,System.IServiceProvider,System.Threading.CancellationToken)">
+            <summary>
+            Represents a context for publishing events.
+            </summary>
+            <param name="Notification">The notification to publish.</param>
+            <param name="Handlers">The handlers to publish the notification to.</param>
+            <param name="Logger">The logger.</param>
+            <param name="ServiceProvider">The service provider to resolve services from.</param>
+            <param name="CancellationToken">The cancellation token.</param>
+        </member>
+        <member name="P:Elsa.Mediator.Contexts.NotificationStrategyContext.Notification">
+            <summary>The notification to publish.</summary>
+        </member>
+        <member name="P:Elsa.Mediator.Contexts.NotificationStrategyContext.Handlers">
+            <summary>The handlers to publish the notification to.</summary>
+        </member>
+        <member name="P:Elsa.Mediator.Contexts.NotificationStrategyContext.Logger">
+            <summary>The logger.</summary>
+        </member>
+        <member name="P:Elsa.Mediator.Contexts.NotificationStrategyContext.ServiceProvider">
+            <summary>The service provider to resolve services from.</summary>
+        </member>
+        <member name="P:Elsa.Mediator.Contexts.NotificationStrategyContext.CancellationToken">
+            <summary>The cancellation token.</summary>
+        </member>
+        <member name="T:Elsa.Mediator.Contracts.ICommand">
+            <summary>
+            Represents a command.
+            </summary>
+        </member>
+        <member name="T:Elsa.Mediator.Contracts.ICommand`1">
+            <summary>
+            Represents a command.
+            </summary>
+            <typeparam name="T">The type of the result.</typeparam>
+        </member>
+        <member name="T:Elsa.Mediator.Contracts.ICommandHandler">
+            <summary>
+            Represents a command handler.
+            </summary>
+        </member>
+        <member name="T:Elsa.Mediator.Contracts.ICommandHandler`2">
+            <summary>
+            Represents a command handler.
+            </summary>
+            <typeparam name="TCommand">The type of the command to handle.</typeparam>
+            <typeparam name="TResult">The type of the result.</typeparam>
+        </member>
+        <member name="M:Elsa.Mediator.Contracts.ICommandHandler`2.HandleAsync(`0,System.Threading.CancellationToken)">
+            <summary>
+            Handles the command.
+            </summary>
+            <param name="command">The command to handle.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns>The result.</returns>
+        </member>
+        <member name="T:Elsa.Mediator.Contracts.ICommandHandler`1">
+            <summary>
+            Represents a command handler.
+            </summary>
+            <typeparam name="TCommand">The type of the command to handle.</typeparam>
+        </member>
+        <member name="T:Elsa.Mediator.Contracts.ICommandsChannel">
+            <summary>
+            A channel that can be used to enqueue commands.
+            </summary>
+        </member>
+        <member name="P:Elsa.Mediator.Contracts.ICommandsChannel.Writer">
+            <summary>
+            Gets the writer for the commands queue.
+            </summary>
+        </member>
+        <member name="P:Elsa.Mediator.Contracts.ICommandsChannel.Reader">
+            <summary>
+            Gets the reader for the commands queue.
+            </summary>
+        </member>
+        <member name="T:Elsa.Mediator.Contracts.ICommandSender">
+            <summary>
+            Sends a command.
+            </summary>
+        </member>
+        <member name="M:Elsa.Mediator.Contracts.ICommandSender.SendAsync``1(Elsa.Mediator.Contracts.ICommand{``0},System.Threading.CancellationToken)">
+            <summary>
+            Sends a command using he default strategy.
+            </summary>
+            <param name="command">The command to send.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <typeparam name="T">The type of the result.</typeparam>
+            <returns>The result.</returns>
+        </member>
+        <member name="M:Elsa.Mediator.Contracts.ICommandSender.SendAsync``1(Elsa.Mediator.Contracts.ICommand{``0},Elsa.Mediator.Contracts.ICommandStrategy,System.Threading.CancellationToken)">
+            <summary>
+            Sends a command using the specified strategy.
+            </summary>
+            <param name="command">The command to send.</param>
+            <param name="strategy">The command strategy to use.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <typeparam name="T">The type of the result.</typeparam>
+            <returns>The result.</returns>
+        </member>
+        <member name="M:Elsa.Mediator.Contracts.ICommandSender.SendAsync(Elsa.Mediator.Contracts.ICommand,System.Threading.CancellationToken)">
+            <summary>
+            Sends a command using the default strategy.
+            </summary>
+            <param name="command">The command to send.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+        </member>
+        <member name="M:Elsa.Mediator.Contracts.ICommandSender.SendAsync(Elsa.Mediator.Contracts.ICommand,Elsa.Mediator.Contracts.ICommandStrategy,System.Threading.CancellationToken)">
+            <summary>
+            Sends a command using the specified strategy.
+            </summary>
+            <param name="command">The command to send.</param>
+            <param name="strategy">The command strategy to use.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+        </member>
+        <member name="T:Elsa.Mediator.Contracts.ICommandStrategy">
+            <summary>
+            Represents a strategy for executing commands.
+            </summary>
+        </member>
+        <member name="M:Elsa.Mediator.Contracts.ICommandStrategy.ExecuteAsync``1(Elsa.Mediator.Contexts.CommandStrategyContext)">
+            <summary>
+            Executes a command.
+            </summary>
+            <param name="context">The context for executing the command.</param>
+        </member>
+        <member name="T:Elsa.Mediator.Contracts.IConsumer`1">
+            <summary>
+            Represents a consumer of a given message type.
+            </summary>
+            <typeparam name="T">The type of the message to consume.</typeparam>
+        </member>
+        <member name="M:Elsa.Mediator.Contracts.IConsumer`1.ConsumeAsync(`0,System.Threading.CancellationToken)">
+            <summary>
+            Consumes the given message.
+            </summary>
+            <param name="message">The message to consume.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+        </member>
+        <member name="T:Elsa.Mediator.Contracts.IEventPublishingStrategy">
+            <summary>
+            Represents a strategy for publishing events.
+            </summary>
+        </member>
+        <member name="M:Elsa.Mediator.Contracts.IEventPublishingStrategy.PublishAsync(Elsa.Mediator.Contexts.NotificationStrategyContext)">
+            <summary>
+            Publishes an event.
+            </summary>
+            <param name="context">The context for publishing the event.</param>
+        </member>
+        <member name="T:Elsa.Mediator.Contracts.IJobQueue">
+            <summary>
+            Manages jobs.
+            </summary>
+        </member>
+        <member name="M:Elsa.Mediator.Contracts.IJobQueue.Enqueue(System.Func{System.Threading.CancellationToken,System.Threading.Tasks.Task})">
+            <summary>
+            Posts a job.
+            </summary>
+            <param name="job">The job to post.</param>
+            <returns>The ID of the job.</returns>
+        </member>
+        <member name="M:Elsa.Mediator.Contracts.IJobQueue.Cancel(System.String)">
+            <summary>
+            Cancels a job.
+            </summary>
+            <param name="jobId">The ID of the job to cancel.</param>
+            <returns><c>true</c> if the job was cancelled; otherwise, <c>false</c>.</returns>
+        </member>
+        <member name="T:Elsa.Mediator.Contracts.IJobsChannel">
+            <summary>
+            A channel that can be used to enqueue jobs.
+            </summary>
+        </member>
+        <member name="P:Elsa.Mediator.Contracts.IJobsChannel.Writer">
+            <summary>
+            Gets the writer for the job queue.
+            </summary>
+        </member>
+        <member name="P:Elsa.Mediator.Contracts.IJobsChannel.Reader">
+            <summary>
+            Gets the reader for the job queue.
+            </summary>
+        </member>
+        <member name="T:Elsa.Mediator.Contracts.IMediator">
+            <summary>
+            Represents a mediator that can send requests, commands and publish events.
+            </summary>
+        </member>
+        <member name="T:Elsa.Mediator.Contracts.INotification">
+            <summary>
+            Represents a notification.
+            </summary>
+        </member>
+        <member name="T:Elsa.Mediator.Contracts.INotificationHandler">
+            <summary>
+            Represents a notification handler.
+            </summary>
+        </member>
+        <member name="T:Elsa.Mediator.Contracts.INotificationHandler`1">
+            <summary>
+            Represents a notification handler.
+            </summary>
+            <typeparam name="T">The type of the notification.</typeparam>
+        </member>
+        <member name="M:Elsa.Mediator.Contracts.INotificationHandler`1.HandleAsync(`0,System.Threading.CancellationToken)">
+            <summary>
+            Handles the given notification.
+            </summary>
+            <param name="notification">The notification to handle.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+        </member>
+        <member name="T:Elsa.Mediator.Contracts.INotificationsChannel">
+            <summary>
+            A channel that can be used to enqueue notifications.
+            </summary>
+        </member>
+        <member name="P:Elsa.Mediator.Contracts.INotificationsChannel.Writer">
+            <summary>
+            Gets the writer for the notifications queue.
+            </summary>
+        </member>
+        <member name="P:Elsa.Mediator.Contracts.INotificationsChannel.Reader">
+            <summary>
+            Gets the reader for the notifications queue.
+            </summary>
+        </member>
+        <member name="T:Elsa.Mediator.Contracts.INotificationSender">
+            <summary>
+            Publishes notifications.
+            </summary>
+        </member>
+        <member name="M:Elsa.Mediator.Contracts.INotificationSender.SendAsync(Elsa.Mediator.Contracts.INotification,System.Threading.CancellationToken)">
+            <summary>
+            Publishes the given notification.
+            </summary>
+            <param name="notification">The notification to publish.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+        </member>
+        <member name="M:Elsa.Mediator.Contracts.INotificationSender.SendAsync(Elsa.Mediator.Contracts.INotification,Elsa.Mediator.Contracts.IEventPublishingStrategy,System.Threading.CancellationToken)">
+            <summary>
+            Publishes the given notification.
+            </summary>
+            <param name="notification">The notification to publish.</param>
+            <param name="strategy"><see cref="T:Elsa.Mediator.PublishingStrategies.FireAndForgetStrategy"/><see cref="T:Elsa.Mediator.PublishingStrategies.SequentialProcessingStrategy"/><see cref="T:Elsa.Mediator.PublishingStrategies.ParallelProcessingStrategy"/></param>
+            <param name="cancellationToken">The cancellation token.</param>
+        </member>
+        <member name="T:Elsa.Mediator.Contracts.IRequest">
+            <summary>
+            Represents a request.
+            </summary>
+        </member>
+        <member name="T:Elsa.Mediator.Contracts.IRequest`1">
+            <summary>
+            Represents a request.
+            </summary>
+            <typeparam name="T">The type of the response.</typeparam>
+        </member>
+        <member name="T:Elsa.Mediator.Contracts.IRequestHandler">
+            <summary>
+            Represents a request handler.
+            </summary>
+        </member>
+        <member name="T:Elsa.Mediator.Contracts.IRequestHandler`2">
+            <summary>
+            Represents a request handler.
+            </summary>
+            <typeparam name="TRequest">The type of the request.</typeparam>
+            <typeparam name="TResponse">The type of the response.</typeparam>
+        </member>
+        <member name="M:Elsa.Mediator.Contracts.IRequestHandler`2.HandleAsync(`0,System.Threading.CancellationToken)">
+            <summary>
+            Handles the given request.
+            </summary>
+            <param name="request">The request to handle.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns>The response.</returns>
+        </member>
+        <member name="T:Elsa.Mediator.Contracts.IRequestSender">
+            <summary>
+            Represents a request sender.
+            </summary>
+        </member>
+        <member name="M:Elsa.Mediator.Contracts.IRequestSender.SendAsync``1(Elsa.Mediator.Contracts.IRequest{``0},System.Threading.CancellationToken)">
+            <summary>
+            Sends a request.
+            </summary>
+            <param name="request">The request to send.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <typeparam name="T">The type of the response.</typeparam>
+            <returns>The response.</returns>
+        </member>
+        <member name="T:Elsa.Mediator.Extensions.HandlerExtensions">
+            <summary>
+            Contains helper methods for invoking notification handlers.
+            </summary>
+        </member>
+        <member name="M:Elsa.Mediator.Extensions.HandlerExtensions.GetNotificationHandlerMethod(System.Type)">
+            <summary>
+            Gets the handle method for a notification handler of the given notification type.
+            </summary>
+            <param name="notificationType">The notification type.</param>
+            <returns>The handle method.</returns>
+        </member>
+        <member name="M:Elsa.Mediator.Extensions.HandlerExtensions.GetCommandHandlerMethod(System.Type)">
+            <summary>
+            Gets the handle method for a command handler of the given command type.
+            </summary>
+            <param name="commandType">The command type.</param>
+            <returns>The handle method.</returns>
+        </member>
+        <member name="M:Elsa.Mediator.Extensions.HandlerExtensions.InvokeAsync(Elsa.Mediator.Contracts.INotificationHandler,System.Reflection.MethodBase,Elsa.Mediator.Contracts.INotification,System.Threading.CancellationToken)">
+            <summary>
+            Invokes the given handler for the given notification.
+            </summary>
+            <param name="handler">The handler to invoke.</param>
+            <param name="handleMethod">The handle method.</param>
+            <param name="notification">The notification to handle.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+        </member>
+        <member name="M:Elsa.Mediator.Extensions.HandlerExtensions.InvokeAsync``1(Elsa.Mediator.Contracts.ICommandHandler,System.Reflection.MethodBase,Elsa.Mediator.Contracts.ICommand,System.Threading.CancellationToken)">
+            <summary>
+            Invokes the given handler for the given command.
+            </summary>
+            <param name="handler">The handler to invoke.</param>
+            <param name="handleMethod">The handle method.</param>
+            <param name="command">The command to handle.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+        </member>
+        <member name="T:Elsa.Mediator.HostedServices.BackgroundCommandSenderHostedService">
+            <summary>
+            Continuously reads from a channel to which commands can be sent, executing each received command.
+            </summary>
+        </member>
+        <member name="M:Elsa.Mediator.HostedServices.BackgroundCommandSenderHostedService.#ctor(System.Int32,Elsa.Mediator.Contracts.ICommandsChannel,Elsa.Mediator.Contracts.ICommandSender,Microsoft.Extensions.Logging.ILogger{Elsa.Mediator.HostedServices.BackgroundCommandSenderHostedService})">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Mediator.HostedServices.BackgroundCommandSenderHostedService.ExecuteAsync(System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.Mediator.HostedServices.BackgroundEventPublisherHostedService">
+            <summary>
+            Continuously reads from a channel to which notifications can be sent, publishing each received notification.
+            </summary>
+        </member>
+        <member name="M:Elsa.Mediator.HostedServices.BackgroundEventPublisherHostedService.#ctor(System.Int32,Elsa.Mediator.Contracts.INotificationsChannel,Elsa.Mediator.Contracts.INotificationSender,Microsoft.Extensions.Logging.ILogger{Elsa.Mediator.HostedServices.BackgroundEventPublisherHostedService})">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Mediator.HostedServices.BackgroundEventPublisherHostedService.ExecuteAsync(System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.Mediator.HostedServices.JobRunnerHostedService">
+            <summary>
+            A hosted service that runs jobs.
+            </summary>
+        </member>
+        <member name="M:Elsa.Mediator.HostedServices.JobRunnerHostedService.#ctor(Elsa.Mediator.Contracts.IJobsChannel,Microsoft.Extensions.Logging.ILogger{Elsa.Mediator.HostedServices.JobRunnerHostedService})">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Mediator.HostedServices.JobRunnerHostedService.ExecuteAsync(System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.Mediator.HostedServices.MessageProcessorHostedService`1">
+            <summary>
+            Continuously reads from a channel to which commands can be sent, executing each received command.
+            </summary>
+        </member>
+        <member name="M:Elsa.Mediator.HostedServices.MessageProcessorHostedService`1.#ctor(System.Int32,System.Threading.Channels.Channel{`0},System.Collections.Generic.IEnumerable{Elsa.Mediator.Contracts.IConsumer{`0}},Microsoft.Extensions.Logging.ILogger{Elsa.Mediator.HostedServices.MessageProcessorHostedService{`0}})">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Mediator.HostedServices.MessageProcessorHostedService`1.ExecuteAsync(System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.Mediator.HostedServices.MessageWorker`1">
+            <summary>
+            Represents a worker that continuously reads from a channel and processes each received message.
+            </summary>
+            <typeparam name="T">The type of message to process.</typeparam>
+        </member>
+        <member name="M:Elsa.Mediator.HostedServices.MessageWorker`1.#ctor(System.Threading.Channels.Channel{`0},System.Collections.Generic.IEnumerable{Elsa.Mediator.Contracts.IConsumer{`0}},Microsoft.Extensions.Logging.ILogger)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Elsa.Mediator.HostedServices.MessageWorker`1"/> class.
+            </summary>
+            <param name="channel">The channel to read from.</param>
+            <param name="consumers">The consumers that will process each received message.</param>
+            <param name="logger">The logger.</param>
+        </member>
+        <member name="M:Elsa.Mediator.HostedServices.MessageWorker`1.StartAsync(System.Threading.CancellationToken)">
+            <summary>
+            Continuously reads from the channel and processes each received message.
+            </summary>
+            <param name="cancellationToken">The cancellation token.</param>
+        </member>
+        <member name="M:Elsa.Mediator.HostedServices.MessageWorker`1.DeliverMessageAsync(`0,System.Threading.CancellationToken)">
+            <summary>
+            Delivers a message to the channel.
+            </summary>
+            <param name="message">The message to deliver.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+        </member>
+        <member name="M:Elsa.Mediator.HostedServices.MessageWorker`1.Complete">
+            <summary>
+            Completes the channel.
+            </summary>
+        </member>
+        <member name="T:Elsa.Mediator.Middleware.Command.CommandContext">
+            <summary>
+            Provides context for a command.
+            </summary>
+        </member>
+        <member name="M:Elsa.Mediator.Middleware.Command.CommandContext.#ctor(Elsa.Mediator.Contracts.ICommand,Elsa.Mediator.Contracts.ICommandStrategy,System.Type,System.Threading.CancellationToken)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Elsa.Mediator.Middleware.Command.CommandContext"/> class.
+            </summary>
+        </member>
+        <member name="P:Elsa.Mediator.Middleware.Command.CommandContext.Command">
+            <summary>
+            Gets the command.
+            </summary>
+        </member>
+        <member name="P:Elsa.Mediator.Middleware.Command.CommandContext.CommandStrategy">
+            <summary>
+            Gets the command strategy.
+            </summary>
+        </member>
+        <member name="P:Elsa.Mediator.Middleware.Command.CommandContext.ResultType">
+            <summary>
+            Gets the result type.
+            </summary>
+        </member>
+        <member name="P:Elsa.Mediator.Middleware.Command.CommandContext.CancellationToken">
+            <summary>
+            Gets the cancellation token.
+            </summary>
+        </member>
+        <member name="P:Elsa.Mediator.Middleware.Command.CommandContext.Result">
+            <summary>
+            Gets or sets the result.
+            </summary>
+        </member>
+        <member name="T:Elsa.Mediator.Middleware.Command.CommandMiddlewareDelegate">
+            <summary>
+            Represents a command middleware delegate.
+            </summary>
+        </member>
+        <member name="T:Elsa.Mediator.Middleware.Command.CommandPipeline">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Mediator.Middleware.Command.CommandPipeline.#ctor(System.IServiceProvider)">
+            <summary>
+            Constructor.
+            </summary>
+        </member>
+        <member name="P:Elsa.Mediator.Middleware.Command.CommandPipeline.Pipeline">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Mediator.Middleware.Command.CommandPipeline.Setup(System.Action{Elsa.Mediator.Middleware.Command.Contracts.ICommandPipelineBuilder})">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Mediator.Middleware.Command.CommandPipeline.InvokeAsync(Elsa.Mediator.Middleware.Command.CommandContext)">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.Mediator.Middleware.Command.CommandPipelineBuilder">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Mediator.Middleware.Command.CommandPipelineBuilder.#ctor(System.IServiceProvider)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Elsa.Mediator.Middleware.Command.CommandPipelineBuilder"/> class.
+            </summary>
+        </member>
+        <member name="P:Elsa.Mediator.Middleware.Command.CommandPipelineBuilder.Properties">
+            <inheritdoc />
+        </member>
+        <member name="P:Elsa.Mediator.Middleware.Command.CommandPipelineBuilder.ApplicationServices">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Mediator.Middleware.Command.CommandPipelineBuilder.Use(System.Func{Elsa.Mediator.Middleware.Command.CommandMiddlewareDelegate,Elsa.Mediator.Middleware.Command.CommandMiddlewareDelegate})">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Mediator.Middleware.Command.CommandPipelineBuilder.Build">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.Mediator.Middleware.Command.CommandPipelineBuilderExtensions">
+            <summary>
+            Provides extension methods for <see cref="T:Elsa.Mediator.Middleware.Command.Contracts.ICommandPipelineBuilder"/>.
+            </summary>
+        </member>
+        <member name="M:Elsa.Mediator.Middleware.Command.CommandPipelineBuilderExtensions.UseCommandInvoker(Elsa.Mediator.Middleware.Command.Contracts.ICommandPipelineBuilder)">
+            <summary>
+            Adds the <see cref="T:Elsa.Mediator.Middleware.Command.Components.CommandHandlerInvokerMiddleware"/> to the pipeline.
+            </summary>
+            <param name="builder">The pipeline builder.</param>
+            <returns>The pipeline builder.</returns>
+        </member>
+        <member name="M:Elsa.Mediator.Middleware.Command.CommandPipelineBuilderExtensions.UseCommandLogging(Elsa.Mediator.Middleware.Command.Contracts.ICommandPipelineBuilder)">
+            <summary>
+            Adds the <see cref="T:Elsa.Mediator.Middleware.Command.Components.CommandLoggingMiddleware"/> to the pipeline.
+            </summary>
+            <param name="builder">The pipeline builder.</param>
+            <returns>The pipeline builder.</returns>
+        </member>
+        <member name="T:Elsa.Mediator.Middleware.Command.Components.CommandHandlerInvokerMiddleware">
+            <summary>
+            A command middleware that invokes the command.
+            </summary>
+        </member>
+        <member name="M:Elsa.Mediator.Middleware.Command.Components.CommandHandlerInvokerMiddleware.#ctor(Elsa.Mediator.Middleware.Command.CommandMiddlewareDelegate,System.Collections.Generic.IEnumerable{Elsa.Mediator.Contracts.ICommandHandler},System.IServiceProvider)">
+            <summary>
+            Constructor.
+            </summary>
+        </member>
+        <member name="M:Elsa.Mediator.Middleware.Command.Components.CommandHandlerInvokerMiddleware.InvokeAsync(Elsa.Mediator.Middleware.Command.CommandContext)">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.Mediator.Middleware.Command.Components.CommandLoggingMiddleware">
+            <summary>
+            A command middleware that logs the command being invoked.
+            </summary>
+        </member>
+        <member name="M:Elsa.Mediator.Middleware.Command.Components.CommandLoggingMiddleware.#ctor(Elsa.Mediator.Middleware.Command.CommandMiddlewareDelegate,Microsoft.Extensions.Logging.ILogger{Elsa.Mediator.Middleware.Command.Components.CommandLoggingMiddleware})">
+            <summary>
+            Constructor.
+            </summary>
+        </member>
+        <member name="M:Elsa.Mediator.Middleware.Command.Components.CommandLoggingMiddleware.InvokeAsync(Elsa.Mediator.Middleware.Command.CommandContext)">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.Mediator.Middleware.Command.Contracts.ICommandMiddleware">
+            <summary>
+            Represents a command middleware.
+            </summary>
+        </member>
+        <member name="M:Elsa.Mediator.Middleware.Command.Contracts.ICommandMiddleware.InvokeAsync(Elsa.Mediator.Middleware.Command.CommandContext)">
+            <summary>
+            Invokes the middleware.
+            </summary>
+            <param name="context">The command context.</param>
+        </member>
+        <member name="T:Elsa.Mediator.Middleware.Command.Contracts.ICommandPipeline">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Elsa.Mediator.Middleware.Command.Contracts.ICommandPipeline.Setup(System.Action{Elsa.Mediator.Middleware.Command.Contracts.ICommandPipelineBuilder})">
+            <summary>
+            Configures the pipeline.
+            </summary>
+            <param name="setup">A delegate that configures the pipeline.</param>
+            <returns>The pipeline.</returns>
+        </member>
+        <member name="P:Elsa.Mediator.Middleware.Command.Contracts.ICommandPipeline.Pipeline">
+            <summary>
+            Gets the pipeline.
+            </summary>
+        </member>
+        <member name="M:Elsa.Mediator.Middleware.Command.Contracts.ICommandPipeline.InvokeAsync(Elsa.Mediator.Middleware.Command.CommandContext)">
+            <summary>
+            Invokes the pipeline.
+            </summary>
+            <param name="context">The command context.</param>
+        </member>
+        <member name="T:Elsa.Mediator.Middleware.Command.Contracts.ICommandPipelineBuilder">
+            <summary>
+            Represents a command pipeline builder.
+            </summary>
+        </member>
+        <member name="P:Elsa.Mediator.Middleware.Command.Contracts.ICommandPipelineBuilder.Properties">
+            <summary>
+            Gets a property bag that can be used to share data between middleware components.
+            </summary>
+        </member>
+        <member name="P:Elsa.Mediator.Middleware.Command.Contracts.ICommandPipelineBuilder.ApplicationServices">
+            <summary>
+            Gets the service provider.
+            </summary>
+        </member>
+        <member name="M:Elsa.Mediator.Middleware.Command.Contracts.ICommandPipelineBuilder.Use(System.Func{Elsa.Mediator.Middleware.Command.CommandMiddlewareDelegate,Elsa.Mediator.Middleware.Command.CommandMiddlewareDelegate})">
+            <summary>
+            Adds a middleware component to the pipeline.
+            </summary>
+            <param name="middleware">The middleware component.</param>
+            <returns>The pipeline builder.</returns>
+        </member>
+        <member name="M:Elsa.Mediator.Middleware.Command.Contracts.ICommandPipelineBuilder.Build">
+            <summary>
+            Builds the pipeline.
+            </summary>
+            <returns>The pipeline.</returns>
+        </member>
+        <member name="T:Elsa.Mediator.Middleware.Command.MiddlewareExtensions">
+            <summary>
+            Provides extension methods for <see cref="T:Elsa.Mediator.Middleware.Command.Contracts.ICommandPipelineBuilder"/>.
+            </summary>
+        </member>
+        <member name="M:Elsa.Mediator.Middleware.Command.MiddlewareExtensions.UseMiddleware``1(Elsa.Mediator.Middleware.Command.Contracts.ICommandPipelineBuilder,System.Object[])">
+            <summary>
+            Adds middleware to the pipeline.
+            </summary>
+            <param name="builder">The pipeline builder.</param>
+            <param name="args">Any arguments to pass to the middleware constructor.</param>
+            <typeparam name="TMiddleware">The middleware type.</typeparam>
+            <returns>The pipeline builder.</returns>
+        </member>
+        <member name="T:Elsa.Mediator.Middleware.MiddlewareHelpers">
+            <summary>
+            Provides a set of static methods for working with middleware.
+            </summary>
+        </member>
+        <member name="M:Elsa.Mediator.Middleware.MiddlewareHelpers.GetInvokeMethod(System.Type)">
+            <summary>
+            Gets the Invoke or InvokeAsync method from the middleware type.
+            </summary>
+            <param name="middleware">The middleware type.</param>
+            <returns>The Invoke or InvokeAsync method.</returns>
+            <exception cref="T:System.InvalidOperationException">Thrown when the Invoke or InvokeAsync method cannot be found or the return type is not Task or ValueTask.</exception>
+        </member>
+        <member name="T:Elsa.Mediator.Middleware.Notification.Components.NotificationHandlerInvokerMiddleware">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Mediator.Middleware.Notification.Components.NotificationHandlerInvokerMiddleware.#ctor(Elsa.Mediator.Middleware.Notification.NotificationMiddlewareDelegate,System.Collections.Generic.IEnumerable{Elsa.Mediator.Contracts.INotificationHandler},Microsoft.Extensions.Logging.ILogger{Elsa.Mediator.Middleware.Notification.Components.NotificationHandlerInvokerMiddleware},System.IServiceProvider)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Elsa.Mediator.Middleware.Notification.Components.NotificationHandlerInvokerMiddleware"/> class.
+            </summary>
+        </member>
+        <member name="M:Elsa.Mediator.Middleware.Notification.Components.NotificationHandlerInvokerMiddleware.InvokeAsync(Elsa.Mediator.Middleware.Notification.NotificationContext)">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.Mediator.Middleware.Notification.Components.NotificationLoggingMiddleware">
+            <summary>
+            A notification middleware that logs the notification.
+            </summary>
+        </member>
+        <member name="M:Elsa.Mediator.Middleware.Notification.Components.NotificationLoggingMiddleware.#ctor(Elsa.Mediator.Middleware.Notification.NotificationMiddlewareDelegate)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Elsa.Mediator.Middleware.Notification.Components.NotificationLoggingMiddleware"/> class.
+            </summary>
+        </member>
+        <member name="M:Elsa.Mediator.Middleware.Notification.Components.NotificationLoggingMiddleware.InvokeAsync(Elsa.Mediator.Middleware.Notification.NotificationContext)">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.Mediator.Middleware.Notification.Contracts.INotificationMiddleware">
+            <summary>
+            Represents a notification middleware component.
+            </summary>
+        </member>
+        <member name="M:Elsa.Mediator.Middleware.Notification.Contracts.INotificationMiddleware.InvokeAsync(Elsa.Mediator.Middleware.Notification.NotificationContext)">
+            <summary>
+            Invokes the notification middleware.
+            </summary>
+            <param name="context">The notification context.</param>
+        </member>
+        <member name="T:Elsa.Mediator.Middleware.Notification.Contracts.INotificationPipeline">
+            <summary>
+            Represents a notification request pipeline. A notification pipeline is a chain of middleware that can be used to process a notification.
+            </summary>
+        </member>
+        <member name="M:Elsa.Mediator.Middleware.Notification.Contracts.INotificationPipeline.Setup(System.Action{Elsa.Mediator.Middleware.Notification.Contracts.INotificationPipelineBuilder})">
+            <summary>
+            Sets up the notification pipeline.
+            </summary>
+            <param name="setup">The setup action.</param>
+            <returns>A delegate representing the notification pipeline.</returns>
+        </member>
+        <member name="P:Elsa.Mediator.Middleware.Notification.Contracts.INotificationPipeline.Pipeline">
+            <summary>
+            Gets the delegate representing the notification pipeline.
+            </summary>
+        </member>
+        <member name="M:Elsa.Mediator.Middleware.Notification.Contracts.INotificationPipeline.ExecuteAsync(Elsa.Mediator.Middleware.Notification.NotificationContext)">
+            <summary>
+            Executes the notification pipeline.
+            </summary>
+            <param name="context">The notification context.</param>
+        </member>
+        <member name="T:Elsa.Mediator.Middleware.Notification.Contracts.INotificationPipelineBuilder">
+            <summary>
+            Represents a builder for building a notification pipeline.
+            </summary>
+        </member>
+        <member name="P:Elsa.Mediator.Middleware.Notification.Contracts.INotificationPipelineBuilder.Properties">
+            <summary>
+            Gets the properties associated with the notification pipeline.
+            </summary>
+        </member>
+        <member name="P:Elsa.Mediator.Middleware.Notification.Contracts.INotificationPipelineBuilder.ApplicationServices">
+            <summary>
+            Gets the service provider.
+            </summary>
+        </member>
+        <member name="M:Elsa.Mediator.Middleware.Notification.Contracts.INotificationPipelineBuilder.Use(System.Func{Elsa.Mediator.Middleware.Notification.NotificationMiddlewareDelegate,Elsa.Mediator.Middleware.Notification.NotificationMiddlewareDelegate})">
+            <summary>
+            Adds a middleware to the notification pipeline.
+            </summary>
+            <param name="middleware">The middleware to add.</param>
+        </member>
+        <member name="M:Elsa.Mediator.Middleware.Notification.Contracts.INotificationPipelineBuilder.Build">
+            <summary>
+            Builds the notification pipeline.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Elsa.Mediator.Middleware.Notification.MiddlewareExtensions">
+            <summary>
+            Contains extension methods for <see cref="T:Elsa.Mediator.Middleware.Notification.Contracts.INotificationPipelineBuilder"/>.
+            </summary>
+        </member>
+        <member name="M:Elsa.Mediator.Middleware.Notification.MiddlewareExtensions.UseMiddleware``1(Elsa.Mediator.Middleware.Notification.Contracts.INotificationPipelineBuilder,System.Object[])">
+            <summary>
+            Adds a middleware to the notification pipeline.
+            </summary>
+            <param name="builder">The notification pipeline builder.</param>
+            <param name="args">The arguments to pass to the middleware constructor.</param>
+            <typeparam name="TMiddleware">The middleware type.</typeparam>
+        </member>
+        <member name="T:Elsa.Mediator.Middleware.Notification.NotificationContext">
+            <summary>
+            Represents a context for a notification.
+            </summary>
+        </member>
+        <member name="M:Elsa.Mediator.Middleware.Notification.NotificationContext.#ctor(Elsa.Mediator.Contracts.INotification,Elsa.Mediator.Contracts.IEventPublishingStrategy,System.Threading.CancellationToken)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Elsa.Mediator.Middleware.Notification.NotificationContext"/> class.
+            </summary>
+            <param name="notification">The notification to publish.</param>
+            <param name="notificationStrategy">The publishing strategy to use.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+        </member>
+        <member name="P:Elsa.Mediator.Middleware.Notification.NotificationContext.Notification">
+            <summary>
+            Gets the notification to publish.
+            </summary>
+        </member>
+        <member name="P:Elsa.Mediator.Middleware.Notification.NotificationContext.NotificationStrategy">
+            <summary>
+            Gets the publishing strategy to use.
+            </summary>
+        </member>
+        <member name="P:Elsa.Mediator.Middleware.Notification.NotificationContext.CancellationToken">
+            <summary>
+            Gets the cancellation token.
+            </summary>
+        </member>
+        <member name="T:Elsa.Mediator.Middleware.Notification.NotificationMiddlewareDelegate">
+            <summary>
+            Represents a delegate for a notification middleware.
+            </summary>
+        </member>
+        <member name="T:Elsa.Mediator.Middleware.Notification.NotificationPipeline">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Mediator.Middleware.Notification.NotificationPipeline.#ctor(System.IServiceProvider)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Elsa.Mediator.Middleware.Notification.NotificationPipeline"/> class.
+            </summary>
+        </member>
+        <member name="P:Elsa.Mediator.Middleware.Notification.NotificationPipeline.Pipeline">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Mediator.Middleware.Notification.NotificationPipeline.Setup(System.Action{Elsa.Mediator.Middleware.Notification.Contracts.INotificationPipelineBuilder})">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Mediator.Middleware.Notification.NotificationPipeline.ExecuteAsync(Elsa.Mediator.Middleware.Notification.NotificationContext)">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.Mediator.Middleware.Notification.NotificationPipelineBuilder">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Mediator.Middleware.Notification.NotificationPipelineBuilder.#ctor(System.IServiceProvider)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Elsa.Mediator.Middleware.Notification.NotificationPipelineBuilder"/> class.
+            </summary>
+        </member>
+        <member name="P:Elsa.Mediator.Middleware.Notification.NotificationPipelineBuilder.Properties">
+            <inheritdoc />
+        </member>
+        <member name="P:Elsa.Mediator.Middleware.Notification.NotificationPipelineBuilder.ApplicationServices">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Mediator.Middleware.Notification.NotificationPipelineBuilder.Use(System.Func{Elsa.Mediator.Middleware.Notification.NotificationMiddlewareDelegate,Elsa.Mediator.Middleware.Notification.NotificationMiddlewareDelegate})">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Mediator.Middleware.Notification.NotificationPipelineBuilder.Build">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.Mediator.Middleware.Notification.NotificationPipelineBuilderExtensions">
+            <summary>
+            Provides a set of static methods for building a notification pipeline.
+            </summary>
+        </member>
+        <member name="M:Elsa.Mediator.Middleware.Notification.NotificationPipelineBuilderExtensions.UseNotificationHandlers(Elsa.Mediator.Middleware.Notification.Contracts.INotificationPipelineBuilder)">
+            <summary>
+            Adds a notification handler invoker middleware to the notification pipeline.
+            </summary>
+            <param name="builder">The notification pipeline builder.</param>
+        </member>
+        <member name="M:Elsa.Mediator.Middleware.Notification.NotificationPipelineBuilderExtensions.UseNotificationLogging(Elsa.Mediator.Middleware.Notification.Contracts.INotificationPipelineBuilder)">
+            <summary>
+            Adds a notification logging middleware to the notification pipeline.
+            </summary>
+            <param name="builder">The notification pipeline builder.</param>
+        </member>
+        <member name="T:Elsa.Mediator.Middleware.Request.Components.RequestHandlerInvokerMiddleware">
+            <summary>
+            A middleware component that invokes request handlers.
+            </summary>
+        </member>
+        <member name="M:Elsa.Mediator.Middleware.Request.Components.RequestHandlerInvokerMiddleware.#ctor(Elsa.Mediator.Middleware.Request.RequestMiddlewareDelegate,System.Collections.Generic.IEnumerable{Elsa.Mediator.Contracts.IRequestHandler})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Elsa.Mediator.Middleware.Request.Components.RequestHandlerInvokerMiddleware"/> class.
+            </summary>
+            <param name="next">The next middleware in the pipeline.</param>
+            <param name="requestHandlers">The request handlers to invoke.</param>
+        </member>
+        <member name="M:Elsa.Mediator.Middleware.Request.Components.RequestHandlerInvokerMiddleware.InvokeAsync(Elsa.Mediator.Middleware.Request.RequestContext)">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.Mediator.Middleware.Request.Components.RequestLoggingMiddleware">
+            <summary>
+            A middleware that logs the request.
+            </summary>
+        </member>
+        <member name="M:Elsa.Mediator.Middleware.Request.Components.RequestLoggingMiddleware.#ctor(Elsa.Mediator.Middleware.Request.RequestMiddlewareDelegate)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Elsa.Mediator.Middleware.Request.Components.RequestLoggingMiddleware"/> class.
+            </summary>
+            <param name="next">The next middleware in the pipeline.</param>
+        </member>
+        <member name="M:Elsa.Mediator.Middleware.Request.Components.RequestLoggingMiddleware.InvokeAsync(Elsa.Mediator.Middleware.Request.RequestContext)">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.Mediator.Middleware.Request.Contracts.IRequestMiddleware">
+            <summary>
+            Represents a request middleware component.
+            </summary>
+        </member>
+        <member name="M:Elsa.Mediator.Middleware.Request.Contracts.IRequestMiddleware.InvokeAsync(Elsa.Mediator.Middleware.Request.RequestContext)">
+            <summary>
+            Invokes the request middleware.
+            </summary>
+            <param name="context">The request context.</param>
+        </member>
+        <member name="T:Elsa.Mediator.Middleware.Request.Contracts.IRequestPipeline">
+            <summary>
+            Represents a request pipeline. A request pipeline is a chain of middleware that can be used to process a request.
+            </summary>
+        </member>
+        <member name="M:Elsa.Mediator.Middleware.Request.Contracts.IRequestPipeline.Setup(System.Action{Elsa.Mediator.Middleware.Request.Contracts.IRequestPipelineBuilder})">
+            <summary>
+            Sets up the request pipeline.
+            </summary>
+            <param name="setup">The setup action.</param>
+            <returns>A delegate representing the request pipeline.</returns>
+        </member>
+        <member name="P:Elsa.Mediator.Middleware.Request.Contracts.IRequestPipeline.Pipeline">
+            <summary>
+            Gets the delegate representing the request pipeline.
+            </summary>
+        </member>
+        <member name="M:Elsa.Mediator.Middleware.Request.Contracts.IRequestPipeline.ExecuteAsync(Elsa.Mediator.Middleware.Request.RequestContext)">
+            <summary>
+            Executes the request pipeline.
+            </summary>
+            <param name="context">The request context.</param>
+        </member>
+        <member name="T:Elsa.Mediator.Middleware.Request.Contracts.IRequestPipelineBuilder">
+            <summary>
+            Represents a builder for building a request pipeline.
+            </summary>
+        </member>
+        <member name="P:Elsa.Mediator.Middleware.Request.Contracts.IRequestPipelineBuilder.Properties">
+            <summary>
+            Gets the properties associated with the request pipeline.
+            </summary>
+        </member>
+        <member name="P:Elsa.Mediator.Middleware.Request.Contracts.IRequestPipelineBuilder.ApplicationServices">
+            <summary>
+            Gets the service provider.
+            </summary>
+        </member>
+        <member name="M:Elsa.Mediator.Middleware.Request.Contracts.IRequestPipelineBuilder.Use(System.Func{Elsa.Mediator.Middleware.Request.RequestMiddlewareDelegate,Elsa.Mediator.Middleware.Request.RequestMiddlewareDelegate})">
+            <summary>
+            Adds a middleware to the request pipeline.
+            </summary>
+            <param name="middleware">The middleware to add.</param>
+        </member>
+        <member name="M:Elsa.Mediator.Middleware.Request.Contracts.IRequestPipelineBuilder.Build">
+            <summary>
+            Builds the request pipeline.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Elsa.Mediator.Middleware.Request.MiddlewareExtensions">
+            <summary>
+            Provides a set of static methods for building a request pipeline.
+            </summary>
+        </member>
+        <member name="M:Elsa.Mediator.Middleware.Request.MiddlewareExtensions.UseMiddleware``1(Elsa.Mediator.Middleware.Request.Contracts.IRequestPipelineBuilder,System.Object[])">
+            <summary>
+            Adds a request handler invoker middleware to the request pipeline.
+            </summary>
+            <param name="builder">The request pipeline builder.</param>
+            <param name="args">The arguments to pass to the middleware constructor.</param>
+            <typeparam name="TMiddleware">The middleware type.</typeparam>
+        </member>
+        <member name="T:Elsa.Mediator.Middleware.Request.RequestContext">
+            <summary>
+            Provides context to a request handler.
+            </summary>
+        </member>
+        <member name="M:Elsa.Mediator.Middleware.Request.RequestContext.#ctor(Elsa.Mediator.Contracts.IRequest,System.Type,System.Threading.CancellationToken)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Elsa.Mediator.Middleware.Request.RequestContext"/> class.
+            </summary>
+            <param name="request">The request.</param>
+            <param name="responseType">The response type.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+        </member>
+        <member name="P:Elsa.Mediator.Middleware.Request.RequestContext.Request">
+            <summary>
+            Gets the request.
+            </summary>
+        </member>
+        <member name="P:Elsa.Mediator.Middleware.Request.RequestContext.ResponseType">
+            <summary>
+            Gets the response type.
+            </summary>
+        </member>
+        <member name="P:Elsa.Mediator.Middleware.Request.RequestContext.CancellationToken">
+            <summary>
+            Gets the cancellation token.
+            </summary>
+        </member>
+        <member name="P:Elsa.Mediator.Middleware.Request.RequestContext.Responses">
+            <summary>
+            Gets the responses from each request handler.
+            </summary>
+        </member>
+        <member name="T:Elsa.Mediator.Middleware.Request.RequestMiddlewareDelegate">
+            <summary>
+            Represents a delegate for a request middleware.
+            </summary>
+        </member>
+        <member name="T:Elsa.Mediator.Middleware.Request.RequestPipeline">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Mediator.Middleware.Request.RequestPipeline.#ctor(System.IServiceProvider)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Elsa.Mediator.Middleware.Request.RequestPipeline"/> class.
+            </summary>
+        </member>
+        <member name="P:Elsa.Mediator.Middleware.Request.RequestPipeline.Pipeline">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Mediator.Middleware.Request.RequestPipeline.Setup(System.Action{Elsa.Mediator.Middleware.Request.Contracts.IRequestPipelineBuilder})">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Mediator.Middleware.Request.RequestPipeline.ExecuteAsync(Elsa.Mediator.Middleware.Request.RequestContext)">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.Mediator.Middleware.Request.RequestPipelineBuilder">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Mediator.Middleware.Request.RequestPipelineBuilder.#ctor(System.IServiceProvider)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Elsa.Mediator.Middleware.Request.RequestPipelineBuilder"/> class.
+            </summary>
+        </member>
+        <member name="P:Elsa.Mediator.Middleware.Request.RequestPipelineBuilder.Properties">
+            <inheritdoc />
+        </member>
+        <member name="P:Elsa.Mediator.Middleware.Request.RequestPipelineBuilder.ApplicationServices">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Mediator.Middleware.Request.RequestPipelineBuilder.Use(System.Func{Elsa.Mediator.Middleware.Request.RequestMiddlewareDelegate,Elsa.Mediator.Middleware.Request.RequestMiddlewareDelegate})">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Mediator.Middleware.Request.RequestPipelineBuilder.Build">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.Mediator.Middleware.Request.RequestPipelineBuilderExtensions">
+            <summary>
+            Provides a set of static methods for <see cref="T:Elsa.Mediator.Middleware.Request.Contracts.IRequestPipelineBuilder"/>.
+            </summary>
+        </member>
+        <member name="M:Elsa.Mediator.Middleware.Request.RequestPipelineBuilderExtensions.UseRequestHandlers(Elsa.Mediator.Middleware.Request.Contracts.IRequestPipelineBuilder)">
+            <summary>
+            Adds a request handler middleware to the pipeline.
+            </summary>
+            <param name="builder">The request pipeline builder.</param>
+        </member>
+        <member name="M:Elsa.Mediator.Middleware.Request.RequestPipelineBuilderExtensions.UseRequestLogging(Elsa.Mediator.Middleware.Request.Contracts.IRequestPipelineBuilder)">
+            <summary>
+            Adds a request logging middleware to the pipeline.
+            </summary>
+            <param name="builder">The request pipeline builder.</param>
+        </member>
+        <member name="T:Elsa.Mediator.Models.EnqueuedJob">
+            <summary>
+            Represents an item in the job queue.
+            </summary>
+            <param name="JobId">The ID of the job.</param>
+            <param name="Action">The job to execute.</param>
+            <param name="CancellationTokenSource">The cancellation token source.</param>
+            <param name="OnJobCompleted">The action to invoke when the job has completed.</param>
+        </member>
+        <member name="M:Elsa.Mediator.Models.EnqueuedJob.#ctor(System.String,System.Func{System.Threading.CancellationToken,System.Threading.Tasks.Task},System.Threading.CancellationTokenSource,System.Action{System.String})">
+            <summary>
+            Represents an item in the job queue.
+            </summary>
+            <param name="JobId">The ID of the job.</param>
+            <param name="Action">The job to execute.</param>
+            <param name="CancellationTokenSource">The cancellation token source.</param>
+            <param name="OnJobCompleted">The action to invoke when the job has completed.</param>
+        </member>
+        <member name="P:Elsa.Mediator.Models.EnqueuedJob.JobId">
+            <summary>The ID of the job.</summary>
+        </member>
+        <member name="P:Elsa.Mediator.Models.EnqueuedJob.Action">
+            <summary>The job to execute.</summary>
+        </member>
+        <member name="P:Elsa.Mediator.Models.EnqueuedJob.CancellationTokenSource">
+            <summary>The cancellation token source.</summary>
+        </member>
+        <member name="P:Elsa.Mediator.Models.EnqueuedJob.OnJobCompleted">
+            <summary>The action to invoke when the job has completed.</summary>
+        </member>
+        <member name="T:Elsa.Mediator.Models.Unit">
+            <summary>
+            Represents a void result.
+            </summary>
+        </member>
+        <member name="F:Elsa.Mediator.Models.Unit.Instance">
+            <summary>
+            Gets the singleton instance of <see cref="T:Elsa.Mediator.Models.Unit"/>.
+            </summary>
+        </member>
+        <member name="T:Elsa.Mediator.NotificationStrategy">
+            <summary>
+            Provides a set of strategies for publishing events.
+            </summary>
+        </member>
+        <member name="F:Elsa.Mediator.NotificationStrategy.FireAndForget">
+            <summary>
+            Invokes event handlers in parallel and waits for the result.
+            </summary>
+        </member>
+        <member name="F:Elsa.Mediator.NotificationStrategy.Background">
+            <summary>
+            Invokes event handlers in the background and does not wait for the result.
+            </summary>
+        </member>
+        <member name="F:Elsa.Mediator.NotificationStrategy.Parallel">
+            <summary>
+            Invokes event handlers in parallel and waits for the result.
+            </summary>
+        </member>
+        <member name="F:Elsa.Mediator.NotificationStrategy.Sequential">
+            <summary>
+            Invokes event handlers in sequence and waits for the result.
+            </summary>
+        </member>
+        <member name="T:Elsa.Mediator.Options.MediatorOptions">
+            <summary>
+            Options for the mediator.
+            </summary>
+        </member>
+        <member name="P:Elsa.Mediator.Options.MediatorOptions.CommandWorkerCount">
+            <summary>
+            The max number of workers to process commands.
+            </summary>
+        </member>
+        <member name="P:Elsa.Mediator.Options.MediatorOptions.NotificationWorkerCount">
+            <summary>
+            The max number of workers to process notifications.
+            </summary>
+        </member>
+        <member name="P:Elsa.Mediator.Options.MediatorOptions.DefaultPublishingStrategy">
+            <summary>
+            The default publishing strategy to use.
+            </summary>
+        </member>
+        <member name="P:Elsa.Mediator.Options.MediatorOptions.DefaultCommandStrategy">
+            <summary>
+            The default command strategy to use.
+            </summary>
+        </member>
+        <member name="T:Elsa.Mediator.PublishingStrategies.BackgroundProcessingStrategy">
+            <summary>
+            Invokes event handlers in parallel and does not wait for the result.
+            </summary>
+        </member>
+        <member name="M:Elsa.Mediator.PublishingStrategies.BackgroundProcessingStrategy.PublishAsync(Elsa.Mediator.Contexts.NotificationStrategyContext)">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.Mediator.PublishingStrategies.FireAndForgetStrategy">
+            <summary>
+            Invokes event handlers in parallel and does not wait for the result.
+            </summary>
+        </member>
+        <member name="M:Elsa.Mediator.PublishingStrategies.FireAndForgetStrategy.PublishAsync(Elsa.Mediator.Contexts.NotificationStrategyContext)">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.Mediator.PublishingStrategies.ParallelProcessingStrategy">
+            <summary>
+            Invokes event handlers in parallel and waits for the result.
+            </summary>
+        </member>
+        <member name="M:Elsa.Mediator.PublishingStrategies.ParallelProcessingStrategy.PublishAsync(Elsa.Mediator.Contexts.NotificationStrategyContext)">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.Mediator.PublishingStrategies.SequentialProcessingStrategy">
+            <summary>
+            Invokes event handlers in sequence and waits for the result.
+            </summary>
+        </member>
+        <member name="M:Elsa.Mediator.PublishingStrategies.SequentialProcessingStrategy.PublishAsync(Elsa.Mediator.Contexts.NotificationStrategyContext)">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.Mediator.Services.DefaultMediator">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Mediator.Services.DefaultMediator.#ctor(Elsa.Mediator.Middleware.Request.Contracts.IRequestPipeline,Elsa.Mediator.Middleware.Command.Contracts.ICommandPipeline,Elsa.Mediator.Middleware.Notification.Contracts.INotificationPipeline,Microsoft.Extensions.Options.IOptions{Elsa.Mediator.Options.MediatorOptions})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Elsa.Mediator.Services.DefaultMediator"/> class.
+            </summary>
+            <param name="requestPipeline">The request pipeline.</param>
+            <param name="commandPipeline">The command pipeline.</param>
+            <param name="notificationPipeline">The notification pipeline.</param>
+            <param name="options">The mediator options.</param>
+        </member>
+        <member name="M:Elsa.Mediator.Services.DefaultMediator.SendAsync``1(Elsa.Mediator.Contracts.IRequest{``0},System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Mediator.Services.DefaultMediator.SendAsync(Elsa.Mediator.Contracts.ICommand,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Mediator.Services.DefaultMediator.SendAsync(Elsa.Mediator.Contracts.ICommand,Elsa.Mediator.Contracts.ICommandStrategy,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Mediator.Services.DefaultMediator.SendAsync``1(Elsa.Mediator.Contracts.ICommand{``0},System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Mediator.Services.DefaultMediator.SendAsync``1(Elsa.Mediator.Contracts.ICommand{``0},Elsa.Mediator.Contracts.ICommandStrategy,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Mediator.Services.DefaultMediator.SendAsync(Elsa.Mediator.Contracts.INotification,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Mediator.Services.DefaultMediator.SendAsync(Elsa.Mediator.Contracts.INotification,Elsa.Mediator.Contracts.IEventPublishingStrategy,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.Mediator.Services.JobQueue">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Mediator.Services.JobQueue.#ctor(Elsa.Mediator.Contracts.IJobsChannel)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Elsa.Mediator.Services.JobQueue"/> class.
+            </summary>
+        </member>
+        <member name="M:Elsa.Mediator.Services.JobQueue.Enqueue(System.Func{System.Threading.CancellationToken,System.Threading.Tasks.Task})">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Mediator.Services.JobQueue.Cancel(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.Extensions.MediatorExtensions">
+            <summary>
+            Provides a set of extension methods for <see cref="T:Elsa.Mediator.Contracts.IMediator"/>.
+            </summary>
+        </member>
+        <member name="M:Elsa.Extensions.MediatorExtensions.SendAsync(Elsa.Mediator.Contracts.IMediator,Elsa.Mediator.Contracts.INotification,System.Threading.CancellationToken)">
+            <summary>
+            Sends a notification using the default notification strategy configured via <see cref="T:Elsa.Mediator.Options.MediatorOptions"/>.
+            </summary>
+            <param name="mediator">The mediator.</param>
+            <param name="notification">The notification to send.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+        </member>
+        <member name="M:Elsa.Extensions.MediatorExtensions.SendAsync(Elsa.Mediator.Contracts.INotificationSender,Elsa.Mediator.Contracts.INotification,System.Threading.CancellationToken)">
+            <summary>
+            Sends a notification using the default notification strategy configured via <see cref="T:Elsa.Mediator.Options.MediatorOptions"/>.
+            </summary>
+            <param name="publisher">The publisher.</param>
+            <param name="notification">The notification to send.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+        </member>
+        <member name="M:Elsa.Extensions.MediatorExtensions.SendAsync(Elsa.Mediator.Contracts.IMediator,Elsa.Mediator.Contracts.ICommand,System.Threading.CancellationToken)">
+            <summary>
+            Sends a command using the default command strategy configured via <see cref="T:Elsa.Mediator.Options.MediatorOptions"/>.
+            </summary>
+            <param name="mediator">The mediator.</param>
+            <param name="command">The command to send.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+        </member>
+        <member name="M:Elsa.Extensions.MediatorExtensions.SendAsync(Elsa.Mediator.Contracts.ICommandSender,Elsa.Mediator.Contracts.ICommand,System.Threading.CancellationToken)">
+            <summary>
+            Sends a command using the default command strategy configured via <see cref="T:Elsa.Mediator.Options.MediatorOptions"/>.
+            </summary>
+            <param name="commandSender">The command sender.</param>
+            <param name="command">The command to send.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+        </member>
+        <member name="T:Microsoft.Extensions.DependencyInjection.DependencyInjectionExtensions">
+            <summary>
+            Adds mediator services to the <see cref="T:Microsoft.Extensions.DependencyInjection.IServiceCollection"/>.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Extensions.DependencyInjection.DependencyInjectionExtensions.AddMediator(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.Action{Elsa.Mediator.Options.MediatorOptions})">
+            <summary>
+            Adds mediator services to the <see cref="T:Microsoft.Extensions.DependencyInjection.IServiceCollection"/>.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Extensions.DependencyInjection.DependencyInjectionExtensions.AddMediatorHostedServices(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            Adds mediator hosted services to the <see cref="T:Microsoft.Extensions.DependencyInjection.IServiceCollection"/>.
+            </summary>
+            <param name="services"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Extensions.DependencyInjection.DependencyInjectionExtensions.AddMessageChannel``1(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.Int32)">
+            <summary>
+            Adds a <see cref="T:System.Threading.Channels.Channel`1"/> to the <see cref="T:Microsoft.Extensions.DependencyInjection.IServiceCollection"/> and a hosted service that continuously reads from the channel and executes each received message.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Extensions.DependencyInjection.DependencyInjectionExtensions.AddMessageConsumer``2(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            Adds a channel consumer.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Extensions.DependencyInjection.DependencyInjectionExtensions.AddCommandHandler``1(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            Registers a <see cref="T:Elsa.Mediator.Contracts.ICommandHandler`1"/> with the service container.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Extensions.DependencyInjection.DependencyInjectionExtensions.AddCommandHandler``2(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            Registers a <see cref="T:Elsa.Mediator.Contracts.ICommandHandler`1"/> with the service container.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Extensions.DependencyInjection.DependencyInjectionExtensions.AddCommandHandler``3(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            Registers a <see cref="T:Elsa.Mediator.Contracts.ICommandHandler`1"/> with the service container.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Extensions.DependencyInjection.DependencyInjectionExtensions.AddNotificationHandler``1(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            Registers a <see cref="T:Elsa.Mediator.Contracts.ICommandHandler`1"/> with the service container.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Extensions.DependencyInjection.DependencyInjectionExtensions.AddNotificationHandler``2(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            Registers a <see cref="T:Elsa.Mediator.Contracts.INotificationHandler`1"/> with the service container.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Extensions.DependencyInjection.DependencyInjectionExtensions.AddNotificationHandler``2(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.Func{System.IServiceProvider,``0})">
+            <summary>
+            Registers a <see cref="T:Elsa.Mediator.Contracts.INotificationHandler`1"/> with the service container.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Extensions.DependencyInjection.DependencyInjectionExtensions.AddRequestHandler``3(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            Registers a <see cref="T:Elsa.Mediator.Contracts.IRequestHandler`2"/> with the service container.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Extensions.DependencyInjection.DependencyInjectionExtensions.AddHandlersFrom``1(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            Registers all handlers from the assembly of the specified <c>TMarker</c> type with the service container.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Extensions.DependencyInjection.DependencyInjectionExtensions.AddHandlersFrom(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.Type)">
+            <summary>
+            Registers all handlers from the assembly of the specified marker type with the service container.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Extensions.DependencyInjection.DependencyInjectionExtensions.AddHandlersFrom(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.Reflection.Assembly)">
+            <summary>
+            Registers all handlers from the specified assembly with the service container.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Extensions.DependencyInjection.DependencyInjectionExtensions.AddNotificationHandlersFrom``1(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            Registers all handlers from the assembly of the specified <c>TMarker</c> type with the service container.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Extensions.DependencyInjection.DependencyInjectionExtensions.AddNotificationHandlersFrom(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.Type)">
+            <summary>
+            Registers all handlers from the assembly of the specified marker type with the service container.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Extensions.DependencyInjection.DependencyInjectionExtensions.AddNotificationHandlersFrom(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.Reflection.Assembly)">
+            <summary>
+            Registers all handlers from the specified assembly with the service container.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Extensions.DependencyInjection.DependencyInjectionExtensions.AddRequestHandlersFrom``1(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            Registers all handlers from the assembly of the specified <c>TMarker</c> type with the service container.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Extensions.DependencyInjection.DependencyInjectionExtensions.AddRequestHandlersFrom(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.Type)">
+            <summary>
+            Registers all handlers from the assembly of the specified marker type with the service container.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Extensions.DependencyInjection.DependencyInjectionExtensions.AddRequestHandlersFrom(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.Reflection.Assembly)">
+            <summary>
+            Registers all handlers from the specified assembly with the service container.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Extensions.DependencyInjection.DependencyInjectionExtensions.AddCommandHandlersFrom``1(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            Registers all handlers from the assembly of the specified <c>TMarker</c> type with the service container.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Extensions.DependencyInjection.DependencyInjectionExtensions.AddCommandHandlersFrom(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.Type)">
+            <summary>
+            Registers all handlers from the assembly of the specified marker type with the service container.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Extensions.DependencyInjection.DependencyInjectionExtensions.AddCommandHandlersFrom(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.Reflection.Assembly)">
+            <summary>
+            Registers all handlers from the specified assembly with the service container.
+            </summary>
+        </member>
+    </members>
+</doc>

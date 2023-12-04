@@ -1,0 +1,154 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Elsa.Api.Common</name>
+    </assembly>
+    <members>
+        <member name="T:Elsa.Extensions.HttpRequestExtensions">
+            <summary>
+            Extension methods for <see cref="T:Microsoft.AspNetCore.Http.HttpRequest"/>.
+            </summary>
+        </member>
+        <member name="M:Elsa.Extensions.HttpRequestExtensions.IsLocal(Microsoft.AspNetCore.Http.HttpRequest)">
+            <summary>
+            Returns a value indicating whether the specified request is a local request.
+            </summary>
+            <param name="request"></param>
+            <returns>True if the request is local, otherwise false.</returns>
+        </member>
+        <member name="T:Elsa.Extensions.ModuleExtensions">
+            <summary>
+            Provides extensions to <see cref="T:Elsa.Features.Services.IModule"/>.
+            </summary>
+        </member>
+        <member name="M:Elsa.Extensions.ModuleExtensions.AddFastEndpointsAssembly(Elsa.Features.Services.IModule,System.Reflection.Assembly)">
+            <summary>
+            Registers the specified assembly for FastEndpoint assembly discovery.
+            </summary>
+        </member>
+        <member name="M:Elsa.Extensions.ModuleExtensions.AddFastEndpointsAssembly``1(Elsa.Features.Services.IModule)">
+            <summary>
+            Registers the assembly for FastEndpoint assembly discovery using the specified marker type.
+            </summary>
+        </member>
+        <member name="M:Elsa.Extensions.ModuleExtensions.AddFastEndpointsAssembly(Elsa.Features.Services.IModule,System.Type)">
+            <summary>
+            Registers the assembly for FastEndpoint assembly discovery using the specified marker type.
+            </summary>
+        </member>
+        <member name="M:Elsa.Extensions.ModuleExtensions.GetFastEndpointsAssembliesFromModule(Elsa.Features.Services.IModule)">
+            <summary>
+            Returns all collected assemblies for discovery of endpoints.
+            </summary>
+        </member>
+        <member name="M:Elsa.Extensions.ModuleExtensions.AddFastEndpointsFromModule(Elsa.Features.Services.IModule)">
+            <summary>
+            Adds FastEndpoints to the service container and registers all collected assemblies for discovery of endpoints.
+            </summary>
+        </member>
+        <member name="T:Elsa.Extensions.SwaggerExtensions">
+            <summary>
+            Extensions to enable the generation of Swagger API Documentation and associated Swagger UI.
+            </summary>
+        </member>
+        <member name="M:Elsa.Extensions.SwaggerExtensions.AddSwagger(Elsa.Features.Services.IModule)">
+            <summary>
+            Registers Swagger document generator.
+            </summary>
+        </member>
+        <member name="M:Elsa.Extensions.SwaggerExtensions.UseSwaggerUI(Microsoft.AspNetCore.Builder.IApplicationBuilder)">
+            <summary>
+            Adds middleware to enable the Swagger UI at '/swagger'
+            </summary>
+        </member>
+        <member name="T:Elsa.Extensions.WebApplicationExtensions">
+            <summary>
+            Provides extension methods to add the FastEndpoints middleware configured for use with Elsa API endpoints. 
+            </summary>
+        </member>
+        <member name="M:Elsa.Extensions.WebApplicationExtensions.UseWorkflowsApi(Microsoft.AspNetCore.Builder.IApplicationBuilder,System.String)">
+            <summary>
+            Register the FastEndpoints middleware configured for use with with Elsa API endpoints.
+            </summary>
+            <param name="app"></param>
+            <param name="routePrefix">The route prefix to apply to Elsa API endpoints.</param>
+            <example>E.g. "elsa/api" will expose endpoints like this: "/elsa/api/workflow-definitions"</example>
+        </member>
+        <member name="M:Elsa.Extensions.WebApplicationExtensions.MapWorkflowsApi(Microsoft.AspNetCore.Routing.IEndpointRouteBuilder,System.String)">
+            <summary>
+            Register the FastEndpoints middleware configured for use with with Elsa API endpoints.
+            </summary>
+            <param name="routes">The <see cref="T:Microsoft.AspNetCore.Routing.IEndpointRouteBuilder"/> to register the endpoints with.</param>
+            <param name="routePrefix">The route prefix to apply to Elsa API endpoints.</param>
+            /// <example>E.g. "elsa/api" will expose endpoints like this: "/elsa/api/workflow-definitions"</example>
+        </member>
+        <member name="T:Elsa.Models.CountResponse">
+            <summary>
+            Represents a count response that offers a unified format for returning count of things from API endpoints.
+            </summary>
+            <param name="Count">The number of items found for a given query.</param>
+        </member>
+        <member name="M:Elsa.Models.CountResponse.#ctor(System.Int64)">
+            <summary>
+            Represents a count response that offers a unified format for returning count of things from API endpoints.
+            </summary>
+            <param name="Count">The number of items found for a given query.</param>
+        </member>
+        <member name="P:Elsa.Models.CountResponse.Count">
+            <summary>The number of items found for a given query.</summary>
+        </member>
+        <member name="T:Elsa.Models.ListResponse`1">
+            <summary>
+            Represents a generic list response that offers a unified format for returning list of things from API endpoints.
+            </summary>
+        </member>
+        <member name="M:Elsa.Models.ListResponse`1.#ctor">
+            <summary>
+            Default constructor.
+            </summary>
+        </member>
+        <member name="M:Elsa.Models.ListResponse`1.#ctor(System.Collections.Generic.ICollection{`0})">
+            <summary>
+            Constructor accepting a list of items.
+            </summary>
+        </member>
+        <member name="P:Elsa.Models.ListResponse`1.Items">
+            <summary>
+            A list of items.
+            </summary>
+        </member>
+        <member name="P:Elsa.Models.ListResponse`1.Count">
+            <summary>
+            The number of items in the list. 
+            </summary>
+        </member>
+        <member name="T:Elsa.Requirements.LocalHostPermissionRequirement">
+            <summary>
+            Adda the "create:application" permission to the current user if the request is local.
+            </summary>
+        </member>
+        <member name="T:Elsa.Requirements.LocalHostPermissionRequirementHandler">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Requirements.LocalHostPermissionRequirementHandler.#ctor(Microsoft.AspNetCore.Http.IHttpContextAccessor)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Requirements.LocalHostPermissionRequirementHandler.HandleRequirementAsync(Microsoft.AspNetCore.Authorization.AuthorizationHandlerContext,Elsa.Requirements.LocalHostPermissionRequirement)">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.Requirements.LocalHostRequirement">
+            <summary>
+            Represents an authorization requirement for localhost requests, meaning that if a request comes from the localhost, the requirement is met.
+            </summary>
+        </member>
+        <member name="T:Elsa.Requirements.LocalHostRequirementHandler">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Requirements.LocalHostRequirementHandler.#ctor(Microsoft.AspNetCore.Http.IHttpContextAccessor)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Requirements.LocalHostRequirementHandler.HandleRequirementAsync(Microsoft.AspNetCore.Authorization.AuthorizationHandlerContext,Elsa.Requirements.LocalHostRequirement)">
+            <inheritdoc />
+        </member>
+    </members>
+</doc>

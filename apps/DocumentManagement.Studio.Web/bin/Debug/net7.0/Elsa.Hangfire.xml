@@ -1,0 +1,268 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Elsa.Hangfire</name>
+    </assembly>
+    <members>
+        <member name="T:Elsa.Hangfire.Extensions.JobStorageExtensions">
+            <summary>
+            A set of extension methods for <see cref="T:Hangfire.JobStorage"/>.
+            </summary>
+        </member>
+        <member name="M:Elsa.Hangfire.Extensions.JobStorageExtensions.EnumerateScheduledJobs(Hangfire.JobStorage,System.String)">
+            <summary>
+            Enumerates all scheduled jobs of a given type.
+            </summary>
+        </member>
+        <member name="M:Elsa.Hangfire.Extensions.JobStorageExtensions.EnumerateQueuedJobs(Hangfire.JobStorage,System.String,System.String)">
+            <summary>
+            Enumerates all enqueued jobs of a given type.
+            </summary>
+        </member>
+        <member name="T:Elsa.Hangfire.Extensions.TimeSpanExtensions">
+            <summary>
+            Adds extension methods to <see cref="T:System.TimeSpan"/> that converts it to a cron expression.
+            </summary>
+        </member>
+        <member name="M:Elsa.Hangfire.Extensions.TimeSpanExtensions.ToCronExpression(System.TimeSpan)">
+            <summary>
+            Converts the specified time span to a cron expression.
+            </summary>
+            <param name="timeSpan">The time span.</param>
+            <returns>The cron expression.</returns>
+        </member>
+        <member name="T:Elsa.Hangfire.Features.HangfireBackgroundActivitySchedulerFeature">
+            <summary>
+            Installs a Hangfire implementation for <see cref="T:Elsa.Workflows.Runtime.Contracts.IBackgroundActivityScheduler"/>.
+            </summary>
+        </member>
+        <member name="M:Elsa.Hangfire.Features.HangfireBackgroundActivitySchedulerFeature.#ctor(Elsa.Features.Services.IModule)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Hangfire.Features.HangfireBackgroundActivitySchedulerFeature.Configure">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Hangfire.Features.HangfireBackgroundActivitySchedulerFeature.Apply">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.Hangfire.Features.HangfireFeature">
+            <summary>
+            Sets up Hangfire. If you're setting up Hangfire yourself, then you should not enable this feature.
+            </summary>
+        </member>
+        <member name="M:Elsa.Hangfire.Features.HangfireFeature.#ctor(Elsa.Features.Services.IModule)">
+            <inheritdoc />
+        </member>
+        <member name="P:Elsa.Hangfire.Features.HangfireFeature.ConfigureHangfire">
+            <summary>
+            A delegate that configures Hangfire.
+            </summary>
+        </member>
+        <member name="P:Elsa.Hangfire.Features.HangfireFeature.ConfigureBackgroundServerOptions">
+            <summary>
+            A delegate that configures Hangfire's background job server options.
+            </summary>
+        </member>
+        <member name="P:Elsa.Hangfire.Features.HangfireFeature.CreateJobStorage">
+            <summary>
+            A delegate that creates a job storage instance.
+            </summary>
+        </member>
+        <member name="M:Elsa.Hangfire.Features.HangfireFeature.Apply">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.Hangfire.Features.HangfireSchedulerFeature">
+            <summary>
+            Installs a Hangfire implementation for <see cref="T:Elsa.Scheduling.Contracts.IWorkflowScheduler"/>.
+            </summary>
+        </member>
+        <member name="M:Elsa.Hangfire.Features.HangfireSchedulerFeature.#ctor(Elsa.Features.Services.IModule)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Hangfire.Features.HangfireSchedulerFeature.Configure">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Hangfire.Features.HangfireSchedulerFeature.Apply">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.Hangfire.Features.HangfireSqliteStorageFeature">
+            <summary>
+            Configures the Hangfire feature to use SQLite storage. If you're setting up Hangfire yourself, then you should not enable this feature.
+            </summary>
+        </member>
+        <member name="M:Elsa.Hangfire.Features.HangfireSqliteStorageFeature.#ctor(Elsa.Features.Services.IModule)">
+            <inheritdoc />
+        </member>
+        <member name="P:Elsa.Hangfire.Features.HangfireSqliteStorageFeature.NameOrConnectionString">
+            <summary>
+            The connection string to use when connecting to SQL Server, or the name of the connection string.
+            </summary>
+        </member>
+        <member name="P:Elsa.Hangfire.Features.HangfireSqliteStorageFeature.ConfigureSqlServerStorageOptions">
+            <summary>
+            Configures the SQL Server storage options.
+            </summary>
+        </member>
+        <member name="M:Elsa.Hangfire.Features.HangfireSqliteStorageFeature.Configure">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.Hangfire.Features.HangfireSqlServerStorageFeature">
+            <summary>
+            Configures the Hangfire feature to use SQL Server storage. If you're setting up Hangfire yourself, then you should not enable this feature.
+            </summary>
+        </member>
+        <member name="M:Elsa.Hangfire.Features.HangfireSqlServerStorageFeature.#ctor(Elsa.Features.Services.IModule)">
+            <inheritdoc />
+        </member>
+        <member name="P:Elsa.Hangfire.Features.HangfireSqlServerStorageFeature.NameOrConnectionString">
+            <summary>
+            The connection string to use when connecting to SQL Server, or the name of the connection string.
+            </summary>
+        </member>
+        <member name="P:Elsa.Hangfire.Features.HangfireSqlServerStorageFeature.ConfigureSqlServerStorageOptions">
+            <summary>
+            Configures the SQL Server storage options.
+            </summary>
+        </member>
+        <member name="M:Elsa.Hangfire.Features.HangfireSqlServerStorageFeature.Configure">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.Hangfire.Handlers.CronActivityDescriptorModifier">
+            <summary>
+            Modifies the <see cref="T:Elsa.Workflows.Core.Models.ActivityDescriptor"/> of the <see cref="T:Elsa.Scheduling.Activities.Cron"/> activity.
+            </summary>
+        </member>
+        <member name="M:Elsa.Hangfire.Handlers.CronActivityDescriptorModifier.Modify(Elsa.Workflows.Core.Models.ActivityDescriptor)">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.Hangfire.Jobs.ExecuteBackgroundActivityJob">
+            <summary>
+            A job that executes a background activity.
+            </summary>
+        </member>
+        <member name="M:Elsa.Hangfire.Jobs.ExecuteBackgroundActivityJob.#ctor(Elsa.Workflows.Runtime.Contracts.IBackgroundActivityInvoker)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Elsa.Hangfire.Jobs.ExecuteBackgroundActivityJob"/> class.
+            </summary>
+            <param name="backgroundActivityInvoker"></param>
+        </member>
+        <member name="M:Elsa.Hangfire.Jobs.ExecuteBackgroundActivityJob.ExecuteAsync(Elsa.Workflows.Runtime.Models.ScheduledBackgroundActivity,System.Threading.CancellationToken)">
+            <summary>
+            Executes the job.
+            </summary>
+        </member>
+        <member name="T:Elsa.Hangfire.Jobs.ResumeWorkflowJob">
+            <summary>
+            A job that resumes a workflow.
+            </summary>
+        </member>
+        <member name="M:Elsa.Hangfire.Jobs.ResumeWorkflowJob.#ctor(Elsa.Workflows.Runtime.Contracts.IWorkflowDispatcher)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Elsa.Hangfire.Jobs.ResumeWorkflowJob"/> class.
+            </summary>
+        </member>
+        <member name="M:Elsa.Hangfire.Jobs.ResumeWorkflowJob.ExecuteAsync(System.String,Elsa.Workflows.Runtime.Requests.DispatchWorkflowInstanceRequest,System.Threading.CancellationToken)">
+            <summary>
+            Executes the job.
+            </summary>
+            <param name="name">The name of the job.</param>
+            <param name="request">The workflow request.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+        </member>
+        <member name="T:Elsa.Hangfire.Jobs.RunWorkflowJob">
+            <summary>
+            A job that resumes a workflow.
+            </summary>
+        </member>
+        <member name="M:Elsa.Hangfire.Jobs.RunWorkflowJob.#ctor(Elsa.Workflows.Runtime.Contracts.IWorkflowDispatcher)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Elsa.Hangfire.Jobs.RunWorkflowJob"/> class.
+            </summary>
+        </member>
+        <member name="M:Elsa.Hangfire.Jobs.RunWorkflowJob.ExecuteAsync(System.String,Elsa.Workflows.Runtime.Requests.DispatchWorkflowDefinitionRequest,System.Threading.CancellationToken)">
+            <summary>
+            Executes the job.
+            </summary>
+            <param name="name">The name of the job.</param>
+            <param name="request">The workflow request.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+        </member>
+        <member name="T:Elsa.Hangfire.Services.HangfireBackgroundActivityScheduler">
+            <summary>
+            Invokes activities from a background worker within the context of its workflow instance using Hangfire.
+            </summary>
+        </member>
+        <member name="M:Elsa.Hangfire.Services.HangfireBackgroundActivityScheduler.#ctor(Hangfire.IBackgroundJobClient)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Elsa.Hangfire.Services.HangfireBackgroundActivityScheduler"/> class.
+            </summary>
+        </member>
+        <member name="M:Elsa.Hangfire.Services.HangfireBackgroundActivityScheduler.ScheduleAsync(Elsa.Workflows.Runtime.Models.ScheduledBackgroundActivity,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Hangfire.Services.HangfireBackgroundActivityScheduler.CancelAsync(System.String,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.Hangfire.Services.HangfireWorkflowScheduler">
+            <summary>
+            An implementation of <see cref="T:Elsa.Scheduling.Contracts.IWorkflowScheduler"/> that uses Hangfire.
+            </summary>
+        </member>
+        <member name="M:Elsa.Hangfire.Services.HangfireWorkflowScheduler.#ctor(Hangfire.IBackgroundJobClient,Hangfire.IRecurringJobManager,Hangfire.JobStorage)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Elsa.Hangfire.Services.HangfireWorkflowScheduler"/> class.
+            </summary>
+        </member>
+        <member name="M:Elsa.Hangfire.Services.HangfireWorkflowScheduler.ScheduleAtAsync(System.String,Elsa.Workflows.Runtime.Requests.DispatchWorkflowDefinitionRequest,System.DateTimeOffset,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Hangfire.Services.HangfireWorkflowScheduler.ScheduleAtAsync(System.String,Elsa.Workflows.Runtime.Requests.DispatchWorkflowInstanceRequest,System.DateTimeOffset,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Hangfire.Services.HangfireWorkflowScheduler.ScheduleRecurringAsync(System.String,Elsa.Workflows.Runtime.Requests.DispatchWorkflowDefinitionRequest,System.DateTimeOffset,System.TimeSpan,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Hangfire.Services.HangfireWorkflowScheduler.ScheduleRecurringAsync(System.String,Elsa.Workflows.Runtime.Requests.DispatchWorkflowInstanceRequest,System.DateTimeOffset,System.TimeSpan,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Hangfire.Services.HangfireWorkflowScheduler.ScheduleCronAsync(System.String,Elsa.Workflows.Runtime.Requests.DispatchWorkflowDefinitionRequest,System.String,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Hangfire.Services.HangfireWorkflowScheduler.ScheduleCronAsync(System.String,Elsa.Workflows.Runtime.Requests.DispatchWorkflowInstanceRequest,System.String,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Hangfire.Services.HangfireWorkflowScheduler.UnscheduleAsync(System.String,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.Extensions.ModuleExtensions">
+            <summary>
+            Provides extension methods for the <see cref="T:Elsa.Hangfire.Features.HangfireFeature"/>.
+            </summary>
+        </member>
+        <member name="M:Elsa.Extensions.ModuleExtensions.UseHangfire(Elsa.Features.Services.IModule,System.Action{Elsa.Hangfire.Features.HangfireFeature})">
+            <summary>
+            Installs and configures Hangfire. Only use this feature if you are not configuring Hangfire yourself.
+            </summary>
+        </member>
+        <member name="M:Elsa.Extensions.ModuleExtensions.UseSqlServerStorage(Elsa.Hangfire.Features.HangfireFeature,System.Action{Elsa.Hangfire.Features.HangfireSqlServerStorageFeature})">
+            <summary>
+            Configures Hangfire to use SQL Server storage. Only use this feature if you are not configuring Hangfire yourself.
+            </summary>
+        </member>
+        <member name="M:Elsa.Extensions.ModuleExtensions.UseSqliteStorage(Elsa.Hangfire.Features.HangfireFeature,System.Action{Elsa.Hangfire.Features.HangfireSqliteStorageFeature})">
+            <summary>
+            Configures Hangfire to use SQLite storage. Only use this feature if you are not configuring Hangfire yourself.
+            </summary>
+        </member>
+        <member name="M:Elsa.Extensions.ModuleExtensions.UseHangfireScheduler(Elsa.Scheduling.Features.SchedulingFeature,System.Action{Elsa.Hangfire.Features.HangfireSchedulerFeature})">
+            <summary>
+            Installs a Hangfire implementation for <see cref="T:Elsa.Scheduling.Contracts.IWorkflowScheduler"/>.
+            </summary>
+        </member>
+        <member name="M:Elsa.Extensions.ModuleExtensions.UseHangfireBackgroundActivityScheduler(Elsa.Workflows.Runtime.Features.WorkflowRuntimeFeature,System.Action{Elsa.Hangfire.Features.HangfireBackgroundActivitySchedulerFeature})">
+            <summary>
+            Installs a Hangfire implementation for <see cref="T:Elsa.Scheduling.Contracts.IWorkflowScheduler"/>.
+            </summary>
+        </member>
+    </members>
+</doc>

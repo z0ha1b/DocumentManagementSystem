@@ -1,0 +1,247 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Elsa.Webhooks</name>
+    </assembly>
+    <members>
+        <member name="T:Elsa.Webhooks.Commands.InvokeWebhook">
+            <summary>
+            Represents a command to invoke all registered webhook endpoints.
+            </summary>
+        </member>
+        <member name="M:Elsa.Webhooks.Commands.InvokeWebhook.#ctor(Elsa.Webhooks.Models.WebhookRegistration,Elsa.Webhooks.Models.WebhookEvent)">
+            <summary>
+            Represents a command to invoke all registered webhook endpoints.
+            </summary>
+        </member>
+        <member name="T:Elsa.Webhooks.Extensions.ModuleExtensions">
+            <summary>
+            Adds extensions to <see cref="T:Elsa.Features.Services.IModule"/> that enables the <see cref="T:Elsa.Webhooks.Features.WebhooksFeature"/> feature.
+            </summary>
+        </member>
+        <member name="M:Elsa.Webhooks.Extensions.ModuleExtensions.UseWebhooks(Elsa.Features.Services.IModule,System.Action{Elsa.Webhooks.Features.WebhooksFeature})">
+            <summary>
+            Enables and configures the <see cref="T:Elsa.Webhooks.Features.WebhooksFeature"/> feature.
+            </summary>
+        </member>
+        <member name="T:Elsa.Webhooks.Features.WebhooksFeature">
+            <summary>
+            Installs and configures services that let the user register webhook endpoints.
+            </summary>
+        </member>
+        <member name="M:Elsa.Webhooks.Features.WebhooksFeature.#ctor(Elsa.Features.Services.IModule)">
+            <inheritdoc />
+        </member>
+        <member name="P:Elsa.Webhooks.Features.WebhooksFeature.WebhookDispatcher">
+            <summary>
+            A delegate that resolves the <see cref="T:Elsa.Webhooks.Services.IWebhookDispatcher"/> to use.
+            </summary>
+        </member>
+        <member name="P:Elsa.Webhooks.Features.WebhooksFeature.WebhookOptions">
+            <summary>
+            A delegate that is invoked when configuring <see cref="T:Elsa.Webhooks.Options.WebhookOptions"/>.
+            </summary>
+        </member>
+        <member name="P:Elsa.Webhooks.Features.WebhooksFeature.HttpClient">
+            <summary>
+            A delegate to configure the <see cref="T:System.Net.Http.HttpClient"/> used when invoking webhook endpoints.
+            </summary>
+        </member>
+        <member name="P:Elsa.Webhooks.Features.WebhooksFeature.HttpClientBuilder">
+            <summary>
+            A delegate to configure the <see cref="T:Microsoft.Extensions.DependencyInjection.IHttpClientBuilder"/>. For example, to configure Polly policies.
+            </summary>
+        </member>
+        <member name="M:Elsa.Webhooks.Features.WebhooksFeature.RegisterWebhook(System.Uri)">
+            <summary>
+            Registers the specified webhook with <see cref="T:Elsa.Webhooks.Options.WebhookOptions"/>
+            </summary>
+        </member>
+        <member name="M:Elsa.Webhooks.Features.WebhooksFeature.RegisterWebhook(Elsa.Webhooks.Models.WebhookRegistration)">
+            <summary>
+            Registers the specified webhook with <see cref="T:Elsa.Webhooks.Options.WebhookOptions"/>
+            </summary>
+        </member>
+        <member name="M:Elsa.Webhooks.Features.WebhooksFeature.RegisterWebhooks(Elsa.Webhooks.Models.WebhookRegistration[])">
+            <summary>
+            Registers the specified webhooks with <see cref="T:Elsa.Webhooks.Options.WebhookOptions"/>
+            </summary>
+        </member>
+        <member name="M:Elsa.Webhooks.Features.WebhooksFeature.Apply">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.Webhooks.Handlers.InvokeWebhookHandler">
+            <summary>
+            Handles the <see cref="T:Elsa.Webhooks.Commands.InvokeWebhook"/> command. 
+            </summary>
+        </member>
+        <member name="M:Elsa.Webhooks.Handlers.InvokeWebhookHandler.#ctor(Elsa.Webhooks.Services.IWebhookInvoker)">
+            <summary>
+            Constructor.
+            </summary>
+        </member>
+        <member name="M:Elsa.Webhooks.Handlers.InvokeWebhookHandler.HandleAsync(Elsa.Webhooks.Commands.InvokeWebhook,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.Webhooks.Handlers.RunTaskHandler">
+            <summary>
+            Handles the <see cref="T:Elsa.Workflows.Runtime.Notifications.RunTaskRequest"/> notification and asynchronously invokes all registered webhook endpoints.
+            </summary>
+        </member>
+        <member name="M:Elsa.Webhooks.Handlers.RunTaskHandler.#ctor(Elsa.Webhooks.Services.IWebhookDispatcher,Elsa.Common.Contracts.ISystemClock)">
+            <summary>
+            Constructor.
+            </summary>
+        </member>
+        <member name="M:Elsa.Webhooks.Handlers.RunTaskHandler.HandleAsync(Elsa.Workflows.Runtime.Notifications.RunTaskRequest,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.Webhooks.Implementations.BackgroundWebhookDispatcher">
+            <summary>
+            Uses a background channel to asynchronously invoke each webhook url.
+            </summary>
+        </member>
+        <member name="M:Elsa.Webhooks.Implementations.BackgroundWebhookDispatcher.#ctor(Elsa.Mediator.Contracts.ICommandSender,Elsa.Webhooks.Services.IWebhookRegistrationService)">
+            <summary>
+            Constructor.
+            </summary>
+        </member>
+        <member name="M:Elsa.Webhooks.Implementations.BackgroundWebhookDispatcher.DispatchAsync(Elsa.Webhooks.Models.WebhookEvent,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.Webhooks.Implementations.DefaultWebhookRegistrationService">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Webhooks.Implementations.DefaultWebhookRegistrationService.#ctor(System.Collections.Generic.IEnumerable{Elsa.Webhooks.Services.IWebhookRegistrationProvider})">
+            <summary>
+            Constructor.
+            </summary>
+            <param name="providers"></param>
+        </member>
+        <member name="M:Elsa.Webhooks.Implementations.DefaultWebhookRegistrationService.ListByEventTypeAsync(System.String,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.Webhooks.Implementations.HttpWebhookInvoker">
+            <summary>
+            An implementation of <see cref="T:Elsa.Webhooks.Services.IWebhookInvoker"/> that uses a named <see cref="T:System.Net.Http.HttpClient"/>.
+            </summary>
+        </member>
+        <member name="M:Elsa.Webhooks.Implementations.HttpWebhookInvoker.#ctor(System.Net.Http.HttpClient,Microsoft.Extensions.Logging.ILogger{Elsa.Webhooks.Implementations.HttpWebhookInvoker})">
+            <summary>
+            Constructor.
+            </summary>
+        </member>
+        <member name="M:Elsa.Webhooks.Implementations.HttpWebhookInvoker.InvokeWebhookAsync(Elsa.Webhooks.Models.WebhookRegistration,Elsa.Webhooks.Models.WebhookEvent,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.Webhooks.Implementations.OptionsWebhookRegistrationProvider">
+            <summary>
+            Provides webhook registrations from the <see cref="T:Elsa.Webhooks.Options.WebhookOptions"/> options.
+            </summary>
+        </member>
+        <member name="M:Elsa.Webhooks.Implementations.OptionsWebhookRegistrationProvider.#ctor(Microsoft.Extensions.Options.IOptions{Elsa.Webhooks.Options.WebhookOptions})">
+            <summary>
+            Constructor.
+            </summary>
+            <param name="options"></param>
+        </member>
+        <member name="M:Elsa.Webhooks.Implementations.OptionsWebhookRegistrationProvider.ListAsync(System.String,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.Webhooks.Models.RunTaskWebhook">
+            <summary>
+            Stores payload information about the RunTask webhook event type.
+            </summary>
+        </member>
+        <member name="M:Elsa.Webhooks.Models.RunTaskWebhook.#ctor(System.String,System.String,System.String,System.String,System.String,System.String,System.Object)">
+            <summary>
+            Stores payload information about the RunTask webhook event type.
+            </summary>
+        </member>
+        <member name="T:Elsa.Webhooks.Models.WebhookEvent">
+            <summary>
+            A payload sent to a webhook url.
+            </summary>
+        </member>
+        <member name="M:Elsa.Webhooks.Models.WebhookEvent.#ctor(System.String,System.Object,System.DateTimeOffset)">
+            <summary>
+            A payload sent to a webhook url.
+            </summary>
+        </member>
+        <member name="T:Elsa.Webhooks.Models.WebhookRegistration">
+            <summary>
+            Represents a webhook url registration
+            </summary>
+        </member>
+        <member name="M:Elsa.Webhooks.Models.WebhookRegistration.#ctor">
+            <summary>
+            Constructor.
+            </summary>
+        </member>
+        <member name="M:Elsa.Webhooks.Models.WebhookRegistration.#ctor(System.Uri)">
+            <summary>
+            Constructor.
+            </summary>
+        </member>
+        <member name="P:Elsa.Webhooks.Models.WebhookRegistration.Url">
+            <summary>
+            The URL to deliver the webhook event to.
+            </summary>
+        </member>
+        <member name="P:Elsa.Webhooks.Models.WebhookRegistration.EventTypes">
+            <summary>
+            A whitelist of event types to deliver. If empty, all events will be delivered.
+            </summary>
+        </member>
+        <member name="T:Elsa.Webhooks.Options.WebhookOptions">
+            <summary>
+            Provides various options related to webhooks.
+            </summary>
+        </member>
+        <member name="P:Elsa.Webhooks.Options.WebhookOptions.Endpoints">
+            <summary>
+            Stores a list of webhook registrations.
+            </summary>
+        </member>
+        <member name="T:Elsa.Webhooks.Services.IWebhookDispatcher">
+            <summary>
+            Asynchronously invokes all registered webhooks.
+            </summary>
+        </member>
+        <member name="M:Elsa.Webhooks.Services.IWebhookDispatcher.DispatchAsync(Elsa.Webhooks.Models.WebhookEvent,System.Threading.CancellationToken)">
+            <summary>
+            Dispatches the specified webhook event.
+            </summary>
+        </member>
+        <member name="T:Elsa.Webhooks.Services.IWebhookInvoker">
+            <summary>
+            Invokes a single registered webhook url.
+            </summary>
+        </member>
+        <member name="M:Elsa.Webhooks.Services.IWebhookInvoker.InvokeWebhookAsync(Elsa.Webhooks.Models.WebhookRegistration,Elsa.Webhooks.Models.WebhookEvent,System.Threading.CancellationToken)">
+            <summary>
+            Invokes the specified webhook registration with the specified webhook event..
+            </summary>
+        </member>
+        <member name="T:Elsa.Webhooks.Services.IWebhookRegistrationProvider">
+            <summary>
+            Provides a list of webhook registrations.
+            </summary>
+        </member>
+        <member name="M:Elsa.Webhooks.Services.IWebhookRegistrationProvider.ListAsync(System.String,System.Threading.CancellationToken)">
+            <summary>
+            Returns a list of webhook registrations.
+            </summary>
+        </member>
+        <member name="T:Elsa.Webhooks.Services.IWebhookRegistrationService">
+            <summary>
+            Provides a list of webhook registrations.
+            </summary>
+        </member>
+        <member name="M:Elsa.Webhooks.Services.IWebhookRegistrationService.ListByEventTypeAsync(System.String,System.Threading.CancellationToken)">
+            <summary>
+            Returns a list of webhook registrations matching the specified event.
+            </summary>
+        </member>
+    </members>
+</doc>

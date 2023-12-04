@@ -1,0 +1,783 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Elsa.Scheduling</name>
+    </assembly>
+    <members>
+        <member name="T:Elsa.Scheduling.Activities.Cron">
+            <summary>
+            Represents a timer to periodically trigger the workflow.
+            </summary>
+        </member>
+        <member name="M:Elsa.Scheduling.Activities.Cron.#ctor(System.String,System.Nullable{System.Int32})">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Scheduling.Activities.Cron.#ctor(System.String,System.String,System.Nullable{System.Int32})">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Scheduling.Activities.Cron.#ctor(Elsa.Workflows.Core.Models.Input{System.String},System.String,System.Nullable{System.Int32})">
+            <inheritdoc />
+        </member>
+        <member name="P:Elsa.Scheduling.Activities.Cron.CronExpression">
+            <summary>
+            The interval at which the timer should execute.
+            </summary>
+        </member>
+        <member name="M:Elsa.Scheduling.Activities.Cron.ExecuteAsync(Elsa.Workflows.Core.ActivityExecutionContext)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Scheduling.Activities.Cron.GetTriggerPayload(Elsa.Workflows.Core.TriggerIndexingContext)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Scheduling.Activities.Cron.FromCronExpression(System.String,System.String,System.Nullable{System.Int32})">
+            <summary>
+            Creates a new <see cref="T:Elsa.Scheduling.Activities.Cron"/> activity set to trigger at the specified cron expression.
+            </summary>
+        </member>
+        <member name="T:Elsa.Scheduling.Activities.Delay">
+            <summary>
+            Delay execution for the specified amount of time.
+            </summary>
+        </member>
+        <member name="M:Elsa.Scheduling.Activities.Delay.#ctor(System.String,System.Nullable{System.Int32})">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Scheduling.Activities.Delay.#ctor(System.Func{Elsa.Expressions.Models.ExpressionExecutionContext,System.TimeSpan},System.String,System.Nullable{System.Int32})">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Scheduling.Activities.Delay.#ctor(System.Func{Elsa.Expressions.Models.ExpressionExecutionContext,System.Threading.Tasks.ValueTask{System.TimeSpan}},System.String,System.Nullable{System.Int32})">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Scheduling.Activities.Delay.#ctor(Elsa.Workflows.Core.Models.Input{System.TimeSpan},System.String,System.Nullable{System.Int32})">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Scheduling.Activities.Delay.#ctor(System.TimeSpan,System.String,System.Nullable{System.Int32})">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Scheduling.Activities.Delay.#ctor(Elsa.Workflows.Core.Memory.Variable{System.TimeSpan},System.String,System.Nullable{System.Int32})">
+            <inheritdoc />
+        </member>
+        <member name="P:Elsa.Scheduling.Activities.Delay.TimeSpan">
+            <summary>
+            The amount of time to delay execution.
+            </summary>
+        </member>
+        <member name="M:Elsa.Scheduling.Activities.Delay.Execute(Elsa.Workflows.Core.ActivityExecutionContext)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Scheduling.Activities.Delay.FromMilliseconds(System.Double,System.String,System.Nullable{System.Int32})">
+            <summary>
+            Creates a new <see cref="T:Elsa.Scheduling.Activities.Delay"/> from the specified number of milliseconds.
+            </summary>
+        </member>
+        <member name="M:Elsa.Scheduling.Activities.Delay.FromSeconds(System.Double,System.String,System.Nullable{System.Int32})">
+            <summary>
+            Creates a new <see cref="T:Elsa.Scheduling.Activities.Delay"/> from the specified number of seconds.
+            </summary>
+        </member>
+        <member name="M:Elsa.Scheduling.Activities.Delay.FromMinutes(System.Double,System.String,System.Nullable{System.Int32})">
+            <summary>
+            Creates a new <see cref="T:Elsa.Scheduling.Activities.Delay"/> from the specified number of minutes.
+            </summary>
+        </member>
+        <member name="M:Elsa.Scheduling.Activities.Delay.FromHours(System.Double,System.String,System.Nullable{System.Int32})">
+            <summary>
+            Creates a new <see cref="T:Elsa.Scheduling.Activities.Delay"/> from the specified number of hours.
+            </summary>
+        </member>
+        <member name="M:Elsa.Scheduling.Activities.Delay.FromDays(System.Double,System.String,System.Nullable{System.Int32})">
+            <summary>
+            Creates a new <see cref="T:Elsa.Scheduling.Activities.Delay"/> from the specified number of days.
+            </summary>
+        </member>
+        <member name="T:Elsa.Scheduling.Activities.StartAt">
+            <summary>
+            Triggers the workflow at a specific future timestamp.
+            </summary>
+        </member>
+        <member name="M:Elsa.Scheduling.Activities.StartAt.#ctor(System.String,System.Nullable{System.Int32})">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Scheduling.Activities.StartAt.#ctor(Elsa.Workflows.Core.Models.Input{System.DateTimeOffset},System.String,System.Nullable{System.Int32})">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Scheduling.Activities.StartAt.#ctor(System.Func{Elsa.Expressions.Models.ExpressionExecutionContext,System.DateTimeOffset},System.String,System.Nullable{System.Int32})">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Scheduling.Activities.StartAt.#ctor(System.Func{Elsa.Expressions.Models.ExpressionExecutionContext,System.Threading.Tasks.ValueTask{System.DateTimeOffset}},System.String,System.Nullable{System.Int32})">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Scheduling.Activities.StartAt.#ctor(System.Func{System.Threading.Tasks.ValueTask{System.DateTimeOffset}},System.String,System.Nullable{System.Int32})">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Scheduling.Activities.StartAt.#ctor(System.Func{System.DateTimeOffset},System.String,System.Nullable{System.Int32})">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Scheduling.Activities.StartAt.#ctor(System.DateTimeOffset,System.String,System.Nullable{System.Int32})">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Scheduling.Activities.StartAt.#ctor(Elsa.Workflows.Core.Memory.Variable{System.DateTimeOffset},System.String,System.Nullable{System.Int32})">
+            <inheritdoc />
+        </member>
+        <member name="P:Elsa.Scheduling.Activities.StartAt.DateTime">
+            <summary>
+            The timestamp at which the workflow should be triggered.
+            </summary>
+        </member>
+        <member name="M:Elsa.Scheduling.Activities.StartAt.GetTriggerPayload(Elsa.Workflows.Core.TriggerIndexingContext)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Scheduling.Activities.StartAt.Execute(Elsa.Workflows.Core.ActivityExecutionContext)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Scheduling.Activities.StartAt.From(System.DateTimeOffset,System.String,System.Nullable{System.Int32})">
+            <summary>
+            Creates a new <see cref="T:Elsa.Scheduling.Activities.StartAt"/> activity set to trigger at the specified timestamp.
+            </summary>
+        </member>
+        <member name="T:Elsa.Scheduling.Activities.Timer">
+            <summary>
+            Represents a timer to periodically trigger the workflow.
+            </summary>
+        </member>
+        <member name="M:Elsa.Scheduling.Activities.Timer.#ctor(System.String,System.Nullable{System.Int32})">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Scheduling.Activities.Timer.#ctor(System.TimeSpan,System.String,System.Nullable{System.Int32})">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Scheduling.Activities.Timer.#ctor(Elsa.Workflows.Core.Models.Input{System.TimeSpan},System.String,System.Nullable{System.Int32})">
+            <inheritdoc />
+        </member>
+        <member name="P:Elsa.Scheduling.Activities.Timer.Interval">
+            <summary>
+            The interval at which the timer should execute.
+            </summary>
+        </member>
+        <member name="M:Elsa.Scheduling.Activities.Timer.ExecuteAsync(Elsa.Workflows.Core.ActivityExecutionContext)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Scheduling.Activities.Timer.GetTriggerPayload(Elsa.Workflows.Core.TriggerIndexingContext)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Scheduling.Activities.Timer.FromTimeSpan(System.TimeSpan,System.String,System.Nullable{System.Int32})">
+            <summary>
+            Creates a new <see cref="T:Elsa.Scheduling.Activities.Timer"/> activity set to trigger at the specified interval.
+            </summary>
+        </member>
+        <member name="M:Elsa.Scheduling.Activities.Timer.FromSeconds(System.Double,System.String,System.Nullable{System.Int32})">
+            <summary>
+            Creates a new <see cref="T:Elsa.Scheduling.Activities.Timer"/> activity set to trigger at the specified interval in seconds.
+            </summary>
+        </member>
+        <member name="T:Elsa.Scheduling.Bookmarks.DelayPayload">
+            <summary>
+            A bookmark payload for <see cref="T:Elsa.Scheduling.Activities.Delay"/>.
+            </summary>
+        </member>
+        <member name="M:Elsa.Scheduling.Bookmarks.DelayPayload.#ctor(System.DateTimeOffset)">
+            <summary>
+            A bookmark payload for <see cref="T:Elsa.Scheduling.Activities.Delay"/>.
+            </summary>
+        </member>
+        <member name="T:Elsa.Scheduling.Commands.RunScheduledTask">
+            <summary>
+            A command to run a scheduled task.
+            </summary>
+        </member>
+        <member name="M:Elsa.Scheduling.Commands.RunScheduledTask.#ctor(Elsa.Scheduling.Contracts.ITask)">
+            <summary>
+            A command to run a scheduled task.
+            </summary>
+        </member>
+        <member name="T:Elsa.Scheduling.Contracts.IBookmarkScheduler">
+            <summary>
+            Creates timer schedules for the specified bookmarks.
+            </summary>
+        </member>
+        <member name="M:Elsa.Scheduling.Contracts.IBookmarkScheduler.ScheduleAsync(System.Collections.Generic.IEnumerable{Elsa.Workflows.Runtime.Entities.StoredBookmark},System.Threading.CancellationToken)">
+            <summary>
+            Schedules the specified list of bookmarks.
+            </summary>
+            <param name="bookmarks">The bookmarks to schedule.</param>
+            <param name="cancellationToken">An optional cancellation token.</param>
+        </member>
+        <member name="M:Elsa.Scheduling.Contracts.IBookmarkScheduler.ScheduleAsync(System.String,System.Collections.Generic.IEnumerable{Elsa.Workflows.Core.Models.Bookmark},System.Threading.CancellationToken)">
+            <summary>
+            Schedules the specified list of bookmarks.
+            </summary>
+            <param name="workflowInstanceId">The ID of the workflow instance to which the bookmarks belong.</param>
+            <param name="bookmarks">The bookmarks to schedule.</param>
+            <param name="cancellationToken">An optional cancellation token.</param>
+        </member>
+        <member name="M:Elsa.Scheduling.Contracts.IBookmarkScheduler.UnscheduleAsync(System.Collections.Generic.IEnumerable{Elsa.Workflows.Core.Models.Bookmark},System.Threading.CancellationToken)">
+            <summary>
+            Unschedules the specified list of bookmarks.
+            </summary>
+            <param name="bookmarks">The bookmarks to unschedule.</param>
+            <param name="cancellationToken">An optional cancellation token.</param>
+        </member>
+        <member name="M:Elsa.Scheduling.Contracts.IBookmarkScheduler.UnscheduleAsync(System.Collections.Generic.IEnumerable{Elsa.Workflows.Runtime.Entities.StoredBookmark},System.Threading.CancellationToken)">
+            <summary>
+            Unschedules the specified list of bookmarks.
+            </summary>
+            <param name="bookmarks">The bookmarks to unschedule.</param>
+            <param name="cancellationToken">An optional cancellation token.</param>
+        </member>
+        <member name="T:Elsa.Scheduling.Contracts.ICronParser">
+            <summary>Represents a cron expression parser.</summary>
+            <remarks>The providers can support different formats. Quartz, for example, supports years.</remarks>
+        </member>
+        <member name="M:Elsa.Scheduling.Contracts.ICronParser.GetNextOccurrence(System.String)">
+            <summary>
+            Converts a provider dependent cron expression to a <see cref="T:System.DateTimeOffset"/>.
+            </summary>
+            <param name="expression">The cron expression to parse.</param>
+            <returns>The next occurrence.</returns>
+        </member>
+        <member name="T:Elsa.Scheduling.Contracts.ISchedule">
+            <summary>
+            A schedule that can be used to schedule a task.
+            </summary>
+        </member>
+        <member name="M:Elsa.Scheduling.Contracts.ISchedule.Schedule(Elsa.Scheduling.Models.ScheduleContext)">
+            <summary>
+            Create a scheduled task.
+            </summary>
+            <param name="context">The context.</param>
+            <returns>The scheduled task.</returns>
+        </member>
+        <member name="T:Elsa.Scheduling.Contracts.IScheduledTask">
+            <summary>
+            Represents a scheduled task.
+            </summary>
+        </member>
+        <member name="M:Elsa.Scheduling.Contracts.IScheduledTask.Cancel">
+            <summary>
+            Cancels the scheduled task.
+            </summary>
+        </member>
+        <member name="T:Elsa.Scheduling.Contracts.IScheduler">
+            <summary>
+            Schedules tasks.
+            </summary>
+        </member>
+        <member name="M:Elsa.Scheduling.Contracts.IScheduler.ScheduleAsync(System.String,Elsa.Scheduling.Contracts.ITask,Elsa.Scheduling.Contracts.ISchedule,System.Threading.CancellationToken)">
+            <summary>
+            Schedules a task using the specified schedule.
+            </summary>
+            <param name="name">The name of the task to schedule.</param>
+            <param name="task">The task to schedule.</param>
+            <param name="schedule">The schedule to use.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+        </member>
+        <member name="M:Elsa.Scheduling.Contracts.IScheduler.ScheduleAsync(System.String,Elsa.Scheduling.Contracts.ITask,Elsa.Scheduling.Contracts.ISchedule,System.Collections.Generic.IEnumerable{System.String},System.Threading.CancellationToken)">
+            <summary>
+            Schedules a task using the specified schedule.
+            </summary>
+            <param name="name">The name of the task to schedule.</param>
+            <param name="task">The task to schedule.</param>
+            <param name="schedule">The schedule to use.</param>
+            <param name="keys">A list of keys to associate with the task.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+        </member>
+        <member name="M:Elsa.Scheduling.Contracts.IScheduler.ClearScheduleAsync(System.String,System.Threading.CancellationToken)">
+            <summary>
+            Unschedules the task with the specified name.
+            </summary>
+            <param name="name">The name of the task to unschedule.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+        </member>
+        <member name="M:Elsa.Scheduling.Contracts.IScheduler.ClearScheduleAsync(System.Collections.Generic.IEnumerable{System.String},System.Threading.CancellationToken)">
+            <summary>
+            Unschedules tasks with the specified keys.
+            </summary>
+            <param name="keys">The keys of the tasks to unschedule.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+        </member>
+        <member name="T:Elsa.Scheduling.Contracts.ITask">
+            <summary>
+            Represents a task.
+            </summary>
+        </member>
+        <member name="M:Elsa.Scheduling.Contracts.ITask.ExecuteAsync(Elsa.Scheduling.Models.TaskExecutionContext)">
+            <summary>
+            Executes the task.
+            </summary>
+        </member>
+        <member name="T:Elsa.Scheduling.Contracts.ITriggerScheduler">
+            <summary>
+            Schedules tasks for the specified list of triggers.
+            </summary>
+        </member>
+        <member name="M:Elsa.Scheduling.Contracts.ITriggerScheduler.ScheduleAsync(System.Collections.Generic.IEnumerable{Elsa.Workflows.Runtime.Entities.StoredTrigger},System.Threading.CancellationToken)">
+            <summary>
+            Schedules tasks for the specified list of triggers. 
+            </summary>
+            <param name="triggers">The triggers to schedule tasks for.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+        </member>
+        <member name="M:Elsa.Scheduling.Contracts.ITriggerScheduler.UnscheduleAsync(System.Collections.Generic.IEnumerable{Elsa.Workflows.Runtime.Entities.StoredTrigger},System.Threading.CancellationToken)">
+            <summary>
+            Unschedules tasks for the specified list of triggers.
+            </summary>
+            <param name="triggers">The triggers to unschedule tasks for.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+        </member>
+        <member name="T:Elsa.Scheduling.Contracts.IWorkflowScheduler">
+            <summary>
+            A contract for scheduling workflows to execute at a specific future instant. Can be used to implement a custom scheduler, e.g. using Quartz.NET and Hangfire.
+            </summary>
+        </member>
+        <member name="M:Elsa.Scheduling.Contracts.IWorkflowScheduler.ScheduleAtAsync(System.String,Elsa.Workflows.Runtime.Requests.DispatchWorkflowDefinitionRequest,System.DateTimeOffset,System.Threading.CancellationToken)">
+            <summary>
+            Schedules a workflow request to be executed at the specified time.
+            </summary>
+            <param name="taskName">The name of the task to schedule.</param>
+            <param name="request">The workflow request to schedule.</param>
+            <param name="at">The time at which the workflow should be executed.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+        </member>
+        <member name="M:Elsa.Scheduling.Contracts.IWorkflowScheduler.ScheduleAtAsync(System.String,Elsa.Workflows.Runtime.Requests.DispatchWorkflowInstanceRequest,System.DateTimeOffset,System.Threading.CancellationToken)">
+            <summary>
+            Schedules a workflow request to be executed at the specified time.
+            </summary>
+            <param name="taskName">The name of the task to schedule.</param>
+            <param name="request">The workflow request to schedule.</param>
+            <param name="at">The time at which the workflow should be executed.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+        </member>
+        <member name="M:Elsa.Scheduling.Contracts.IWorkflowScheduler.ScheduleRecurringAsync(System.String,Elsa.Workflows.Runtime.Requests.DispatchWorkflowDefinitionRequest,System.DateTimeOffset,System.TimeSpan,System.Threading.CancellationToken)">
+            <summary>
+            Schedules a workflow request to be executed at the specified time.
+            </summary>
+            <param name="taskName">The name of the task to schedule.</param>
+            <param name="request">The workflow request to schedule.</param>
+            <param name="startAt">The time at which the first execution should occur.</param>
+            <param name="interval">The interval at which the workflow should be executed.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+        </member>
+        <member name="M:Elsa.Scheduling.Contracts.IWorkflowScheduler.ScheduleRecurringAsync(System.String,Elsa.Workflows.Runtime.Requests.DispatchWorkflowInstanceRequest,System.DateTimeOffset,System.TimeSpan,System.Threading.CancellationToken)">
+            <summary>
+            Schedules a workflow request to be executed at the specified time.
+            </summary>
+            <param name="taskName">The name of the task to schedule.</param>
+            <param name="request">The workflow request to schedule.</param>
+            <param name="startAt">The time at which the first execution should occur.</param>
+            <param name="interval">The interval at which the workflow should be executed.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+        </member>
+        <member name="M:Elsa.Scheduling.Contracts.IWorkflowScheduler.ScheduleCronAsync(System.String,Elsa.Workflows.Runtime.Requests.DispatchWorkflowDefinitionRequest,System.String,System.Threading.CancellationToken)">
+            <summary>
+            Schedules a workflow request to be executed at the specified time.
+            </summary>
+            <param name="taskName">The name of the task to schedule.</param>
+            <param name="request">The workflow request to schedule.</param>
+            <param name="cronExpression">The cron expression to use.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+        </member>
+        <member name="M:Elsa.Scheduling.Contracts.IWorkflowScheduler.ScheduleCronAsync(System.String,Elsa.Workflows.Runtime.Requests.DispatchWorkflowInstanceRequest,System.String,System.Threading.CancellationToken)">
+            <summary>
+            Schedules a workflow request to be executed at the specified time.
+            </summary>
+            <param name="taskName">The name of the task to schedule.</param>
+            <param name="request">The workflow request to schedule.</param>
+            <param name="cronExpression">The cron expression to use.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+        </member>
+        <member name="M:Elsa.Scheduling.Contracts.IWorkflowScheduler.UnscheduleAsync(System.String,System.Threading.CancellationToken)">
+            <summary>
+            Clears the schedule for the specified task.
+            </summary>
+            <param name="taskName">The name of the task to unschedule.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+        </member>
+        <member name="T:Elsa.Scheduling.Features.SchedulingFeature">
+            <summary>
+            Provides scheduling features to the system.
+            </summary>
+        </member>
+        <member name="M:Elsa.Scheduling.Features.SchedulingFeature.#ctor(Elsa.Features.Services.IModule)">
+            <inheritdoc />
+        </member>
+        <member name="P:Elsa.Scheduling.Features.SchedulingFeature.WorkflowScheduler">
+            <summary>
+            Gets or sets the trigger scheduler.
+            </summary>
+        </member>
+        <member name="P:Elsa.Scheduling.Features.SchedulingFeature.CronParser">
+            <summary>
+            Gets or sets the CRON parser.
+            </summary>
+        </member>
+        <member name="M:Elsa.Scheduling.Features.SchedulingFeature.ConfigureHostedServices">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Scheduling.Features.SchedulingFeature.Apply">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.Scheduling.Handlers.DeleteSchedules">
+            <summary>
+            Deletes scheduled jobs based on deleted workflow triggers and bookmarks.
+            </summary>
+        </member>
+        <member name="M:Elsa.Scheduling.Handlers.DeleteSchedules.#ctor(Elsa.Scheduling.Contracts.ITriggerScheduler,Elsa.Scheduling.Contracts.IBookmarkScheduler,Elsa.Workflows.Runtime.Contracts.ITriggerStore,Elsa.Workflows.Runtime.Contracts.IBookmarkStore)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Elsa.Scheduling.Handlers.ScheduleWorkflows"/> class.
+            </summary>
+        </member>
+        <member name="T:Elsa.Scheduling.Handlers.RunScheduledTaskHandler">
+            <summary>
+            A command handler for <see cref="T:Elsa.Scheduling.Commands.RunScheduledTask"/>.
+            </summary>
+        </member>
+        <member name="M:Elsa.Scheduling.Handlers.RunScheduledTaskHandler.#ctor(System.IServiceProvider)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Elsa.Scheduling.Handlers.RunScheduledTaskHandler"/> class.
+            </summary>
+        </member>
+        <member name="M:Elsa.Scheduling.Handlers.RunScheduledTaskHandler.HandleAsync(Elsa.Scheduling.Commands.RunScheduledTask,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.Scheduling.Handlers.ScheduleWorkflows">
+            <summary>
+            Updates scheduled jobs based on updated workflow triggers and bookmarks.
+            </summary>
+        </member>
+        <member name="M:Elsa.Scheduling.Handlers.ScheduleWorkflows.#ctor(Elsa.Scheduling.Contracts.ITriggerScheduler,Elsa.Scheduling.Contracts.IBookmarkScheduler)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Elsa.Scheduling.Handlers.ScheduleWorkflows"/> class.
+            </summary>
+        </member>
+        <member name="M:Elsa.Scheduling.Handlers.ScheduleWorkflows.HandleAsync(Elsa.Workflows.Runtime.Notifications.WorkflowTriggersIndexed,System.Threading.CancellationToken)">
+            <summary>
+            Updates scheduled jobs based on updated triggers.
+            </summary>
+        </member>
+        <member name="M:Elsa.Scheduling.Handlers.ScheduleWorkflows.HandleAsync(Elsa.Workflows.Runtime.Notifications.WorkflowBookmarksIndexed,System.Threading.CancellationToken)">
+            <summary>
+            Updates scheduled jobs based on updated bookmarks.
+            </summary>
+        </member>
+        <member name="T:Elsa.Scheduling.HostedServices.CreateSchedulesHostedService">
+            <summary>
+            Creates new schedules when using the default scheduler (which doesn't have its own persistence layer like Quartz or Hangfire).
+            </summary>
+        </member>
+        <member name="M:Elsa.Scheduling.HostedServices.CreateSchedulesHostedService.#ctor(Elsa.Workflows.Runtime.Contracts.ITriggerStore,Elsa.Workflows.Runtime.Contracts.IBookmarkStore,Elsa.Scheduling.Contracts.ITriggerScheduler,Elsa.Scheduling.Contracts.IBookmarkScheduler)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Elsa.Scheduling.HostedServices.CreateSchedulesHostedService"/> class.
+            </summary>
+        </member>
+        <member name="M:Elsa.Scheduling.HostedServices.CreateSchedulesHostedService.ExecuteAsync(System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.Scheduling.Models.ScheduleContext">
+            <summary>
+            The context for scheduling a task.
+            </summary>
+            <param name="ServiceProvider">The service provider.</param>
+            <param name="Task">The task to schedule.</param>
+        </member>
+        <member name="M:Elsa.Scheduling.Models.ScheduleContext.#ctor(System.IServiceProvider,Elsa.Scheduling.Contracts.ITask)">
+            <summary>
+            The context for scheduling a task.
+            </summary>
+            <param name="ServiceProvider">The service provider.</param>
+            <param name="Task">The task to schedule.</param>
+        </member>
+        <member name="P:Elsa.Scheduling.Models.ScheduleContext.ServiceProvider">
+            <summary>The service provider.</summary>
+        </member>
+        <member name="P:Elsa.Scheduling.Models.ScheduleContext.Task">
+            <summary>The task to schedule.</summary>
+        </member>
+        <member name="T:Elsa.Scheduling.Models.TaskExecutionContext">
+            <summary>
+            Represents a task execution context.
+            </summary>
+            <param name="ServiceProvider">The service provider.</param>
+            <param name="CancellationToken">The cancellation token.</param>
+        </member>
+        <member name="M:Elsa.Scheduling.Models.TaskExecutionContext.#ctor(System.IServiceProvider,System.Threading.CancellationToken)">
+            <summary>
+            Represents a task execution context.
+            </summary>
+            <param name="ServiceProvider">The service provider.</param>
+            <param name="CancellationToken">The cancellation token.</param>
+        </member>
+        <member name="P:Elsa.Scheduling.Models.TaskExecutionContext.ServiceProvider">
+            <summary>The service provider.</summary>
+        </member>
+        <member name="P:Elsa.Scheduling.Models.TaskExecutionContext.CancellationToken">
+            <summary>The cancellation token.</summary>
+        </member>
+        <member name="T:Elsa.Scheduling.ScheduledTasks.ScheduledCronTask">
+            <summary>
+            A task that is scheduled using a given cron expression.
+            </summary>
+        </member>
+        <member name="M:Elsa.Scheduling.ScheduledTasks.ScheduledCronTask.#ctor(Elsa.Scheduling.Contracts.ITask,System.String,Elsa.Scheduling.Contracts.ICronParser,Elsa.Mediator.Contracts.ICommandSender,Elsa.Common.Contracts.ISystemClock)">
+            <summary>
+            Initializes a new instance of <see cref="T:Elsa.Scheduling.ScheduledTasks.ScheduledCronTask"/>.
+            </summary>
+        </member>
+        <member name="M:Elsa.Scheduling.ScheduledTasks.ScheduledCronTask.Cancel">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.Scheduling.ScheduledTasks.ScheduledRecurringTask">
+            <summary>
+            A scheduled recurring task.
+            </summary>
+        </member>
+        <member name="M:Elsa.Scheduling.ScheduledTasks.ScheduledRecurringTask.#ctor(Elsa.Scheduling.Contracts.ITask,System.DateTimeOffset,System.TimeSpan,Elsa.Mediator.Contracts.ICommandSender,Elsa.Common.Contracts.ISystemClock)">
+            <summary>
+            Initializes a new instance of <see cref="T:Elsa.Scheduling.ScheduledTasks.ScheduledRecurringTask"/>.
+            </summary>
+            <param name="task">The task to execute.</param>
+            <param name="startAt">The instant at which to start executing the task.</param>
+            <param name="interval">The interval at which to execute the task.</param>
+            <param name="commandSender">The command sender.</param>
+            <param name="systemClock">The system clock.</param>
+        </member>
+        <member name="M:Elsa.Scheduling.ScheduledTasks.ScheduledRecurringTask.Cancel">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.Scheduling.ScheduledTasks.ScheduledSpecificInstantTask">
+            <summary>
+            A task that is scheduled to execute at a specific instant.
+            </summary>
+        </member>
+        <member name="M:Elsa.Scheduling.ScheduledTasks.ScheduledSpecificInstantTask.#ctor(Elsa.Scheduling.Contracts.ITask,System.DateTimeOffset,Elsa.Mediator.Contracts.ICommandSender,Elsa.Common.Contracts.ISystemClock)">
+            <summary>
+            Initializes a new instance of <see cref="T:Elsa.Scheduling.ScheduledTasks.ScheduledSpecificInstantTask"/>.
+            </summary>
+        </member>
+        <member name="M:Elsa.Scheduling.ScheduledTasks.ScheduledSpecificInstantTask.Cancel">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.Scheduling.Schedules.CronSchedule">
+            <summary>
+            A CRON schedule.
+            </summary>
+        </member>
+        <member name="M:Elsa.Scheduling.Schedules.CronSchedule.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Elsa.Scheduling.Schedules.CronSchedule"/> class.
+            </summary>
+            <param name="cronExpression">The CRON expression.</param>
+        </member>
+        <member name="P:Elsa.Scheduling.Schedules.CronSchedule.CronExpression">
+            <summary>
+            The CRON expression.
+            </summary>
+        </member>
+        <member name="M:Elsa.Scheduling.Schedules.CronSchedule.Schedule(Elsa.Scheduling.Models.ScheduleContext)">
+            <summary>
+            Creates a <see cref="T:Elsa.Scheduling.ScheduledTasks.ScheduledCronTask"/>.
+            </summary>
+        </member>
+        <member name="T:Elsa.Scheduling.Schedules.RecurringSchedule">
+            <summary>
+            A recurring schedule.
+            </summary>
+        </member>
+        <member name="M:Elsa.Scheduling.Schedules.RecurringSchedule.#ctor(System.DateTimeOffset,System.TimeSpan)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Elsa.Scheduling.Schedules.RecurringSchedule"/> class.
+            </summary>
+            <param name="startAt">The time at which the first occurrence should occur.</param>
+            <param name="interval">The interval between occurrences.</param>
+        </member>
+        <member name="P:Elsa.Scheduling.Schedules.RecurringSchedule.StartAt">
+            <summary>
+            The time at which the first occurrence should occur.
+            </summary>
+        </member>
+        <member name="P:Elsa.Scheduling.Schedules.RecurringSchedule.Interval">
+            <summary>
+            The interval between occurrences.
+            </summary>
+        </member>
+        <member name="M:Elsa.Scheduling.Schedules.RecurringSchedule.Schedule(Elsa.Scheduling.Models.ScheduleContext)">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.Scheduling.Schedules.SpecificInstantSchedule">
+            <summary>
+            A schedule that can be used to schedule a task at a specific instant.
+            </summary>
+        </member>
+        <member name="M:Elsa.Scheduling.Schedules.SpecificInstantSchedule.#ctor(System.DateTimeOffset)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Elsa.Scheduling.Schedules.SpecificInstantSchedule"/> class.
+            </summary>
+            <param name="startAt">The date and time to schedule the task for.</param>
+        </member>
+        <member name="P:Elsa.Scheduling.Schedules.SpecificInstantSchedule.StartAt">
+            <summary>
+            The date and time to schedule the task for.
+            </summary>
+        </member>
+        <member name="M:Elsa.Scheduling.Schedules.SpecificInstantSchedule.Schedule(Elsa.Scheduling.Models.ScheduleContext)">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.Scheduling.Services.CronosCronParser">
+            <summary>
+            A cron parser that uses Cronos.
+            </summary>
+        </member>
+        <member name="M:Elsa.Scheduling.Services.CronosCronParser.#ctor(Elsa.Common.Contracts.ISystemClock)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Elsa.Scheduling.Services.CronosCronParser"/> class.
+            </summary>
+        </member>
+        <member name="M:Elsa.Scheduling.Services.CronosCronParser.GetNextOccurrence(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.Scheduling.Services.DefaultBookmarkScheduler">
+            <summary>
+            A default implementation of <see cref="T:Elsa.Scheduling.Contracts.ITriggerScheduler"/> that schedules bookmarks using <see cref="T:Elsa.Scheduling.Contracts.IWorkflowScheduler"/>.
+            </summary>
+        </member>
+        <member name="M:Elsa.Scheduling.Services.DefaultBookmarkScheduler.#ctor(Elsa.Scheduling.Contracts.IWorkflowScheduler)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Elsa.Scheduling.Services.DefaultBookmarkScheduler"/> class.
+            </summary>
+        </member>
+        <member name="M:Elsa.Scheduling.Services.DefaultBookmarkScheduler.ScheduleAsync(System.Collections.Generic.IEnumerable{Elsa.Workflows.Runtime.Entities.StoredBookmark},System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Scheduling.Services.DefaultBookmarkScheduler.ScheduleAsync(System.String,System.Collections.Generic.IEnumerable{Elsa.Workflows.Core.Models.Bookmark},System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Scheduling.Services.DefaultBookmarkScheduler.UnscheduleAsync(System.Collections.Generic.IEnumerable{Elsa.Workflows.Core.Models.Bookmark},System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Scheduling.Services.DefaultBookmarkScheduler.UnscheduleAsync(System.Collections.Generic.IEnumerable{Elsa.Workflows.Runtime.Entities.StoredBookmark},System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.Scheduling.Services.DefaultTriggerScheduler">
+            <summary>
+            A default implementation of <see cref="T:Elsa.Scheduling.Contracts.ITriggerScheduler"/> that schedules triggers using <see cref="T:Elsa.Scheduling.Contracts.IWorkflowScheduler"/>.
+            </summary>
+        </member>
+        <member name="M:Elsa.Scheduling.Services.DefaultTriggerScheduler.#ctor(Elsa.Scheduling.Contracts.IWorkflowScheduler)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Elsa.Scheduling.Services.DefaultTriggerScheduler"/> class.
+            </summary>
+        </member>
+        <member name="M:Elsa.Scheduling.Services.DefaultTriggerScheduler.ScheduleAsync(System.Collections.Generic.IEnumerable{Elsa.Workflows.Runtime.Entities.StoredTrigger},System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Scheduling.Services.DefaultTriggerScheduler.UnscheduleAsync(System.Collections.Generic.IEnumerable{Elsa.Workflows.Runtime.Entities.StoredTrigger},System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.Scheduling.Services.DefaultWorkflowScheduler">
+            <summary>
+            A default implementation of <see cref="T:Elsa.Scheduling.Contracts.IWorkflowScheduler"/> that uses the <see cref="T:Elsa.Scheduling.Services.LocalScheduler"/>.
+            </summary>
+        </member>
+        <member name="M:Elsa.Scheduling.Services.DefaultWorkflowScheduler.#ctor(Elsa.Scheduling.Contracts.IScheduler)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Elsa.Scheduling.Services.DefaultWorkflowScheduler"/> class.
+            </summary>
+        </member>
+        <member name="M:Elsa.Scheduling.Services.DefaultWorkflowScheduler.ScheduleAtAsync(System.String,Elsa.Workflows.Runtime.Requests.DispatchWorkflowDefinitionRequest,System.DateTimeOffset,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Scheduling.Services.DefaultWorkflowScheduler.ScheduleAtAsync(System.String,Elsa.Workflows.Runtime.Requests.DispatchWorkflowInstanceRequest,System.DateTimeOffset,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Scheduling.Services.DefaultWorkflowScheduler.ScheduleRecurringAsync(System.String,Elsa.Workflows.Runtime.Requests.DispatchWorkflowDefinitionRequest,System.DateTimeOffset,System.TimeSpan,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Scheduling.Services.DefaultWorkflowScheduler.ScheduleRecurringAsync(System.String,Elsa.Workflows.Runtime.Requests.DispatchWorkflowInstanceRequest,System.DateTimeOffset,System.TimeSpan,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Scheduling.Services.DefaultWorkflowScheduler.ScheduleCronAsync(System.String,Elsa.Workflows.Runtime.Requests.DispatchWorkflowDefinitionRequest,System.String,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Scheduling.Services.DefaultWorkflowScheduler.ScheduleCronAsync(System.String,Elsa.Workflows.Runtime.Requests.DispatchWorkflowInstanceRequest,System.String,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Scheduling.Services.DefaultWorkflowScheduler.UnscheduleAsync(System.String,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.Scheduling.Services.LocalScheduler">
+            <summary>
+            Represents a local, in-memory scheduler that schedules tasks in-process.
+            </summary>
+        </member>
+        <member name="M:Elsa.Scheduling.Services.LocalScheduler.#ctor(System.IServiceProvider)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Elsa.Scheduling.Services.LocalScheduler"/> class.
+            </summary>
+        </member>
+        <member name="M:Elsa.Scheduling.Services.LocalScheduler.ScheduleAsync(System.String,Elsa.Scheduling.Contracts.ITask,Elsa.Scheduling.Contracts.ISchedule,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Scheduling.Services.LocalScheduler.ScheduleAsync(System.String,Elsa.Scheduling.Contracts.ITask,Elsa.Scheduling.Contracts.ISchedule,System.Collections.Generic.IEnumerable{System.String},System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Scheduling.Services.LocalScheduler.ClearScheduleAsync(System.String,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Scheduling.Services.LocalScheduler.ClearScheduleAsync(System.Collections.Generic.IEnumerable{System.String},System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.Scheduling.Tasks.DelegateTask">
+            <summary>
+            A generic task that executes the provided delegate.
+            </summary>
+        </member>
+        <member name="M:Elsa.Scheduling.Tasks.DelegateTask.#ctor(System.Func{Elsa.Scheduling.Models.TaskExecutionContext,System.Threading.Tasks.ValueTask})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Elsa.Scheduling.Tasks.DelegateTask"/> class.
+            </summary>
+            <param name="task">The delegate to execute.</param>
+        </member>
+        <member name="M:Elsa.Scheduling.Tasks.DelegateTask.ExecuteAsync(Elsa.Scheduling.Models.TaskExecutionContext)">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.Scheduling.Tasks.ResumeWorkflowTask">
+            <summary>
+            A task that resumes a workflow.
+            </summary>
+        </member>
+        <member name="M:Elsa.Scheduling.Tasks.ResumeWorkflowTask.#ctor(Elsa.Workflows.Runtime.Requests.DispatchWorkflowInstanceRequest)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Elsa.Scheduling.Tasks.ResumeWorkflowTask"/> class.
+            </summary>
+            <param name="dispatchWorkflowInstanceRequest">The dispatch workflow instance request.</param>
+        </member>
+        <member name="M:Elsa.Scheduling.Tasks.ResumeWorkflowTask.ExecuteAsync(Elsa.Scheduling.Models.TaskExecutionContext)">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.Scheduling.Tasks.RunWorkflowTask">
+            <summary>
+            A task that runs a workflow.
+            </summary>
+        </member>
+        <member name="M:Elsa.Scheduling.Tasks.RunWorkflowTask.#ctor(Elsa.Workflows.Runtime.Requests.DispatchWorkflowDefinitionRequest)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Elsa.Scheduling.Tasks.RunWorkflowTask"/> class.
+            </summary>
+        </member>
+        <member name="M:Elsa.Scheduling.Tasks.RunWorkflowTask.ExecuteAsync(Elsa.Scheduling.Models.TaskExecutionContext)">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.Extensions.ModuleExtensions">
+            <summary>
+            Provides extension methods for <see cref="T:Elsa.Features.Services.IModule"/> instances.
+            </summary>
+        </member>
+        <member name="M:Elsa.Extensions.ModuleExtensions.UseScheduling(Elsa.Features.Services.IModule,System.Action{Elsa.Scheduling.Features.SchedulingFeature})">
+            <summary>
+            Enables the scheduling feature.
+            </summary>
+            <param name="module">The module.</param>
+            <param name="configure">A delegate to configure the feature.</param>
+            <returns>The module.</returns>
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,690 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Elsa.EntityFrameworkCore</name>
+    </assembly>
+    <members>
+        <member name="T:Elsa.EntityFrameworkCore.Modules.Alterations.EFCoreAlterationJobStore">
+            <summary>
+            An EF Core implementation of <see cref="T:Elsa.Alterations.Core.Contracts.IAlterationPlanStore"/>.
+            </summary>
+        </member>
+        <member name="M:Elsa.EntityFrameworkCore.Modules.Alterations.EFCoreAlterationJobStore.#ctor(Elsa.EntityFrameworkCore.Common.EntityStore{Elsa.EntityFrameworkCore.Modules.Alterations.AlterationsElsaDbContext,Elsa.Alterations.Core.Entities.AlterationJob})">
+            <summary>
+            Constructor.
+            </summary>
+        </member>
+        <member name="M:Elsa.EntityFrameworkCore.Modules.Alterations.EFCoreAlterationJobStore.SaveAsync(Elsa.Alterations.Core.Entities.AlterationJob,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.EntityFrameworkCore.Modules.Alterations.EFCoreAlterationJobStore.SaveManyAsync(System.Collections.Generic.IEnumerable{Elsa.Alterations.Core.Entities.AlterationJob},System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.EntityFrameworkCore.Modules.Alterations.EFCoreAlterationJobStore.FindAsync(Elsa.Alterations.Core.Filters.AlterationJobFilter,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.EntityFrameworkCore.Modules.Alterations.EFCoreAlterationJobStore.FindManyAsync(Elsa.Alterations.Core.Filters.AlterationJobFilter,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.EntityFrameworkCore.Modules.Alterations.EFCoreAlterationJobStore.FindManyIdsAsync(Elsa.Alterations.Core.Filters.AlterationJobFilter,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.EntityFrameworkCore.Modules.Alterations.EFCoreAlterationJobStore.CountAsync(Elsa.Alterations.Core.Filters.AlterationJobFilter,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.EntityFrameworkCore.Modules.Alterations.EFCoreAlterationPlanStore">
+            <summary>
+            An EF Core implementation of <see cref="T:Elsa.Alterations.Core.Contracts.IAlterationPlanStore"/>.
+            </summary>
+        </member>
+        <member name="M:Elsa.EntityFrameworkCore.Modules.Alterations.EFCoreAlterationPlanStore.#ctor(Elsa.EntityFrameworkCore.Common.EntityStore{Elsa.EntityFrameworkCore.Modules.Alterations.AlterationsElsaDbContext,Elsa.Alterations.Core.Entities.AlterationPlan},Elsa.Alterations.Core.Contracts.IAlterationSerializer)">
+            <summary>
+            Constructor.
+            </summary>
+        </member>
+        <member name="M:Elsa.EntityFrameworkCore.Modules.Alterations.EFCoreAlterationPlanStore.SaveAsync(Elsa.Alterations.Core.Entities.AlterationPlan,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.EntityFrameworkCore.Modules.Alterations.EFCoreAlterationPlanStore.FindAsync(Elsa.Alterations.Core.Filters.AlterationPlanFilter,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.EntityFrameworkCore.Modules.Alterations.Configurations">
+            <summary>
+            EF Core configuration for various entity types. 
+            </summary>
+        </member>
+        <member name="M:Elsa.EntityFrameworkCore.Modules.Alterations.Configurations.Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder{Elsa.Alterations.Core.Entities.AlterationPlan})">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.EntityFrameworkCore.Modules.Alterations.Configurations.Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder{Elsa.Alterations.Core.Entities.AlterationJob})">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.EntityFrameworkCore.Modules.Alterations.AlterationsElsaDbContext">
+            <summary>
+            DB context for the runtime module.
+            </summary>
+        </member>
+        <member name="M:Elsa.EntityFrameworkCore.Modules.Alterations.AlterationsElsaDbContext.#ctor(Microsoft.EntityFrameworkCore.DbContextOptions)">
+            <inheritdoc />
+        </member>
+        <member name="P:Elsa.EntityFrameworkCore.Modules.Alterations.AlterationsElsaDbContext.AlterationPlans">
+            <summary>
+            The alteration plans.
+            </summary>
+        </member>
+        <member name="P:Elsa.EntityFrameworkCore.Modules.Alterations.AlterationsElsaDbContext.AlterationJobs">
+            <summary>
+            The alteration jobs.
+            </summary>
+        </member>
+        <member name="M:Elsa.EntityFrameworkCore.Modules.Alterations.AlterationsElsaDbContext.OnModelCreating(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.EntityFrameworkCore.Modules.Alterations.AlterationsElsaDbContext.ApplyEntityConfigurations(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.EntityFrameworkCore.Modules.Alterations.AlterationsElsaDbContext.SetupForOracle(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.EntityFrameworkCore.Modules.Alterations.Extensions">
+            <summary>
+            Provides extensions to the <see cref="T:Elsa.Alterations.Features.AlterationsFeature"/> feature.
+            </summary>
+        </member>
+        <member name="M:Elsa.EntityFrameworkCore.Modules.Alterations.Extensions.UseEntityFrameworkCore(Elsa.Alterations.Features.AlterationsFeature,System.Action{Elsa.EntityFrameworkCore.Modules.Alterations.EFCoreAlterationsPersistenceFeature})">
+            <summary>
+            Configures the <see cref="T:Elsa.Alterations.Features.AlterationsFeature"/> to use EF Core persistence providers.
+            </summary>
+        </member>
+        <member name="T:Elsa.EntityFrameworkCore.Modules.Alterations.EFCoreAlterationsPersistenceFeature">
+            <summary>
+            Configures the default workflow runtime to use EF Core persistence providers.
+            </summary>
+        </member>
+        <member name="M:Elsa.EntityFrameworkCore.Modules.Alterations.EFCoreAlterationsPersistenceFeature.#ctor(Elsa.Features.Services.IModule)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.EntityFrameworkCore.Modules.Alterations.EFCoreAlterationsPersistenceFeature.Configure">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.EntityFrameworkCore.Modules.Alterations.EFCoreAlterationsPersistenceFeature.Apply">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.EntityFrameworkCore.Modules.Identity.EFCoreApplicationStore">
+            <summary>
+            An EF Core implementation of <see cref="T:Elsa.Identity.Contracts.IApplicationStore"/>.
+            </summary>
+        </member>
+        <member name="M:Elsa.EntityFrameworkCore.Modules.Identity.EFCoreApplicationStore.#ctor(Elsa.EntityFrameworkCore.Common.EntityStore{Elsa.EntityFrameworkCore.Modules.Identity.IdentityElsaDbContext,Elsa.Identity.Entities.Application})">
+            <summary>
+            Initializes a new instance of <see cref="T:Elsa.EntityFrameworkCore.Modules.Identity.EFCoreApplicationStore"/>.
+            </summary>
+        </member>
+        <member name="M:Elsa.EntityFrameworkCore.Modules.Identity.EFCoreApplicationStore.SaveAsync(Elsa.Identity.Entities.Application,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.EntityFrameworkCore.Modules.Identity.EFCoreApplicationStore.DeleteAsync(Elsa.Identity.Models.ApplicationFilter,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.EntityFrameworkCore.Modules.Identity.EFCoreApplicationStore.FindAsync(Elsa.Identity.Models.ApplicationFilter,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.EntityFrameworkCore.Modules.Identity.IdentityElsaDbContext">
+            <summary>
+            The database context for the Identity module.
+            </summary>
+        </member>
+        <member name="M:Elsa.EntityFrameworkCore.Modules.Identity.IdentityElsaDbContext.#ctor(Microsoft.EntityFrameworkCore.DbContextOptions)">
+            <inheritdoc />
+        </member>
+        <member name="P:Elsa.EntityFrameworkCore.Modules.Identity.IdentityElsaDbContext.Users">
+            <summary>
+            The users.
+            </summary>
+        </member>
+        <member name="P:Elsa.EntityFrameworkCore.Modules.Identity.IdentityElsaDbContext.Applications">
+            <summary>
+            The applications.
+            </summary>
+        </member>
+        <member name="P:Elsa.EntityFrameworkCore.Modules.Identity.IdentityElsaDbContext.Roles">
+            <summary>
+            The roles.
+            </summary>
+        </member>
+        <member name="M:Elsa.EntityFrameworkCore.Modules.Identity.IdentityElsaDbContext.ApplyEntityConfigurations(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.EntityFrameworkCore.Modules.Identity.EFCoreIdentityPersistenceFeature">
+            <summary>
+            Configures the <see cref="T:Elsa.Identity.Features.IdentityFeature"/> feature with Entity Framework Core persistence providers.
+            </summary>
+        </member>
+        <member name="M:Elsa.EntityFrameworkCore.Modules.Identity.EFCoreIdentityPersistenceFeature.#ctor(Elsa.Features.Services.IModule)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.EntityFrameworkCore.Modules.Identity.EFCoreIdentityPersistenceFeature.Configure">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.EntityFrameworkCore.Modules.Identity.EFCoreIdentityPersistenceFeature.Apply">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.EntityFrameworkCore.Modules.Identity.IdentityFeatureExtensions">
+            <summary>
+            Provides extensions for <see cref="T:Elsa.Identity.Features.IdentityFeature"/> 
+            </summary>
+        </member>
+        <member name="M:Elsa.EntityFrameworkCore.Modules.Identity.IdentityFeatureExtensions.UseEntityFrameworkCore(Elsa.Identity.Features.IdentityFeature,System.Action{Elsa.EntityFrameworkCore.Modules.Identity.EFCoreIdentityPersistenceFeature})">
+            <summary>
+            Sets up the EF Core persistence provider for the User, Application and Role stores. 
+            </summary>
+        </member>
+        <member name="T:Elsa.EntityFrameworkCore.Modules.Identity.EFCoreRoleStore">
+            <summary>
+            An EF Core implementation of <see cref="T:Elsa.Identity.Contracts.IRoleStore"/>.
+            </summary>
+        </member>
+        <member name="M:Elsa.EntityFrameworkCore.Modules.Identity.EFCoreRoleStore.#ctor(Elsa.EntityFrameworkCore.Common.EntityStore{Elsa.EntityFrameworkCore.Modules.Identity.IdentityElsaDbContext,Elsa.Identity.Entities.Role})">
+            <summary>
+            Initializes a new instance of <see cref="T:Elsa.EntityFrameworkCore.Modules.Identity.EFCoreRoleStore"/>.
+            </summary>
+        </member>
+        <member name="M:Elsa.EntityFrameworkCore.Modules.Identity.EFCoreRoleStore.SaveAsync(Elsa.Identity.Entities.Role,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.EntityFrameworkCore.Modules.Identity.EFCoreRoleStore.AddAsync(Elsa.Identity.Entities.Role,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.EntityFrameworkCore.Modules.Identity.EFCoreRoleStore.DeleteAsync(Elsa.Identity.Models.RoleFilter,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.EntityFrameworkCore.Modules.Identity.EFCoreRoleStore.FindAsync(Elsa.Identity.Models.RoleFilter,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.EntityFrameworkCore.Modules.Identity.EFCoreRoleStore.FindManyAsync(Elsa.Identity.Models.RoleFilter,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.EntityFrameworkCore.Modules.Identity.EFCoreUserStore">
+            <summary>
+            An EF Core implementation of <see cref="T:Elsa.Identity.Contracts.IUserStore"/>.
+            </summary>
+        </member>
+        <member name="M:Elsa.EntityFrameworkCore.Modules.Identity.EFCoreUserStore.#ctor(Elsa.EntityFrameworkCore.Common.EntityStore{Elsa.EntityFrameworkCore.Modules.Identity.IdentityElsaDbContext,Elsa.Identity.Entities.User})">
+            <summary>
+            Initializes a new instance of <see cref="T:Elsa.EntityFrameworkCore.Modules.Identity.EFCoreUserStore"/>.
+            </summary>
+        </member>
+        <member name="M:Elsa.EntityFrameworkCore.Modules.Identity.EFCoreUserStore.SaveAsync(Elsa.Identity.Entities.User,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.EntityFrameworkCore.Modules.Identity.EFCoreUserStore.DeleteAsync(Elsa.Identity.Models.UserFilter,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.EntityFrameworkCore.Modules.Identity.EFCoreUserStore.FindAsync(Elsa.Identity.Models.UserFilter,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.EntityFrameworkCore.Modules.Labels.EFCoreLabelStore">
+            <summary>
+            An Entity Framework Core implementation of <see cref="T:Elsa.Labels.Contracts.ILabelStore"/>.
+            </summary>
+        </member>
+        <member name="M:Elsa.EntityFrameworkCore.Modules.Labels.EFCoreLabelStore.#ctor(Elsa.EntityFrameworkCore.Common.EntityStore{Elsa.EntityFrameworkCore.Modules.Labels.LabelsElsaDbContext,Elsa.Labels.Entities.Label},Elsa.EntityFrameworkCore.Common.EntityStore{Elsa.EntityFrameworkCore.Modules.Labels.LabelsElsaDbContext,Elsa.Labels.Entities.WorkflowDefinitionLabel})">
+            <summary>
+            Initializes a new instance of <see cref="T:Elsa.EntityFrameworkCore.Modules.Labels.EFCoreLabelStore"/>.
+            </summary>
+        </member>
+        <member name="M:Elsa.EntityFrameworkCore.Modules.Labels.EFCoreLabelStore.SaveAsync(Elsa.Labels.Entities.Label,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.EntityFrameworkCore.Modules.Labels.EFCoreLabelStore.SaveManyAsync(System.Collections.Generic.IEnumerable{Elsa.Labels.Entities.Label},System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.EntityFrameworkCore.Modules.Labels.EFCoreLabelStore.DeleteAsync(System.String,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.EntityFrameworkCore.Modules.Labels.EFCoreLabelStore.DeleteManyAsync(System.Collections.Generic.IEnumerable{System.String},System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.EntityFrameworkCore.Modules.Labels.EFCoreWorkflowDefinitionLabelStore">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.EntityFrameworkCore.Modules.Labels.EFCoreWorkflowDefinitionLabelStore.#ctor(Elsa.EntityFrameworkCore.Common.EntityStore{Elsa.EntityFrameworkCore.Modules.Labels.LabelsElsaDbContext,Elsa.Labels.Entities.WorkflowDefinitionLabel})">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="M:Elsa.EntityFrameworkCore.Modules.Labels.EFCoreWorkflowDefinitionLabelStore.SaveAsync(Elsa.Labels.Entities.WorkflowDefinitionLabel,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.EntityFrameworkCore.Modules.Labels.EFCoreWorkflowDefinitionLabelStore.SaveManyAsync(System.Collections.Generic.IEnumerable{Elsa.Labels.Entities.WorkflowDefinitionLabel},System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.EntityFrameworkCore.Modules.Labels.EFCoreWorkflowDefinitionLabelStore.DeleteAsync(System.String,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.EntityFrameworkCore.Modules.Labels.EFCoreWorkflowDefinitionLabelStore.FindByWorkflowDefinitionVersionIdAsync(System.String,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.EntityFrameworkCore.Modules.Labels.EFCoreWorkflowDefinitionLabelStore.ReplaceAsync(System.Collections.Generic.IEnumerable{Elsa.Labels.Entities.WorkflowDefinitionLabel},System.Collections.Generic.IEnumerable{Elsa.Labels.Entities.WorkflowDefinitionLabel},System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.EntityFrameworkCore.Modules.Labels.EFCoreWorkflowDefinitionLabelStore.DeleteByWorkflowDefinitionIdAsync(System.String,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.EntityFrameworkCore.Modules.Labels.EFCoreWorkflowDefinitionLabelStore.DeleteByWorkflowDefinitionVersionIdAsync(System.String,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.EntityFrameworkCore.Modules.Labels.EFCoreWorkflowDefinitionLabelStore.DeleteByWorkflowDefinitionIdsAsync(System.Collections.Generic.IEnumerable{System.String},System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.EntityFrameworkCore.Modules.Labels.EFCoreWorkflowDefinitionLabelStore.DeleteByWorkflowDefinitionVersionIdsAsync(System.Collections.Generic.IEnumerable{System.String},System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.EntityFrameworkCore.Modules.Management.ManagementElsaDbContext">
+            <summary>
+            The database context for the Management module.
+            </summary>
+        </member>
+        <member name="M:Elsa.EntityFrameworkCore.Modules.Management.ManagementElsaDbContext.#ctor(Microsoft.EntityFrameworkCore.DbContextOptions)">
+            <inheritdoc />
+        </member>
+        <member name="P:Elsa.EntityFrameworkCore.Modules.Management.ManagementElsaDbContext.WorkflowDefinitions">
+            <summary>
+            The workflow definitions.
+            </summary>
+        </member>
+        <member name="P:Elsa.EntityFrameworkCore.Modules.Management.ManagementElsaDbContext.WorkflowInstances">
+            <summary>
+            The workflow instances.
+            </summary>
+        </member>
+        <member name="M:Elsa.EntityFrameworkCore.Modules.Management.ManagementElsaDbContext.OnModelCreating(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.EntityFrameworkCore.Modules.Management.ManagementElsaDbContext.ApplyEntityConfigurations(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.EntityFrameworkCore.Modules.Management.ManagementElsaDbContext.SetupForOracle(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.EntityFrameworkCore.Modules.Management.WorkflowManagementFeatureExtensions">
+            <summary>
+            Provides extensions to various management related features.
+            </summary>
+        </member>
+        <member name="M:Elsa.EntityFrameworkCore.Modules.Management.WorkflowManagementFeatureExtensions.UseEntityFrameworkCore(Elsa.Workflows.Management.Features.WorkflowDefinitionsFeature,System.Action{Elsa.EntityFrameworkCore.Modules.Management.EFCoreWorkflowDefinitionPersistenceFeature})">
+            <summary>
+            Sets up the EF Core persistence provider. 
+            </summary>
+        </member>
+        <member name="M:Elsa.EntityFrameworkCore.Modules.Management.WorkflowManagementFeatureExtensions.UseEntityFrameworkCore(Elsa.Workflows.Management.Features.WorkflowInstancesFeature,System.Action{Elsa.EntityFrameworkCore.Modules.Management.EFCoreWorkflowInstancePersistenceFeature})">
+            <summary>
+            Sets up the EF Core persistence provider. 
+            </summary>
+        </member>
+        <member name="M:Elsa.EntityFrameworkCore.Modules.Management.WorkflowManagementFeatureExtensions.UseEntityFrameworkCore(Elsa.Workflows.Management.Features.WorkflowManagementFeature,System.Action{Elsa.EntityFrameworkCore.Modules.Management.WorkflowManagementPersistenceFeature})">
+            <summary>
+            Sets up the EF Core persistence provider. 
+            </summary>
+        </member>
+        <member name="T:Elsa.EntityFrameworkCore.Modules.Management.EFCoreWorkflowDefinitionPersistenceFeature">
+            <summary>
+            Configures the <see cref="T:Elsa.Workflows.Management.Features.WorkflowDefinitionsFeature"/> feature with an Entity Framework Core persistence provider.
+            </summary>
+        </member>
+        <member name="M:Elsa.EntityFrameworkCore.Modules.Management.EFCoreWorkflowDefinitionPersistenceFeature.#ctor(Elsa.Features.Services.IModule)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.EntityFrameworkCore.Modules.Management.EFCoreWorkflowDefinitionPersistenceFeature.Configure">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.EntityFrameworkCore.Modules.Management.EFCoreWorkflowDefinitionPersistenceFeature.Apply">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.EntityFrameworkCore.Modules.Management.EFCoreWorkflowDefinitionStore">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.EntityFrameworkCore.Modules.Management.EFCoreWorkflowDefinitionStore.#ctor(Elsa.EntityFrameworkCore.Common.EntityStore{Elsa.EntityFrameworkCore.Modules.Management.ManagementElsaDbContext,Elsa.Workflows.Management.Entities.WorkflowDefinition},Elsa.Workflows.Core.Contracts.IPayloadSerializer)">
+            <summary>
+            Constructor.
+            </summary>
+        </member>
+        <member name="M:Elsa.EntityFrameworkCore.Modules.Management.EFCoreWorkflowDefinitionStore.FindAsync(Elsa.Workflows.Management.Filters.WorkflowDefinitionFilter,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.EntityFrameworkCore.Modules.Management.EFCoreWorkflowDefinitionStore.FindAsync``1(Elsa.Workflows.Management.Filters.WorkflowDefinitionFilter,Elsa.Workflows.Management.Filters.WorkflowDefinitionOrder{``0},System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.EntityFrameworkCore.Modules.Management.EFCoreWorkflowDefinitionStore.FindManyAsync(Elsa.Workflows.Management.Filters.WorkflowDefinitionFilter,Elsa.Common.Models.PageArgs,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.EntityFrameworkCore.Modules.Management.EFCoreWorkflowDefinitionStore.FindManyAsync``1(Elsa.Workflows.Management.Filters.WorkflowDefinitionFilter,Elsa.Workflows.Management.Filters.WorkflowDefinitionOrder{``0},Elsa.Common.Models.PageArgs,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.EntityFrameworkCore.Modules.Management.EFCoreWorkflowDefinitionStore.FindManyAsync(Elsa.Workflows.Management.Filters.WorkflowDefinitionFilter,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.EntityFrameworkCore.Modules.Management.EFCoreWorkflowDefinitionStore.FindManyAsync``1(Elsa.Workflows.Management.Filters.WorkflowDefinitionFilter,Elsa.Workflows.Management.Filters.WorkflowDefinitionOrder{``0},System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.EntityFrameworkCore.Modules.Management.EFCoreWorkflowDefinitionStore.FindSummariesAsync(Elsa.Workflows.Management.Filters.WorkflowDefinitionFilter,Elsa.Common.Models.PageArgs,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.EntityFrameworkCore.Modules.Management.EFCoreWorkflowDefinitionStore.FindSummariesAsync``1(Elsa.Workflows.Management.Filters.WorkflowDefinitionFilter,Elsa.Workflows.Management.Filters.WorkflowDefinitionOrder{``0},Elsa.Common.Models.PageArgs,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.EntityFrameworkCore.Modules.Management.EFCoreWorkflowDefinitionStore.FindSummariesAsync(Elsa.Workflows.Management.Filters.WorkflowDefinitionFilter,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.EntityFrameworkCore.Modules.Management.EFCoreWorkflowDefinitionStore.FindSummariesAsync``1(Elsa.Workflows.Management.Filters.WorkflowDefinitionFilter,Elsa.Workflows.Management.Filters.WorkflowDefinitionOrder{``0},System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.EntityFrameworkCore.Modules.Management.EFCoreWorkflowDefinitionStore.FindLastVersionAsync(Elsa.Workflows.Management.Filters.WorkflowDefinitionFilter,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.EntityFrameworkCore.Modules.Management.EFCoreWorkflowDefinitionStore.SaveAsync(Elsa.Workflows.Management.Entities.WorkflowDefinition,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.EntityFrameworkCore.Modules.Management.EFCoreWorkflowDefinitionStore.SaveManyAsync(System.Collections.Generic.IEnumerable{Elsa.Workflows.Management.Entities.WorkflowDefinition},System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.EntityFrameworkCore.Modules.Management.EFCoreWorkflowDefinitionStore.DeleteAsync(Elsa.Workflows.Management.Filters.WorkflowDefinitionFilter,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.EntityFrameworkCore.Modules.Management.EFCoreWorkflowDefinitionStore.AnyAsync(Elsa.Workflows.Management.Filters.WorkflowDefinitionFilter,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.EntityFrameworkCore.Modules.Management.EFCoreWorkflowDefinitionStore.CountDistinctAsync(System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.EntityFrameworkCore.Modules.Management.EFCoreWorkflowDefinitionStore.GetIsNameUnique(System.String,System.String,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.EntityFrameworkCore.Modules.Management.EFCoreWorkflowInstancePersistenceFeature">
+            <summary>
+            Configures the <see cref="T:Elsa.Workflows.Management.Features.WorkflowInstancesFeature"/> feature with an Entity Framework Core persistence provider.
+            </summary>
+        </member>
+        <member name="M:Elsa.EntityFrameworkCore.Modules.Management.EFCoreWorkflowInstancePersistenceFeature.#ctor(Elsa.Features.Services.IModule)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.EntityFrameworkCore.Modules.Management.EFCoreWorkflowInstancePersistenceFeature.Configure">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.EntityFrameworkCore.Modules.Management.EFCoreWorkflowInstancePersistenceFeature.Apply">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.EntityFrameworkCore.Modules.Management.EFCoreWorkflowInstanceStore">
+            <summary>
+            An EF Core implementation of <see cref="T:Elsa.Workflows.Management.Contracts.IWorkflowInstanceStore"/>.
+            </summary>
+        </member>
+        <member name="M:Elsa.EntityFrameworkCore.Modules.Management.EFCoreWorkflowInstanceStore.#ctor(Elsa.EntityFrameworkCore.Common.EntityStore{Elsa.EntityFrameworkCore.Modules.Management.ManagementElsaDbContext,Elsa.Workflows.Management.Entities.WorkflowInstance},Elsa.Workflows.Core.Contracts.IWorkflowStateSerializer)">
+            <summary>
+            Constructor.
+            </summary>
+        </member>
+        <member name="M:Elsa.EntityFrameworkCore.Modules.Management.EFCoreWorkflowInstanceStore.FindAsync(Elsa.Workflows.Management.Filters.WorkflowInstanceFilter,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.EntityFrameworkCore.Modules.Management.EFCoreWorkflowInstanceStore.FindManyAsync(Elsa.Workflows.Management.Filters.WorkflowInstanceFilter,Elsa.Common.Models.PageArgs,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.EntityFrameworkCore.Modules.Management.EFCoreWorkflowInstanceStore.FindManyAsync``1(Elsa.Workflows.Management.Filters.WorkflowInstanceFilter,Elsa.Common.Models.PageArgs,Elsa.Workflows.Management.Filters.WorkflowInstanceOrder{``0},System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.EntityFrameworkCore.Modules.Management.EFCoreWorkflowInstanceStore.FindManyAsync(Elsa.Workflows.Management.Filters.WorkflowInstanceFilter,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.EntityFrameworkCore.Modules.Management.EFCoreWorkflowInstanceStore.FindManyAsync``1(Elsa.Workflows.Management.Filters.WorkflowInstanceFilter,Elsa.Workflows.Management.Filters.WorkflowInstanceOrder{``0},System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.EntityFrameworkCore.Modules.Management.EFCoreWorkflowInstanceStore.CountAsync(Elsa.Workflows.Management.Filters.WorkflowInstanceFilter,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.EntityFrameworkCore.Modules.Management.EFCoreWorkflowInstanceStore.SummarizeManyAsync(Elsa.Workflows.Management.Filters.WorkflowInstanceFilter,Elsa.Common.Models.PageArgs,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.EntityFrameworkCore.Modules.Management.EFCoreWorkflowInstanceStore.SummarizeManyAsync``1(Elsa.Workflows.Management.Filters.WorkflowInstanceFilter,Elsa.Common.Models.PageArgs,Elsa.Workflows.Management.Filters.WorkflowInstanceOrder{``0},System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.EntityFrameworkCore.Modules.Management.EFCoreWorkflowInstanceStore.SummarizeManyAsync(Elsa.Workflows.Management.Filters.WorkflowInstanceFilter,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.EntityFrameworkCore.Modules.Management.EFCoreWorkflowInstanceStore.SummarizeManyAsync``1(Elsa.Workflows.Management.Filters.WorkflowInstanceFilter,Elsa.Workflows.Management.Filters.WorkflowInstanceOrder{``0},System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.EntityFrameworkCore.Modules.Management.EFCoreWorkflowInstanceStore.DeleteAsync(Elsa.Workflows.Management.Filters.WorkflowInstanceFilter,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.EntityFrameworkCore.Modules.Management.EFCoreWorkflowInstanceStore.SaveAsync(Elsa.Workflows.Management.Entities.WorkflowInstance,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.EntityFrameworkCore.Modules.Management.EFCoreWorkflowInstanceStore.SaveManyAsync(System.Collections.Generic.IEnumerable{Elsa.Workflows.Management.Entities.WorkflowInstance},System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.EntityFrameworkCore.Modules.Management.WorkflowManagementPersistenceFeature">
+            <summary>
+            Configures the <see cref="T:Elsa.Workflows.Management.Features.WorkflowInstancesFeature"/> and <see cref="T:Elsa.Workflows.Management.Features.WorkflowDefinitionsFeature"/> features with an Entity Framework Core persistence provider.
+            </summary>
+        </member>
+        <member name="M:Elsa.EntityFrameworkCore.Modules.Management.WorkflowManagementPersistenceFeature.#ctor(Elsa.Features.Services.IModule)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.EntityFrameworkCore.Modules.Management.WorkflowManagementPersistenceFeature.Configure">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.EntityFrameworkCore.Modules.Management.WorkflowManagementPersistenceFeature.Apply">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.EntityFrameworkCore.Modules.Runtime.EFCoreActivityExecutionStore">
+            <summary>
+            An EF Core implementation of <see cref="T:Elsa.Workflows.Runtime.Contracts.IActivityExecutionStore"/>.
+            </summary>
+        </member>
+        <member name="M:Elsa.EntityFrameworkCore.Modules.Runtime.EFCoreActivityExecutionStore.#ctor(Elsa.EntityFrameworkCore.Common.EntityStore{Elsa.EntityFrameworkCore.Modules.Runtime.RuntimeElsaDbContext,Elsa.Workflows.Runtime.Entities.ActivityExecutionRecord},Elsa.Workflows.Core.Contracts.ISafeSerializer,Elsa.Workflows.Core.Contracts.IPayloadSerializer)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Elsa.EntityFrameworkCore.Modules.Runtime.EFCoreActivityExecutionStore"/> class.
+            </summary>
+        </member>
+        <member name="M:Elsa.EntityFrameworkCore.Modules.Runtime.EFCoreActivityExecutionStore.SaveAsync(Elsa.Workflows.Runtime.Entities.ActivityExecutionRecord,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.EntityFrameworkCore.Modules.Runtime.EFCoreActivityExecutionStore.SaveManyAsync(System.Collections.Generic.IEnumerable{Elsa.Workflows.Runtime.Entities.ActivityExecutionRecord},System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.EntityFrameworkCore.Modules.Runtime.EFCoreActivityExecutionStore.FindAsync(Elsa.Workflows.Runtime.Filters.ActivityExecutionRecordFilter,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.EntityFrameworkCore.Modules.Runtime.EFCoreActivityExecutionStore.FindManyAsync``1(Elsa.Workflows.Runtime.Filters.ActivityExecutionRecordFilter,Elsa.Workflows.Runtime.OrderDefinitions.ActivityExecutionRecordOrder{``0},System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.EntityFrameworkCore.Modules.Runtime.EFCoreActivityExecutionStore.FindManyAsync(Elsa.Workflows.Runtime.Filters.ActivityExecutionRecordFilter,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.EntityFrameworkCore.Modules.Runtime.EFCoreActivityExecutionStore.CountAsync(Elsa.Workflows.Runtime.Filters.ActivityExecutionRecordFilter,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.EntityFrameworkCore.Modules.Runtime.EFCoreActivityExecutionStore.DeleteManyAsync(Elsa.Workflows.Runtime.Filters.ActivityExecutionRecordFilter,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.EntityFrameworkCore.Modules.Runtime.EFCoreBookmarkStore">
+            <summary>
+            An EF Core implementation of <see cref="T:Elsa.Workflows.Runtime.Contracts.IBookmarkStore"/>.
+            </summary>
+        </member>
+        <member name="M:Elsa.EntityFrameworkCore.Modules.Runtime.EFCoreBookmarkStore.#ctor(Elsa.EntityFrameworkCore.Common.Store{Elsa.EntityFrameworkCore.Modules.Runtime.RuntimeElsaDbContext,Elsa.Workflows.Runtime.Entities.StoredBookmark},Elsa.Workflows.Core.Contracts.IPayloadSerializer)">
+            <summary>
+            Constructor.
+            </summary>
+        </member>
+        <member name="M:Elsa.EntityFrameworkCore.Modules.Runtime.EFCoreBookmarkStore.SaveAsync(Elsa.Workflows.Runtime.Entities.StoredBookmark,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.EntityFrameworkCore.Modules.Runtime.EFCoreBookmarkStore.FindManyAsync(Elsa.Workflows.Runtime.Filters.BookmarkFilter,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.EntityFrameworkCore.Modules.Runtime.EFCoreBookmarkStore.DeleteAsync(Elsa.Workflows.Runtime.Filters.BookmarkFilter,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.EntityFrameworkCore.Modules.Runtime.Configurations">
+            <summary>
+            EF Core configuration for various sets of <see cref="T:Microsoft.EntityFrameworkCore.DbContext"/>. 
+            </summary>
+        </member>
+        <member name="M:Elsa.EntityFrameworkCore.Modules.Runtime.Configurations.Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder{Elsa.Workflows.Runtime.Entities.StoredTrigger})">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.EntityFrameworkCore.Modules.Runtime.Configurations.Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder{Elsa.Workflows.Runtime.Entities.WorkflowExecutionLogRecord})">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.EntityFrameworkCore.Modules.Runtime.Configurations.Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder{Elsa.Workflows.Runtime.Entities.ActivityExecutionRecord})">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.EntityFrameworkCore.Modules.Runtime.Configurations.Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder{Elsa.Workflows.Runtime.Entities.StoredBookmark})">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.EntityFrameworkCore.Modules.Runtime.Configurations.Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder{Elsa.Workflows.Runtime.Entities.WorkflowInboxMessage})">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.EntityFrameworkCore.Modules.Runtime.RuntimeElsaDbContext">
+            <summary>
+            DB context for the runtime module.
+            </summary>
+        </member>
+        <member name="M:Elsa.EntityFrameworkCore.Modules.Runtime.RuntimeElsaDbContext.#ctor(Microsoft.EntityFrameworkCore.DbContextOptions)">
+            <inheritdoc />
+        </member>
+        <member name="P:Elsa.EntityFrameworkCore.Modules.Runtime.RuntimeElsaDbContext.Triggers">
+            <summary>
+            The workflow triggers.
+            </summary>
+        </member>
+        <member name="P:Elsa.EntityFrameworkCore.Modules.Runtime.RuntimeElsaDbContext.WorkflowExecutionLogRecords">
+            <summary>
+            The workflow execution log records.
+            </summary>
+        </member>
+        <member name="P:Elsa.EntityFrameworkCore.Modules.Runtime.RuntimeElsaDbContext.ActivityExecutionRecords">
+            <summary>
+            The activity execution records.
+            </summary>
+        </member>
+        <member name="P:Elsa.EntityFrameworkCore.Modules.Runtime.RuntimeElsaDbContext.Bookmarks">
+            <summary>
+            The workflow bookmarks.
+            </summary>
+        </member>
+        <member name="P:Elsa.EntityFrameworkCore.Modules.Runtime.RuntimeElsaDbContext.WorkflowInboxMessages">
+            <summary>
+            The workflow inbox messages.
+            </summary>
+        </member>
+        <member name="M:Elsa.EntityFrameworkCore.Modules.Runtime.RuntimeElsaDbContext.ApplyEntityConfigurations(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.EntityFrameworkCore.Modules.Runtime.RuntimeElsaDbContext.SetupForOracle(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.EntityFrameworkCore.Modules.Runtime.Extensions">
+            <summary>
+            Provides extensions to the <see cref="T:Elsa.Workflows.Runtime.Features.WorkflowRuntimeFeature"/> feature.
+            </summary>
+        </member>
+        <member name="M:Elsa.EntityFrameworkCore.Modules.Runtime.Extensions.UseEntityFrameworkCore(Elsa.Workflows.Runtime.Features.WorkflowRuntimeFeature,System.Action{Elsa.EntityFrameworkCore.Modules.Runtime.EFCoreWorkflowRuntimePersistenceFeature})">
+            <summary>
+            Configures the <see cref="T:Elsa.Workflows.Runtime.Features.WorkflowRuntimeFeature"/> to use the <see cref="T:Elsa.EntityFrameworkCore.Modules.Runtime.EFCoreWorkflowRuntimePersistenceFeature"/>.
+            </summary>
+        </member>
+        <member name="T:Elsa.EntityFrameworkCore.Modules.Runtime.EFCoreTriggerStore">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.EntityFrameworkCore.Modules.Runtime.EFCoreTriggerStore.#ctor(Elsa.EntityFrameworkCore.Common.EntityStore{Elsa.EntityFrameworkCore.Modules.Runtime.RuntimeElsaDbContext,Elsa.Workflows.Runtime.Entities.StoredTrigger},Elsa.Workflows.Core.Contracts.IPayloadSerializer)">
+            <summary>
+            Constructor.
+            </summary>
+        </member>
+        <member name="M:Elsa.EntityFrameworkCore.Modules.Runtime.EFCoreTriggerStore.SaveAsync(Elsa.Workflows.Runtime.Entities.StoredTrigger,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.EntityFrameworkCore.Modules.Runtime.EFCoreTriggerStore.SaveManyAsync(System.Collections.Generic.IEnumerable{Elsa.Workflows.Runtime.Entities.StoredTrigger},System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.EntityFrameworkCore.Modules.Runtime.EFCoreTriggerStore.FindManyAsync(Elsa.Workflows.Runtime.Filters.TriggerFilter,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.EntityFrameworkCore.Modules.Runtime.EFCoreTriggerStore.ReplaceAsync(System.Collections.Generic.IEnumerable{Elsa.Workflows.Runtime.Entities.StoredTrigger},System.Collections.Generic.IEnumerable{Elsa.Workflows.Runtime.Entities.StoredTrigger},System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.EntityFrameworkCore.Modules.Runtime.EFCoreTriggerStore.DeleteManyAsync(Elsa.Workflows.Runtime.Filters.TriggerFilter,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.EntityFrameworkCore.Modules.Runtime.EFCoreWorkflowExecutionLogStore">
+            <summary>
+            An EF Core implementation of <see cref="T:Elsa.Workflows.Runtime.Contracts.IWorkflowExecutionLogStore"/>.
+            </summary>
+        </member>
+        <member name="M:Elsa.EntityFrameworkCore.Modules.Runtime.EFCoreWorkflowExecutionLogStore.#ctor(Elsa.EntityFrameworkCore.Common.EntityStore{Elsa.EntityFrameworkCore.Modules.Runtime.RuntimeElsaDbContext,Elsa.Workflows.Runtime.Entities.WorkflowExecutionLogRecord},Elsa.Workflows.Core.Contracts.IPayloadSerializer,Elsa.Workflows.Core.Contracts.ISafeSerializer)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Elsa.EntityFrameworkCore.Modules.Runtime.EFCoreWorkflowExecutionLogStore"/> class.
+            </summary>
+        </member>
+        <member name="M:Elsa.EntityFrameworkCore.Modules.Runtime.EFCoreWorkflowExecutionLogStore.SaveAsync(Elsa.Workflows.Runtime.Entities.WorkflowExecutionLogRecord,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.EntityFrameworkCore.Modules.Runtime.EFCoreWorkflowExecutionLogStore.SaveManyAsync(System.Collections.Generic.IEnumerable{Elsa.Workflows.Runtime.Entities.WorkflowExecutionLogRecord},System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.EntityFrameworkCore.Modules.Runtime.EFCoreWorkflowExecutionLogStore.FindAsync(Elsa.Workflows.Runtime.Filters.WorkflowExecutionLogRecordFilter,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.EntityFrameworkCore.Modules.Runtime.EFCoreWorkflowExecutionLogStore.FindAsync``1(Elsa.Workflows.Runtime.Filters.WorkflowExecutionLogRecordFilter,Elsa.Workflows.Runtime.OrderDefinitions.WorkflowExecutionLogRecordOrder{``0},System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.EntityFrameworkCore.Modules.Runtime.EFCoreWorkflowExecutionLogStore.FindManyAsync(Elsa.Workflows.Runtime.Filters.WorkflowExecutionLogRecordFilter,Elsa.Common.Models.PageArgs,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.EntityFrameworkCore.Modules.Runtime.EFCoreWorkflowExecutionLogStore.FindManyAsync``1(Elsa.Workflows.Runtime.Filters.WorkflowExecutionLogRecordFilter,Elsa.Common.Models.PageArgs,Elsa.Workflows.Runtime.OrderDefinitions.WorkflowExecutionLogRecordOrder{``0},System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.EntityFrameworkCore.Modules.Runtime.EFCoreWorkflowExecutionLogStore.DeleteManyAsync(Elsa.Workflows.Runtime.Filters.WorkflowExecutionLogRecordFilter,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.EntityFrameworkCore.Modules.Runtime.EFCoreWorkflowInboxMessageStore">
+            <summary>
+            An EF Core implementation of <see cref="T:Elsa.Workflows.Runtime.Contracts.IBookmarkStore"/>.
+            </summary>
+        </member>
+        <member name="M:Elsa.EntityFrameworkCore.Modules.Runtime.EFCoreWorkflowInboxMessageStore.#ctor(Elsa.EntityFrameworkCore.Common.EntityStore{Elsa.EntityFrameworkCore.Modules.Runtime.RuntimeElsaDbContext,Elsa.Workflows.Runtime.Entities.WorkflowInboxMessage},Elsa.Workflows.Core.Contracts.IPayloadSerializer,Elsa.Common.Contracts.ISystemClock)">
+            <summary>
+            Constructor.
+            </summary>
+        </member>
+        <member name="M:Elsa.EntityFrameworkCore.Modules.Runtime.EFCoreWorkflowInboxMessageStore.SaveAsync(Elsa.Workflows.Runtime.Entities.WorkflowInboxMessage,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.EntityFrameworkCore.Modules.Runtime.EFCoreWorkflowInboxMessageStore.FindManyAsync(Elsa.Workflows.Runtime.Filters.WorkflowInboxMessageFilter,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.EntityFrameworkCore.Modules.Runtime.EFCoreWorkflowInboxMessageStore.FindManyAsync(System.Collections.Generic.IEnumerable{Elsa.Workflows.Runtime.Filters.WorkflowInboxMessageFilter},System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.EntityFrameworkCore.Modules.Runtime.EFCoreWorkflowInboxMessageStore.DeleteManyAsync(Elsa.Workflows.Runtime.Filters.WorkflowInboxMessageFilter,Elsa.Common.Models.PageArgs,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.EntityFrameworkCore.Modules.Runtime.EFCoreWorkflowRuntimePersistenceFeature">
+            <summary>
+            Configures the default workflow runtime to use EF Core persistence providers.
+            </summary>
+        </member>
+        <member name="M:Elsa.EntityFrameworkCore.Modules.Runtime.EFCoreWorkflowRuntimePersistenceFeature.#ctor(Elsa.Features.Services.IModule)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.EntityFrameworkCore.Modules.Runtime.EFCoreWorkflowRuntimePersistenceFeature.Configure">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.EntityFrameworkCore.Modules.Runtime.EFCoreWorkflowRuntimePersistenceFeature.Apply">
+            <inheritdoc />
+        </member>
+    </members>
+</doc>

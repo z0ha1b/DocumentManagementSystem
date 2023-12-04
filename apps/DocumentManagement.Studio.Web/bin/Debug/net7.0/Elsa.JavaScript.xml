@@ -1,0 +1,638 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Elsa.JavaScript</name>
+    </assembly>
+    <members>
+        <member name="T:Elsa.JavaScript.Activities.RunJavaScript">
+            <summary>
+            Executes JavaScript code.
+            </summary>
+        </member>
+        <member name="M:Elsa.JavaScript.Activities.RunJavaScript.#ctor(System.String,System.Nullable{System.Int32})">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.JavaScript.Activities.RunJavaScript.#ctor(System.String,System.String,System.Nullable{System.Int32})">
+            <inheritdoc />
+        </member>
+        <member name="P:Elsa.JavaScript.Activities.RunJavaScript.Script">
+            <summary>
+            The script to run.
+            </summary>
+        </member>
+        <member name="P:Elsa.JavaScript.Activities.RunJavaScript.PossibleOutcomes">
+            <summary>
+            A list of possible outcomes. Use "setOutcome()" to set the outcome. Use "setOutcomes" to set multiple outcomes.
+            </summary>
+        </member>
+        <member name="M:Elsa.JavaScript.Activities.RunJavaScript.ExecuteAsync(Elsa.Workflows.Core.ActivityExecutionContext)">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.JavaScript.Contracts.IJavaScriptEvaluator">
+            <summary>
+            Evaluates JavaScript expressions.
+            </summary>
+        </member>
+        <member name="M:Elsa.JavaScript.Contracts.IJavaScriptEvaluator.EvaluateAsync(System.String,System.Type,Elsa.Expressions.Models.ExpressionExecutionContext,System.Action{Jint.Engine},System.Threading.CancellationToken)">
+            <summary>
+            Evaluates a JavaScript expression.
+            </summary>
+            <param name="expression">The expression to evaluate.</param>
+            <param name="returnType">The type of the return value.</param>
+            <param name="context">The context in which the expression is evaluated.</param>
+            <param name="configureEngine">An optional callback that can be used to configure the JavaScript engine.</param>
+            <param name="cancellationToken">An optional cancellation token.</param>
+            <returns>The result of the evaluation.</returns>
+        </member>
+        <member name="T:Elsa.JavaScript.Contracts.ITypeAliasRegistry">
+            <summary>
+            A central registry of type aliases.
+            </summary>
+        </member>
+        <member name="M:Elsa.JavaScript.Contracts.ITypeAliasRegistry.RegisterType(System.Type,System.String)">
+            <summary>
+            Register a type with an alias. 
+            </summary>
+        </member>
+        <member name="M:Elsa.JavaScript.Contracts.ITypeAliasRegistry.TryGetAlias(System.Type,System.String@)">
+            <summary>
+            Attempts to get an alias for the specified type.
+            </summary>
+        </member>
+        <member name="T:Elsa.JavaScript.Expressions.JavaScriptExpression">
+            <summary>
+            A JavaScript expression.
+            </summary>
+        </member>
+        <member name="M:Elsa.JavaScript.Expressions.JavaScriptExpression.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Elsa.JavaScript.Expressions.JavaScriptExpression"/> class.
+            </summary>
+            <param name="value">The JavaScript expression.</param>
+        </member>
+        <member name="P:Elsa.JavaScript.Expressions.JavaScriptExpression.Value">
+            <summary>
+            Gets the JavaScript expression.
+            </summary>
+        </member>
+        <member name="T:Elsa.JavaScript.Expressions.JavaScriptExpressionBlockReference">
+            <summary>
+            A reference to a JavaScript expression.
+            </summary>
+        </member>
+        <member name="M:Elsa.JavaScript.Expressions.JavaScriptExpressionBlockReference.#ctor(Elsa.JavaScript.Expressions.JavaScriptExpression)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Elsa.JavaScript.Expressions.JavaScriptExpressionBlockReference"/> class.
+            </summary>
+            <param name="expression">The expression to reference.</param>
+        </member>
+        <member name="P:Elsa.JavaScript.Expressions.JavaScriptExpressionBlockReference.Expression">
+            <summary>
+            Gets the referenced expression.
+            </summary>
+        </member>
+        <member name="M:Elsa.JavaScript.Expressions.JavaScriptExpressionBlockReference.Declare">
+            <summary>
+            Declares the referenced expression.
+            </summary>
+            <returns>A memory block holding the expression.</returns>
+        </member>
+        <member name="T:Elsa.JavaScript.Expressions.JavaScriptExpressionHandler">
+            <summary>
+            Evaluates JavaScript expressions.
+            </summary>
+        </member>
+        <member name="M:Elsa.JavaScript.Expressions.JavaScriptExpressionHandler.#ctor(Elsa.JavaScript.Contracts.IJavaScriptEvaluator)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Elsa.JavaScript.Expressions.JavaScriptExpressionHandler"/> class.
+            </summary>
+        </member>
+        <member name="M:Elsa.JavaScript.Expressions.JavaScriptExpressionHandler.EvaluateAsync(Elsa.Expressions.Contracts.IExpression,System.Type,Elsa.Expressions.Models.ExpressionExecutionContext)">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.JavaScript.Extensions.DependencyInjectionExtensions">
+            <summary>
+            Provides extension methods for <see cref="T:Microsoft.Extensions.DependencyInjection.IServiceCollection"/>.
+            </summary>
+        </member>
+        <member name="M:Elsa.JavaScript.Extensions.DependencyInjectionExtensions.AddFunctionDefinitionProvider``1(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            Adds a <see cref="T:Elsa.JavaScript.TypeDefinitions.Contracts.IFunctionDefinitionProvider"/> to the service collection.
+            </summary>
+            <param name="services">The service collection.</param>
+            <typeparam name="T">The type of the function definition provider.</typeparam>
+            <returns>The service collection.</returns>
+        </member>
+        <member name="M:Elsa.JavaScript.Extensions.DependencyInjectionExtensions.AddFunctionDefinitionProvider``1(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.Func{System.IServiceProvider,``0})">
+            <summary>
+            Adds a <see cref="T:Elsa.JavaScript.TypeDefinitions.Contracts.IFunctionDefinitionProvider"/> to the service collection.
+            </summary>
+            <param name="services">The service collection.</param>
+            <param name="factory">A callback to create the function definition provider.</param>
+            <typeparam name="T">The type of the function definition provider.</typeparam>
+            <returns>The service collection.</returns>
+        </member>
+        <member name="M:Elsa.JavaScript.Extensions.DependencyInjectionExtensions.AddTypeDefinitionProvider``1(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            Adds a <see cref="T:Elsa.JavaScript.TypeDefinitions.Contracts.ITypeDefinitionProvider"/> to the service collection.
+            </summary>
+            <param name="services">The service collection.</param>
+            <typeparam name="T">The type of the type definition provider.</typeparam>
+            <returns>The service collection.</returns>
+        </member>
+        <member name="M:Elsa.JavaScript.Extensions.DependencyInjectionExtensions.AddTypeDefinitionProvider``1(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.Func{System.IServiceProvider,``0})">
+            <summary>
+            Adds a <see cref="T:Elsa.JavaScript.TypeDefinitions.Contracts.ITypeDefinitionProvider"/> to the service collection.
+            </summary>
+            <param name="services">The service collection.</param>
+            <param name="factory">A callback to create the type definition provider.</param>
+            <typeparam name="T">The type of the type definition provider.</typeparam>
+            <returns>The service collection.</returns>
+        </member>
+        <member name="T:Elsa.JavaScript.Extensions.TypeAliasRegistryExtensions">
+            <summary>
+            Extends <see cref="T:Elsa.JavaScript.Contracts.ITypeAliasRegistry"/>.
+            </summary>
+        </member>
+        <member name="M:Elsa.JavaScript.Extensions.TypeAliasRegistryExtensions.RegisterType``1(Elsa.JavaScript.Contracts.ITypeAliasRegistry,System.String)">
+            <summary>
+            Register type <see cref="!:T"/> with the specified alias.
+            </summary>
+        </member>
+        <member name="M:Elsa.JavaScript.Extensions.TypeAliasRegistryExtensions.GetAliasOrDefault(Elsa.JavaScript.Contracts.ITypeAliasRegistry,System.Type,System.String)">
+            <summary>
+            Returns the alias for the specified type. If no alias was found, the assembly qualified type name is returned instead.  
+            </summary>
+        </member>
+        <member name="T:Elsa.JavaScript.Features.JavaScriptFeature">
+            <summary>
+            Installs JavaScript integration.
+            </summary>
+        </member>
+        <member name="M:Elsa.JavaScript.Features.JavaScriptFeature.#ctor(Elsa.Features.Services.IModule)">
+            <inheritdoc />
+        </member>
+        <member name="P:Elsa.JavaScript.Features.JavaScriptFeature.JintOptions">
+            <summary>
+            Configures the Jint options.
+            </summary>
+        </member>
+        <member name="M:Elsa.JavaScript.Features.JavaScriptFeature.ConfigureHostedServices">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.JavaScript.Features.JavaScriptFeature.Apply">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.JavaScript.HostedServices.RegisterVariableTypesWithJavaScriptHostedService">
+            <summary>
+            Registers variable types with the JavaScript type alias registry
+            </summary>
+        </member>
+        <member name="M:Elsa.JavaScript.HostedServices.RegisterVariableTypesWithJavaScriptHostedService.#ctor(Elsa.JavaScript.Contracts.ITypeAliasRegistry,Microsoft.Extensions.Options.IOptions{Elsa.Workflows.Management.Options.ManagementOptions})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Elsa.JavaScript.HostedServices.RegisterVariableTypesWithJavaScriptHostedService"/> class.
+            </summary>
+        </member>
+        <member name="M:Elsa.JavaScript.HostedServices.RegisterVariableTypesWithJavaScriptHostedService.StartAsync(System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.JavaScript.HostedServices.RegisterVariableTypesWithJavaScriptHostedService.StopAsync(System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.JavaScript.Notifications.EvaluatingJavaScript">
+            <summary>
+            This notification is published every time a JavaScript expression is about to be evaluated.
+            It gives subscribers a chance to configure the <see cref="P:Elsa.JavaScript.Notifications.EvaluatingJavaScript.Engine"/> with additional functions and variables.
+            </summary>
+        </member>
+        <member name="M:Elsa.JavaScript.Notifications.EvaluatingJavaScript.#ctor(Jint.Engine,Elsa.Expressions.Models.ExpressionExecutionContext)">
+            <summary>
+            This notification is published every time a JavaScript expression is about to be evaluated.
+            It gives subscribers a chance to configure the <see cref="P:Elsa.JavaScript.Notifications.EvaluatingJavaScript.Engine"/> with additional functions and variables.
+            </summary>
+        </member>
+        <member name="T:Elsa.JavaScript.Options.JintOptions">
+            <summary>
+            Options for the Jint JavaScript engine.
+            </summary>
+        </member>
+        <member name="P:Elsa.JavaScript.Options.JintOptions.AllowClrAccess">
+             <summary>
+             Enables access to any .NET class. Do not enable if you are executing workflows from untrusted sources (e.g. user defined workflows).
+            
+             See Jint docs for more: https://github.com/sebastienros/jint#accessing-net-assemblies-and-classes
+             </summary>
+        </member>
+        <member name="P:Elsa.JavaScript.Options.JintOptions.AllowConfigurationAccess">
+            <summary>
+            Enables access to .NET configuration via the <c>getConfig</c> function.
+            Do not enable if you are executing workflows from untrusted sources (e.g user defined workflows).
+            </summary>
+        </member>
+        <member name="F:Elsa.JavaScript.Options.JintOptions.ConfigureEngineCallback">
+            <summary>
+            A list of callbacks that are invoked when the Jint engine is created. Use this to configure the engine.
+            </summary>
+        </member>
+        <member name="M:Elsa.JavaScript.Options.JintOptions.ConfigureEngine(System.Action{Jint.Engine,Elsa.Expressions.Models.ExpressionExecutionContext})">
+            <summary>
+            Configures the Jint engine.
+            </summary>
+            <param name="configurator">A callback that is invoked when the Jint engine is created. Use this to configure the engine.</param>
+        </member>
+        <member name="M:Elsa.JavaScript.Options.JintOptions.ConfigureEngine(System.Action{Jint.Engine})">
+            <summary>
+            Configures the Jint engine.
+            </summary>
+            <param name="configurator">A callback that is invoked when the Jint engine is created. Use this to configure the engine.</param>
+        </member>
+        <member name="M:Elsa.JavaScript.Options.JintOptions.RegisterType``1">
+            <summary>
+            Registers the specified type <c>T</c> with the engine.
+            </summary>
+        </member>
+        <member name="M:Elsa.JavaScript.Options.JintOptions.RegisterType(System.Type)">
+            <summary>
+            Registers the specified type with the engine.
+            </summary>
+        </member>
+        <member name="T:Elsa.JavaScript.Providers.InputFunctionsDefinitionProvider">
+            <summary>
+            Produces <see cref="T:Elsa.JavaScript.TypeDefinitions.Models.FunctionDefinition"/>s for common functions.
+            </summary>
+        </member>
+        <member name="T:Elsa.JavaScript.Services.JintJavaScriptEvaluator">
+            <summary>
+            Provides a JavaScript evaluator using Jint.
+            </summary>
+        </member>
+        <member name="M:Elsa.JavaScript.Services.JintJavaScriptEvaluator.#ctor(Elsa.Mediator.Contracts.INotificationSender,Microsoft.Extensions.Options.IOptions{Elsa.JavaScript.Options.JintOptions})">
+            <summary>
+            Constructor.
+            </summary>
+        </member>
+        <member name="M:Elsa.JavaScript.Services.JintJavaScriptEvaluator.EvaluateAsync(System.String,System.Type,Elsa.Expressions.Models.ExpressionExecutionContext,System.Action{Jint.Engine},System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.JavaScript.Services.TypeAliasRegistry">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.JavaScript.Services.TypeAliasRegistry.#ctor">
+            <summary>
+            Constructor.
+            </summary>
+        </member>
+        <member name="M:Elsa.JavaScript.Services.TypeAliasRegistry.RegisterType(System.Type,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.JavaScript.Services.TypeAliasRegistry.TryGetAlias(System.Type,System.String@)">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.JavaScript.TypeDefinitions.Abstractions.FunctionDefinitionProvider">
+            <summary>
+            A base class for function definition providers.
+            </summary>
+        </member>
+        <member name="M:Elsa.JavaScript.TypeDefinitions.Abstractions.FunctionDefinitionProvider.GetFunctionDefinitionsAsync(Elsa.JavaScript.TypeDefinitions.Models.TypeDefinitionContext)">
+            <summary>
+            Returns a list of type definitions to the system.
+            </summary>
+        </member>
+        <member name="M:Elsa.JavaScript.TypeDefinitions.Abstractions.FunctionDefinitionProvider.GetFunctionDefinitions(Elsa.JavaScript.TypeDefinitions.Models.TypeDefinitionContext)">
+            <summary>
+            Returns a list of type definitions to the system.
+            </summary>
+        </member>
+        <member name="M:Elsa.JavaScript.TypeDefinitions.Abstractions.FunctionDefinitionProvider.CreateFunctionDefinition(System.Action{Elsa.JavaScript.TypeDefinitions.Builders.FunctionDefinitionBuilder})">
+            <summary>
+            Provides a fluid API to build a function definition.
+            </summary>
+        </member>
+        <member name="T:Elsa.JavaScript.TypeDefinitions.Abstractions.TypeDefinitionProvider">
+            <summary>
+            A base class for type definition providers.
+            </summary>
+        </member>
+        <member name="M:Elsa.JavaScript.TypeDefinitions.Abstractions.TypeDefinitionProvider.GetTypeDefinitionsAsync(Elsa.JavaScript.TypeDefinitions.Models.TypeDefinitionContext)">
+            <summary>
+            Returns a list of type definitions to the system.
+            </summary>
+        </member>
+        <member name="M:Elsa.JavaScript.TypeDefinitions.Abstractions.TypeDefinitionProvider.GetTypeDefinitions(Elsa.JavaScript.TypeDefinitions.Models.TypeDefinitionContext)">
+            <summary>
+            Returns a list of type definitions to the system.
+            </summary>
+        </member>
+        <member name="M:Elsa.JavaScript.TypeDefinitions.Abstractions.TypeDefinitionProvider.CreateTypeDefinition(System.Action{Elsa.JavaScript.TypeDefinitions.Builders.TypeDefinitionBuilder})">
+            <summary>
+            Provides a fluid API to build a type definition.
+            </summary>
+        </member>
+        <member name="T:Elsa.JavaScript.TypeDefinitions.Builders.FunctionDefinitionBuilder">
+            <summary>
+            A builder API for building <see cref="T:Elsa.JavaScript.TypeDefinitions.Models.FunctionDefinition"/>s.
+            </summary>
+        </member>
+        <member name="M:Elsa.JavaScript.TypeDefinitions.Builders.FunctionDefinitionBuilder.Name(System.String)">
+            <summary>
+            Set the name of the function.
+            </summary>
+        </member>
+        <member name="M:Elsa.JavaScript.TypeDefinitions.Builders.FunctionDefinitionBuilder.ReturnType(System.String)">
+            <summary>
+            Set the return type of the function.
+            </summary>
+        </member>
+        <member name="M:Elsa.JavaScript.TypeDefinitions.Builders.FunctionDefinitionBuilder.Parameter(System.String,System.String,System.Boolean)">
+            <summary>
+            Add a parameter to the function.
+            </summary>
+        </member>
+        <member name="M:Elsa.JavaScript.TypeDefinitions.Builders.FunctionDefinitionBuilder.BuildFunctionDefinition">
+            <summary>
+            Build a <see cref="T:Elsa.JavaScript.TypeDefinitions.Models.FunctionDefinition"/> using the collected information.
+            </summary>
+        </member>
+        <member name="T:Elsa.JavaScript.TypeDefinitions.Builders.TypeDefinitionBuilder">
+            <summary>
+            A builder API for building <see cref="T:Elsa.JavaScript.TypeDefinitions.Models.TypeDefinition"/>s.
+            </summary>
+        </member>
+        <member name="M:Elsa.JavaScript.TypeDefinitions.Builders.TypeDefinitionBuilder.Name(System.String)">
+            <summary>
+            Set the name of the function.
+            </summary>
+        </member>
+        <member name="M:Elsa.JavaScript.TypeDefinitions.Builders.TypeDefinitionBuilder.DeclarationKeyword(System.String)">
+            <summary>
+            Set the return type of the function.
+            </summary>
+        </member>
+        <member name="M:Elsa.JavaScript.TypeDefinitions.Builders.TypeDefinitionBuilder.BuildTypeDefinition">
+            <summary>
+            Build a <see cref="T:Elsa.JavaScript.TypeDefinitions.Models.TypeDefinition"/> using the collected information.
+            </summary>
+        </member>
+        <member name="T:Elsa.JavaScript.TypeDefinitions.Contracts.IFunctionDefinitionProvider">
+            <summary>
+            Provides <see cref="T:Elsa.JavaScript.TypeDefinitions.Models.FunctionDefinition"/>s to the type definition document being constructed.
+            </summary>
+        </member>
+        <member name="M:Elsa.JavaScript.TypeDefinitions.Contracts.IFunctionDefinitionProvider.GetFunctionDefinitionsAsync(Elsa.JavaScript.TypeDefinitions.Models.TypeDefinitionContext)">
+            <summary>
+            Returns a list of type definitions to the system.
+            </summary>
+        </member>
+        <member name="T:Elsa.JavaScript.TypeDefinitions.Contracts.ITypeDefinitionDocumentRenderer">
+            <summary>
+            Renders a <see cref="T:Elsa.JavaScript.TypeDefinitions.Models.TypeDefinitionsDocument"/> to a string.
+            </summary>
+        </member>
+        <member name="M:Elsa.JavaScript.TypeDefinitions.Contracts.ITypeDefinitionDocumentRenderer.Render(Elsa.JavaScript.TypeDefinitions.Models.TypeDefinitionsDocument)">
+            Renders a <see cref="T:Elsa.JavaScript.TypeDefinitions.Models.TypeDefinitionsDocument"/> to a string.
+        </member>
+        <member name="T:Elsa.JavaScript.TypeDefinitions.Contracts.ITypeDefinitionProvider">
+            <summary>
+            Provides <see cref="T:Elsa.JavaScript.TypeDefinitions.Models.TypeDefinition"/>s to the type definition document being constructed.
+            </summary>
+        </member>
+        <member name="M:Elsa.JavaScript.TypeDefinitions.Contracts.ITypeDefinitionProvider.GetTypeDefinitionsAsync(Elsa.JavaScript.TypeDefinitions.Models.TypeDefinitionContext)">
+            <summary>
+            Returns a list of type definitions to the system.
+            </summary>
+        </member>
+        <member name="T:Elsa.JavaScript.TypeDefinitions.Contracts.ITypeDefinitionService">
+            <summary>
+            Generates type definitions for the specified context.
+            </summary>
+        </member>
+        <member name="M:Elsa.JavaScript.TypeDefinitions.Contracts.ITypeDefinitionService.GenerateTypeDefinitionsAsync(Elsa.JavaScript.TypeDefinitions.Models.TypeDefinitionContext)">
+            <summary>
+            Generates type definitions for the specified context.
+            </summary>
+        </member>
+        <member name="T:Elsa.JavaScript.TypeDefinitions.Contracts.ITypeDescriber">
+            <summary>
+            Returns a <see cref="T:Elsa.JavaScript.TypeDefinitions.Models.TypeDefinition"/> from a given <see cref="T:System.Type"/>.
+            </summary>
+        </member>
+        <member name="M:Elsa.JavaScript.TypeDefinitions.Contracts.ITypeDescriber.DescribeType(System.Type)">
+            <summary>
+            Returns a <see cref="T:Elsa.JavaScript.TypeDefinitions.Models.TypeDefinition"/> from a given <see cref="T:System.Type"/>.
+            </summary>
+        </member>
+        <member name="T:Elsa.JavaScript.TypeDefinitions.Models.FunctionDefinition">
+            <summary>
+            A method definition.
+            </summary>
+        </member>
+        <member name="M:Elsa.JavaScript.TypeDefinitions.Models.FunctionDefinition.#ctor">
+            <summary>
+            Constructor.
+            </summary>
+        </member>
+        <member name="M:Elsa.JavaScript.TypeDefinitions.Models.FunctionDefinition.#ctor(System.String,System.Collections.Generic.IEnumerable{Elsa.JavaScript.TypeDefinitions.Models.ParameterDefinition})">
+            <summary>
+            Constructor.
+            </summary>
+        </member>
+        <member name="M:Elsa.JavaScript.TypeDefinitions.Models.FunctionDefinition.#ctor(System.String,System.String,System.Collections.Generic.IEnumerable{Elsa.JavaScript.TypeDefinitions.Models.ParameterDefinition})">
+            <summary>
+            Constructor.
+            </summary>
+        </member>
+        <member name="P:Elsa.JavaScript.TypeDefinitions.Models.FunctionDefinition.Name">
+            <summary>
+            The name of the method.
+            </summary>
+        </member>
+        <member name="P:Elsa.JavaScript.TypeDefinitions.Models.FunctionDefinition.ReturnType">
+            <summary>
+            The return type name of the method.
+            </summary>
+        </member>
+        <member name="P:Elsa.JavaScript.TypeDefinitions.Models.FunctionDefinition.Parameters">
+            <summary>
+            The parameters of the method.
+            </summary>
+        </member>
+        <member name="T:Elsa.JavaScript.TypeDefinitions.Models.ParameterDefinition">
+            <summary>
+            A method parameter definition.
+            </summary>
+        </member>
+        <member name="M:Elsa.JavaScript.TypeDefinitions.Models.ParameterDefinition.#ctor">
+            <summary>
+            Constructor.
+            </summary>
+        </member>
+        <member name="M:Elsa.JavaScript.TypeDefinitions.Models.ParameterDefinition.#ctor(System.String,System.String,System.Boolean)">
+            <summary>
+            Constructor.
+            </summary>
+        </member>
+        <member name="P:Elsa.JavaScript.TypeDefinitions.Models.ParameterDefinition.Name">
+            <summary>
+            The name of the parameter.
+            </summary>
+        </member>
+        <member name="P:Elsa.JavaScript.TypeDefinitions.Models.ParameterDefinition.Type">
+            <summary>
+            The type name of the parameter.
+            </summary>
+        </member>
+        <member name="P:Elsa.JavaScript.TypeDefinitions.Models.ParameterDefinition.IsOptional">
+            <summary>
+            A value indicating whether the parameter is optional or not.
+            </summary>
+        </member>
+        <member name="T:Elsa.JavaScript.TypeDefinitions.Models.PropertyDefinition">
+            <summary>
+            A property definition.
+            </summary>
+        </member>
+        <member name="P:Elsa.JavaScript.TypeDefinitions.Models.PropertyDefinition.Name">
+            <summary>
+            The name of the property.
+            </summary>
+        </member>
+        <member name="P:Elsa.JavaScript.TypeDefinitions.Models.PropertyDefinition.Type">
+            <summary>
+            The type name of the property.
+            </summary>
+        </member>
+        <member name="P:Elsa.JavaScript.TypeDefinitions.Models.PropertyDefinition.IsOptional">
+            <summary>
+            A value indicating whether the property is optional or not.
+            </summary>
+        </member>
+        <member name="T:Elsa.JavaScript.TypeDefinitions.Models.TypeDefinition">
+            <summary>
+            A base type that represents a type.
+            </summary>
+        </member>
+        <member name="P:Elsa.JavaScript.TypeDefinitions.Models.TypeDefinition.DeclarationKeyword">
+            <summary>
+            The keyword that declares this type. E.g. "class", "type" or "interface".
+            </summary>
+        </member>
+        <member name="P:Elsa.JavaScript.TypeDefinitions.Models.TypeDefinition.Name">
+            <summary>
+            The name of the type.
+            </summary>
+        </member>
+        <member name="P:Elsa.JavaScript.TypeDefinitions.Models.TypeDefinition.Properties">
+            <summary>
+            A list of fields.
+            </summary>
+        </member>
+        <member name="P:Elsa.JavaScript.TypeDefinitions.Models.TypeDefinition.Methods">
+            <summary>
+            A list of methods.
+            </summary>
+        </member>
+        <member name="T:Elsa.JavaScript.TypeDefinitions.Models.TypeDefinitionContext">
+            <summary>
+            Provides context to intellisense providers.
+            </summary>
+        </member>
+        <member name="M:Elsa.JavaScript.TypeDefinitions.Models.TypeDefinitionContext.#ctor(Elsa.Workflows.Core.Activities.Workflow,System.String,System.String,System.Threading.CancellationToken)">
+            <summary>
+            Provides context to intellisense providers.
+            </summary>
+        </member>
+        <member name="T:Elsa.JavaScript.TypeDefinitions.Models.TypeDefinitionsDocument">
+            <summary>
+            Represents a type definition document model.
+            </summary>
+        </member>
+        <member name="P:Elsa.JavaScript.TypeDefinitions.Models.TypeDefinitionsDocument.Functions">
+            <summary>
+            A collection of function definitions.
+            </summary>
+        </member>
+        <member name="P:Elsa.JavaScript.TypeDefinitions.Models.TypeDefinitionsDocument.Types">
+            <summary>
+            A collection of type definitions.
+            </summary>
+        </member>
+        <member name="T:Elsa.JavaScript.TypeDefinitions.Providers.ActivityOutputFunctionsDefinitionProvider">
+            <summary>
+            Produces <see cref="T:Elsa.JavaScript.TypeDefinitions.Models.FunctionDefinition"/>s for common functions.
+            </summary>
+        </member>
+        <member name="T:Elsa.JavaScript.TypeDefinitions.Providers.CommonFunctionsDefinitionProvider">
+            <summary>
+            Produces <see cref="T:Elsa.JavaScript.TypeDefinitions.Models.FunctionDefinition"/>s for common functions.
+            </summary>
+        </member>
+        <member name="T:Elsa.JavaScript.TypeDefinitions.Providers.CommonTypeDefinitionProvider">
+            <summary>
+            Produces <see cref="T:Elsa.JavaScript.TypeDefinitions.Models.FunctionDefinition"/>s for common functions.
+            </summary>
+        </member>
+        <member name="T:Elsa.JavaScript.TypeDefinitions.Providers.VariableTypeDefinitionProvider">
+            <summary>
+            Produces <see cref="T:Elsa.JavaScript.TypeDefinitions.Models.TypeDefinition"/>s for variable types.
+            </summary>
+        </member>
+        <member name="T:Elsa.JavaScript.TypeDefinitions.Services.TypeDefinitionDocumentRenderer">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.JavaScript.TypeDefinitions.Services.TypeDefinitionDocumentRenderer.Render(Elsa.JavaScript.TypeDefinitions.Models.TypeDefinitionsDocument)">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.JavaScript.TypeDefinitions.Services.TypeDefinitionService">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.JavaScript.TypeDefinitions.Services.TypeDefinitionService.#ctor(System.Collections.Generic.IEnumerable{Elsa.JavaScript.TypeDefinitions.Contracts.ITypeDefinitionProvider},System.Collections.Generic.IEnumerable{Elsa.JavaScript.TypeDefinitions.Contracts.IFunctionDefinitionProvider},Elsa.JavaScript.TypeDefinitions.Contracts.ITypeDefinitionDocumentRenderer)">
+            <summary>
+            Constructor.
+            </summary>
+        </member>
+        <member name="M:Elsa.JavaScript.TypeDefinitions.Services.TypeDefinitionService.GenerateTypeDefinitionsAsync(Elsa.JavaScript.TypeDefinitions.Models.TypeDefinitionContext)">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.JavaScript.TypeDefinitions.Services.TypeDescriber">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.JavaScript.TypeDefinitions.Services.TypeDescriber.#ctor(Elsa.JavaScript.Contracts.ITypeAliasRegistry)">
+            <summary>
+            Constructor.
+            </summary>
+        </member>
+        <member name="M:Elsa.JavaScript.TypeDefinitions.Services.TypeDescriber.DescribeType(System.Type)">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.Extensions.EngineExtensions">
+            <summary>
+            Extends <see cref="T:Jint.Engine"/>.
+            </summary>
+        </member>
+        <member name="M:Elsa.Extensions.EngineExtensions.RegisterType``1(Jint.Engine)">
+            <summary>
+            Register the specified type <c>T</c> with the engine.
+            </summary>
+        </member>
+        <member name="M:Elsa.Extensions.EngineExtensions.RegisterType(Jint.Engine,System.Type)">
+            <summary>
+            Register the specified type <c>T</c> with the engine.
+            </summary>
+        </member>
+        <member name="T:Elsa.Extensions.ModuleExtensions">
+            <summary>
+            Adds extensions to <see cref="T:Elsa.Features.Services.IModule"/> that installs the <see cref="T:Elsa.JavaScript.Features.JavaScriptFeature"/> feature.
+            </summary>
+        </member>
+        <member name="M:Elsa.Extensions.ModuleExtensions.UseJavaScript(Elsa.Features.Services.IModule,System.Action{Elsa.JavaScript.Features.JavaScriptFeature})">
+            <summary>
+            Setup the <see cref="T:Elsa.JavaScript.Features.JavaScriptFeature"/> feature.
+            </summary>
+        </member>
+        <member name="M:Elsa.Extensions.ModuleExtensions.UseJavaScript(Elsa.Features.Services.IModule,System.Action{Elsa.JavaScript.Options.JintOptions})">
+            <summary>
+            Setup the <see cref="T:Elsa.JavaScript.Features.JavaScriptFeature"/> feature.
+            </summary>
+        </member>
+    </members>
+</doc>

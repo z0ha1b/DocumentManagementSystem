@@ -1,0 +1,797 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Elsa.Common</name>
+    </assembly>
+    <members>
+        <member name="T:Elsa.Common.Contracts.IFormatter">
+            <summary>
+            Represents a formatter that can serialize an object to and from a string.
+            </summary>
+        </member>
+        <member name="M:Elsa.Common.Contracts.IFormatter.ToStringAsync(System.Object,System.Threading.CancellationToken)">
+            <summary>
+            Serializes the specified value into a string. 
+            </summary>
+        </member>
+        <member name="M:Elsa.Common.Contracts.IFormatter.FromStringAsync(System.String,System.Type,System.Threading.CancellationToken)">
+            <summary>
+            Deserializes the specified string into the specified return type.
+            </summary>
+        </member>
+        <member name="T:Elsa.Common.Contracts.ISerializationOptionsConfigurator">
+            <summary>
+            Configures <see cref="T:System.Text.Json.JsonSerializerOptions"/> objects.
+            </summary>
+        </member>
+        <member name="M:Elsa.Common.Contracts.ISerializationOptionsConfigurator.Configure(System.Text.Json.JsonSerializerOptions)">
+            <summary>
+            Configures the specified <see cref="T:System.Text.Json.JsonSerializerOptions"/> object.
+            </summary>
+        </member>
+        <member name="M:Elsa.Common.Contracts.ISerializationOptionsConfigurator.GetModifiers">
+            <summary>
+            Returns a set of modifiers to be added to the type info resolver used by the serializer.
+            </summary>
+        </member>
+        <member name="T:Elsa.Common.Contracts.ISystemClock">
+            <summary>
+            Represents a system clock.
+            </summary>
+        </member>
+        <member name="P:Elsa.Common.Contracts.ISystemClock.UtcNow">
+            <summary>
+            Gets the current date and time in UTC.
+            </summary>
+        </member>
+        <member name="T:Elsa.Common.Converters.VersionOptionsJsonConverter">
+            <summary>
+            A JSON converter that serializes <see cref="T:Elsa.Common.Models.VersionOptions"/>.
+            </summary>
+        </member>
+        <member name="M:Elsa.Common.Converters.VersionOptionsJsonConverter.Read(System.Text.Json.Utf8JsonReader@,System.Type,System.Text.Json.JsonSerializerOptions)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Common.Converters.VersionOptionsJsonConverter.Write(System.Text.Json.Utf8JsonWriter,Elsa.Common.Models.VersionOptions,System.Text.Json.JsonSerializerOptions)">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.Common.Converters.VersionOptionsTypeConverter">
+            <summary>
+            A type converter that converts <see cref="T:Elsa.Common.Models.VersionOptions"/> to and from strings.
+            </summary>
+        </member>
+        <member name="M:Elsa.Common.Converters.VersionOptionsTypeConverter.CanConvertFrom(System.ComponentModel.ITypeDescriptorContext,System.Type)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Common.Converters.VersionOptionsTypeConverter.ConvertFrom(System.ComponentModel.ITypeDescriptorContext,System.Globalization.CultureInfo,System.Object)">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.Common.Entities.Entity">
+            <summary>
+            Represents an entity.
+            </summary>
+        </member>
+        <member name="P:Elsa.Common.Entities.Entity.Id">
+            <summary>
+            Gets or sets the ID of this entity.
+            </summary>
+        </member>
+        <member name="T:Elsa.Common.Entities.OrderDefinition`2">
+            <summary>
+            Represents the order by which to order the results of a query.
+            </summary>
+        </member>
+        <member name="M:Elsa.Common.Entities.OrderDefinition`2.#ctor">
+            <summary>
+            Creates a new instance of the <see cref="T:Elsa.Common.Entities.OrderDefinition`2"/> class.
+            </summary>
+        </member>
+        <member name="M:Elsa.Common.Entities.OrderDefinition`2.#ctor(System.Linq.Expressions.Expression{System.Func{`0,`1}},Elsa.Common.Entities.OrderDirection)">
+            <summary>
+            Creates a new instance of the <see cref="T:Elsa.Common.Entities.OrderDefinition`2"/> class.
+            </summary>
+        </member>
+        <member name="P:Elsa.Common.Entities.OrderDefinition`2.Direction">
+            <summary>
+            The direction in which to order the results.
+            </summary>
+        </member>
+        <member name="P:Elsa.Common.Entities.OrderDefinition`2.KeySelector">
+            <summary>
+            The key selector to use to order the results.
+            </summary>
+        </member>
+        <member name="T:Elsa.Common.Entities.OrderDirection">
+            <summary>
+            The order direction.
+            </summary>
+        </member>
+        <member name="F:Elsa.Common.Entities.OrderDirection.Ascending">
+            <summary>
+            Ascending order.
+            </summary>
+        </member>
+        <member name="F:Elsa.Common.Entities.OrderDirection.Descending">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:Elsa.Common.Entities.VersionedEntity">
+            <summary>
+            Represents an entity that is versioned.
+            </summary>
+        </member>
+        <member name="P:Elsa.Common.Entities.VersionedEntity.CreatedAt">
+            <summary>
+            Gets or sets the date and time this entity was created.
+            </summary>
+        </member>
+        <member name="P:Elsa.Common.Entities.VersionedEntity.Version">
+            <summary>
+            Gets or sets the version of this entity.
+            </summary>
+        </member>
+        <member name="P:Elsa.Common.Entities.VersionedEntity.IsLatest">
+            <summary>
+            Gets or sets whether this entity is the latest version.
+            </summary>
+        </member>
+        <member name="P:Elsa.Common.Entities.VersionedEntity.IsPublished">
+            <summary>
+            Gets or sets whether this entity is published.
+            </summary>
+        </member>
+        <member name="T:Elsa.Common.Exceptions.MissingConfigurationException">
+            <summary>
+            Configuration is missing.
+            </summary>
+        </member>
+        <member name="M:Elsa.Common.Exceptions.MissingConfigurationException.#ctor(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.Common.Features.MediatorFeature">
+            <summary>
+            Adds and configures the Mediator feature.
+            </summary>
+        </member>
+        <member name="M:Elsa.Common.Features.MediatorFeature.#ctor(Elsa.Features.Services.IModule)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Common.Features.MediatorFeature.Apply">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.Common.Features.MemoryCacheFeature">
+            <summary>
+            Configures the MemoryCache.
+            </summary>
+        </member>
+        <member name="M:Elsa.Common.Features.MemoryCacheFeature.#ctor(Elsa.Features.Services.IModule)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Common.Features.MemoryCacheFeature.Apply">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.Common.Features.SystemClockFeature">
+            <summary>
+            Configures the system clock.
+            </summary>
+        </member>
+        <member name="M:Elsa.Common.Features.SystemClockFeature.#ctor(Elsa.Features.Services.IModule)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Common.Features.SystemClockFeature.Apply">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.Common.Models.Page`1">
+            <summary>
+            Represents a page of items.
+            </summary>
+            <param name="Items">The items.</param>
+            <param name="TotalCount">The total count.</param>
+            <typeparam name="T">The type of the items.</typeparam>
+        </member>
+        <member name="M:Elsa.Common.Models.Page`1.#ctor(System.Collections.Generic.ICollection{`0},System.Int64)">
+            <summary>
+            Represents a page of items.
+            </summary>
+            <param name="Items">The items.</param>
+            <param name="TotalCount">The total count.</param>
+            <typeparam name="T">The type of the items.</typeparam>
+        </member>
+        <member name="P:Elsa.Common.Models.Page`1.Items">
+            <summary>The items.</summary>
+        </member>
+        <member name="P:Elsa.Common.Models.Page`1.TotalCount">
+            <summary>The total count.</summary>
+        </member>
+        <member name="T:Elsa.Common.Models.Page">
+            <summary>
+            Provides a way to create a new instance of the <see cref="T:Elsa.Common.Models.Page`1"/> class.
+            </summary>
+        </member>
+        <member name="M:Elsa.Common.Models.Page.Of``1(System.Collections.Generic.ICollection{``0},System.Int64)">
+            <summary>
+            Creates a new instance of the <see cref="T:Elsa.Common.Models.Page`1"/> class.
+            </summary>
+            <param name="items">The items.</param>
+            <param name="totalCount">The total count.</param>
+            <typeparam name="T">The type of the items.</typeparam>
+            <returns>A new instance of the <see cref="T:Elsa.Common.Models.Page`1"/> class.</returns>
+        </member>
+        <member name="T:Elsa.Common.Models.PageArgs">
+            <summary>
+            Represents pagination arguments.
+            </summary>
+        </member>
+        <member name="M:Elsa.Common.Models.PageArgs.FromPage(System.Nullable{System.Int32},System.Nullable{System.Int32})">
+            <summary>
+            Creates pagination arguments from a page number and page size.
+            </summary>
+            <param name="page">The zero-based page number.</param>
+            <param name="pageSize">The number of items per page.</param>
+        </member>
+        <member name="M:Elsa.Common.Models.PageArgs.FromRange(System.Nullable{System.Int32},System.Nullable{System.Int32})">
+            <summary>
+            Creates pagination arguments from an offset and limit.
+            </summary>
+            <param name="offset">The number of items to skip.</param>
+            <param name="limit">The number of items to take.</param>
+        </member>
+        <member name="M:Elsa.Common.Models.PageArgs.From(System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{System.Int32})">
+            <summary>
+            Creates pagination arguments from page and page size or offset and limit.
+            </summary>
+            <param name="page">The zero-based page number.</param>
+            <param name="pageSize">The number of items per page.</param>
+            <param name="offset">The number of items to skip.</param>
+            <param name="limit">The number of items to take.</param>
+            <exception cref="T:System.ArgumentException">Thrown when neither page and pageSize nor offset and limit are specified.</exception>
+        </member>
+        <member name="P:Elsa.Common.Models.PageArgs.Offset">
+            <summary>
+            Gets the offset of the page.
+            </summary>
+        </member>
+        <member name="P:Elsa.Common.Models.PageArgs.Limit">
+            <summary>
+            Gets or sets the limit of the page.
+            </summary>
+        </member>
+        <member name="P:Elsa.Common.Models.PageArgs.Page">
+            <summary>
+            Gets the zero-based page number.
+            </summary>
+        </member>
+        <member name="P:Elsa.Common.Models.PageArgs.PageSize">
+            <summary>
+            Gets the number of items per page.
+            </summary>
+        </member>
+        <member name="M:Elsa.Common.Models.PageArgs.Next">
+            <summary>
+            Returns pagination arguments for the next page.
+            </summary>
+            <returns>The arguments for the next page.</returns>
+        </member>
+        <member name="T:Elsa.Common.Models.VersionOptions">
+            <summary>
+            Provides parameters for querying a given version of versioned entities.
+            </summary>
+        </member>
+        <member name="F:Elsa.Common.Models.VersionOptions.Latest">
+            <summary>
+            Gets the latest version.
+            </summary>
+        </member>
+        <member name="F:Elsa.Common.Models.VersionOptions.Published">
+            <summary>
+            Gets the published version.
+            </summary>
+        </member>
+        <member name="F:Elsa.Common.Models.VersionOptions.LatestOrPublished">
+            <summary>
+            Gets the published version if available, and if not, the latest version.
+            </summary>
+        </member>
+        <member name="F:Elsa.Common.Models.VersionOptions.LatestAndPublished">
+            <summary>
+            Gets the latest, published version.
+            </summary>
+        </member>
+        <member name="F:Elsa.Common.Models.VersionOptions.Draft">
+            <summary>
+            Gets the draft version.
+            </summary>
+        </member>
+        <member name="F:Elsa.Common.Models.VersionOptions.All">
+            <summary>
+            Gets all versions.
+            </summary>
+        </member>
+        <member name="M:Elsa.Common.Models.VersionOptions.SpecificVersion(System.Int32)">
+            <summary>
+            Gets a specific version.
+            </summary>
+        </member>
+        <member name="M:Elsa.Common.Models.VersionOptions.FromString(System.String)">
+            <summary>
+            Parses a string into a <see cref="T:Elsa.Common.Models.VersionOptions"/>. 
+            </summary>
+        </member>
+        <member name="M:Elsa.Common.Models.VersionOptions.TryParse(System.String,Elsa.Common.Models.VersionOptions@)">
+            <summary>
+            Tries to parse a string into a <see cref="T:Elsa.Common.Models.VersionOptions"/>.
+            </summary>
+            <param name="value">The string to parse.</param>
+            <param name="versionOptions">The parsed <see cref="T:Elsa.Common.Models.VersionOptions"/>.</param>
+            <returns>True if the string could be parsed, otherwise false.</returns>
+        </member>
+        <member name="P:Elsa.Common.Models.VersionOptions.IsLatest">
+            <summary>
+            Gets the latest version.
+            </summary>
+        </member>
+        <member name="P:Elsa.Common.Models.VersionOptions.IsLatestOrPublished">
+            <summary>
+            Gets the published version if available, and if not, the latest version.
+            </summary>
+        </member>
+        <member name="P:Elsa.Common.Models.VersionOptions.IsLatestAndPublished">
+            <summary>
+            Gets the latest, published version.
+            </summary>
+        </member>
+        <member name="P:Elsa.Common.Models.VersionOptions.IsPublished">
+            <summary>
+            Gets the published version.
+            </summary>
+        </member>
+        <member name="P:Elsa.Common.Models.VersionOptions.IsDraft">
+            <summary>
+            Gets the draft version.
+            </summary>
+        </member>
+        <member name="P:Elsa.Common.Models.VersionOptions.AllVersions">
+            <summary>
+            Gets all versions.
+            </summary>
+        </member>
+        <member name="P:Elsa.Common.Models.VersionOptions.Version">
+            <summary>
+            Gets a specific version.
+            </summary>
+        </member>
+        <member name="M:Elsa.Common.Models.VersionOptions.ToString">
+            <summary>
+            Returns a simple string representation of this <see cref="T:Elsa.Common.Models.VersionOptions"/>.
+            </summary>
+        </member>
+        <member name="T:Elsa.Common.Serialization.ConfigurableSerializer">
+            <summary>
+            A base class for configurable JSON serializers.
+            </summary>
+        </member>
+        <member name="M:Elsa.Common.Serialization.ConfigurableSerializer.#ctor(System.IServiceProvider)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Elsa.Common.Serialization.ConfigurableSerializer"/> class.
+            </summary>
+        </member>
+        <member name="P:Elsa.Common.Serialization.ConfigurableSerializer.ServiceProvider">
+            <summary>
+            Gets the service provider.
+            </summary>
+        </member>
+        <member name="M:Elsa.Common.Serialization.ConfigurableSerializer.CreateOptions">
+            <summary>
+            Creates a new instance of <see cref="T:System.Text.Json.JsonSerializerOptions"/> with the configured options. 
+            </summary>
+        </member>
+        <member name="M:Elsa.Common.Serialization.ConfigurableSerializer.Apply(System.Text.Json.JsonSerializerOptions)">
+            <summary>
+            Creates a new instance of <see cref="T:System.Text.Json.JsonSerializerOptions"/> with the configured options. 
+            </summary>
+        </member>
+        <member name="M:Elsa.Common.Serialization.ConfigurableSerializer.CreateOptionsInternal">
+            <summary>
+            Creates a new instance of <see cref="T:System.Text.Json.JsonSerializerOptions"/>.
+            </summary>
+        </member>
+        <member name="M:Elsa.Common.Serialization.ConfigurableSerializer.Configure(System.Text.Json.JsonSerializerOptions)">
+            <summary>
+            Configures the <see cref="T:System.Text.Json.JsonSerializerOptions"/> object.
+            </summary>
+        </member>
+        <member name="M:Elsa.Common.Serialization.ConfigurableSerializer.AddConverters(System.Text.Json.JsonSerializerOptions)">
+            <summary>
+            Adds additional <see cref="T:System.Text.Json.Serialization.JsonConverter"/> objects.
+            </summary>
+        </member>
+        <member name="M:Elsa.Common.Serialization.ConfigurableSerializer.RunConfigurators(System.Text.Json.JsonSerializerOptions)">
+            <summary>
+            Give external packages a chance to further configure the serializer options.
+            </summary>
+        </member>
+        <member name="M:Elsa.Common.Serialization.ConfigurableSerializer.CreateInstance``1">
+            <summary>
+            Creates an instance of the specified type using the service provider.
+            </summary>
+        </member>
+        <member name="T:Elsa.Common.Serialization.ModifiableJsonTypeInfoResolver">
+            <summary>
+            A custom JSON type info resolver that allows private constructors to be used when deserializing JSON.
+            </summary>
+        </member>
+        <member name="M:Elsa.Common.Serialization.ModifiableJsonTypeInfoResolver.#ctor(System.Collections.Generic.IEnumerable{System.Action{System.Text.Json.Serialization.Metadata.JsonTypeInfo}})">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.Common.Services.JsonFormatter">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Common.Services.JsonFormatter.ToStringAsync(System.Object,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Common.Services.JsonFormatter.FromStringAsync(System.String,System.Type,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.Common.Services.MemoryStore`1">
+            <summary>
+            A simple in-memory store for entities.
+            </summary>
+            <typeparam name="TEntity">The type of entity to store.</typeparam>
+        </member>
+        <member name="M:Elsa.Common.Services.MemoryStore`1.Save(`0,System.Func{`0,System.String})">
+            <summary>
+            Adds or updates an entity.
+            </summary>
+            <param name="entity">The entity to add or update.</param>
+            <param name="idAccessor">A function that returns the ID of the entity.</param>
+        </member>
+        <member name="M:Elsa.Common.Services.MemoryStore`1.SaveMany(System.Collections.Generic.IEnumerable{`0},System.Func{`0,System.String})">
+            <summary>
+            Adds or updates many entities.
+            </summary>
+            <param name="entities">The entities to add or update.</param>
+            <param name="idAccessor">A function that returns the ID of the entity.</param>
+        </member>
+        <member name="M:Elsa.Common.Services.MemoryStore`1.Find(System.Func{`0,System.Boolean})">
+            <summary>
+            Finds an entity matching the specified predicate.
+            </summary>
+            <param name="predicate">A predicate to match.</param>
+            <returns>The matching entity or null if no match was found.</returns>
+        </member>
+        <member name="M:Elsa.Common.Services.MemoryStore`1.FindMany(System.Func{`0,System.Boolean})">
+            <summary>
+            Finds all entities matching the specified predicate.
+            </summary>
+            <param name="predicate">A predicate to match.</param>
+            <returns>The matching entities.</returns>
+        </member>
+        <member name="M:Elsa.Common.Services.MemoryStore`1.FindMany``1(System.Func{`0,System.Boolean},System.Func{`0,``0},Elsa.Common.Entities.OrderDirection)">
+            <summary>
+            Finds all entities matching the specified predicate and orders them by the specified key.
+            </summary>
+            <param name="predicate">The predicate to match.</param>
+            <param name="orderBy">The key to order by.</param>
+            <param name="orderDirection">The order direction.</param>
+            <typeparam name="TKey">The type of the key.</typeparam>
+            <returns>The matching entities.</returns>
+        </member>
+        <member name="M:Elsa.Common.Services.MemoryStore`1.List">
+            <summary>
+            Lists all entities.
+            </summary>
+            <returns>All entities.</returns>
+        </member>
+        <member name="M:Elsa.Common.Services.MemoryStore`1.Delete(System.String)">
+            <summary>
+            Deletes an entity by ID.
+            </summary>
+            <param name="id">The ID of the entity to delete.</param>
+            <returns>True if the entity was deleted, otherwise false.</returns>
+        </member>
+        <member name="M:Elsa.Common.Services.MemoryStore`1.DeleteWhere(System.Func{`0,System.Boolean})">
+            <summary>
+            Deletes all entities matching the specified predicate.
+            </summary>
+            <param name="predicate">The predicate to match.</param>
+            <returns>The number of entities deleted.</returns>
+        </member>
+        <member name="M:Elsa.Common.Services.MemoryStore`1.DeleteMany(System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Deletes all entities matching the specified IDs.
+            </summary>
+            <param name="ids">The IDs of the entities to delete.</param>
+            <returns>The number of entities deleted.</returns>
+        </member>
+        <member name="M:Elsa.Common.Services.MemoryStore`1.DeleteMany(System.Collections.Generic.IEnumerable{`0},System.Func{`0,System.String})">
+            <summary>
+            Deletes the specified entities. 
+            </summary>
+            <param name="entities">The entities to delete.</param>
+            <param name="idAccessor">A function that returns the ID of the entity.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Elsa.Common.Services.MemoryStore`1.Query(System.Func{System.Linq.IQueryable{`0},System.Linq.IQueryable{`0}})">
+            <summary>
+            Returns a queryable of all entities.
+            </summary>
+            <param name="query">A function that returns a queryable.</param>
+            <returns>A queryable of all entities.</returns>
+        </member>
+        <member name="M:Elsa.Common.Services.MemoryStore`1.Any(System.Func{`0,System.Boolean})">
+            <summary>
+            Returns true if any entity matches the specified predicate.
+            </summary>
+            <param name="predicate">The predicate to match.</param>
+            <returns>True if any entity matches the specified predicate, otherwise false.</returns>
+        </member>
+        <member name="M:Elsa.Common.Services.MemoryStore`1.Count``1(System.Func{`0,System.Boolean},System.Func{`0,``0})">
+            <summary>
+            Returns the number of entities matching the specified predicate.
+            </summary>
+            <param name="predicate">The predicate to match.</param>
+            <param name="propertySelector">The property to distinct by.</param>
+            <returns>True if any entity matches the specified predicate, otherwise false.</returns>
+        </member>
+        <member name="T:Elsa.Common.Services.SystemClock">
+            <inheritdoc />
+        </member>
+        <member name="P:Elsa.Common.Services.SystemClock.UtcNow">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.Extensions.CollectionExtensions">
+            <summary>
+            Provides extension methods for collections.
+            </summary>
+        </member>
+        <member name="M:Elsa.Extensions.CollectionExtensions.AddRange``1(System.Collections.Generic.ICollection{``0},System.Collections.Generic.IEnumerable{``0})">
+            <summary>
+            Adds a range of items to a collection.
+            </summary>
+            <param name="target">The target collection.</param>
+            <param name="source">The source collection.</param>
+            <typeparam name="T">The type of items in the collection.</typeparam>
+        </member>
+        <member name="M:Elsa.Extensions.CollectionExtensions.AddRange``1(System.Collections.Generic.ICollection{``0},``0[])">
+            <summary>
+            Adds a range of items to a collection.
+            </summary>
+            <param name="target">The target collection.</param>
+            <param name="source">The source collection.</param>
+            <typeparam name="T">The type of items in the collection.</typeparam>
+        </member>
+        <member name="M:Elsa.Extensions.CollectionExtensions.RemoveWhere``1(System.Collections.Generic.ICollection{``0},System.Func{``0,System.Boolean})">
+            <summary>
+            Removes all items from a collection that match the specified predicate.
+            </summary>
+            <param name="collection">The collection.</param>
+            <param name="predicate">The predicate.</param>
+            <typeparam name="T">The type of items in the collection.</typeparam>
+        </member>
+        <member name="T:Elsa.Extensions.DependencyInjectionExtensions">
+            <summary>
+            Extension methods for <see cref="T:Microsoft.Extensions.DependencyInjection.IServiceCollection"/>.
+            </summary>
+        </member>
+        <member name="M:Elsa.Extensions.DependencyInjectionExtensions.AddMemoryStore``2(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            Adds a memory store for the specified entity.
+            </summary>
+        </member>
+        <member name="T:Elsa.Extensions.EnumerableExtensions">
+            <summary>
+            Extension methods for <see cref="T:System.Collections.Generic.IEnumerable`1"/>.
+            </summary>
+        </member>
+        <member name="M:Elsa.Extensions.EnumerableExtensions.Paginate``2(System.Collections.Generic.IEnumerable{``0},System.Func{``0,``1},Elsa.Common.Models.PageArgs)">
+            <summary>
+            Paginates the enumerable.
+            </summary>
+            <param name="enumerable">The enumerable to paginate.</param>
+            <param name="projection">The projection to apply to the enumerable.</param>
+            <param name="pageArgs">The pagination arguments.</param>
+            <typeparam name="T">The type of the enumerable.</typeparam>
+            <typeparam name="TTarget">The type of the projection.</typeparam>
+            <returns>A page of the projected enumerable.</returns>
+        </member>
+        <member name="M:Elsa.Extensions.EnumerableExtensions.Paginate``1(System.Collections.Generic.IEnumerable{``0},Elsa.Common.Models.PageArgs)">
+            <summary>
+            Paginates the enumerable.
+            </summary>
+            <param name="enumerable">The enumerable to paginate.</param>
+            <param name="pageArgs">The pagination arguments.</param>
+            <typeparam name="T">The type of the enumerable.</typeparam>
+            <returns>A page of the enumerable.</returns>
+        </member>
+        <member name="M:Elsa.Extensions.EnumerableExtensions.IsEqualTo``1(System.Collections.Generic.IEnumerable{``0},System.Collections.Generic.IEnumerable{``0})">
+            <summary>
+            Returns a value indicating whether two lists are equal.
+            </summary>
+            <param name="list1">The first list.</param>
+            <param name="list2">The second list.</param>
+            <typeparam name="T">The type of the items in the lists.</typeparam>
+            <returns>True if the lists are equal, otherwise false.</returns>
+        </member>
+        <member name="T:Elsa.Extensions.JsonSerializerOptionsExtensions">
+            <summary>
+            Adds extension methods to <see cref="T:System.Text.Json.JsonSerializerOptions"/>.
+            </summary>
+        </member>
+        <member name="M:Elsa.Extensions.JsonSerializerOptionsExtensions.WithConverters(System.Text.Json.JsonSerializerOptions,System.Text.Json.Serialization.JsonConverter[])">
+            <summary>
+            Adds the specified converters to the options.
+            </summary>
+        </member>
+        <member name="T:Elsa.Extensions.PropertyAccessorExtensions">
+            <summary>
+            Provides extension methods for working with property accessors.
+            </summary>
+        </member>
+        <member name="M:Elsa.Extensions.PropertyAccessorExtensions.SetPropertyValue(System.Object,System.String,System.Object)">
+            <summary>
+            Sets the value of the property referenced by the expression.
+            </summary>
+            <param name="target">The target on which to set the property value.</param>
+            <param name="propertyName">The name of the property.</param>
+            <param name="value">The value to set.</param>
+        </member>
+        <member name="M:Elsa.Extensions.PropertyAccessorExtensions.SetPropertyValue``2(``0,System.Linq.Expressions.Expression{System.Func{``0,``1}},``1)">
+            <summary>
+            Sets the value of the property referenced by the expression.
+            </summary>
+            <param name="target">The target on which to set the property value.</param>
+            <param name="expression">The expression.</param>
+            <param name="value">The value to set.</param>
+            <typeparam name="T">The type of the object containing the property.</typeparam>
+            <typeparam name="TProperty">The type of the property.</typeparam>
+        </member>
+        <member name="M:Elsa.Extensions.PropertyAccessorExtensions.GetPropertyValue``2(``0,System.Linq.Expressions.Expression{System.Func{``0,``1}})">
+            <summary>
+            Gets the value of the property referenced by the expression.
+            </summary>
+            <param name="target">The target from which to get the property value.</param>
+            <param name="expression">The expression.</param>
+            <typeparam name="T">The type of the object containing the property.</typeparam>
+            <typeparam name="TProperty">The type of the property.</typeparam>
+            <returns>The value of the property referenced by the expression.</returns>
+        </member>
+        <member name="M:Elsa.Extensions.PropertyAccessorExtensions.GetPropertyName``2(System.Linq.Expressions.Expression{System.Func{``0,``1}})">
+            <summary>
+            Gets the name of the property referenced by the expression.
+            </summary>
+            <param name="expression">The expression.</param>
+            <typeparam name="T">The type of the object containing the property.</typeparam>
+            <typeparam name="TProperty">The type of the property.</typeparam>
+            <returns>The name of the property referenced by the expression.</returns>
+        </member>
+        <member name="M:Elsa.Extensions.PropertyAccessorExtensions.GetProperty``2(System.Linq.Expressions.Expression{System.Func{``0,``1}})">
+            <summary>
+            Gets the property referenced by the expression.
+            </summary>
+            <param name="expression">The expression.</param>
+            <typeparam name="T">The type of the object containing the property.</typeparam>
+            <typeparam name="TProperty">The type of the property.</typeparam>
+            <returns>The property referenced by the expression.</returns>
+        </member>
+        <member name="T:Elsa.Extensions.QueryableExtensions">
+            <summary>
+            Provides extension methods for <see cref="T:System.Linq.IQueryable`1"/> objects.
+            </summary>
+        </member>
+        <member name="M:Elsa.Extensions.QueryableExtensions.Paginate``2(System.Linq.IQueryable{``0},System.Linq.Expressions.Expression{System.Func{``0,``1}},Elsa.Common.Models.PageArgs)">
+            <summary>
+            Paginates the queryable.
+            </summary>
+            <param name="queryable">The queryable to paginate.</param>
+            <param name="projection">The projection to apply to the queryable.</param>
+            <param name="pageArgs">The pagination arguments.</param>
+            <typeparam name="T">The type of the queryable.</typeparam>
+            <typeparam name="TTarget">The type of the projection.</typeparam>
+            <returns>A page of the projected queryable.</returns>
+        </member>
+        <member name="M:Elsa.Extensions.QueryableExtensions.ToPage``1(System.Linq.IQueryable{``0},Elsa.Common.Models.PageArgs)">
+            <summary>
+            Paginates the queryable.
+            </summary>
+            <param name="queryable">The queryable to paginate.</param>
+            <param name="pageArgs">The pagination arguments.</param>
+            <typeparam name="T">The type of the queryable.</typeparam>
+            <returns>A page of the queryable.</returns>
+        </member>
+        <member name="M:Elsa.Extensions.QueryableExtensions.Paginate``1(System.Linq.IQueryable{``0},Elsa.Common.Models.PageArgs)">
+            <summary>
+            Paginates the queryable.
+            </summary>
+            <param name="queryable">The queryable to paginate.</param>
+            <param name="pageArgs">The pagination arguments.</param>
+            <typeparam name="T">The type of the queryable.</typeparam>
+            <returns>The paginated queryable.</returns>
+        </member>
+        <member name="M:Elsa.Extensions.QueryableExtensions.OrderBy``2(System.Linq.IQueryable{``0},Elsa.Common.Entities.OrderDefinition{``0,``1})">
+            <summary>
+            Orders the queryable by the specified order.
+            </summary>
+            <param name="queryable">The queryable to order.</param>
+            <param name="order">The order to apply to the queryable.</param>
+            <typeparam name="T">The type of the queryable.</typeparam>
+            <typeparam name="TOrderBy">The type of the property to order by.</typeparam>
+            <returns>The ordered queryable.</returns>
+        </member>
+        <member name="T:Elsa.Extensions.TypeExtensions">
+            <summary>
+            Extends <see cref="T:System.Type"/> with additional methods.
+            </summary>
+        </member>
+        <member name="M:Elsa.Extensions.TypeExtensions.IsGenericType(System.Type,System.Type)">
+            <summary>
+            Returns true of the type is generic, false otherwise.
+            </summary>
+        </member>
+        <member name="M:Elsa.Extensions.TypeExtensions.IsNullableType(System.Type)">
+            <summary>
+            Returns true of the type is nullable, false otherwise.
+            </summary>
+        </member>
+        <member name="M:Elsa.Extensions.TypeExtensions.GetTypeOfNullable(System.Type)">
+            <summary>
+            Returns the wrapped type of the specified nullable type.
+            </summary>
+        </member>
+        <member name="M:Elsa.Extensions.TypeExtensions.IsCollectionType(System.Type)">
+            <summary>
+            Returns true if the specified type is a collection type, false otherwise.
+            </summary>
+        </member>
+        <member name="M:Elsa.Extensions.TypeExtensions.MakeCollectionType(System.Type)">
+            <summary>
+            Constructs a collection type from the specified type.
+            </summary>
+        </member>
+        <member name="M:Elsa.Extensions.TypeExtensions.GetCollectionElementType(System.Type)">
+            <summary>
+            Returns the element type of the specified collection type.
+            </summary>
+        </member>
+        <member name="T:Elsa.Extensions.VersionedEntityExtensions">
+            <summary>
+            Provides extension methods for <see cref="T:Elsa.Common.Entities.VersionedEntity"/> objects.
+            </summary>
+        </member>
+        <member name="M:Elsa.Extensions.VersionedEntityExtensions.WithVersion(Elsa.Common.Entities.VersionedEntity,Elsa.Common.Models.VersionOptions)">
+            <summary>
+            Returns true if the specified entity matches the version options.
+            </summary>
+            <param name="entity">The entity to check.</param>
+            <param name="versionOptions">The version options.</param>
+            <returns>True if the entity matches the version options.</returns>
+        </member>
+        <member name="M:Elsa.Extensions.VersionedEntityExtensions.WithVersion``1(System.Collections.Generic.IEnumerable{``0},Elsa.Common.Models.VersionOptions)">
+            <summary>
+            Filters the specified enumerable by the version options.
+            </summary>
+            <param name="enumerable">The enumerable to filter.</param>
+            <param name="versionOptions">The version options.</param>
+            <typeparam name="T">The type of the enumerable.</typeparam>
+            <returns>The filtered enumerable.</returns>
+        </member>
+        <member name="M:Elsa.Extensions.VersionedEntityExtensions.WithVersion``1(System.Linq.IQueryable{``0},Elsa.Common.Models.VersionOptions)">
+            <summary>
+            Filters the specified queryable by the version options.
+            </summary>
+            <param name="query">The queryable to filter.</param>
+            <param name="versionOptions">The version options.</param>
+            <typeparam name="T">The type of the queryable.</typeparam>
+            <returns>The filtered queryable.</returns>
+        </member>
+        <member name="M:Elsa.Extensions.VersionedEntityExtensions.WithVersion``1(System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}},Elsa.Common.Models.VersionOptions)">
+            <summary>
+            Returns an expression that filters the specified expression by the version options.
+            </summary>
+            <param name="expression">The expression to filter.</param>
+            <param name="versionOptions">The version options.</param>
+            <typeparam name="T">The type of the expression.</typeparam>
+            <returns>The filtered expression.</returns>
+        </member>
+    </members>
+</doc>

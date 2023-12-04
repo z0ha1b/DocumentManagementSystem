@@ -1,0 +1,963 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Elsa.Expressions</name>
+    </assembly>
+    <members>
+        <member name="T:Elsa.Expressions.Contracts.IExpression">
+            <summary>
+            Marker interface for expression types.
+            </summary>
+        </member>
+        <member name="T:Elsa.Expressions.Contracts.IExpressionEvaluator">
+            <summary>
+            Evaluates expressions.
+            </summary>
+        </member>
+        <member name="M:Elsa.Expressions.Contracts.IExpressionEvaluator.EvaluateAsync``1(Elsa.Expressions.Contracts.IExpression,Elsa.Expressions.Models.ExpressionExecutionContext)">
+            <summary>
+            Evaluates the specified expression and returns the result.
+            </summary>
+            <param name="expression">The expression to evaluate.</param>
+            <param name="context">The context in which the expression is evaluated.</param>
+            <typeparam name="T">The type of the result.</typeparam>
+            <returns>The result of the evaluation.</returns>
+        </member>
+        <member name="M:Elsa.Expressions.Contracts.IExpressionEvaluator.EvaluateAsync(Elsa.Expressions.Contracts.IExpression,System.Type,Elsa.Expressions.Models.ExpressionExecutionContext)">
+            <summary>
+            Evaluates the specified expression and returns the result.
+            </summary>
+            <param name="expression">The expression to evaluate.</param>
+            <param name="returnType">The type of the result.</param>
+            <param name="context">The context in which the expression is evaluated.</param>
+            <returns>The result of the evaluation.</returns>
+        </member>
+        <member name="T:Elsa.Expressions.Contracts.IExpressionHandler">
+            <summary>
+            Evaluates an expression.
+            </summary>
+        </member>
+        <member name="M:Elsa.Expressions.Contracts.IExpressionHandler.EvaluateAsync(Elsa.Expressions.Contracts.IExpression,System.Type,Elsa.Expressions.Models.ExpressionExecutionContext)">
+            <summary>
+            Evaluates an expression.
+            </summary>
+            <param name="expression">The expression to evaluate.</param>
+            <param name="returnType">The expected return type.</param>
+            <param name="context">The context in which the expression is evaluated.</param>
+            <returns>The result of the evaluation.</returns>
+        </member>
+        <member name="T:Elsa.Expressions.Contracts.IExpressionHandlerRegistry">
+            <summary>
+            A registry of expression handlers.
+            </summary>
+        </member>
+        <member name="M:Elsa.Expressions.Contracts.IExpressionHandlerRegistry.Register(System.Type,System.Type)">
+            <summary>
+            Registers an expression handler for the specified expression type.
+            </summary>
+            <param name="expressionType">The expression type.</param>
+            <param name="handler">The expression handler type.</param>
+        </member>
+        <member name="M:Elsa.Expressions.Contracts.IExpressionHandlerRegistry.GetHandler(Elsa.Expressions.Contracts.IExpression)">
+            <summary>
+            Returns an expression handler for the specified expression.
+            </summary>
+            <param name="expression">The expression.</param>
+            <returns>An expression handler or <c>null</c> if no handler was found.</returns>
+        </member>
+        <member name="T:Elsa.Expressions.Contracts.IExpressionSyntaxProvider">
+            <summary>
+            Provides descriptors for expression syntaxes.
+            </summary>
+        </member>
+        <member name="M:Elsa.Expressions.Contracts.IExpressionSyntaxProvider.GetDescriptorsAsync(System.Threading.CancellationToken)">
+            <summary>
+            Gets the descriptors for the expression syntaxes supported by this provider.
+            </summary>
+        </member>
+        <member name="T:Elsa.Expressions.Contracts.IExpressionSyntaxRegistry">
+            <summary>
+            A registry for expression syntaxes.
+            </summary>
+        </member>
+        <member name="M:Elsa.Expressions.Contracts.IExpressionSyntaxRegistry.Add(Elsa.Expressions.Models.ExpressionSyntaxDescriptor)">
+            <summary>
+            Adds a descriptor to the registry.
+            </summary>
+            <param name="descriptor">The descriptor to add.</param>
+        </member>
+        <member name="M:Elsa.Expressions.Contracts.IExpressionSyntaxRegistry.AddMany(System.Collections.Generic.IEnumerable{Elsa.Expressions.Models.ExpressionSyntaxDescriptor})">
+            <summary>
+            Adds many descriptors to the registry.
+            </summary>
+            <param name="descriptors">The descriptors to add.</param>
+        </member>
+        <member name="M:Elsa.Expressions.Contracts.IExpressionSyntaxRegistry.ListAll">
+            <summary>
+            Lists all descriptors in the registry.
+            </summary>
+            <returns>A list of descriptors.</returns>
+        </member>
+        <member name="M:Elsa.Expressions.Contracts.IExpressionSyntaxRegistry.Find(System.Func{Elsa.Expressions.Models.ExpressionSyntaxDescriptor,System.Boolean})">
+            <summary>
+            Finds a descriptor matching the specified predicate.
+            </summary>
+            <param name="predicate">The predicate.</param>
+            <returns>A descriptor or null if none was found.</returns>
+        </member>
+        <member name="M:Elsa.Expressions.Contracts.IExpressionSyntaxRegistry.Find(System.String)">
+            <summary>
+            Finds a descriptor matching the specified syntax.
+            </summary>
+            <param name="syntax">The syntax.</param>
+            <returns>A descriptor or null if none was found.</returns>
+        </member>
+        <member name="T:Elsa.Expressions.Contracts.IExpressionSyntaxRegistryPopulator">
+            <summary>
+            Populates the expression syntax registry.
+            </summary>
+        </member>
+        <member name="M:Elsa.Expressions.Contracts.IExpressionSyntaxRegistryPopulator.PopulateRegistryAsync(System.Threading.CancellationToken)">
+            <summary>
+            Populates the expression syntax registry.
+            </summary>
+            <param name="cancellationToken">The cancellation token.</param>
+        </member>
+        <member name="T:Elsa.Expressions.Contracts.IWellKnownTypeRegistry">
+            <summary>
+            A central repository of well known types.
+            </summary>
+        </member>
+        <member name="M:Elsa.Expressions.Contracts.IWellKnownTypeRegistry.RegisterType(System.Type,System.String)">
+            <summary>
+            Register a type with an alias. 
+            </summary>
+        </member>
+        <member name="M:Elsa.Expressions.Contracts.IWellKnownTypeRegistry.TryGetAlias(System.Type,System.String@)">
+            <summary>
+            Attempts to get an alias for the specified type.
+            </summary>
+        </member>
+        <member name="M:Elsa.Expressions.Contracts.IWellKnownTypeRegistry.TryGetType(System.String,System.Type@)">
+            <summary>
+            Attempts to get the type associated with the specified alias.
+            </summary>
+        </member>
+        <member name="M:Elsa.Expressions.Contracts.IWellKnownTypeRegistry.ListTypes">
+            <summary>
+            Returns all registered types.
+            </summary>
+        </member>
+        <member name="T:Elsa.Expressions.DelegateExpression">
+            <summary>
+            An expression that is backed by a delegate.
+            </summary>
+        </member>
+        <member name="M:Elsa.Expressions.DelegateExpression.#ctor(Elsa.Expressions.Models.DelegateBlockReference)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Elsa.Expressions.DelegateExpression"/> class.
+            </summary>
+            <param name="delegateBlockReference">The delegate block reference.</param>
+        </member>
+        <member name="P:Elsa.Expressions.DelegateExpression.DelegateBlockReference">
+            <summary>
+            Gets the delegate block reference.
+            </summary>
+        </member>
+        <member name="T:Elsa.Expressions.DelegateExpression`1">
+            <summary>
+            An expression that is backed by a delegate.
+            </summary>
+            <typeparam name="T">The value type.</typeparam>
+        </member>
+        <member name="M:Elsa.Expressions.DelegateExpression`1.#ctor(Elsa.Expressions.Models.DelegateBlockReference{`0})">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Expressions.DelegateExpression`1.#ctor(System.Func{`0})">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Expressions.DelegateExpression`1.#ctor(System.Func{Elsa.Expressions.Models.ExpressionExecutionContext,`0})">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Expressions.DelegateExpression`1.#ctor(System.Func{System.Threading.Tasks.ValueTask{`0}})">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Expressions.DelegateExpression`1.#ctor(System.Func{Elsa.Expressions.Models.ExpressionExecutionContext,System.Threading.Tasks.ValueTask{`0}})">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.Expressions.DelegateExpressionHandler">
+            <summary>
+            An expression handler for <see cref="T:Elsa.Expressions.DelegateExpression"/>.
+            </summary>
+        </member>
+        <member name="M:Elsa.Expressions.DelegateExpressionHandler.EvaluateAsync(Elsa.Expressions.Contracts.IExpression,System.Type,Elsa.Expressions.Models.ExpressionExecutionContext)">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.Expressions.Extensions.WellKnowTypeRegistryExtensions">
+            <summary>
+            Extends <see cref="T:Elsa.Expressions.Contracts.IWellKnownTypeRegistry"/>.
+            </summary>
+        </member>
+        <member name="M:Elsa.Expressions.Extensions.WellKnowTypeRegistryExtensions.RegisterType``1(Elsa.Expressions.Contracts.IWellKnownTypeRegistry,System.String)">
+            <summary>
+            Register type <see cref="!:T"/> with the specified alias.
+            </summary>
+        </member>
+        <member name="M:Elsa.Expressions.Extensions.WellKnowTypeRegistryExtensions.TryGetTypeOrDefault(Elsa.Expressions.Contracts.IWellKnownTypeRegistry,System.String,System.Type@)">
+            <summary>
+            Attempt to return a type with the specified alias.
+            </summary>
+        </member>
+        <member name="M:Elsa.Expressions.Extensions.WellKnowTypeRegistryExtensions.GetAliasOrDefault(Elsa.Expressions.Contracts.IWellKnownTypeRegistry,System.Type)">
+            <summary>
+            Returns the alias for the specified type. If no alias was found, the assembly qualified type name is returned instead.  
+            </summary>
+        </member>
+        <member name="M:Elsa.Expressions.Extensions.WellKnowTypeRegistryExtensions.GetTypeOrDefault(Elsa.Expressions.Contracts.IWellKnownTypeRegistry,System.String)">
+            <summary>
+            Returns the type associated with the specified alias. If no type was found, the alias is interpreted as a type name/
+            </summary>
+        </member>
+        <member name="T:Elsa.Expressions.Helpers.ObjectConverterOptions">
+            <summary>
+            Provides options to the conversion method.
+            </summary>
+        </member>
+        <member name="M:Elsa.Expressions.Helpers.ObjectConverterOptions.#ctor(System.Text.Json.JsonSerializerOptions,Elsa.Expressions.Contracts.IWellKnownTypeRegistry)">
+            <summary>
+            Provides options to the conversion method.
+            </summary>
+        </member>
+        <member name="T:Elsa.Expressions.Helpers.ObjectConverter">
+            <summary>
+            A helper that attempts many strategies to try and convert the source value into the destination type. 
+            </summary>
+        </member>
+        <member name="M:Elsa.Expressions.Helpers.ObjectConverter.TryConvertTo``1(System.Object,Elsa.Expressions.Helpers.ObjectConverterOptions)">
+            <summary>
+            Attempts to convert the source value into the destination type.
+            </summary>
+        </member>
+        <member name="M:Elsa.Expressions.Helpers.ObjectConverter.TryConvertTo(System.Object,System.Type,Elsa.Expressions.Helpers.ObjectConverterOptions)">
+            <summary>
+            Attempts to convert the source value into the destination type.
+            </summary>
+        </member>
+        <member name="M:Elsa.Expressions.Helpers.ObjectConverter.ConvertTo``1(System.Object,Elsa.Expressions.Helpers.ObjectConverterOptions)">
+            <summary>
+            Attempts to convert the source value into the destination type.
+            </summary>
+        </member>
+        <member name="M:Elsa.Expressions.Helpers.ObjectConverter.ConvertTo(System.Object,System.Type,Elsa.Expressions.Helpers.ObjectConverterOptions)">
+            <summary>
+            Attempts to convert the source value into the destination type.
+            </summary>
+        </member>
+        <member name="M:Elsa.Expressions.Helpers.ObjectConverter.IsDateType(System.Type)">
+            <summary>
+            Returns true if the specified type is date-like type, false otherwise.
+            </summary>
+        </member>
+        <member name="M:Elsa.Expressions.Helpers.ObjectConverter.ConvertAnyDateType(System.Object,System.Type)">
+            <summary>
+            Converts any date type to the specified target type.
+            </summary>
+            <param name="value">Any of <see cref="T:System.DateTime"/>, <see cref="T:System.DateTimeOffset"/> or <see cref="T:System.DateOnly"/>.</param>
+            <param name="targetType">Any of <see cref="T:System.DateTime"/>, <see cref="T:System.DateTimeOffset"/> or <see cref="T:System.DateOnly"/>.</param>
+            <returns>The converted value.</returns>
+            <exception cref="T:System.ArgumentException">Thrown if <paramref name="value"/> is not of type <see cref="T:System.DateTime"/>, <see cref="T:System.DateTimeOffset"/> or <see cref="T:System.DateOnly"/>.</exception>
+        </member>
+        <member name="T:Elsa.Expressions.Helpers.ObjectFormatter">
+            <summary>
+            Provides a set of static methods for formatting objects.
+            </summary>
+        </member>
+        <member name="M:Elsa.Expressions.Helpers.ObjectFormatter.Format(System.Object)">
+            <summary>
+            Formats the specified value as a string.
+            </summary>
+            <param name="value">The value.</param>
+            <returns>A string representation of the value.</returns>
+        </member>
+        <member name="T:Elsa.Expressions.LiteralExpression">
+            <summary>
+            Represents a literal expression, whose value is to be used as-is. Unless the destination type is different than the literal value, in which case the value is attempted to be converted.
+            </summary>
+        </member>
+        <member name="M:Elsa.Expressions.LiteralExpression.#ctor">
+            <summary>
+            Constructor.
+            </summary>
+        </member>
+        <member name="M:Elsa.Expressions.LiteralExpression.#ctor(System.Object)">
+            <summary>
+            Constructor.
+            </summary>
+        </member>
+        <member name="P:Elsa.Expressions.LiteralExpression.Value">
+            <summary>
+            The literal value.
+            </summary>
+        </member>
+        <member name="T:Elsa.Expressions.LiteralExpression`1">
+            <summary>
+            Represents a literal expression, whose value is to be used as-is. Unless the destination type is different than the literal value, in which case the value is attempted to be converted.
+            </summary>
+        </member>
+        <member name="M:Elsa.Expressions.LiteralExpression`1.#ctor(`0)">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.Expressions.LiteralExpressionHandler">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Expressions.LiteralExpressionHandler.#ctor(Elsa.Expressions.Contracts.IWellKnownTypeRegistry)">
+            <summary>
+            Constructor.
+            </summary>
+        </member>
+        <member name="M:Elsa.Expressions.LiteralExpressionHandler.EvaluateAsync(Elsa.Expressions.Contracts.IExpression,System.Type,Elsa.Expressions.Models.ExpressionExecutionContext)">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.Expressions.Models.Brackets">
+            <summary>
+            Represents a bracket pair.
+            </summary>
+        </member>
+        <member name="P:Elsa.Expressions.Models.Brackets.Open">
+            <summary>
+            Gets the opening bracket.
+            </summary>
+        </member>
+        <member name="P:Elsa.Expressions.Models.Brackets.Close">
+            <summary>
+            Gets the closing bracket.
+            </summary>
+        </member>
+        <member name="M:Elsa.Expressions.Models.Brackets.#ctor(System.Char,System.Char)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Elsa.Expressions.Models.Brackets"/> class.
+            </summary>
+            <param name="open">The opening bracket.</param>
+            <param name="close">The closing bracket.</param>
+        </member>
+        <member name="P:Elsa.Expressions.Models.Brackets.Angle">
+            <summary>
+            An angle bracket pair.
+            </summary>
+        </member>
+        <member name="P:Elsa.Expressions.Models.Brackets.Square">
+            <summary>
+            A square bracket pair.
+            </summary>
+        </member>
+        <member name="T:Elsa.Expressions.Models.ExpressionExecutionContext">
+            <summary>
+            Provides context to workflow expressions. 
+            </summary>
+        </member>
+        <member name="M:Elsa.Expressions.Models.ExpressionExecutionContext.#ctor(System.IServiceProvider,Elsa.Expressions.Models.MemoryRegister,Elsa.Expressions.Models.ExpressionExecutionContext,System.Collections.Generic.IDictionary{System.Object,System.Object},System.Threading.CancellationToken)">
+            <summary>
+            Constructor.
+            </summary>
+        </member>
+        <member name="P:Elsa.Expressions.Models.ExpressionExecutionContext.ServiceProvider">
+            <summary>
+            A scoped service provider.
+            </summary>
+        </member>
+        <member name="P:Elsa.Expressions.Models.ExpressionExecutionContext.Memory">
+            <summary>
+            A shared register of computer memory. 
+            </summary>
+        </member>
+        <member name="P:Elsa.Expressions.Models.ExpressionExecutionContext.TransientProperties">
+            <summary>
+            A dictionary of transient properties.
+            </summary>
+        </member>
+        <member name="P:Elsa.Expressions.Models.ExpressionExecutionContext.ParentContext">
+            <summary>
+            Provides access to the parent <see cref="T:Elsa.Expressions.Models.ExpressionExecutionContext"/>, if there is any.
+            </summary>
+        </member>
+        <member name="P:Elsa.Expressions.Models.ExpressionExecutionContext.CancellationToken">
+            <summary>
+            A cancellation token.
+            </summary>
+        </member>
+        <member name="M:Elsa.Expressions.Models.ExpressionExecutionContext.GetBlock(System.Func{Elsa.Expressions.Models.MemoryBlockReference})">
+            <summary>
+            Returns the <see cref="T:Elsa.Expressions.Models.MemoryBlock"/> pointed to by the specified memory block reference.
+            </summary>
+        </member>
+        <member name="M:Elsa.Expressions.Models.ExpressionExecutionContext.GetBlock(Elsa.Expressions.Models.MemoryBlockReference)">
+            <summary>
+            Returns the <see cref="T:Elsa.Expressions.Models.MemoryBlock"/> pointed to by the specified memory block reference.
+            </summary>
+        </member>
+        <member name="M:Elsa.Expressions.Models.ExpressionExecutionContext.TryGetBlock(Elsa.Expressions.Models.MemoryBlockReference,Elsa.Expressions.Models.MemoryBlock@)">
+            <summary>
+            Returns the <see cref="T:Elsa.Expressions.Models.MemoryBlock"/> pointed to by the specified memory block reference.
+            </summary>
+        </member>
+        <member name="M:Elsa.Expressions.Models.ExpressionExecutionContext.Get(System.Func{Elsa.Expressions.Models.MemoryBlockReference})">
+            <summary>
+            Returns the value of the memory block pointed to by the specified memory block reference.
+            </summary>
+        </member>
+        <member name="M:Elsa.Expressions.Models.ExpressionExecutionContext.Get(Elsa.Expressions.Models.MemoryBlockReference)">
+            <summary>
+            Returns the value of the memory block pointed to by the specified memory block reference.
+            </summary>
+        </member>
+        <member name="M:Elsa.Expressions.Models.ExpressionExecutionContext.TryGet(Elsa.Expressions.Models.MemoryBlockReference,System.Object@)">
+            <summary>
+            Returns the value of the memory block pointed to by the specified memory block reference.
+            </summary>
+        </member>
+        <member name="M:Elsa.Expressions.Models.ExpressionExecutionContext.Get``1(System.Func{Elsa.Expressions.Models.MemoryBlockReference})">
+            <summary>
+            Returns the value of the memory block pointed to by the specified memory block reference. 
+            </summary>
+        </member>
+        <member name="M:Elsa.Expressions.Models.ExpressionExecutionContext.Get``1(Elsa.Expressions.Models.MemoryBlockReference)">
+            <summary>
+            Returns the value of the memory block pointed to by the specified memory block reference.
+            </summary>
+        </member>
+        <member name="M:Elsa.Expressions.Models.ExpressionExecutionContext.Set(System.Func{Elsa.Expressions.Models.MemoryBlockReference},System.Object,System.Action{Elsa.Expressions.Models.MemoryBlock})">
+            <summary>
+            Sets the value of the memory block pointed to by the specified memory block reference.
+            </summary>
+        </member>
+        <member name="M:Elsa.Expressions.Models.ExpressionExecutionContext.Set(Elsa.Expressions.Models.MemoryBlockReference,System.Object,System.Action{Elsa.Expressions.Models.MemoryBlock})">
+            <summary>
+            Sets the value of the memory block pointed to by the specified memory block reference.
+            </summary>
+        </member>
+        <member name="M:Elsa.Expressions.Models.ExpressionExecutionContext.GetRequiredService``1">
+            <summary>
+            Returns the service of the specified type.
+            </summary>
+        </member>
+        <member name="T:Elsa.Expressions.Models.ExpressionSyntaxDescriptor">
+            <summary>
+            Describes an expression syntax.
+            </summary>
+        </member>
+        <member name="P:Elsa.Expressions.Models.ExpressionSyntaxDescriptor.Syntax">
+            <summary>
+            Gets or sets the syntax name.
+            </summary>
+        </member>
+        <member name="P:Elsa.Expressions.Models.ExpressionSyntaxDescriptor.Type">
+            <summary>
+            Gets or sets the expression type.
+            </summary>
+        </member>
+        <member name="P:Elsa.Expressions.Models.ExpressionSyntaxDescriptor.CreateExpression">
+            <summary>
+            Gets or sets a delegate that creates an expression.
+            </summary>
+        </member>
+        <member name="P:Elsa.Expressions.Models.ExpressionSyntaxDescriptor.CreateBlockReference">
+            <summary>
+            Gets or sets a delegate that creates a memory block reference.
+            </summary>
+        </member>
+        <member name="P:Elsa.Expressions.Models.ExpressionSyntaxDescriptor.CreateSerializableObject">
+            <summary>
+            Gets or sets a delegate that creates a serializable object.
+            </summary>
+        </member>
+        <member name="T:Elsa.Expressions.Models.ExpressionConstructorContext">
+            <summary>
+            Contextual information for creating an expression.
+            </summary>
+            <param name="Element">The JSON element containing the expression.</param>
+            <param name="SerializerOptions">The JSON serializer options.</param>
+        </member>
+        <member name="M:Elsa.Expressions.Models.ExpressionConstructorContext.#ctor(System.Text.Json.JsonElement,System.Text.Json.JsonSerializerOptions)">
+            <summary>
+            Contextual information for creating an expression.
+            </summary>
+            <param name="Element">The JSON element containing the expression.</param>
+            <param name="SerializerOptions">The JSON serializer options.</param>
+        </member>
+        <member name="P:Elsa.Expressions.Models.ExpressionConstructorContext.Element">
+            <summary>The JSON element containing the expression.</summary>
+        </member>
+        <member name="P:Elsa.Expressions.Models.ExpressionConstructorContext.SerializerOptions">
+            <summary>The JSON serializer options.</summary>
+        </member>
+        <member name="T:Elsa.Expressions.Models.BlockReferenceConstructorContext">
+            <summary>
+            Contextual information for creating a memory block reference.
+            </summary>
+            <param name="Expression">The expression.</param>
+        </member>
+        <member name="M:Elsa.Expressions.Models.BlockReferenceConstructorContext.#ctor(Elsa.Expressions.Contracts.IExpression)">
+            <summary>
+            Contextual information for creating a memory block reference.
+            </summary>
+            <param name="Expression">The expression.</param>
+        </member>
+        <member name="P:Elsa.Expressions.Models.BlockReferenceConstructorContext.Expression">
+            <summary>The expression.</summary>
+        </member>
+        <member name="M:Elsa.Expressions.Models.BlockReferenceConstructorContext.GetExpression``1">
+            <summary>
+            Gets the expression.
+            </summary>
+            <typeparam name="T">The expression type.</typeparam>
+            <returns>The expression.</returns>
+        </member>
+        <member name="T:Elsa.Expressions.Models.SerializableObjectConstructorContext">
+            <summary>
+            Contextual information for creating a serializable object.
+            </summary>
+            <param name="Expression">The expression.</param>
+        </member>
+        <member name="M:Elsa.Expressions.Models.SerializableObjectConstructorContext.#ctor(Elsa.Expressions.Contracts.IExpression)">
+            <summary>
+            Contextual information for creating a serializable object.
+            </summary>
+            <param name="Expression">The expression.</param>
+        </member>
+        <member name="P:Elsa.Expressions.Models.SerializableObjectConstructorContext.Expression">
+            <summary>The expression.</summary>
+        </member>
+        <member name="M:Elsa.Expressions.Models.SerializableObjectConstructorContext.GetExpression``1">
+            <summary>
+            Gets the expression.
+            </summary>
+            <typeparam name="T">The expression type.</typeparam>
+            <returns>The expression.</returns>
+        </member>
+        <member name="T:Elsa.Expressions.Models.Literal">
+            <summary>
+            A literal expression that represents a constant value.
+            </summary>
+        </member>
+        <member name="M:Elsa.Expressions.Models.Literal.#ctor">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Expressions.Models.Literal.#ctor(System.Object,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="P:Elsa.Expressions.Models.Literal.Value">
+            <summary>
+            Gets the value of the literal.
+            </summary>
+        </member>
+        <member name="M:Elsa.Expressions.Models.Literal.Declare">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Expressions.Models.Literal.From``1(``0)">
+            <summary>
+            Creates a literal expression from a value.
+            </summary>
+            <param name="value">The value.</param>
+            <typeparam name="T">The value type.</typeparam>
+            <returns>A literal expression.</returns>
+        </member>
+        <member name="T:Elsa.Expressions.Models.Literal`1">
+            <summary>
+            A literal expression that represents a constant value.
+            </summary>
+            <typeparam name="T">The value type.</typeparam>
+        </member>
+        <member name="M:Elsa.Expressions.Models.Literal`1.#ctor">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Expressions.Models.Literal`1.#ctor(`0,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.Expressions.Models.MemoryBlock">
+            <summary>
+            Represents a piece of memory within a memory register
+            </summary>
+        </member>
+        <member name="M:Elsa.Expressions.Models.MemoryBlock.#ctor">
+            <summary>
+            Constructor.
+            </summary>
+        </member>
+        <member name="M:Elsa.Expressions.Models.MemoryBlock.#ctor(System.Object,System.Object)">
+            <summary>
+            Constructor.
+            </summary>
+        </member>
+        <member name="P:Elsa.Expressions.Models.MemoryBlock.Value">
+            <summary>
+            The value stored in this block.
+            </summary>
+        </member>
+        <member name="P:Elsa.Expressions.Models.MemoryBlock.Metadata">
+            <summary>
+            Optional metadata about this block.
+            </summary>
+        </member>
+        <member name="T:Elsa.Expressions.Models.MemoryBlockReference">
+            <summary>
+            A base class for types that represent a reference to a block of memory. 
+            </summary>
+        </member>
+        <member name="M:Elsa.Expressions.Models.MemoryBlockReference.#ctor">
+            <summary>
+            Constructor.
+            </summary>
+        </member>
+        <member name="M:Elsa.Expressions.Models.MemoryBlockReference.#ctor(System.String)">
+            <summary>
+            Constructor.
+            </summary>
+        </member>
+        <member name="P:Elsa.Expressions.Models.MemoryBlockReference.Id">
+            <summary>
+            The ID of the memory block.
+            </summary>
+        </member>
+        <member name="M:Elsa.Expressions.Models.MemoryBlockReference.Declare">
+            <summary>
+            Declares the memory block.
+            </summary>
+        </member>
+        <member name="M:Elsa.Expressions.Models.MemoryBlockReference.IsDefined(Elsa.Expressions.Models.MemoryRegister)">
+            <summary>
+            Returns true if the memory block is defined in the specified memory register.
+            </summary>
+        </member>
+        <member name="M:Elsa.Expressions.Models.MemoryBlockReference.Get(Elsa.Expressions.Models.MemoryRegister)">
+            <summary>
+            Returns the value of the memory block.
+            </summary>
+        </member>
+        <member name="M:Elsa.Expressions.Models.MemoryBlockReference.Get``1(Elsa.Expressions.Models.MemoryRegister)">
+            <summary>
+            Returns the value of the memory block.
+            </summary>
+        </member>
+        <member name="M:Elsa.Expressions.Models.MemoryBlockReference.Get(Elsa.Expressions.Models.ExpressionExecutionContext)">
+            <summary>
+            Returns the value of the memory block.
+            </summary>
+        </member>
+        <member name="M:Elsa.Expressions.Models.MemoryBlockReference.Get``1(Elsa.Expressions.Models.ExpressionExecutionContext)">
+            <summary>
+            Returns the value of the memory block.
+            </summary>
+        </member>
+        <member name="M:Elsa.Expressions.Models.MemoryBlockReference.TryGet(Elsa.Expressions.Models.ExpressionExecutionContext,System.Object@)">
+            <summary>
+            Returns the value of the memory block.
+            </summary>
+        </member>
+        <member name="M:Elsa.Expressions.Models.MemoryBlockReference.Set(Elsa.Expressions.Models.MemoryRegister,System.Object,System.Action{Elsa.Expressions.Models.MemoryBlock})">
+            <summary>
+            Sets the value of the memory block.
+            </summary>
+        </member>
+        <member name="M:Elsa.Expressions.Models.MemoryBlockReference.Set(Elsa.Expressions.Models.ExpressionExecutionContext,System.Object,System.Action{Elsa.Expressions.Models.MemoryBlock})">
+            <summary>
+            Sets the value of the memory block.
+            </summary>
+        </member>
+        <member name="M:Elsa.Expressions.Models.MemoryBlockReference.GetBlock(Elsa.Expressions.Models.MemoryRegister)">
+            <summary>
+            Returns the <see cref="T:Elsa.Expressions.Models.MemoryBlock"/> pointed to by the specified memory block reference.
+            </summary>
+        </member>
+        <member name="T:Elsa.Expressions.Models.MemoryBlockReference`1">
+            <summary>
+            A base class for types that represent a reference to a block of memory.
+            </summary>
+            <typeparam name="T">The type of the memory block.</typeparam>
+        </member>
+        <member name="T:Elsa.Expressions.Models.MemoryRegister">
+            <summary>
+            Represents a register of memory. 
+            </summary>
+        </member>
+        <member name="M:Elsa.Expressions.Models.MemoryRegister.#ctor(System.Collections.Generic.IDictionary{System.String,Elsa.Expressions.Models.MemoryBlock})">
+            <summary>
+            Constructor.
+            </summary>
+        </member>
+        <member name="P:Elsa.Expressions.Models.MemoryRegister.Blocks">
+            <summary>
+            The memory blocks declared in this register.
+            </summary>
+        </member>
+        <member name="M:Elsa.Expressions.Models.MemoryRegister.IsDeclared(Elsa.Expressions.Models.MemoryBlockReference)">
+            <summary>
+            Returns true if the specified memory block is declared in this register.
+            </summary>
+        </member>
+        <member name="M:Elsa.Expressions.Models.MemoryRegister.HasBlock(System.String)">
+            <summary>
+            Returns true if the specified memory block is declared in this register.
+            </summary>
+        </member>
+        <member name="M:Elsa.Expressions.Models.MemoryRegister.TryGetBlock(System.String,Elsa.Expressions.Models.MemoryBlock@)">
+            <summary>
+            Returns the memory block with the specified ID.
+            </summary>
+        </member>
+        <member name="M:Elsa.Expressions.Models.MemoryRegister.Declare(System.Collections.Generic.IEnumerable{Elsa.Expressions.Models.MemoryBlockReference})">
+            <summary>
+            Declares the memory for the specified memory block references. 
+            </summary>
+        </member>
+        <member name="M:Elsa.Expressions.Models.MemoryRegister.Declare(Elsa.Expressions.Models.MemoryBlockReference)">
+            <summary>
+            Declares the memory for the specified memory block reference.
+            </summary>
+        </member>
+        <member name="T:Elsa.Expressions.Models.ObjectLiteral">
+            <summary>
+            Represents a literal JSON expression.
+            </summary>
+        </member>
+        <member name="M:Elsa.Expressions.Models.ObjectLiteral.#ctor">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Expressions.Models.ObjectLiteral.#ctor(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="P:Elsa.Expressions.Models.ObjectLiteral.Value">
+            <summary>
+            The literal JSON string value.
+            </summary>
+        </member>
+        <member name="M:Elsa.Expressions.Models.ObjectLiteral.Declare">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Expressions.Models.ObjectLiteral.From``1(``0)">
+            <summary>
+            Serializes the value into a JSON string in the form of a <see cref="T:Elsa.Expressions.Models.ObjectLiteral`1"/>
+            </summary>
+            <param name="value"></param>
+            <typeparam name="T"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="T:Elsa.Expressions.Models.ObjectLiteral`1">
+            <summary>
+            Represents a JSON string for the specified type <code>T</code>
+            </summary>
+        </member>
+        <member name="M:Elsa.Expressions.Models.ObjectLiteral`1.#ctor">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Expressions.Models.ObjectLiteral`1.#ctor(`0)">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.Expressions.Models.ReadReference">
+            <summary>
+            A memory block reference type that is used for reading memory blocks only.
+            </summary>
+        </member>
+        <member name="M:Elsa.Expressions.Models.ReadReference.#ctor(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Expressions.Models.ReadReference.Declare">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.Expressions.Models.Result">
+            <summary>
+            A simple monad that runs either the <see cref="M:Elsa.Expressions.Models.Result.OnSuccess(System.Action{System.Object})"/> or <see cref="M:Elsa.Expressions.Models.Result.OnFailure(System.Action{System.Exception})"/> lambda, depending on whether or not the operation succeeded.
+            </summary>
+        </member>
+        <member name="P:Elsa.Expressions.Models.Result.Success">
+            <summary>
+            True if the conversaion succeeded, false otherwise.
+            </summary>
+        </member>
+        <member name="P:Elsa.Expressions.Models.Result.Value">
+            <summary>
+            The result value.
+            </summary>
+        </member>
+        <member name="P:Elsa.Expressions.Models.Result.Exception">
+            <summary>
+            Any exception that may have occurred during the operation.
+            </summary>
+        </member>
+        <member name="M:Elsa.Expressions.Models.Result.OnSuccess(System.Action{System.Object})">
+            <summary>
+            Runs the provided delegate if the result is successful.
+            </summary>
+        </member>
+        <member name="M:Elsa.Expressions.Models.Result.OnFailure(System.Action{System.Exception})">
+            <summary>
+            Runs the provided delegate if the result is unsuccessful.
+            </summary>
+        </member>
+        <member name="T:Elsa.Expressions.Options.ExpressionOptions">
+            <summary>
+            Options for the expression feature.
+            </summary>
+        </member>
+        <member name="M:Elsa.Expressions.Options.ExpressionOptions.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Elsa.Expressions.Options.ExpressionOptions"/> class.
+            </summary>
+        </member>
+        <member name="P:Elsa.Expressions.Options.ExpressionOptions.ExpressionHandlers">
+            <summary>
+            Gets the expression handlers.
+            </summary>
+        </member>
+        <member name="P:Elsa.Expressions.Options.ExpressionOptions.AliasTypeDictionary">
+            <summary>
+            Gets the type alias dictionary.
+            </summary>
+        </member>
+        <member name="M:Elsa.Expressions.Options.ExpressionOptions.RegisterExpressionHandler(System.Type,System.Type)">
+            <summary>
+            Registers an expression handler.
+            </summary>
+            <param name="expression">The expression type.</param>
+            <param name="handler">The handler type.</param>
+            <returns>The options.</returns>
+        </member>
+        <member name="M:Elsa.Expressions.Options.ExpressionOptions.RegisterExpressionHandler``2">
+            <summary>
+            Registers an expression handler.
+            </summary>
+            <typeparam name="THandler">The handler type.</typeparam>
+            <typeparam name="TExpression">The expression type.</typeparam>
+            <returns>The options.</returns>
+        </member>
+        <member name="M:Elsa.Expressions.Options.ExpressionOptions.RegisterExpressionHandler``1(System.Type)">
+            <summary>
+            Registers an expression handler.
+            </summary>
+            <param name="expression">The expression type.</param>
+            <typeparam name="THandler">The handler type.</typeparam>
+            <returns>The options.</returns>
+        </member>
+        <member name="M:Elsa.Expressions.Options.ExpressionOptions.RegisterTypeAlias(System.Type,System.String)">
+            <summary>
+            Registers a well known type alias.
+            </summary>
+            <param name="type">The type.</param>
+            <param name="alias">The alias.</param>
+            <returns>The options.</returns>
+        </member>
+        <member name="T:Elsa.Expressions.Services.WellKnownTypeRegistry">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Expressions.Services.WellKnownTypeRegistry.CreateDefault">
+            <summary>
+            Creates a new instance of the <see cref="T:Elsa.Expressions.Services.WellKnownTypeRegistry"/> class.
+            </summary>
+            <returns>The new instance.</returns>
+        </member>
+        <member name="M:Elsa.Expressions.Services.WellKnownTypeRegistry.#ctor(Microsoft.Extensions.Options.IOptions{Elsa.Expressions.Options.ExpressionOptions})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Elsa.Expressions.Services.WellKnownTypeRegistry"/> class.
+            </summary>
+        </member>
+        <member name="M:Elsa.Expressions.Services.WellKnownTypeRegistry.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Elsa.Expressions.Services.WellKnownTypeRegistry"/> class.
+            </summary>
+        </member>
+        <member name="M:Elsa.Expressions.Services.WellKnownTypeRegistry.RegisterType(System.Type,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Expressions.Services.WellKnownTypeRegistry.TryGetAlias(System.Type,System.String@)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Expressions.Services.WellKnownTypeRegistry.TryGetType(System.String,System.Type@)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Expressions.Services.WellKnownTypeRegistry.ListTypes">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.Extensions.ExpressionOptionsExtensions">
+            <summary>
+            Extends <see cref="T:Elsa.Expressions.Options.ExpressionOptions"/>.
+            </summary>
+        </member>
+        <member name="M:Elsa.Extensions.ExpressionOptionsExtensions.AddTypeAlias``1(Elsa.Expressions.Options.ExpressionOptions,System.String)">
+            <summary>
+            Register type <see cref="!:T"/> with the specified alias.
+            </summary>
+        </member>
+        <member name="T:Elsa.Extensions.ModuleExtensions">
+            <summary>
+            Extends <see cref="T:Elsa.Features.Services.IModule"/>.
+            </summary>
+        </member>
+        <member name="M:Elsa.Extensions.ModuleExtensions.UseExpressions(Elsa.Features.Services.IModule,System.Action{Elsa.Expressions.Features.ExpressionsFeature})">
+            <summary>
+            Installs the expressions feature.
+            </summary>
+            <param name="module">The module.</param>
+            <param name="configure">A delegate to configure the <see cref="T:Elsa.Expressions.Features.ExpressionsFeature"/>.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Elsa.Extensions.ModuleExtensions.AddExpressionHandler``2(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            Installs the expressions feature.
+            </summary>
+            <param name="services">The services.</param>
+            <typeparam name="THandler">The type of the handler.</typeparam>
+            <typeparam name="TExpression">The type of the expression.</typeparam>
+            <returns>The services.</returns>
+        </member>
+        <member name="M:Elsa.Extensions.ModuleExtensions.AddExpressionHandler``1(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.Type)">
+            <summary>
+            Installs the expressions feature.
+            </summary>
+            <param name="services">The services.</param>
+            <param name="expression">The type of the expression.</param>
+            <typeparam name="THandler">The type of the handler.</typeparam>
+            <returns>The services.</returns>
+        </member>
+        <member name="M:Elsa.Extensions.ModuleExtensions.AddTypeAlias``1(Elsa.Features.Services.IModule,System.String)">
+            <summary>
+            Register type <see cref="!:T"/> with the specified alias.
+            </summary>
+            <param name="module">The module.</param>
+            <param name="alias">The alias.</param>
+            <typeparam name="T">The type.</typeparam>
+            <returns>The module.</returns>
+        </member>
+        <member name="T:Elsa.Extensions.TypeExtensions">
+            <summary>
+            Adds extension methods to <see cref="T:System.Type"/>.
+            </summary>
+        </member>
+        <member name="M:Elsa.Extensions.TypeExtensions.GetSimpleAssemblyQualifiedName(System.Type)">
+            <summary>
+            Gets the assembly-qualified name of the type, without any version info etc.
+            E.g. "System.String, System.Private.CoreLib"
+            </summary>
+        </member>
+        <member name="M:Elsa.Extensions.TypeExtensions.GetDefaultValue(System.Type)">
+            <summary>
+            Returns the default value for the specified type.
+            </summary>
+        </member>
+        <member name="M:Elsa.Extensions.TypeExtensions.GetEnumerableElementType(System.Type)">
+            <summary>
+            Returns the element type of the specified type representing an array or generic enumerable.
+            </summary>
+        </member>
+        <member name="M:Elsa.Extensions.TypeExtensions.FindIEnumerable(System.Type)">
+            <summary>
+            Searches for the first implemented IEnumerable interface in the given type hierarchy, and returns the generic type argument of the interface. 
+            </summary>
+            <param name="sequenceType">The type to search for the IEnumerable interface.</param>
+            <returns>The generic type argument of the first implemented IEnumerable interface found in the type hierarchy, or null if none is found.</returns>
+        </member>
+        <member name="M:Elsa.Extensions.TypeExtensions.GetFriendlyTypeName(System.Type,Elsa.Expressions.Models.Brackets)">
+            <summary>
+            Gets a friendly type name for the specified type.
+            </summary>
+        </member>
+    </members>
+</doc>

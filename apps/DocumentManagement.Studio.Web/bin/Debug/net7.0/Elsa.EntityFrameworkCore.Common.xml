@@ -1,0 +1,487 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Elsa.EntityFrameworkCore.Common</name>
+    </assembly>
+    <members>
+        <member name="T:Elsa.EntityFrameworkCore.Common.Abstractions.DesignTimeDbContextFactoryBase`1">
+            <summary>
+            A design-time factory base class that can be inherited from by provider-specific implementations.
+            </summary>
+        </member>
+        <member name="M:Elsa.EntityFrameworkCore.Common.Abstractions.DesignTimeDbContextFactoryBase`1.CreateDbContext(System.String[])">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.EntityFrameworkCore.Common.Abstractions.DesignTimeDbContextFactoryBase`1.ConfigureBuilder(Microsoft.EntityFrameworkCore.DbContextOptionsBuilder{`0},System.String)">
+            <summary>
+            Implement this to configure the <see cref="T:Microsoft.EntityFrameworkCore.DbContextOptionsBuilder`1"/>.
+            </summary>
+        </member>
+        <member name="T:Elsa.EntityFrameworkCore.Common.Constants">
+            <summary>
+            Constants.
+            </summary>
+        </member>
+        <member name="F:Elsa.EntityFrameworkCore.Common.Constants.DefaultConnectionString">
+            <summary>
+            Default connection string for SQLite.
+            </summary>
+        </member>
+        <member name="T:Elsa.EntityFrameworkCore.Common.CustomDbContextOptionsExtensionInfo">
+            <summary>
+            Contains options for configuring Elsa's Entity Framework Core integration.
+            </summary>
+        </member>
+        <member name="M:Elsa.EntityFrameworkCore.Common.CustomDbContextOptionsExtensionInfo.#ctor(Microsoft.EntityFrameworkCore.Infrastructure.IDbContextOptionsExtension)">
+            <inheritdoc />
+        </member>
+        <member name="P:Elsa.EntityFrameworkCore.Common.CustomDbContextOptionsExtensionInfo.IsDatabaseProvider">
+            <inheritdoc />
+        </member>
+        <member name="P:Elsa.EntityFrameworkCore.Common.CustomDbContextOptionsExtensionInfo.LogFragment">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.EntityFrameworkCore.Common.CustomDbContextOptionsExtensionInfo.GetServiceProviderHashCode">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.EntityFrameworkCore.Common.CustomDbContextOptionsExtensionInfo.PopulateDebugInfo(System.Collections.Generic.IDictionary{System.String,System.String})">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.EntityFrameworkCore.Common.CustomDbContextOptionsExtensionInfo.ShouldUseSameServiceProvider(Microsoft.EntityFrameworkCore.Infrastructure.DbContextOptionsExtensionInfo)">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.EntityFrameworkCore.Common.ElsaDbContextBase">
+            <summary>
+            An optional base class to implement with some opinions on certain converters to install for certain DB providers.
+            </summary>
+        </member>
+        <member name="P:Elsa.EntityFrameworkCore.Common.ElsaDbContextBase.ElsaSchema">
+            <summary>
+            The schema used by Elsa.
+            </summary>
+        </member>
+        <member name="P:Elsa.EntityFrameworkCore.Common.ElsaDbContextBase.MigrationsHistoryTable">
+            <summary>
+            The table used to store the migrations history.
+            </summary>
+        </member>
+        <member name="M:Elsa.EntityFrameworkCore.Common.ElsaDbContextBase.#ctor(Microsoft.EntityFrameworkCore.DbContextOptions)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Elsa.EntityFrameworkCore.Common.ElsaDbContextBase"/> class.
+            </summary>
+        </member>
+        <member name="P:Elsa.EntityFrameworkCore.Common.ElsaDbContextBase.Schema">
+            <summary>
+            The schema used by Elsa.
+            </summary>
+        </member>
+        <member name="M:Elsa.EntityFrameworkCore.Common.ElsaDbContextBase.OnModelCreating(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.EntityFrameworkCore.Common.ElsaDbContextBase.ApplyEntityConfigurations(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <summary>
+            Override this method to apply entity configurations.
+            </summary>
+        </member>
+        <member name="M:Elsa.EntityFrameworkCore.Common.ElsaDbContextBase.Configure(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <summary>
+            Override this method to apply entity configurations.
+            </summary>
+        </member>
+        <member name="M:Elsa.EntityFrameworkCore.Common.ElsaDbContextBase.SetupForSqlite(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <summary>
+            Override this method to apply entity configurations for the SQLite provider.
+            </summary>
+        </member>
+        <member name="M:Elsa.EntityFrameworkCore.Common.ElsaDbContextBase.SetupForOracle(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <summary>
+            Override this method to apply entity configurations for the Oracle provider.
+            </summary>
+        </member>
+        <member name="T:Elsa.EntityFrameworkCore.Common.ElsaDbContextOptions">
+            <summary>
+            Provides options for configuring Elsa's Entity Framework Core integration.
+            </summary>
+        </member>
+        <member name="P:Elsa.EntityFrameworkCore.Common.ElsaDbContextOptions.SchemaName">
+            <summary>
+            The schema used by Elsa.
+            </summary>
+        </member>
+        <member name="P:Elsa.EntityFrameworkCore.Common.ElsaDbContextOptions.MigrationsHistoryTableName">
+            <summary>
+            The table used to store the migrations history.
+            </summary>
+        </member>
+        <member name="P:Elsa.EntityFrameworkCore.Common.ElsaDbContextOptions.MigrationsAssemblyName">
+            <summary>
+            The assembly name containing the migrations.
+            </summary>
+        </member>
+        <member name="T:Elsa.EntityFrameworkCore.Common.ElsaDbContextOptionsExtension">
+            <summary>
+            Provides options for configuring Elsa's Entity Framework Core integration.
+            </summary>
+        </member>
+        <member name="M:Elsa.EntityFrameworkCore.Common.ElsaDbContextOptionsExtension.#ctor(Elsa.EntityFrameworkCore.Common.ElsaDbContextOptions)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Elsa.EntityFrameworkCore.Common.ElsaDbContextOptionsExtension"/> class.
+            </summary>
+            <param name="options">The options.</param>
+        </member>
+        <member name="P:Elsa.EntityFrameworkCore.Common.ElsaDbContextOptionsExtension.Options">
+            <summary>
+            Gets the options.
+            </summary>
+        </member>
+        <member name="P:Elsa.EntityFrameworkCore.Common.ElsaDbContextOptionsExtension.Info">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.EntityFrameworkCore.Common.ElsaDbContextOptionsExtension.ApplyServices(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.EntityFrameworkCore.Common.ElsaDbContextOptionsExtension.Validate(Microsoft.EntityFrameworkCore.Infrastructure.IDbContextOptions)">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.EntityFrameworkCore.Common.ElsaDbContextOptionsExtensions">
+            <summary>
+            Provides options for configuring Elsa's Entity Framework Core integration.
+            </summary>
+        </member>
+        <member name="M:Elsa.EntityFrameworkCore.Common.ElsaDbContextOptionsExtensions.UseElsaDbContextOptions(Microsoft.EntityFrameworkCore.DbContextOptionsBuilder,Elsa.EntityFrameworkCore.Common.ElsaDbContextOptions)">
+            <summary>
+            Installs a custom extension for Elsa's Entity Framework Core integration.
+            </summary>
+            <param name="optionsBuilder">The options builder to install the extension on.</param>
+            <param name="options">The options to install.</param>
+        </member>
+        <member name="T:Elsa.EntityFrameworkCore.Common.EntityStore`2">
+            <summary>
+            A generic repository class around EF Core for accessing entities that inherit from <see cref="T:Elsa.Common.Entities.Entity"/>.
+            </summary>
+            <typeparam name="TDbContext">The type of the database context.</typeparam>
+            <typeparam name="TEntity">The type of the entity.</typeparam>
+        </member>
+        <member name="M:Elsa.EntityFrameworkCore.Common.EntityStore`2.#ctor(Microsoft.EntityFrameworkCore.IDbContextFactory{`0})">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.EntityFrameworkCore.Common.EntityStore`2.SaveAsync(`1,System.Threading.CancellationToken)">
+            <summary>
+            Saves the entity.
+            </summary>
+            <param name="entity">The entity to save.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+        </member>
+        <member name="M:Elsa.EntityFrameworkCore.Common.EntityStore`2.SaveAsync(`1,System.Func{`0,`1,System.Threading.CancellationToken,System.Threading.Tasks.ValueTask},System.Threading.CancellationToken)">
+            <summary>
+            Saves the entity.
+            </summary>
+            <param name="entity">The entity to save.</param>
+            <param name="onSaving">The callback to invoke before saving the entity.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+        </member>
+        <member name="M:Elsa.EntityFrameworkCore.Common.EntityStore`2.SaveManyAsync(System.Collections.Generic.IEnumerable{`1},System.Threading.CancellationToken)">
+            <summary>
+            Saves the specified entities.
+            </summary>
+            <param name="entities">The entities to save.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+        </member>
+        <member name="M:Elsa.EntityFrameworkCore.Common.EntityStore`2.SaveManyAsync(System.Collections.Generic.IEnumerable{`1},System.Func{`0,`1,System.Threading.CancellationToken,System.Threading.Tasks.ValueTask},System.Threading.CancellationToken)">
+            <summary>
+            Saves the specified entities.
+            </summary>
+            <param name="entities">The entities to save.</param>
+            <param name="onSaving">The callback to invoke before saving the entities.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+        </member>
+        <member name="T:Elsa.EntityFrameworkCore.Common.PersistenceFeatureBase`1">
+            <summary>
+            Base class for features that require Entity Framework Core.
+            </summary>
+            <typeparam name="TDbContext">The type of the database context.</typeparam>
+        </member>
+        <member name="M:Elsa.EntityFrameworkCore.Common.PersistenceFeatureBase`1.#ctor(Elsa.Features.Services.IModule)">
+            <inheritdoc />
+        </member>
+        <member name="P:Elsa.EntityFrameworkCore.Common.PersistenceFeatureBase`1.UseContextPooling">
+            <summary>
+            Gets or sets a value indicating whether to use context pooling.
+            </summary>
+        </member>
+        <member name="P:Elsa.EntityFrameworkCore.Common.PersistenceFeatureBase`1.RunMigrations">
+            <summary>
+            Gets or sets a value indicating whether to run migrations.
+            </summary>
+        </member>
+        <member name="P:Elsa.EntityFrameworkCore.Common.PersistenceFeatureBase`1.DbContextFactoryLifetime">
+            <summary>
+            Gets or sets the lifetime of the <see cref="T:Microsoft.EntityFrameworkCore.IDbContextFactory`1"/>. Defaults to <see cref="F:Microsoft.Extensions.DependencyInjection.ServiceLifetime.Singleton"/>.
+            </summary>
+        </member>
+        <member name="F:Elsa.EntityFrameworkCore.Common.PersistenceFeatureBase`1.DbContextOptionsBuilder">
+            <summary>
+            Gets or sets the callback used to configure the <see cref="F:Elsa.EntityFrameworkCore.Common.PersistenceFeatureBase`1.DbContextOptionsBuilder"/>.
+            </summary>
+        </member>
+        <member name="M:Elsa.EntityFrameworkCore.Common.PersistenceFeatureBase`1.ConfigureHostedServices">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.EntityFrameworkCore.Common.PersistenceFeatureBase`1.Apply">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.EntityFrameworkCore.Common.PersistenceFeatureBase`1.AddStore``2">
+            <summary>
+            Adds a store to the service collection.
+            </summary>
+            <typeparam name="TEntity">The type of the entity.</typeparam>
+            <typeparam name="TStore">The type of the store.</typeparam>
+        </member>
+        <member name="M:Elsa.EntityFrameworkCore.Common.PersistenceFeatureBase`1.AddEntityStore``2">
+            <summary>
+            Adds an entity store to the service collection.
+            </summary>
+            <typeparam name="TEntity">The type of the entity.</typeparam>
+            <typeparam name="TStore">The type of the store.</typeparam>
+        </member>
+        <member name="T:Elsa.EntityFrameworkCore.Common.RunMigrationsHostedService`1">
+            <summary>
+            Executes EF Core migrations using the specified <see cref="T:Microsoft.EntityFrameworkCore.DbContext"/> type.
+            </summary>
+        </member>
+        <member name="M:Elsa.EntityFrameworkCore.Common.RunMigrationsHostedService`1.#ctor(Microsoft.EntityFrameworkCore.IDbContextFactory{`0})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Elsa.EntityFrameworkCore.Common.RunMigrationsHostedService`1"/> class.
+            </summary>
+        </member>
+        <member name="M:Elsa.EntityFrameworkCore.Common.RunMigrationsHostedService`1.StartAsync(System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.EntityFrameworkCore.Common.RunMigrationsHostedService`1.StopAsync(System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.EntityFrameworkCore.Common.Store`2">
+            <summary>
+            A generic repository class around EF Core for accessing entities.
+            </summary>
+            <typeparam name="TDbContext">The type of the database context.</typeparam>
+            <typeparam name="TEntity">The type of the entity.</typeparam>
+        </member>
+        <member name="M:Elsa.EntityFrameworkCore.Common.Store`2.#ctor(Microsoft.EntityFrameworkCore.IDbContextFactory{`0})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Elsa.EntityFrameworkCore.Common.Store`2"/> class.
+            </summary>
+        </member>
+        <member name="M:Elsa.EntityFrameworkCore.Common.Store`2.CreateDbContextAsync(System.Threading.CancellationToken)">
+            <summary>
+            Creates a new instance of the database context.
+            </summary>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns>The database context.</returns>
+        </member>
+        <member name="M:Elsa.EntityFrameworkCore.Common.Store`2.AddAsync(`1,System.Threading.CancellationToken)">
+            <summary>
+            Adds the specified entity.
+            </summary>
+            <param name="entity">The entity to add.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+        </member>
+        <member name="M:Elsa.EntityFrameworkCore.Common.Store`2.AddAsync(`1,System.Func{`0,`1,System.Threading.CancellationToken,System.Threading.Tasks.ValueTask{`1}},System.Threading.CancellationToken)">
+            <summary>
+            Adds the specified entity.
+            </summary>
+            <param name="entity">The entity to add.</param>
+            <param name="onAdding">The callback to invoke before adding the entity.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+        </member>
+        <member name="M:Elsa.EntityFrameworkCore.Common.Store`2.SaveAsync(`1,System.Linq.Expressions.Expression{System.Func{`1,System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Saves the entity.
+            </summary>
+            <param name="entity">The entity to save.</param>
+            <param name="keySelector">The key selector to get the primary key property.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+        </member>
+        <member name="M:Elsa.EntityFrameworkCore.Common.Store`2.SaveAsync(`1,System.Linq.Expressions.Expression{System.Func{`1,System.String}},System.Func{`0,`1,System.Threading.CancellationToken,System.Threading.Tasks.ValueTask},System.Threading.CancellationToken)">
+            <summary>
+            Saves the entity.
+            </summary>
+            <param name="entity">The entity to save.</param>
+            <param name="keySelector">The key selector to get the primary key property.</param>
+            <param name="onSaving">The callback to invoke before saving the entity.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+        </member>
+        <member name="M:Elsa.EntityFrameworkCore.Common.Store`2.SaveManyAsync(System.Collections.Generic.IEnumerable{`1},System.Linq.Expressions.Expression{System.Func{`1,System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Saves the specified entities.
+            </summary>
+            <param name="entities">The entities to save.</param>
+            <param name="keySelector">The key selector to get the primary key property.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+        </member>
+        <member name="M:Elsa.EntityFrameworkCore.Common.Store`2.SaveManyAsync(System.Collections.Generic.IEnumerable{`1},System.Linq.Expressions.Expression{System.Func{`1,System.String}},System.Func{`0,`1,System.Threading.CancellationToken,System.Threading.Tasks.ValueTask},System.Threading.CancellationToken)">
+            <summary>
+            Saves the specified entities.
+            </summary>
+            <param name="entities">The entities to save.</param>
+            <param name="keySelector">The key selector to get the primary key property.</param>
+            <param name="onSaving">The callback to invoke before saving the entity.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+        </member>
+        <member name="M:Elsa.EntityFrameworkCore.Common.Store`2.FindAsync(System.Linq.Expressions.Expression{System.Func{`1,System.Boolean}},System.Threading.CancellationToken)">
+            <summary>
+            Finds the entity matching the specified predicate.
+            </summary>
+            <param name="predicate">The predicate to use.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns>The entity if found, otherwise <c>null</c>.</returns>
+        </member>
+        <member name="M:Elsa.EntityFrameworkCore.Common.Store`2.FindAsync(System.Linq.Expressions.Expression{System.Func{`1,System.Boolean}},System.Func{`0,`1,`1},System.Threading.CancellationToken)">
+            <summary>
+            Finds the entity matching the specified predicate.
+            </summary>
+            <param name="predicate">The predicate to use.</param>
+            <param name="onLoading">A callback to run after the entity is loaded</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Elsa.EntityFrameworkCore.Common.Store`2.FindAsync(System.Func{System.Linq.IQueryable{`1},System.Linq.IQueryable{`1}},System.Func{`0,`1,System.Threading.CancellationToken,System.Threading.Tasks.ValueTask},System.Threading.CancellationToken)">
+            <summary>
+            Finds a single entity using a query
+            </summary>
+            <param name="query">The query to use</param>
+            <param name="onLoading">A callback to run after the entity is loaded</param>
+            <param name="cancellationToken">The cancellation token</param>
+            <returns>The entity if found, otherwise <c>null</c></returns>
+        </member>
+        <member name="M:Elsa.EntityFrameworkCore.Common.Store`2.FindAsync(System.Func{System.Linq.IQueryable{`1},System.Linq.IQueryable{`1}},System.Threading.CancellationToken)">
+            <summary>
+            Finds a single entity using a query
+            </summary>
+            <param name="query">The query to use</param>
+            <param name="cancellationToken">The cancellation token</param>
+            <returns>The entity if found, otherwise <c>null</c></returns>
+        </member>
+        <member name="M:Elsa.EntityFrameworkCore.Common.Store`2.FindManyAsync(System.Linq.Expressions.Expression{System.Func{`1,System.Boolean}},System.Threading.CancellationToken)">
+            <summary>
+            Finds a list of entities using a query
+            </summary>
+        </member>
+        <member name="M:Elsa.EntityFrameworkCore.Common.Store`2.FindManyAsync(System.Linq.Expressions.Expression{System.Func{`1,System.Boolean}},System.Action{`0,`1},System.Threading.CancellationToken)">
+            <summary>
+            Finds a list of entities using a query
+            </summary>
+        </member>
+        <member name="M:Elsa.EntityFrameworkCore.Common.Store`2.FindManyAsync``1(System.Linq.Expressions.Expression{System.Func{`1,System.Boolean}},System.Linq.Expressions.Expression{System.Func{`1,``0}},Elsa.Common.Entities.OrderDirection,Elsa.Common.Models.PageArgs,System.Threading.CancellationToken)">
+            <summary>
+            Finds a list of entities using a query
+            </summary>
+        </member>
+        <member name="M:Elsa.EntityFrameworkCore.Common.Store`2.FindManyAsync``1(System.Linq.Expressions.Expression{System.Func{`1,System.Boolean}},System.Linq.Expressions.Expression{System.Func{`1,``0}},Elsa.Common.Entities.OrderDirection,Elsa.Common.Models.PageArgs,System.Func{`0,`1,`1},System.Threading.CancellationToken)">
+            <summary>
+            Finds a list of entities using a query
+            </summary>
+        </member>
+        <member name="M:Elsa.EntityFrameworkCore.Common.Store`2.DeleteAsync(`1,System.Threading.CancellationToken)">
+            <summary>
+            Finds a single entity using a query.
+            </summary>
+            <returns>True if the entity was found, otherwise false.</returns>
+        </member>
+        <member name="M:Elsa.EntityFrameworkCore.Common.Store`2.DeleteWhereAsync(System.Linq.Expressions.Expression{System.Func{`1,System.Boolean}},System.Threading.CancellationToken)">
+            <summary>
+            Deletes entities using a predicate.
+            </summary>
+            <returns>The number of entities deleted.</returns>
+        </member>
+        <member name="M:Elsa.EntityFrameworkCore.Common.Store`2.DeleteWhereAsync(System.Func{System.Linq.IQueryable{`1},System.Linq.IQueryable{`1}},System.Threading.CancellationToken)">
+            <summary>
+            Deletes entities using a query.
+            </summary>
+            <returns>The number of entities deleted.</returns>
+        </member>
+        <member name="M:Elsa.EntityFrameworkCore.Common.Store`2.QueryAsync(System.Func{System.Linq.IQueryable{`1},System.Linq.IQueryable{`1}},System.Threading.CancellationToken)">
+            <summary>
+            Queries the database using a query.
+            </summary>
+        </member>
+        <member name="M:Elsa.EntityFrameworkCore.Common.Store`2.QueryAsync(System.Func{System.Linq.IQueryable{`1},System.Linq.IQueryable{`1}},System.Func{`0,`1,System.Threading.CancellationToken,System.Threading.Tasks.ValueTask},System.Threading.CancellationToken)">
+            <summary>
+            Queries the database using a query and a selector.
+            </summary>
+        </member>
+        <member name="M:Elsa.EntityFrameworkCore.Common.Store`2.QueryAsync``1(System.Func{System.Linq.IQueryable{`1},System.Linq.IQueryable{`1}},System.Linq.Expressions.Expression{System.Func{`1,``0}},System.Threading.CancellationToken)">
+            <summary>
+            Queries the database using a query and a selector.
+            </summary>
+        </member>
+        <member name="M:Elsa.EntityFrameworkCore.Common.Store`2.CountAsync(System.Func{System.Linq.IQueryable{`1},System.Linq.IQueryable{`1}},System.Threading.CancellationToken)">
+            <summary>
+            Counts the number of entities matching a query.
+            </summary>
+        </member>
+        <member name="M:Elsa.EntityFrameworkCore.Common.Store`2.AnyAsync(System.Linq.Expressions.Expression{System.Func{`1,System.Boolean}},System.Threading.CancellationToken)">
+            <summary>
+            Checks if any entities exist.
+            </summary>
+        </member>
+        <member name="M:Elsa.EntityFrameworkCore.Common.Store`2.CountAsync(System.Linq.Expressions.Expression{System.Func{`1,System.Boolean}},System.Threading.CancellationToken)">
+            <summary>
+            Counts the number of entities matching a predicate.
+            </summary>
+            <param name="predicate">The predicate.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+        </member>
+        <member name="M:Elsa.EntityFrameworkCore.Common.Store`2.CountAsync``1(System.Linq.Expressions.Expression{System.Func{`1,System.Boolean}},System.Linq.Expressions.Expression{System.Func{`1,``0}},System.Threading.CancellationToken)">
+            <summary>
+            Counts the distinct number of entities matching a predicate.
+            </summary>
+            <param name="predicate">The predicate.</param>
+            <param name="propertySelector">The property selector to distinct by.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+        </member>
+        <member name="T:Elsa.EntityFrameworkCore.Extensions.ExpressionExtensions">
+            <summary>
+            Provides extension methods for <see cref="T:System.Linq.Expressions.Expression"/> objects.
+            </summary>
+        </member>
+        <member name="M:Elsa.EntityFrameworkCore.Extensions.ExpressionExtensions.BuildContainsExpression``1(System.Linq.Expressions.Expression{System.Func{``0,System.String}},System.Collections.Generic.IEnumerable{``0})">
+            <summary>
+            Builds an expression that checks if the specified property is contained in the specified list of entities.
+            </summary>
+            <param name="keySelector">The key selector.</param>
+            <param name="entities">The entities.</param>
+            <typeparam name="TEntity">The type of the entity.</typeparam>
+            <returns>The expression.</returns>
+        </member>
+        <member name="M:Elsa.EntityFrameworkCore.Extensions.ExpressionExtensions.BuildEqualsExpression``1(System.Linq.Expressions.Expression{System.Func{``0,System.String}},``0)">
+            <summary>
+            Builds an expression that checks if the specified property is equal to the specified entity's property.
+            </summary>
+            <param name="keySelector">The key selector.</param>
+            <param name="entity">The entity.</param>
+            <typeparam name="TEntity">The type of the entity.</typeparam>
+            <returns>The expression.</returns>
+        </member>
+        <member name="T:Elsa.EntityFrameworkCore.Extensions.QueryableExtensions">
+            <summary>
+            Provides extensions to <see cref="T:System.Linq.IQueryable`1"/>.
+            </summary>
+        </member>
+        <member name="M:Elsa.EntityFrameworkCore.Extensions.QueryableExtensions.BulkUpsertAsync``2(``0,System.Collections.Generic.IList{``1},System.Linq.Expressions.Expression{System.Func{``1,System.String}},System.Threading.CancellationToken)">
+            <summary>
+            Inserts or updates a list of entities in bulk.
+            </summary>
+        </member>
+        <member name="M:Elsa.EntityFrameworkCore.Extensions.QueryableExtensions.PaginateAsync``2(System.Linq.IQueryable{``0},System.Linq.Expressions.Expression{System.Func{``0,``1}},Elsa.Common.Models.PageArgs)">
+            <summary>
+            Returns a paged result from the specified query.
+            </summary>
+        </member>
+        <member name="M:Elsa.EntityFrameworkCore.Extensions.QueryableExtensions.PaginateAsync``1(System.Linq.IQueryable{``0},Elsa.Common.Models.PageArgs)">
+            <summary>
+            Returns a paged result from the specified query.
+            </summary>
+        </member>
+    </members>
+</doc>

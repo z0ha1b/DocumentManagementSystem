@@ -8,9 +8,9 @@ public class SqlServerDocumentDbContextFactory : IDesignTimeDbContextFactory<Doc
     public DocumentDbContext CreateDbContext(string[] args)
     {
         var builder = new DbContextOptionsBuilder<DocumentDbContext>();
-        var connectionString = "Server=.;Database=Elsa;TrustServerCertificate=true;Trusted_Connection=True;MultipleActiveResultSets=true";
+        var connectionString = "Data Source=elsa.sqlite.db;";
 
-        builder.UseSqlServer(connectionString);
+        builder.UseSqlite(connectionString);
 
         return new DocumentDbContext(builder.Options);
     }

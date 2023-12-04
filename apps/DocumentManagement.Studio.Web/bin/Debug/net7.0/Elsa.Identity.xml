@@ -1,0 +1,1203 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Elsa.Identity</name>
+    </assembly>
+    <members>
+        <member name="T:Elsa.Identity.Constants.CharacterSequences">
+            <summary>
+            Provides a set of character sequences
+            </summary>
+        </member>
+        <member name="F:Elsa.Identity.Constants.CharacterSequences.AlphanumericSequence">
+            <summary>
+            Gets an alphanumeric sequence of characters containing lowercase, uppercase and numerical characters.
+            </summary>
+        </member>
+        <member name="F:Elsa.Identity.Constants.CharacterSequences.AlphanumericAndSymbolSequence">
+            <summary>
+            Gets an alphanumeric sequence of characters containing lowercase, uppercase, numerical and symbol characters.
+            </summary>
+        </member>
+        <member name="T:Elsa.Identity.Contracts.IApiKeyGenerator">
+            <summary>
+            Represents an API key generator.
+            </summary>
+        </member>
+        <member name="M:Elsa.Identity.Contracts.IApiKeyGenerator.Generate(System.String)">
+            <summary>
+            Generates a new API key for the specified application name.
+            </summary>
+            <param name="clientId">The name of the application.</param>
+            <returns>The API key.</returns>
+        </member>
+        <member name="T:Elsa.Identity.Contracts.IApiKeyParser">
+            <summary>
+            Parses an API key into its constituent parts.
+            </summary>
+        </member>
+        <member name="M:Elsa.Identity.Contracts.IApiKeyParser.Parse(System.String)">
+            <summary>
+            Parses the specified API key into its constituent parts.
+            </summary>
+            <param name="apiKey">The API key to parse.</param>
+            <returns>The client ID.</returns>
+        </member>
+        <member name="T:Elsa.Identity.Contracts.IApplicationCredentialsValidator">
+            <summary>
+            Validates application credentials.
+            </summary>
+        </member>
+        <member name="M:Elsa.Identity.Contracts.IApplicationCredentialsValidator.ValidateAsync(System.String,System.Threading.CancellationToken)">
+            <summary>
+            Validates the specified application credentials.
+            </summary>
+            <param name="apiKey">The API key to validate.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns>The application if the credentials are valid, otherwise <c>null</c>.</returns>
+        </member>
+        <member name="T:Elsa.Identity.Contracts.IApplicationProvider">
+            <summary>
+            Represents a provider of applications.
+            </summary>
+        </member>
+        <member name="M:Elsa.Identity.Contracts.IApplicationProvider.FindAsync(Elsa.Identity.Models.ApplicationFilter,System.Threading.CancellationToken)">
+            <summary>
+            Finds an application matching the specified filter.
+            </summary>
+            <param name="filter">The filter to use.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns>The application if found, otherwise <c>null</c>.</returns>
+        </member>
+        <member name="T:Elsa.Identity.Contracts.IApplicationStore">
+            <summary>
+            Represents an application store.
+            </summary>
+        </member>
+        <member name="M:Elsa.Identity.Contracts.IApplicationStore.SaveAsync(Elsa.Identity.Entities.Application,System.Threading.CancellationToken)">
+            <summary>
+            Saves the application.
+            </summary>
+            <param name="application">The application to save.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns>The task.</returns>
+        </member>
+        <member name="M:Elsa.Identity.Contracts.IApplicationStore.DeleteAsync(Elsa.Identity.Models.ApplicationFilter,System.Threading.CancellationToken)">
+            <summary>
+            Removes the applications matching the specified filter.
+            </summary>
+            <param name="filter">The filter.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns>The task.</returns>
+        </member>
+        <member name="M:Elsa.Identity.Contracts.IApplicationStore.FindAsync(Elsa.Identity.Models.ApplicationFilter,System.Threading.CancellationToken)">
+            <summary>
+            Finds the application matching the specified filter.
+            </summary>
+            <param name="filter">The filter.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns>The application matching the specified filter.</returns>
+        </member>
+        <member name="T:Elsa.Identity.Contracts.IClientIdGenerator">
+            <summary>
+            Represents a generator of client identifiers.
+            </summary>
+        </member>
+        <member name="M:Elsa.Identity.Contracts.IClientIdGenerator.GenerateAsync(System.Threading.CancellationToken)">
+            <summary>
+            Generates a short identifier.
+            </summary>
+            <returns>The client ID.</returns>
+        </member>
+        <member name="T:Elsa.Identity.Contracts.IRandomStringGenerator">
+            <summary>
+            Represents a generator of random strings.
+            </summary>
+        </member>
+        <member name="M:Elsa.Identity.Contracts.IRandomStringGenerator.Generate(System.Int32,System.Char[])">
+            <summary>
+            Generates a short identifier.
+            </summary>
+            <returns>The client ID.</returns>
+        </member>
+        <member name="T:Elsa.Identity.Contracts.IRoleProvider">
+            <summary>
+            Represents a provider of roles.
+            </summary>
+        </member>
+        <member name="M:Elsa.Identity.Contracts.IRoleProvider.FindManyAsync(Elsa.Identity.Models.RoleFilter,System.Threading.CancellationToken)">
+            <summary>
+            Finds all roles matching the specified filter.
+            </summary>
+            <param name="filter">The filter to use.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns>The roles matching the specified filter.</returns>
+        </member>
+        <member name="T:Elsa.Identity.Contracts.IRoleStore">
+            <summary>
+            Represents a role store.
+            </summary>
+        </member>
+        <member name="M:Elsa.Identity.Contracts.IRoleStore.AddAsync(Elsa.Identity.Entities.Role,System.Threading.CancellationToken)">
+            <summary>
+            Adds the role.
+            </summary>
+            <param name="role">The role to add.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns>The task.</returns>
+        </member>
+        <member name="M:Elsa.Identity.Contracts.IRoleStore.DeleteAsync(Elsa.Identity.Models.RoleFilter,System.Threading.CancellationToken)">
+            <summary>
+            Deletes the role with the specified ID.
+            </summary>
+            <param name="filter">The filter.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns>The task.</returns>
+        </member>
+        <member name="M:Elsa.Identity.Contracts.IRoleStore.SaveAsync(Elsa.Identity.Entities.Role,System.Threading.CancellationToken)">
+            <summary>
+            Saves the role.
+            </summary>
+            <param name="role">The role to save.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns>The task.</returns>
+        </member>
+        <member name="M:Elsa.Identity.Contracts.IRoleStore.FindAsync(Elsa.Identity.Models.RoleFilter,System.Threading.CancellationToken)">
+            <summary>
+            Finds the role matching the specified filter.
+            </summary>
+            <param name="filter">The filter.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns>The role matching the specified filter.</returns>
+        </member>
+        <member name="M:Elsa.Identity.Contracts.IRoleStore.FindManyAsync(Elsa.Identity.Models.RoleFilter,System.Threading.CancellationToken)">
+            <summary>
+            Finds the roles matching the specified filter.
+            </summary>
+            <param name="filter">The filter.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns>The roles matching the specified filter.</returns>
+        </member>
+        <member name="T:Elsa.Identity.Contracts.ISecretGenerator">
+            <summary>
+            Generates secrets.
+            </summary>
+        </member>
+        <member name="M:Elsa.Identity.Contracts.ISecretGenerator.Generate(System.Int32)">
+            <summary>
+            Generates a secret.
+            </summary>
+            <param name="length">The length of the secret.</param>
+            <returns>The secret.</returns>
+        </member>
+        <member name="T:Elsa.Identity.Contracts.ISecretHasher">
+            <summary>
+            Represents a secret hasher.
+            </summary>
+        </member>
+        <member name="M:Elsa.Identity.Contracts.ISecretHasher.HashSecret(System.String)">
+            <summary>
+            Hashes the secret.
+            </summary>
+            <param name="secret">The secret to hash.</param>
+            <returns>The hashed secret.</returns>
+        </member>
+        <member name="M:Elsa.Identity.Contracts.ISecretHasher.HashSecret(System.String,System.Byte[])">
+            <summary>
+            Hashes the secret.
+            </summary>
+            <param name="secret">The secret to hash.</param>
+            <param name="salt">The salt to use.</param>
+            <returns>The hashed secret.</returns>
+        </member>
+        <member name="M:Elsa.Identity.Contracts.ISecretHasher.HashSecret(System.Byte[],System.Byte[])">
+            <summary>
+            Hashes the secret.
+            </summary>
+            <param name="secret">The secret to hash.</param>
+            <param name="salt">The salt to use.</param>
+            <returns>The hashed secret.</returns>
+        </member>
+        <member name="M:Elsa.Identity.Contracts.ISecretHasher.VerifySecret(System.String,System.String,System.String)">
+            <summary>
+            Verifies the secret.
+            </summary>
+            <param name="clearTextSecret">The secret to verify.</param>
+            <param name="secret">The hashed secret.</param>
+            <param name="salt">The salt.</param>
+            <returns>True if the secret is valid, otherwise false.</returns>
+        </member>
+        <member name="M:Elsa.Identity.Contracts.ISecretHasher.VerifySecret(System.String,Elsa.Identity.Models.HashedSecret)">
+            <summary>
+            Verifies the secret.
+            </summary>
+            <param name="clearTextSecret">The secret to verify.</param>
+            <param name="hashedSecret">The hashed secret.</param>
+            <returns>True if the secret is valid, otherwise false.</returns>
+        </member>
+        <member name="M:Elsa.Identity.Contracts.ISecretHasher.GenerateSalt(System.Int32)">
+            <summary>
+            Generates a salt.
+            </summary>
+            <param name="saltSize">The size of the salt.</param>
+            <returns>The salt.</returns>
+        </member>
+        <member name="T:Elsa.Identity.Contracts.IUserCredentialsValidator">
+            <summary>
+            Validates user credentials.
+            </summary>
+        </member>
+        <member name="M:Elsa.Identity.Contracts.IUserCredentialsValidator.ValidateAsync(System.String,System.String,System.Threading.CancellationToken)">
+            <summary>
+            Validates the specified user credentials.
+            </summary>
+            <param name="username">The username to validate.</param>
+            <param name="password">The password to validate.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns>The user if the credentials are valid, otherwise <c>null</c>.</returns>
+        </member>
+        <member name="T:Elsa.Identity.Contracts.IUserProvider">
+            <summary>
+            Represents a provider of users.
+            </summary>
+        </member>
+        <member name="M:Elsa.Identity.Contracts.IUserProvider.FindAsync(Elsa.Identity.Models.UserFilter,System.Threading.CancellationToken)">
+            <summary>
+            Finds a user matching the specified filter.
+            </summary>
+            <param name="filter">The filter to use.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns>The user if found, otherwise <c>null</c>.</returns>
+        </member>
+        <member name="T:Elsa.Identity.Contracts.IUserStore">
+            <summary>
+            Represents a user store.
+            </summary>
+        </member>
+        <member name="M:Elsa.Identity.Contracts.IUserStore.SaveAsync(Elsa.Identity.Entities.User,System.Threading.CancellationToken)">
+            <summary>
+            Saves the user.
+            </summary>
+            <param name="user">The user to save.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns>The task.</returns>
+        </member>
+        <member name="M:Elsa.Identity.Contracts.IUserStore.DeleteAsync(Elsa.Identity.Models.UserFilter,System.Threading.CancellationToken)">
+            <summary>
+            Removes the users matching the specified filter.
+            </summary>
+            <param name="filter">The filter.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns>The task.</returns>
+        </member>
+        <member name="M:Elsa.Identity.Contracts.IUserStore.FindAsync(Elsa.Identity.Models.UserFilter,System.Threading.CancellationToken)">
+            <summary>
+            Finds the user matching the specified filter.
+            </summary>
+            <param name="filter">The filter.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns>The user matching the specified filter.</returns>
+        </member>
+        <member name="T:Elsa.Identity.Endpoints.Applications.Create.Create">
+            <summary>
+            An endpoint that creates a new application. Requires the <code>SecurityRoot</code> policy.
+            </summary>
+        </member>
+        <member name="M:Elsa.Identity.Endpoints.Applications.Create.Create.Configure">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Identity.Endpoints.Applications.Create.Create.HandleAsync(Elsa.Identity.Endpoints.Applications.Create.Request,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Identity.Endpoints.Login.Login.Configure">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Identity.Endpoints.Login.Login.ExecuteAsync(Elsa.Identity.Endpoints.Login.Request,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.Identity.Endpoints.RefreshToken.RefreshToken">
+            <summary>
+            Generates a new token for the current user.
+            </summary>
+        </member>
+        <member name="M:Elsa.Identity.Endpoints.RefreshToken.RefreshToken.#ctor(Elsa.Identity.Contracts.IUserProvider,Elsa.Identity.Contracts.IAccessTokenIssuer)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Identity.Endpoints.RefreshToken.RefreshToken.Configure">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Identity.Endpoints.RefreshToken.RefreshToken.ExecuteAsync(System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.Identity.Endpoints.Roles.Create.Create">
+            <summary>
+            An endpoint that creates a new role.
+            </summary>
+        </member>
+        <member name="M:Elsa.Identity.Endpoints.Roles.Create.Create.Configure">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Identity.Endpoints.Roles.Create.Create.HandleAsync(Elsa.Identity.Endpoints.Roles.Create.Request,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.Identity.Endpoints.Secrets.Hash.Hash">
+            <summary>
+            Hash a given password. Requires the <code>SecurityRoot</code> policy.
+            </summary>
+        </member>
+        <member name="M:Elsa.Identity.Endpoints.Secrets.Hash.Hash.Configure">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Identity.Endpoints.Secrets.Hash.Hash.ExecuteAsync(Elsa.Identity.Endpoints.Secrets.Hash.Request,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.Identity.Endpoints.Users.Create.Create">
+            <summary>
+            An endpoint that creates a new user. Requires the <code>SecurityRoot</code> policy.
+            </summary>
+        </member>
+        <member name="M:Elsa.Identity.Endpoints.Users.Create.Create.Configure">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Identity.Endpoints.Users.Create.Create.HandleAsync(Elsa.Identity.Endpoints.Users.Create.Request,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.Identity.Entities.Application">
+            <summary>
+            Represents an application.
+            </summary>
+        </member>
+        <member name="P:Elsa.Identity.Entities.Application.ClientId">
+            <summary>
+            The client ID.
+            </summary>
+        </member>
+        <member name="P:Elsa.Identity.Entities.Application.HashedClientSecret">
+            <summary>
+            The hashed client secret.
+            </summary>
+        </member>
+        <member name="P:Elsa.Identity.Entities.Application.HashedClientSecretSalt">
+            <summary>
+            The hashed client secret salt.
+            </summary>
+        </member>
+        <member name="P:Elsa.Identity.Entities.Application.Name">
+            <summary>
+            Gets or sets the name.
+            </summary>
+        </member>
+        <member name="P:Elsa.Identity.Entities.Application.HashedApiKey">
+            <summary>
+            Gets or sets the hashed password.
+            </summary>
+        </member>
+        <member name="P:Elsa.Identity.Entities.Application.HashedApiKeySalt">
+            <summary>
+            Gets or sets the hashed password salt.
+            </summary>
+        </member>
+        <member name="P:Elsa.Identity.Entities.Application.Roles">
+            <summary>
+            Gets or sets the roles.
+            </summary>
+        </member>
+        <member name="T:Elsa.Identity.Entities.Role">
+            <summary>
+            Represents a role.
+            </summary>
+        </member>
+        <member name="P:Elsa.Identity.Entities.Role.Name">
+            <summary>
+            Gets or sets the name.
+            </summary>
+        </member>
+        <member name="P:Elsa.Identity.Entities.Role.Permissions">
+            <summary>
+            Gets or sets the permissions.
+            </summary>
+        </member>
+        <member name="T:Elsa.Identity.Entities.User">
+            <summary>
+            Represents a user.
+            </summary>
+        </member>
+        <member name="P:Elsa.Identity.Entities.User.Name">
+            <summary>
+            Gets or sets the name.
+            </summary>
+        </member>
+        <member name="P:Elsa.Identity.Entities.User.HashedPassword">
+            <summary>
+            Gets or sets the hashed password.
+            </summary>
+        </member>
+        <member name="P:Elsa.Identity.Entities.User.HashedPasswordSalt">
+            <summary>
+            Gets or sets the hashed password salt.
+            </summary>
+        </member>
+        <member name="P:Elsa.Identity.Entities.User.Roles">
+            <summary>
+            Gets or sets the roles.
+            </summary>
+        </member>
+        <member name="T:Elsa.Identity.Features.DefaultAuthenticationFeature">
+            <summary>
+            Provides an authorization feature that configures the system with JWT bearer and API key authentication.
+            </summary>
+        </member>
+        <member name="M:Elsa.Identity.Features.DefaultAuthenticationFeature.#ctor(Elsa.Features.Services.IModule)">
+            <inheritdoc />
+        </member>
+        <member name="P:Elsa.Identity.Features.DefaultAuthenticationFeature.ApiKeyProviderType">
+            <summary>
+            Gets or sets the <see cref="P:Elsa.Identity.Features.DefaultAuthenticationFeature.ApiKeyProviderType"/>.
+            </summary>
+        </member>
+        <member name="M:Elsa.Identity.Features.DefaultAuthenticationFeature.UseApiKeyAuthorization``1">
+            <summary>
+            Configures the API key provider type.
+            </summary>
+            <typeparam name="T">The type of the API key provider.</typeparam>
+            <returns>The current <see cref="T:Elsa.Identity.Features.DefaultAuthenticationFeature"/>.</returns>
+        </member>
+        <member name="M:Elsa.Identity.Features.DefaultAuthenticationFeature.UseAdminApiKey">
+            <summary>
+            Configures the API key provider type to <see cref="T:Elsa.Identity.Providers.AdminApiKeyProvider"/>.
+            </summary>
+            <returns>The current <see cref="T:Elsa.Identity.Features.DefaultAuthenticationFeature"/>.</returns>
+        </member>
+        <member name="M:Elsa.Identity.Features.DefaultAuthenticationFeature.Apply">
+            <inheritdoc />
+        </member>
+        <!-- Badly formed XML comment ignored for member "T:Elsa.Identity.Features.IdentityFeature" -->
+        <member name="M:Elsa.Identity.Features.IdentityFeature.#ctor(Elsa.Features.Services.IModule)">
+            <inheritdoc />
+        </member>
+        <member name="P:Elsa.Identity.Features.IdentityFeature.IdentityOptions">
+            <summary>
+            Gets or sets the <see cref="P:Elsa.Identity.Features.IdentityFeature.IdentityOptions"/>.
+            </summary>
+        </member>
+        <member name="P:Elsa.Identity.Features.IdentityFeature.TokenOptions">
+            <summary>
+            Gets or sets the <see cref="T:Elsa.Identity.Options.IdentityTokenOptions"/>.
+            </summary>
+        </member>
+        <member name="P:Elsa.Identity.Features.IdentityFeature.ApiKeyOptions">
+            <summary>
+            Gets or sets the <see cref="P:Elsa.Identity.Features.IdentityFeature.ApiKeyOptions"/>.
+            </summary>
+        </member>
+        <member name="P:Elsa.Identity.Features.IdentityFeature.UsersOptions">
+            <summary>
+            A delegate that configures the <see cref="P:Elsa.Identity.Features.IdentityFeature.UsersOptions"/>.
+            </summary>
+        </member>
+        <member name="P:Elsa.Identity.Features.IdentityFeature.ApplicationsOptions">
+            <summary>
+            A delegate that configures the <see cref="P:Elsa.Identity.Features.IdentityFeature.ApplicationsOptions"/>.
+            </summary>
+        </member>
+        <member name="P:Elsa.Identity.Features.IdentityFeature.RolesOptions">
+            <summary>
+            A delegate that configures the <see cref="P:Elsa.Identity.Features.IdentityFeature.RolesOptions"/>.
+            </summary>
+        </member>
+        <member name="P:Elsa.Identity.Features.IdentityFeature.UserStore">
+            <summary>
+            A delegate that creates an instance of an implementation of <see cref="T:Elsa.Identity.Contracts.IUserStore"/>.
+            </summary>
+        </member>
+        <member name="P:Elsa.Identity.Features.IdentityFeature.ApplicationStore">
+            <summary>
+            A delegate that creates an instance of an implementation of <see cref="T:Elsa.Identity.Contracts.IApplicationStore"/>.
+            </summary>
+        </member>
+        <member name="P:Elsa.Identity.Features.IdentityFeature.RoleStore">
+            <summary>
+            A delegate that creates an instance of an implementation of <see cref="T:Elsa.Identity.Contracts.IRoleStore"/>.
+            </summary>
+        </member>
+        <member name="P:Elsa.Identity.Features.IdentityFeature.UserProvider">
+            <summary>
+            A delegate that creates an instance of an implementation of <see cref="T:Elsa.Identity.Contracts.IUserProvider"/>.
+            </summary>
+        </member>
+        <member name="P:Elsa.Identity.Features.IdentityFeature.ApplicationProvider">
+            <summary>
+            A delegate that creates an instance of an implementation of <see cref="T:Elsa.Identity.Contracts.IApplicationProvider"/>.
+            </summary>
+        </member>
+        <member name="P:Elsa.Identity.Features.IdentityFeature.RoleProvider">
+            <summary>
+            A delegate that creates an instance of an implementation of <see cref="T:Elsa.Identity.Contracts.IRoleProvider"/>.
+            </summary>
+        </member>
+        <member name="M:Elsa.Identity.Features.IdentityFeature.UseStoreBasedUserProvider">
+            <summary>
+            Configures the feature to use <see cref="T:Elsa.Identity.Providers.ConfigurationBasedUserProvider"/>.
+            </summary>
+        </member>
+        <member name="M:Elsa.Identity.Features.IdentityFeature.UseConfigurationBasedUserProvider(System.Action{Elsa.Identity.Options.UsersOptions})">
+            <summary>
+            Configures the feature to use <see cref="T:Elsa.Identity.Providers.ConfigurationBasedUserProvider"/>.
+            </summary>
+        </member>
+        <member name="M:Elsa.Identity.Features.IdentityFeature.UseAdminUserProvider">
+            <summary>
+            Configures the feature to use <see cref="T:Elsa.Identity.Providers.AdminUserProvider"/>.
+            </summary>
+        </member>
+        <member name="M:Elsa.Identity.Features.IdentityFeature.UseStoreBasedApplicationProvider">
+            <summary>
+            Configures the feature to use <see cref="T:Elsa.Identity.Providers.StoreBasedApplicationProvider"/>.
+            </summary>
+        </member>
+        <member name="M:Elsa.Identity.Features.IdentityFeature.UseConfigurationBasedApplicationProvider(System.Action{Elsa.Identity.Options.ApplicationsOptions})">
+            <summary>
+            Configures the feature to use <see cref="T:Elsa.Identity.Providers.ConfigurationBasedApplicationProvider"/>.
+            </summary>
+        </member>
+        <member name="M:Elsa.Identity.Features.IdentityFeature.UseStoreBasedRoleProvider">
+            <summary>
+            Configures the feature to use <see cref="T:Elsa.Identity.Providers.StoreBasedRoleProvider"/>.
+            </summary>
+        </member>
+        <member name="M:Elsa.Identity.Features.IdentityFeature.UseConfigurationBasedRoleProvider(System.Action{Elsa.Identity.Options.RolesOptions})">
+            <summary>
+            Configures the feature to use <see cref="T:Elsa.Identity.Providers.ConfigurationBasedRoleProvider"/>.
+            </summary>
+        </member>
+        <member name="M:Elsa.Identity.Features.IdentityFeature.Configure">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Identity.Features.IdentityFeature.Apply">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.Identity.IdentityPolicyNames">
+            <summary>
+            Provides policy name constants.
+            </summary>
+        </member>
+        <member name="F:Elsa.Identity.IdentityPolicyNames.SecurityRoot">
+            <summary>
+            The Security Root policy represents root access to security related feature, such as hashing passwords. 
+            </summary>
+        </member>
+        <member name="T:Elsa.Identity.Models.ApiKey">
+            <summary>
+            Represents a validated API key.
+            </summary>
+            <param name="Key">API Key</param>
+            <param name="OwnerName">Owner of the API Key. It can be username or any other key owner name.</param>
+            <param name="Claims">Optional list of claims to be sent back with the authentication request.</param>
+        </member>
+        <member name="M:Elsa.Identity.Models.ApiKey.#ctor(System.String,System.String,System.Collections.Generic.IReadOnlyCollection{System.Security.Claims.Claim})">
+            <summary>
+            Represents a validated API key.
+            </summary>
+            <param name="Key">API Key</param>
+            <param name="OwnerName">Owner of the API Key. It can be username or any other key owner name.</param>
+            <param name="Claims">Optional list of claims to be sent back with the authentication request.</param>
+        </member>
+        <member name="P:Elsa.Identity.Models.ApiKey.Key">
+            <summary>API Key</summary>
+        </member>
+        <member name="P:Elsa.Identity.Models.ApiKey.OwnerName">
+            <summary>Owner of the API Key. It can be username or any other key owner name.</summary>
+        </member>
+        <member name="P:Elsa.Identity.Models.ApiKey.Claims">
+            <summary>Optional list of claims to be sent back with the authentication request.</summary>
+        </member>
+        <member name="T:Elsa.Identity.Models.ApplicationFilter">
+            <summary>
+            Represents an application filter.
+            </summary>
+        </member>
+        <member name="P:Elsa.Identity.Models.ApplicationFilter.Id">
+            <summary>
+            Gets or sets the application ID to filter for.
+            </summary>
+        </member>
+        <member name="P:Elsa.Identity.Models.ApplicationFilter.ClientId">
+            <summary>
+            Gets or sets the application short ID to filter for.
+            </summary>
+        </member>
+        <member name="P:Elsa.Identity.Models.ApplicationFilter.Name">
+            <summary>
+            Gets or sets the application name to filter for.
+            </summary>
+        </member>
+        <member name="M:Elsa.Identity.Models.ApplicationFilter.Apply(System.Linq.IQueryable{Elsa.Identity.Entities.Application})">
+            <summary>
+            Applies the filter to the specified queryable.
+            </summary>
+            <param name="queryable">The queryable.</param>
+            <returns>The filtered queryable.</returns>
+        </member>
+        <member name="T:Elsa.Identity.Models.HashedSecret">
+            <summary>
+            Represents a hashed secret.
+            </summary>
+            <param name="Secret">A base64 encoded string representing the hashed secret.</param>
+            <param name="Salt">A base64 encoded string representing the salt.</param>
+        </member>
+        <member name="M:Elsa.Identity.Models.HashedSecret.#ctor(System.Byte[],System.Byte[])">
+            <summary>
+            Represents a hashed secret.
+            </summary>
+            <param name="Secret">A base64 encoded string representing the hashed secret.</param>
+            <param name="Salt">A base64 encoded string representing the salt.</param>
+        </member>
+        <member name="P:Elsa.Identity.Models.HashedSecret.Secret">
+            <summary>A base64 encoded string representing the hashed secret.</summary>
+        </member>
+        <member name="P:Elsa.Identity.Models.HashedSecret.Salt">
+            <summary>A base64 encoded string representing the salt.</summary>
+        </member>
+        <member name="M:Elsa.Identity.Models.HashedSecret.FromBytes(System.Byte[],System.Byte[])">
+            <summary>
+            Creates a new instance of <see cref="T:Elsa.Identity.Models.HashedSecret"/> from a byte array representing the hashed secret and the salt.
+            </summary>
+            <param name="secret">The hashed secret.</param>
+            <param name="salt">The salt.</param>
+            <returns>A new instance of <see cref="T:Elsa.Identity.Models.HashedSecret"/>.</returns>
+        </member>
+        <member name="M:Elsa.Identity.Models.HashedSecret.FromString(System.String,System.String)">
+            <summary>
+            Creates a new instance of <see cref="T:Elsa.Identity.Models.HashedSecret"/> from a string representing the hashed secret and the salt.
+            </summary>
+            <param name="secret">The hashed secret.</param>
+            <param name="salt">The salt.</param>
+            <returns>A new instance of <see cref="T:Elsa.Identity.Models.HashedSecret"/>.</returns>
+        </member>
+        <member name="M:Elsa.Identity.Models.HashedSecret.EncodeSecret">
+            <summary>
+            Encodes the secret using base64.
+            </summary>
+            <returns>The base64-encoded secret.</returns>
+        </member>
+        <member name="M:Elsa.Identity.Models.HashedSecret.EncodeSalt">
+            <summary>
+            Encodes the salt using base64.
+            </summary>
+            <returns>The base64-encoded salt.</returns>
+        </member>
+        <member name="T:Elsa.Identity.Models.IssuedTokens">
+            <summary>
+            Represents issued tokens.
+            </summary>
+            <param name="AccessToken">The access token.</param>
+            <param name="RefreshToken">The refresh token.</param>
+        </member>
+        <member name="M:Elsa.Identity.Models.IssuedTokens.#ctor(System.String,System.String)">
+            <summary>
+            Represents issued tokens.
+            </summary>
+            <param name="AccessToken">The access token.</param>
+            <param name="RefreshToken">The refresh token.</param>
+        </member>
+        <member name="P:Elsa.Identity.Models.IssuedTokens.AccessToken">
+            <summary>The access token.</summary>
+        </member>
+        <member name="P:Elsa.Identity.Models.IssuedTokens.RefreshToken">
+            <summary>The refresh token.</summary>
+        </member>
+        <member name="T:Elsa.Identity.Models.RoleFilter">
+            <summary>
+            Represents a role filter.
+            </summary>
+        </member>
+        <member name="P:Elsa.Identity.Models.RoleFilter.Id">
+            <summary>
+            Gets or sets the role ID to filter for.
+            </summary>
+        </member>
+        <member name="P:Elsa.Identity.Models.RoleFilter.Ids">
+            <summary>
+            Gets or sets the role IDs to filter for.
+            </summary>
+        </member>
+        <member name="M:Elsa.Identity.Models.RoleFilter.Apply(System.Linq.IQueryable{Elsa.Identity.Entities.Role})">
+            <summary>
+            Applies the filter to the specified queryable.
+            </summary>
+            <param name="queryable">The queryable.</param>
+            <returns>The filtered queryable.</returns>
+        </member>
+        <member name="T:Elsa.Identity.Models.UserFilter">
+            <summary>
+            Represents a user filter.
+            </summary>
+        </member>
+        <member name="P:Elsa.Identity.Models.UserFilter.Id">
+            <summary>
+            Gets or sets the user ID to filter for.
+            </summary>
+        </member>
+        <member name="P:Elsa.Identity.Models.UserFilter.Name">
+            <summary>
+            Gets or sets the user name to filter for.
+            </summary>
+        </member>
+        <member name="M:Elsa.Identity.Models.UserFilter.Apply(System.Linq.IQueryable{Elsa.Identity.Entities.User})">
+            <summary>
+            Applies the filter to the specified queryable.
+            </summary>
+            <param name="queryable">The queryable.</param>
+            <returns>The filtered queryable.</returns>
+        </member>
+        <member name="T:Elsa.Identity.Options.ApplicationsOptions">
+            <summary>
+            Represents options that stores available applications.
+            </summary>
+        </member>
+        <member name="P:Elsa.Identity.Options.ApplicationsOptions.Applications">
+            <summary>
+            Gets or sets the applications.
+            </summary>
+        </member>
+        <member name="T:Elsa.Identity.Options.IdentityOptions">
+            <summary>
+            Represents the identity options.
+            </summary>
+        </member>
+        <member name="T:Elsa.Identity.Options.IdentityTokenOptions">
+            <summary>
+            Represents options about token validation and generation.
+            </summary>
+        </member>
+        <member name="P:Elsa.Identity.Options.IdentityTokenOptions.SigningKey">
+            <summary>
+            The key to use when signing tokens
+            </summary>
+        </member>
+        <member name="P:Elsa.Identity.Options.IdentityTokenOptions.Issuer">
+            <summary>
+            The issuer to use when creating and validating tokens
+            </summary>
+        </member>
+        <member name="P:Elsa.Identity.Options.IdentityTokenOptions.Audience">
+            <summary>
+            The audience to use when creating and validating tokens
+            </summary>
+        </member>
+        <member name="P:Elsa.Identity.Options.IdentityTokenOptions.AccessTokenLifetime">
+            <summary>
+            The lifetime of access tokens
+            </summary>
+        </member>
+        <member name="P:Elsa.Identity.Options.IdentityTokenOptions.RefreshTokenLifetime">
+            <summary>
+            The lifetime of refresh tokens
+            </summary>
+        </member>
+        <member name="M:Elsa.Identity.Options.IdentityTokenOptions.CreateSecurityKey">
+            <summary>
+            Creates a new <see cref="T:Microsoft.IdentityModel.Tokens.SecurityKey"/> from the <see cref="P:Elsa.Identity.Options.IdentityTokenOptions.SigningKey"/>.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Elsa.Identity.Options.IdentityTokenOptions.ConfigureJwtBearerOptions(Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerOptions)">
+            <summary>
+            Configures the <see cref="T:Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerOptions"/> with the values from this instance.
+            </summary>
+            <param name="options">The options to configure.</param>
+        </member>
+        <member name="M:Elsa.Identity.Options.IdentityTokenOptions.Deconstruct(System.String@,System.String@,System.String@,System.TimeSpan@,System.TimeSpan@)">
+            <summary>
+            Deconstructor.
+            </summary>
+        </member>
+        <member name="T:Elsa.Identity.Options.RolesOptions">
+            <summary>
+            Represents options that stores available roles. 
+            </summary>
+        </member>
+        <member name="P:Elsa.Identity.Options.RolesOptions.Roles">
+            <summary>
+            Gets or sets the roles.
+            </summary>
+        </member>
+        <member name="T:Elsa.Identity.Options.UsersOptions">
+            <summary>
+            Represents options that stores available users.
+            </summary>
+        </member>
+        <member name="P:Elsa.Identity.Options.UsersOptions.Users">
+            <summary>
+            Gets or sets the users.
+            </summary>
+        </member>
+        <member name="T:Elsa.Identity.Providers.AdminApiKeyProvider">
+            <summary>
+            Provides an <see cref="T:AspNetCore.Authentication.ApiKey.IApiKey"/> with admin privileges for the default admin API key.  
+            </summary>
+        </member>
+        <member name="F:Elsa.Identity.Providers.AdminApiKeyProvider.DefaultApiKey">
+            <summary>
+            The default admin API key.
+            </summary>
+        </member>
+        <member name="M:Elsa.Identity.Providers.AdminApiKeyProvider.ProvideAsync(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.Identity.Providers.AdminRoleProvider">
+            <summary>
+            Represents a role provider that always returns a single admin role. This is useful for development purposes.
+            </summary>
+        </member>
+        <member name="M:Elsa.Identity.Providers.AdminRoleProvider.FindManyAsync(Elsa.Identity.Models.RoleFilter,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.Identity.Providers.AdminUserProvider">
+            <summary>
+            Represents a user provider that always returns a single admin user. This is useful for development purposes.
+            </summary>
+        </member>
+        <member name="M:Elsa.Identity.Providers.AdminUserProvider.#ctor(Elsa.Identity.Contracts.ISecretHasher)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Elsa.Identity.Providers.AdminUserProvider"/> class.
+            </summary>
+        </member>
+        <member name="M:Elsa.Identity.Providers.AdminUserProvider.FindAsync(Elsa.Identity.Models.UserFilter,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.Identity.Providers.ConfigurationBasedApplicationProvider">
+            <summary>
+            Represents an application provider that uses <see cref="T:Elsa.Identity.Options.ApplicationsOptions"/> to find applications.
+            </summary>
+        </member>
+        <member name="M:Elsa.Identity.Providers.ConfigurationBasedApplicationProvider.#ctor(Microsoft.Extensions.Options.IOptions{Elsa.Identity.Options.ApplicationsOptions})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Elsa.Identity.Providers.ConfigurationBasedApplicationProvider"/> class.
+            </summary>
+        </member>
+        <member name="M:Elsa.Identity.Providers.ConfigurationBasedApplicationProvider.FindAsync(Elsa.Identity.Models.ApplicationFilter,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.Identity.Providers.ConfigurationBasedRoleProvider">
+            <summary>
+            Represents a provider of roles that uses <see cref="T:Elsa.Identity.Options.RolesOptions"/>.
+            </summary>
+        </member>
+        <member name="M:Elsa.Identity.Providers.ConfigurationBasedRoleProvider.#ctor(Microsoft.Extensions.Options.IOptions{Elsa.Identity.Options.RolesOptions})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Elsa.Identity.Providers.ConfigurationBasedRoleProvider"/> class.
+            </summary>
+        </member>
+        <member name="M:Elsa.Identity.Providers.ConfigurationBasedRoleProvider.FindManyAsync(Elsa.Identity.Models.RoleFilter,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.Identity.Providers.ConfigurationBasedUserProvider">
+            <summary>
+            Represents a user provider that finds users using <see cref="T:Elsa.Identity.Options.UsersOptions"/>.
+            </summary>
+        </member>
+        <member name="M:Elsa.Identity.Providers.ConfigurationBasedUserProvider.#ctor(Microsoft.Extensions.Options.IOptions{Elsa.Identity.Options.UsersOptions})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Elsa.Identity.Providers.ConfigurationBasedUserProvider"/> class.
+            </summary>
+        </member>
+        <member name="M:Elsa.Identity.Providers.ConfigurationBasedUserProvider.FindAsync(Elsa.Identity.Models.UserFilter,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.Identity.Providers.DefaultApiKeyProvider">
+            <summary>
+            Validates a given API key and returns an instance of <see cref="T:AspNetCore.Authentication.ApiKey.IApiKey"/> if the key is valid.
+            </summary>
+        </member>
+        <member name="M:Elsa.Identity.Providers.DefaultApiKeyProvider.#ctor(Elsa.Identity.Contracts.IApplicationCredentialsValidator,Elsa.Identity.Contracts.IRoleProvider)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Elsa.Identity.Providers.DefaultApiKeyProvider"/> class.
+            </summary>
+        </member>
+        <member name="M:Elsa.Identity.Providers.DefaultApiKeyProvider.ProvideAsync(System.String)">
+            <summary>
+            Gets an instance of <see cref="T:AspNetCore.Authentication.ApiKey.IApiKey"/>.
+            </summary>
+            <param name="key">The API key to validate.</param>
+            <returns>The API key if a valid key was provided.</returns>
+        </member>
+        <member name="T:Elsa.Identity.Providers.StoreBasedApplicationProvider">
+            <summary>
+            Represents an application provider that uses <see cref="T:Elsa.Identity.Contracts.IApplicationStore"/> to find applications.
+            </summary>
+        </member>
+        <member name="M:Elsa.Identity.Providers.StoreBasedApplicationProvider.#ctor(Elsa.Identity.Contracts.IApplicationStore)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Elsa.Identity.Providers.StoreBasedApplicationProvider"/> class.
+            </summary>
+        </member>
+        <member name="M:Elsa.Identity.Providers.StoreBasedApplicationProvider.FindAsync(Elsa.Identity.Models.ApplicationFilter,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.Identity.Providers.StoreBasedRoleProvider">
+            <summary>
+            Represents a provider of roles that uses <see cref="T:Elsa.Identity.Contracts.IRoleStore"/>.
+            </summary>
+        </member>
+        <member name="M:Elsa.Identity.Providers.StoreBasedRoleProvider.#ctor(Elsa.Identity.Contracts.IRoleStore)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Elsa.Identity.Providers.StoreBasedRoleProvider"/> class.
+            </summary>
+        </member>
+        <member name="M:Elsa.Identity.Providers.StoreBasedRoleProvider.FindManyAsync(Elsa.Identity.Models.RoleFilter,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.Identity.Providers.StoreBasedUserProvider">
+            <summary>
+            Represents a user provider that finds users using <see cref="T:Elsa.Identity.Contracts.IUserStore"/>.
+            </summary>
+        </member>
+        <member name="M:Elsa.Identity.Providers.StoreBasedUserProvider.#ctor(Elsa.Identity.Contracts.IUserStore)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Elsa.Identity.Providers.StoreBasedUserProvider"/> class.
+            </summary>
+        </member>
+        <member name="M:Elsa.Identity.Providers.StoreBasedUserProvider.FindAsync(Elsa.Identity.Models.UserFilter,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.Identity.Services.DefaultAccessTokenIssuer">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Identity.Services.DefaultAccessTokenIssuer.#ctor(Elsa.Identity.Contracts.IRoleProvider,Elsa.Common.Contracts.ISystemClock,Microsoft.Extensions.Options.IOptions{Elsa.Identity.Options.IdentityTokenOptions})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Elsa.Identity.Services.DefaultAccessTokenIssuer"/> class.
+            </summary>
+        </member>
+        <member name="M:Elsa.Identity.Services.DefaultAccessTokenIssuer.IssueTokensAsync(Elsa.Identity.Entities.User,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.Identity.Services.DefaultApiKeyGeneratorAndParser">
+            <summary>
+            Generates and parses API keys.
+            </summary>
+        </member>
+        <member name="M:Elsa.Identity.Services.DefaultApiKeyGeneratorAndParser.Generate(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Identity.Services.DefaultApiKeyGeneratorAndParser.Parse(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.Identity.Services.DefaultApplicationCredentialsValidator">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Identity.Services.DefaultApplicationCredentialsValidator.#ctor(Elsa.Identity.Contracts.IApiKeyParser,Elsa.Identity.Contracts.IApplicationProvider,Elsa.Identity.Contracts.ISecretHasher)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Elsa.Identity.Services.DefaultApplicationCredentialsValidator"/> class.
+            </summary>
+        </member>
+        <member name="M:Elsa.Identity.Services.DefaultApplicationCredentialsValidator.ValidateAsync(System.String,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.Identity.Services.DefaultClientIdGenerator">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Identity.Services.DefaultClientIdGenerator.#ctor(Elsa.Identity.Contracts.IRandomStringGenerator,Elsa.Identity.Contracts.IApplicationProvider)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Elsa.Identity.Services.DefaultClientIdGenerator"/> class.
+            </summary>
+        </member>
+        <member name="M:Elsa.Identity.Services.DefaultClientIdGenerator.GenerateAsync(System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.Identity.Services.DefaultRandomStringGenerator">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Identity.Services.DefaultRandomStringGenerator.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Elsa.Identity.Services.DefaultRandomStringGenerator"/> class.
+            </summary>
+        </member>
+        <member name="M:Elsa.Identity.Services.DefaultRandomStringGenerator.Generate(System.Int32,System.Char[])">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.Identity.Services.DefaultSecretGenerator">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Identity.Services.DefaultSecretGenerator.#ctor(Elsa.Identity.Contracts.IRandomStringGenerator)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Elsa.Identity.Services.DefaultSecretGenerator"/> class.
+            </summary>
+            <param name="randomStringGenerator"></param>
+        </member>
+        <member name="M:Elsa.Identity.Services.DefaultSecretGenerator.Generate(System.Int32)">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.Identity.Services.DefaultSecretHasher">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Identity.Services.DefaultSecretHasher.HashSecret(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Identity.Services.DefaultSecretHasher.HashSecret(System.String,System.Byte[])">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Identity.Services.DefaultSecretHasher.VerifySecret(System.String,System.String,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Identity.Services.DefaultSecretHasher.VerifySecret(System.String,Elsa.Identity.Models.HashedSecret)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Identity.Services.DefaultSecretHasher.HashSecret(System.Byte[],System.Byte[])">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Identity.Services.DefaultSecretHasher.GenerateSalt(System.Int32)">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.Identity.Services.DefaultUserCredentialsValidator">
+            <summary>
+            Validates user credentials
+            </summary>
+        </member>
+        <member name="M:Elsa.Identity.Services.DefaultUserCredentialsValidator.#ctor(Elsa.Identity.Contracts.IUserProvider,Elsa.Identity.Contracts.ISecretHasher)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Elsa.Identity.Services.DefaultUserCredentialsValidator"/> class.
+            </summary>
+        </member>
+        <member name="M:Elsa.Identity.Services.DefaultUserCredentialsValidator.ValidateAsync(System.String,System.String,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.Identity.Services.MemoryApplicationStore">
+            <summary>
+            Represents an in-memory application store.
+            </summary>
+        </member>
+        <member name="M:Elsa.Identity.Services.MemoryApplicationStore.#ctor(Elsa.Common.Services.MemoryStore{Elsa.Identity.Entities.Application})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Elsa.Identity.Services.MemoryApplicationStore"/> class.
+            </summary>
+        </member>
+        <member name="M:Elsa.Identity.Services.MemoryApplicationStore.SaveAsync(Elsa.Identity.Entities.Application,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Identity.Services.MemoryApplicationStore.DeleteAsync(Elsa.Identity.Models.ApplicationFilter,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Identity.Services.MemoryApplicationStore.FindAsync(Elsa.Identity.Models.ApplicationFilter,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.Identity.Services.MemoryRoleStore">
+            <summary>
+            Represents an in-memory role store.
+            </summary>
+        </member>
+        <member name="M:Elsa.Identity.Services.MemoryRoleStore.#ctor(Elsa.Common.Services.MemoryStore{Elsa.Identity.Entities.Role})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Elsa.Identity.Services.MemoryRoleStore"/> class.
+            </summary>
+        </member>
+        <member name="M:Elsa.Identity.Services.MemoryRoleStore.AddAsync(Elsa.Identity.Entities.Role,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Identity.Services.MemoryRoleStore.DeleteAsync(Elsa.Identity.Models.RoleFilter,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Identity.Services.MemoryRoleStore.SaveAsync(Elsa.Identity.Entities.Role,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Identity.Services.MemoryRoleStore.FindAsync(Elsa.Identity.Models.RoleFilter,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Identity.Services.MemoryRoleStore.FindManyAsync(Elsa.Identity.Models.RoleFilter,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.Identity.Services.MemoryUserStore">
+            <summary>
+            Represents an in-memory user store.
+            </summary>
+        </member>
+        <member name="M:Elsa.Identity.Services.MemoryUserStore.#ctor(Elsa.Common.Services.MemoryStore{Elsa.Identity.Entities.User})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Elsa.Identity.Services.MemoryUserStore"/> class.
+            </summary>
+        </member>
+        <member name="M:Elsa.Identity.Services.MemoryUserStore.SaveAsync(Elsa.Identity.Entities.User,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Identity.Services.MemoryUserStore.DeleteAsync(Elsa.Identity.Models.UserFilter,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Identity.Services.MemoryUserStore.FindAsync(Elsa.Identity.Models.UserFilter,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.Extensions.ApplicationProviderExtensions">
+            <summary>
+            Provides extensions for <see cref="T:Elsa.Identity.Contracts.IApplicationProvider"/>.
+            </summary>
+        </member>
+        <member name="M:Elsa.Extensions.ApplicationProviderExtensions.FindByClientIdAsync(Elsa.Identity.Contracts.IApplicationProvider,System.String,System.Threading.CancellationToken)">
+            <summary>
+            Finds the application with the specified client ID.
+            </summary>
+            <param name="applicationProvider">The user provider.</param>
+            <param name="clientId">The client ID to search by.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns>The application with the specified client ID.</returns>
+        </member>
+        <member name="T:Elsa.Extensions.ModuleExtensions">
+            <summary>
+            Extensions for <see cref="T:Elsa.Features.Services.IModule"/> that installs the <see cref="T:Elsa.Identity.Features.IdentityFeature"/> feature.
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:Elsa.Extensions.ModuleExtensions.UseIdentity(Elsa.Features.Services.IModule,System.Action{Elsa.Identity.Features.IdentityFeature})" -->
+        <!-- Badly formed XML comment ignored for member "M:Elsa.Extensions.ModuleExtensions.UseIdentity(Elsa.Features.Services.IModule,System.String,System.String,System.String,System.Nullable{System.TimeSpan})" -->
+        <!-- Badly formed XML comment ignored for member "M:Elsa.Extensions.ModuleExtensions.UseDefaultAuthentication(Elsa.Features.Services.IModule,System.Action{Elsa.Identity.Features.DefaultAuthenticationFeature})" -->
+        <member name="T:Elsa.Extensions.RoleProviderExtensions">
+            <summary>
+            Provides extensions for <see cref="T:Elsa.Identity.Contracts.IRoleProvider"/>.
+            </summary>
+        </member>
+        <member name="M:Elsa.Extensions.RoleProviderExtensions.FindByIdsAsync(Elsa.Identity.Contracts.IRoleProvider,System.Collections.Generic.IEnumerable{System.String},System.Threading.CancellationToken)">
+            <summary>
+            Finds the roles with the specified IDs.
+            </summary>
+            <param name="roleProvider">The role provider.</param>
+            <param name="ids">The IDs to filter for.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns>The roles with the specified IDs.</returns>
+        </member>
+        <member name="T:Elsa.Extensions.UserProviderExtensions">
+            <summary>
+            Provides extensions for <see cref="T:Elsa.Identity.Contracts.IUserProvider"/>.
+            </summary>
+        </member>
+        <member name="M:Elsa.Extensions.UserProviderExtensions.FindByNameAsync(Elsa.Identity.Contracts.IUserProvider,System.String,System.Threading.CancellationToken)">
+            <summary>
+            Finds the user with the specified name.
+            </summary>
+            <param name="userProvider">The user provider.</param>
+            <param name="name">The name.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns>The user with the specified name.</returns>
+        </member>
+        <member name="T:Elsa.Extensions.ConfigureJwtBearerOptions">
+            <summary>
+            Configures the <see cref="T:Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerOptions"/>
+            </summary>
+        </member>
+        <member name="M:Elsa.Extensions.ConfigureJwtBearerOptions.#ctor(Microsoft.Extensions.Options.IOptions{Elsa.Identity.Options.IdentityTokenOptions})">
+            <summary>
+            Initializes a new instance of <see cref="T:Elsa.Extensions.ConfigureJwtBearerOptions"/>.
+            </summary>
+        </member>
+        <member name="M:Elsa.Extensions.ConfigureJwtBearerOptions.Configure(Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerOptions)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Extensions.ConfigureJwtBearerOptions.Configure(System.String,Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerOptions)">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.Extensions.ValidateIdentityTokenOptions">
+            <summary>
+            Validates the <see cref="T:Elsa.Identity.Options.IdentityTokenOptions"/>.
+            </summary>
+        </member>
+        <member name="M:Elsa.Extensions.ValidateIdentityTokenOptions.PostConfigure(System.String,Elsa.Identity.Options.IdentityTokenOptions)">
+            <inheritdoc />
+        </member>
+    </members>
+</doc>

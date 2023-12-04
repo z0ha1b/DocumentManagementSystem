@@ -1,0 +1,1048 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Elsa.Dsl</name>
+    </assembly>
+    <members>
+        <member name="T:ElsaParserBaseVisitor`1">
+            <summary>
+            This class provides an empty implementation of <see cref="T:IElsaParserVisitor`1"/>,
+            which can be extended to create a visitor which only needs to handle a subset
+            of the available methods.
+            </summary>
+            <typeparam name="Result">The return type of the visit operation.</typeparam>
+        </member>
+        <member name="M:ElsaParserBaseVisitor`1.VisitProgram(ElsaParser.ProgramContext)">
+            <summary>
+            Visit a parse tree produced by <see cref="M:ElsaParser.program"/>.
+            <para>
+            The default implementation returns the result of calling <see cref="M:Antlr4.Runtime.Tree.AbstractParseTreeVisitor`1.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)"/>
+            on <paramref name="context"/>.
+            </para>
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
+        <member name="M:ElsaParserBaseVisitor`1.VisitObject(ElsaParser.ObjectContext)">
+            <summary>
+            Visit a parse tree produced by <see cref="!:ElsaParser.object"/>.
+            <para>
+            The default implementation returns the result of calling <see cref="M:Antlr4.Runtime.Tree.AbstractParseTreeVisitor`1.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)"/>
+            on <paramref name="context"/>.
+            </para>
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
+        <member name="M:ElsaParserBaseVisitor`1.VisitNewObject(ElsaParser.NewObjectContext)">
+            <summary>
+            Visit a parse tree produced by <see cref="M:ElsaParser.newObject"/>.
+            <para>
+            The default implementation returns the result of calling <see cref="M:Antlr4.Runtime.Tree.AbstractParseTreeVisitor`1.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)"/>
+            on <paramref name="context"/>.
+            </para>
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
+        <member name="M:ElsaParserBaseVisitor`1.VisitVarDecl(ElsaParser.VarDeclContext)">
+            <summary>
+            Visit a parse tree produced by <see cref="M:ElsaParser.varDecl"/>.
+            <para>
+            The default implementation returns the result of calling <see cref="M:Antlr4.Runtime.Tree.AbstractParseTreeVisitor`1.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)"/>
+            on <paramref name="context"/>.
+            </para>
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
+        <member name="M:ElsaParserBaseVisitor`1.VisitLocalVarDecl(ElsaParser.LocalVarDeclContext)">
+            <summary>
+            Visit a parse tree produced by <see cref="M:ElsaParser.localVarDecl"/>.
+            <para>
+            The default implementation returns the result of calling <see cref="M:Antlr4.Runtime.Tree.AbstractParseTreeVisitor`1.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)"/>
+            on <paramref name="context"/>.
+            </para>
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
+        <member name="M:ElsaParserBaseVisitor`1.VisitType(ElsaParser.TypeContext)">
+            <summary>
+            Visit a parse tree produced by <see cref="M:ElsaParser.type"/>.
+            <para>
+            The default implementation returns the result of calling <see cref="M:Antlr4.Runtime.Tree.AbstractParseTreeVisitor`1.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)"/>
+            on <paramref name="context"/>.
+            </para>
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
+        <member name="M:ElsaParserBaseVisitor`1.VisitExpressionMarker(ElsaParser.ExpressionMarkerContext)">
+            <summary>
+            Visit a parse tree produced by <see cref="M:ElsaParser.expressionMarker"/>.
+            <para>
+            The default implementation returns the result of calling <see cref="M:Antlr4.Runtime.Tree.AbstractParseTreeVisitor`1.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)"/>
+            on <paramref name="context"/>.
+            </para>
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
+        <member name="M:ElsaParserBaseVisitor`1.VisitExpressionContent(ElsaParser.ExpressionContentContext)">
+            <summary>
+            Visit a parse tree produced by <see cref="M:ElsaParser.expressionContent"/>.
+            <para>
+            The default implementation returns the result of calling <see cref="M:Antlr4.Runtime.Tree.AbstractParseTreeVisitor`1.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)"/>
+            on <paramref name="context"/>.
+            </para>
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
+        <member name="M:ElsaParserBaseVisitor`1.VisitMethodCall(ElsaParser.MethodCallContext)">
+            <summary>
+            Visit a parse tree produced by <see cref="M:ElsaParser.methodCall"/>.
+            <para>
+            The default implementation returns the result of calling <see cref="M:Antlr4.Runtime.Tree.AbstractParseTreeVisitor`1.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)"/>
+            on <paramref name="context"/>.
+            </para>
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
+        <member name="M:ElsaParserBaseVisitor`1.VisitFuncCall(ElsaParser.FuncCallContext)">
+            <summary>
+            Visit a parse tree produced by <see cref="M:ElsaParser.funcCall"/>.
+            <para>
+            The default implementation returns the result of calling <see cref="M:Antlr4.Runtime.Tree.AbstractParseTreeVisitor`1.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)"/>
+            on <paramref name="context"/>.
+            </para>
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
+        <member name="M:ElsaParserBaseVisitor`1.VisitArgs(ElsaParser.ArgsContext)">
+            <summary>
+            Visit a parse tree produced by <see cref="M:ElsaParser.args"/>.
+            <para>
+            The default implementation returns the result of calling <see cref="M:Antlr4.Runtime.Tree.AbstractParseTreeVisitor`1.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)"/>
+            on <paramref name="context"/>.
+            </para>
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
+        <member name="M:ElsaParserBaseVisitor`1.VisitArg(ElsaParser.ArgContext)">
+            <summary>
+            Visit a parse tree produced by <see cref="M:ElsaParser.arg"/>.
+            <para>
+            The default implementation returns the result of calling <see cref="M:Antlr4.Runtime.Tree.AbstractParseTreeVisitor`1.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)"/>
+            on <paramref name="context"/>.
+            </para>
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
+        <member name="M:ElsaParserBaseVisitor`1.VisitBlock(ElsaParser.BlockContext)">
+            <summary>
+            Visit a parse tree produced by <see cref="M:ElsaParser.block"/>.
+            <para>
+            The default implementation returns the result of calling <see cref="M:Antlr4.Runtime.Tree.AbstractParseTreeVisitor`1.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)"/>
+            on <paramref name="context"/>.
+            </para>
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
+        <member name="M:ElsaParserBaseVisitor`1.VisitObjectInitializer(ElsaParser.ObjectInitializerContext)">
+            <summary>
+            Visit a parse tree produced by <see cref="M:ElsaParser.objectInitializer"/>.
+            <para>
+            The default implementation returns the result of calling <see cref="M:Antlr4.Runtime.Tree.AbstractParseTreeVisitor`1.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)"/>
+            on <paramref name="context"/>.
+            </para>
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
+        <member name="M:ElsaParserBaseVisitor`1.VisitPropertyList(ElsaParser.PropertyListContext)">
+            <summary>
+            Visit a parse tree produced by <see cref="M:ElsaParser.propertyList"/>.
+            <para>
+            The default implementation returns the result of calling <see cref="M:Antlr4.Runtime.Tree.AbstractParseTreeVisitor`1.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)"/>
+            on <paramref name="context"/>.
+            </para>
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
+        <member name="M:ElsaParserBaseVisitor`1.VisitProperty(ElsaParser.PropertyContext)">
+            <summary>
+            Visit a parse tree produced by <see cref="M:ElsaParser.property"/>.
+            <para>
+            The default implementation returns the result of calling <see cref="M:Antlr4.Runtime.Tree.AbstractParseTreeVisitor`1.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)"/>
+            on <paramref name="context"/>.
+            </para>
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
+        <member name="M:ElsaParserBaseVisitor`1.VisitObjectStat(ElsaParser.ObjectStatContext)">
+            <summary>
+            Visit a parse tree produced by the <c>objectStat</c>
+            labeled alternative in <see cref="M:ElsaParser.stat"/>.
+            <para>
+            The default implementation returns the result of calling <see cref="M:Antlr4.Runtime.Tree.AbstractParseTreeVisitor`1.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)"/>
+            on <paramref name="context"/>.
+            </para>
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
+        <member name="M:ElsaParserBaseVisitor`1.VisitIfStat(ElsaParser.IfStatContext)">
+            <summary>
+            Visit a parse tree produced by the <c>ifStat</c>
+            labeled alternative in <see cref="M:ElsaParser.stat"/>.
+            <para>
+            The default implementation returns the result of calling <see cref="M:Antlr4.Runtime.Tree.AbstractParseTreeVisitor`1.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)"/>
+            on <paramref name="context"/>.
+            </para>
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
+        <member name="M:ElsaParserBaseVisitor`1.VisitForStat(ElsaParser.ForStatContext)">
+            <summary>
+            Visit a parse tree produced by the <c>forStat</c>
+            labeled alternative in <see cref="M:ElsaParser.stat"/>.
+            <para>
+            The default implementation returns the result of calling <see cref="M:Antlr4.Runtime.Tree.AbstractParseTreeVisitor`1.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)"/>
+            on <paramref name="context"/>.
+            </para>
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
+        <member name="M:ElsaParserBaseVisitor`1.VisitReturnStat(ElsaParser.ReturnStatContext)">
+            <summary>
+            Visit a parse tree produced by the <c>returnStat</c>
+            labeled alternative in <see cref="M:ElsaParser.stat"/>.
+            <para>
+            The default implementation returns the result of calling <see cref="M:Antlr4.Runtime.Tree.AbstractParseTreeVisitor`1.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)"/>
+            on <paramref name="context"/>.
+            </para>
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
+        <member name="M:ElsaParserBaseVisitor`1.VisitBlockStat(ElsaParser.BlockStatContext)">
+            <summary>
+            Visit a parse tree produced by the <c>blockStat</c>
+            labeled alternative in <see cref="M:ElsaParser.stat"/>.
+            <para>
+            The default implementation returns the result of calling <see cref="M:Antlr4.Runtime.Tree.AbstractParseTreeVisitor`1.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)"/>
+            on <paramref name="context"/>.
+            </para>
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
+        <member name="M:ElsaParserBaseVisitor`1.VisitVariableDeclarationStat(ElsaParser.VariableDeclarationStatContext)">
+            <summary>
+            Visit a parse tree produced by the <c>variableDeclarationStat</c>
+            labeled alternative in <see cref="M:ElsaParser.stat"/>.
+            <para>
+            The default implementation returns the result of calling <see cref="M:Antlr4.Runtime.Tree.AbstractParseTreeVisitor`1.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)"/>
+            on <paramref name="context"/>.
+            </para>
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
+        <member name="M:ElsaParserBaseVisitor`1.VisitLocalVariableDeclarationStat(ElsaParser.LocalVariableDeclarationStatContext)">
+            <summary>
+            Visit a parse tree produced by the <c>localVariableDeclarationStat</c>
+            labeled alternative in <see cref="M:ElsaParser.stat"/>.
+            <para>
+            The default implementation returns the result of calling <see cref="M:Antlr4.Runtime.Tree.AbstractParseTreeVisitor`1.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)"/>
+            on <paramref name="context"/>.
+            </para>
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
+        <member name="M:ElsaParserBaseVisitor`1.VisitAssignmentStat(ElsaParser.AssignmentStatContext)">
+            <summary>
+            Visit a parse tree produced by the <c>assignmentStat</c>
+            labeled alternative in <see cref="M:ElsaParser.stat"/>.
+            <para>
+            The default implementation returns the result of calling <see cref="M:Antlr4.Runtime.Tree.AbstractParseTreeVisitor`1.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)"/>
+            on <paramref name="context"/>.
+            </para>
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
+        <member name="M:ElsaParserBaseVisitor`1.VisitExpressionStat(ElsaParser.ExpressionStatContext)">
+            <summary>
+            Visit a parse tree produced by the <c>expressionStat</c>
+            labeled alternative in <see cref="M:ElsaParser.stat"/>.
+            <para>
+            The default implementation returns the result of calling <see cref="M:Antlr4.Runtime.Tree.AbstractParseTreeVisitor`1.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)"/>
+            on <paramref name="context"/>.
+            </para>
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
+        <member name="M:ElsaParserBaseVisitor`1.VisitThenStat(ElsaParser.ThenStatContext)">
+            <summary>
+            Visit a parse tree produced by <see cref="M:ElsaParser.thenStat"/>.
+            <para>
+            The default implementation returns the result of calling <see cref="M:Antlr4.Runtime.Tree.AbstractParseTreeVisitor`1.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)"/>
+            on <paramref name="context"/>.
+            </para>
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
+        <member name="M:ElsaParserBaseVisitor`1.VisitElseStat(ElsaParser.ElseStatContext)">
+            <summary>
+            Visit a parse tree produced by <see cref="M:ElsaParser.elseStat"/>.
+            <para>
+            The default implementation returns the result of calling <see cref="M:Antlr4.Runtime.Tree.AbstractParseTreeVisitor`1.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)"/>
+            on <paramref name="context"/>.
+            </para>
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
+        <member name="M:ElsaParserBaseVisitor`1.VisitNewObjectExpr(ElsaParser.NewObjectExprContext)">
+            <summary>
+            Visit a parse tree produced by the <c>newObjectExpr</c>
+            labeled alternative in <see cref="M:ElsaParser.expr"/>.
+            <para>
+            The default implementation returns the result of calling <see cref="M:Antlr4.Runtime.Tree.AbstractParseTreeVisitor`1.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)"/>
+            on <paramref name="context"/>.
+            </para>
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
+        <member name="M:ElsaParserBaseVisitor`1.VisitSubtractExpr(ElsaParser.SubtractExprContext)">
+            <summary>
+            Visit a parse tree produced by the <c>subtractExpr</c>
+            labeled alternative in <see cref="M:ElsaParser.expr"/>.
+            <para>
+            The default implementation returns the result of calling <see cref="M:Antlr4.Runtime.Tree.AbstractParseTreeVisitor`1.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)"/>
+            on <paramref name="context"/>.
+            </para>
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
+        <member name="M:ElsaParserBaseVisitor`1.VisitIncrementExpr(ElsaParser.IncrementExprContext)">
+            <summary>
+            Visit a parse tree produced by the <c>incrementExpr</c>
+            labeled alternative in <see cref="M:ElsaParser.expr"/>.
+            <para>
+            The default implementation returns the result of calling <see cref="M:Antlr4.Runtime.Tree.AbstractParseTreeVisitor`1.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)"/>
+            on <paramref name="context"/>.
+            </para>
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
+        <member name="M:ElsaParserBaseVisitor`1.VisitObjectExpr(ElsaParser.ObjectExprContext)">
+            <summary>
+            Visit a parse tree produced by the <c>objectExpr</c>
+            labeled alternative in <see cref="M:ElsaParser.expr"/>.
+            <para>
+            The default implementation returns the result of calling <see cref="M:Antlr4.Runtime.Tree.AbstractParseTreeVisitor`1.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)"/>
+            on <paramref name="context"/>.
+            </para>
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
+        <member name="M:ElsaParserBaseVisitor`1.VisitStringValueExpr(ElsaParser.StringValueExprContext)">
+            <summary>
+            Visit a parse tree produced by the <c>stringValueExpr</c>
+            labeled alternative in <see cref="M:ElsaParser.expr"/>.
+            <para>
+            The default implementation returns the result of calling <see cref="M:Antlr4.Runtime.Tree.AbstractParseTreeVisitor`1.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)"/>
+            on <paramref name="context"/>.
+            </para>
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
+        <member name="M:ElsaParserBaseVisitor`1.VisitMultiplyExpr(ElsaParser.MultiplyExprContext)">
+            <summary>
+            Visit a parse tree produced by the <c>multiplyExpr</c>
+            labeled alternative in <see cref="M:ElsaParser.expr"/>.
+            <para>
+            The default implementation returns the result of calling <see cref="M:Antlr4.Runtime.Tree.AbstractParseTreeVisitor`1.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)"/>
+            on <paramref name="context"/>.
+            </para>
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
+        <member name="M:ElsaParserBaseVisitor`1.VisitParenthesesExpr(ElsaParser.ParenthesesExprContext)">
+            <summary>
+            Visit a parse tree produced by the <c>parenthesesExpr</c>
+            labeled alternative in <see cref="M:ElsaParser.expr"/>.
+            <para>
+            The default implementation returns the result of calling <see cref="M:Antlr4.Runtime.Tree.AbstractParseTreeVisitor`1.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)"/>
+            on <paramref name="context"/>.
+            </para>
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
+        <member name="M:ElsaParserBaseVisitor`1.VisitFunctionExpr(ElsaParser.FunctionExprContext)">
+            <summary>
+            Visit a parse tree produced by the <c>functionExpr</c>
+            labeled alternative in <see cref="M:ElsaParser.expr"/>.
+            <para>
+            The default implementation returns the result of calling <see cref="M:Antlr4.Runtime.Tree.AbstractParseTreeVisitor`1.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)"/>
+            on <paramref name="context"/>.
+            </para>
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
+        <member name="M:ElsaParserBaseVisitor`1.VisitDecrementExpr(ElsaParser.DecrementExprContext)">
+            <summary>
+            Visit a parse tree produced by the <c>decrementExpr</c>
+            labeled alternative in <see cref="M:ElsaParser.expr"/>.
+            <para>
+            The default implementation returns the result of calling <see cref="M:Antlr4.Runtime.Tree.AbstractParseTreeVisitor`1.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)"/>
+            on <paramref name="context"/>.
+            </para>
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
+        <member name="M:ElsaParserBaseVisitor`1.VisitNegateExpr(ElsaParser.NegateExprContext)">
+            <summary>
+            Visit a parse tree produced by the <c>negateExpr</c>
+            labeled alternative in <see cref="M:ElsaParser.expr"/>.
+            <para>
+            The default implementation returns the result of calling <see cref="M:Antlr4.Runtime.Tree.AbstractParseTreeVisitor`1.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)"/>
+            on <paramref name="context"/>.
+            </para>
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
+        <member name="M:ElsaParserBaseVisitor`1.VisitMethodCallExpr(ElsaParser.MethodCallExprContext)">
+            <summary>
+            Visit a parse tree produced by the <c>methodCallExpr</c>
+            labeled alternative in <see cref="M:ElsaParser.expr"/>.
+            <para>
+            The default implementation returns the result of calling <see cref="M:Antlr4.Runtime.Tree.AbstractParseTreeVisitor`1.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)"/>
+            on <paramref name="context"/>.
+            </para>
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
+        <member name="M:ElsaParserBaseVisitor`1.VisitVariableExpr(ElsaParser.VariableExprContext)">
+            <summary>
+            Visit a parse tree produced by the <c>variableExpr</c>
+            labeled alternative in <see cref="M:ElsaParser.expr"/>.
+            <para>
+            The default implementation returns the result of calling <see cref="M:Antlr4.Runtime.Tree.AbstractParseTreeVisitor`1.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)"/>
+            on <paramref name="context"/>.
+            </para>
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
+        <member name="M:ElsaParserBaseVisitor`1.VisitNotExpr(ElsaParser.NotExprContext)">
+            <summary>
+            Visit a parse tree produced by the <c>notExpr</c>
+            labeled alternative in <see cref="M:ElsaParser.expr"/>.
+            <para>
+            The default implementation returns the result of calling <see cref="M:Antlr4.Runtime.Tree.AbstractParseTreeVisitor`1.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)"/>
+            on <paramref name="context"/>.
+            </para>
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
+        <member name="M:ElsaParserBaseVisitor`1.VisitIntegerValueExpr(ElsaParser.IntegerValueExprContext)">
+            <summary>
+            Visit a parse tree produced by the <c>integerValueExpr</c>
+            labeled alternative in <see cref="M:ElsaParser.expr"/>.
+            <para>
+            The default implementation returns the result of calling <see cref="M:Antlr4.Runtime.Tree.AbstractParseTreeVisitor`1.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)"/>
+            on <paramref name="context"/>.
+            </para>
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
+        <member name="M:ElsaParserBaseVisitor`1.VisitAddExpr(ElsaParser.AddExprContext)">
+            <summary>
+            Visit a parse tree produced by the <c>addExpr</c>
+            labeled alternative in <see cref="M:ElsaParser.expr"/>.
+            <para>
+            The default implementation returns the result of calling <see cref="M:Antlr4.Runtime.Tree.AbstractParseTreeVisitor`1.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)"/>
+            on <paramref name="context"/>.
+            </para>
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
+        <member name="M:ElsaParserBaseVisitor`1.VisitExpressionMarkerExpr(ElsaParser.ExpressionMarkerExprContext)">
+            <summary>
+            Visit a parse tree produced by the <c>expressionMarkerExpr</c>
+            labeled alternative in <see cref="M:ElsaParser.expr"/>.
+            <para>
+            The default implementation returns the result of calling <see cref="M:Antlr4.Runtime.Tree.AbstractParseTreeVisitor`1.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)"/>
+            on <paramref name="context"/>.
+            </para>
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
+        <member name="M:ElsaParserBaseVisitor`1.VisitBackTickStringValueExpr(ElsaParser.BackTickStringValueExprContext)">
+            <summary>
+            Visit a parse tree produced by the <c>backTickStringValueExpr</c>
+            labeled alternative in <see cref="M:ElsaParser.expr"/>.
+            <para>
+            The default implementation returns the result of calling <see cref="M:Antlr4.Runtime.Tree.AbstractParseTreeVisitor`1.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)"/>
+            on <paramref name="context"/>.
+            </para>
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
+        <member name="M:ElsaParserBaseVisitor`1.VisitBracketsExpr(ElsaParser.BracketsExprContext)">
+            <summary>
+            Visit a parse tree produced by the <c>bracketsExpr</c>
+            labeled alternative in <see cref="M:ElsaParser.expr"/>.
+            <para>
+            The default implementation returns the result of calling <see cref="M:Antlr4.Runtime.Tree.AbstractParseTreeVisitor`1.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)"/>
+            on <paramref name="context"/>.
+            </para>
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
+        <member name="M:ElsaParserBaseVisitor`1.VisitCompareExpr(ElsaParser.CompareExprContext)">
+            <summary>
+            Visit a parse tree produced by the <c>compareExpr</c>
+            labeled alternative in <see cref="M:ElsaParser.expr"/>.
+            <para>
+            The default implementation returns the result of calling <see cref="M:Antlr4.Runtime.Tree.AbstractParseTreeVisitor`1.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)"/>
+            on <paramref name="context"/>.
+            </para>
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
+        <member name="M:ElsaParserBaseVisitor`1.VisitExprList(ElsaParser.ExprListContext)">
+            <summary>
+            Visit a parse tree produced by <see cref="M:ElsaParser.exprList"/>.
+            <para>
+            The default implementation returns the result of calling <see cref="M:Antlr4.Runtime.Tree.AbstractParseTreeVisitor`1.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)"/>
+            on <paramref name="context"/>.
+            </para>
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
+        <member name="T:IElsaParserVisitor`1">
+            <summary>
+            This interface defines a complete generic visitor for a parse tree produced
+            by <see cref="T:ElsaParser"/>.
+            </summary>
+            <typeparam name="Result">The return type of the visit operation.</typeparam>
+        </member>
+        <member name="M:IElsaParserVisitor`1.VisitProgram(ElsaParser.ProgramContext)">
+            <summary>
+            Visit a parse tree produced by <see cref="M:ElsaParser.program"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
+        <member name="M:IElsaParserVisitor`1.VisitObject(ElsaParser.ObjectContext)">
+            <summary>
+            Visit a parse tree produced by <see cref="!:ElsaParser.object"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
+        <member name="M:IElsaParserVisitor`1.VisitNewObject(ElsaParser.NewObjectContext)">
+            <summary>
+            Visit a parse tree produced by <see cref="M:ElsaParser.newObject"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
+        <member name="M:IElsaParserVisitor`1.VisitVarDecl(ElsaParser.VarDeclContext)">
+            <summary>
+            Visit a parse tree produced by <see cref="M:ElsaParser.varDecl"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
+        <member name="M:IElsaParserVisitor`1.VisitLocalVarDecl(ElsaParser.LocalVarDeclContext)">
+            <summary>
+            Visit a parse tree produced by <see cref="M:ElsaParser.localVarDecl"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
+        <member name="M:IElsaParserVisitor`1.VisitType(ElsaParser.TypeContext)">
+            <summary>
+            Visit a parse tree produced by <see cref="M:ElsaParser.type"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
+        <member name="M:IElsaParserVisitor`1.VisitExpressionMarker(ElsaParser.ExpressionMarkerContext)">
+            <summary>
+            Visit a parse tree produced by <see cref="M:ElsaParser.expressionMarker"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
+        <member name="M:IElsaParserVisitor`1.VisitExpressionContent(ElsaParser.ExpressionContentContext)">
+            <summary>
+            Visit a parse tree produced by <see cref="M:ElsaParser.expressionContent"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
+        <member name="M:IElsaParserVisitor`1.VisitMethodCall(ElsaParser.MethodCallContext)">
+            <summary>
+            Visit a parse tree produced by <see cref="M:ElsaParser.methodCall"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
+        <member name="M:IElsaParserVisitor`1.VisitFuncCall(ElsaParser.FuncCallContext)">
+            <summary>
+            Visit a parse tree produced by <see cref="M:ElsaParser.funcCall"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
+        <member name="M:IElsaParserVisitor`1.VisitArgs(ElsaParser.ArgsContext)">
+            <summary>
+            Visit a parse tree produced by <see cref="M:ElsaParser.args"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
+        <member name="M:IElsaParserVisitor`1.VisitArg(ElsaParser.ArgContext)">
+            <summary>
+            Visit a parse tree produced by <see cref="M:ElsaParser.arg"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
+        <member name="M:IElsaParserVisitor`1.VisitBlock(ElsaParser.BlockContext)">
+            <summary>
+            Visit a parse tree produced by <see cref="M:ElsaParser.block"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
+        <member name="M:IElsaParserVisitor`1.VisitObjectInitializer(ElsaParser.ObjectInitializerContext)">
+            <summary>
+            Visit a parse tree produced by <see cref="M:ElsaParser.objectInitializer"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
+        <member name="M:IElsaParserVisitor`1.VisitPropertyList(ElsaParser.PropertyListContext)">
+            <summary>
+            Visit a parse tree produced by <see cref="M:ElsaParser.propertyList"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
+        <member name="M:IElsaParserVisitor`1.VisitProperty(ElsaParser.PropertyContext)">
+            <summary>
+            Visit a parse tree produced by <see cref="M:ElsaParser.property"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
+        <member name="M:IElsaParserVisitor`1.VisitObjectStat(ElsaParser.ObjectStatContext)">
+            <summary>
+            Visit a parse tree produced by the <c>objectStat</c>
+            labeled alternative in <see cref="M:ElsaParser.stat"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
+        <member name="M:IElsaParserVisitor`1.VisitIfStat(ElsaParser.IfStatContext)">
+            <summary>
+            Visit a parse tree produced by the <c>ifStat</c>
+            labeled alternative in <see cref="M:ElsaParser.stat"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
+        <member name="M:IElsaParserVisitor`1.VisitForStat(ElsaParser.ForStatContext)">
+            <summary>
+            Visit a parse tree produced by the <c>forStat</c>
+            labeled alternative in <see cref="M:ElsaParser.stat"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
+        <member name="M:IElsaParserVisitor`1.VisitReturnStat(ElsaParser.ReturnStatContext)">
+            <summary>
+            Visit a parse tree produced by the <c>returnStat</c>
+            labeled alternative in <see cref="M:ElsaParser.stat"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
+        <member name="M:IElsaParserVisitor`1.VisitBlockStat(ElsaParser.BlockStatContext)">
+            <summary>
+            Visit a parse tree produced by the <c>blockStat</c>
+            labeled alternative in <see cref="M:ElsaParser.stat"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
+        <member name="M:IElsaParserVisitor`1.VisitVariableDeclarationStat(ElsaParser.VariableDeclarationStatContext)">
+            <summary>
+            Visit a parse tree produced by the <c>variableDeclarationStat</c>
+            labeled alternative in <see cref="M:ElsaParser.stat"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
+        <member name="M:IElsaParserVisitor`1.VisitLocalVariableDeclarationStat(ElsaParser.LocalVariableDeclarationStatContext)">
+            <summary>
+            Visit a parse tree produced by the <c>localVariableDeclarationStat</c>
+            labeled alternative in <see cref="M:ElsaParser.stat"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
+        <member name="M:IElsaParserVisitor`1.VisitAssignmentStat(ElsaParser.AssignmentStatContext)">
+            <summary>
+            Visit a parse tree produced by the <c>assignmentStat</c>
+            labeled alternative in <see cref="M:ElsaParser.stat"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
+        <member name="M:IElsaParserVisitor`1.VisitExpressionStat(ElsaParser.ExpressionStatContext)">
+            <summary>
+            Visit a parse tree produced by the <c>expressionStat</c>
+            labeled alternative in <see cref="M:ElsaParser.stat"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
+        <member name="M:IElsaParserVisitor`1.VisitThenStat(ElsaParser.ThenStatContext)">
+            <summary>
+            Visit a parse tree produced by <see cref="M:ElsaParser.thenStat"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
+        <member name="M:IElsaParserVisitor`1.VisitElseStat(ElsaParser.ElseStatContext)">
+            <summary>
+            Visit a parse tree produced by <see cref="M:ElsaParser.elseStat"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
+        <member name="M:IElsaParserVisitor`1.VisitNewObjectExpr(ElsaParser.NewObjectExprContext)">
+            <summary>
+            Visit a parse tree produced by the <c>newObjectExpr</c>
+            labeled alternative in <see cref="M:ElsaParser.expr"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
+        <member name="M:IElsaParserVisitor`1.VisitSubtractExpr(ElsaParser.SubtractExprContext)">
+            <summary>
+            Visit a parse tree produced by the <c>subtractExpr</c>
+            labeled alternative in <see cref="M:ElsaParser.expr"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
+        <member name="M:IElsaParserVisitor`1.VisitIncrementExpr(ElsaParser.IncrementExprContext)">
+            <summary>
+            Visit a parse tree produced by the <c>incrementExpr</c>
+            labeled alternative in <see cref="M:ElsaParser.expr"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
+        <member name="M:IElsaParserVisitor`1.VisitObjectExpr(ElsaParser.ObjectExprContext)">
+            <summary>
+            Visit a parse tree produced by the <c>objectExpr</c>
+            labeled alternative in <see cref="M:ElsaParser.expr"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
+        <member name="M:IElsaParserVisitor`1.VisitStringValueExpr(ElsaParser.StringValueExprContext)">
+            <summary>
+            Visit a parse tree produced by the <c>stringValueExpr</c>
+            labeled alternative in <see cref="M:ElsaParser.expr"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
+        <member name="M:IElsaParserVisitor`1.VisitMultiplyExpr(ElsaParser.MultiplyExprContext)">
+            <summary>
+            Visit a parse tree produced by the <c>multiplyExpr</c>
+            labeled alternative in <see cref="M:ElsaParser.expr"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
+        <member name="M:IElsaParserVisitor`1.VisitParenthesesExpr(ElsaParser.ParenthesesExprContext)">
+            <summary>
+            Visit a parse tree produced by the <c>parenthesesExpr</c>
+            labeled alternative in <see cref="M:ElsaParser.expr"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
+        <member name="M:IElsaParserVisitor`1.VisitFunctionExpr(ElsaParser.FunctionExprContext)">
+            <summary>
+            Visit a parse tree produced by the <c>functionExpr</c>
+            labeled alternative in <see cref="M:ElsaParser.expr"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
+        <member name="M:IElsaParserVisitor`1.VisitDecrementExpr(ElsaParser.DecrementExprContext)">
+            <summary>
+            Visit a parse tree produced by the <c>decrementExpr</c>
+            labeled alternative in <see cref="M:ElsaParser.expr"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
+        <member name="M:IElsaParserVisitor`1.VisitNegateExpr(ElsaParser.NegateExprContext)">
+            <summary>
+            Visit a parse tree produced by the <c>negateExpr</c>
+            labeled alternative in <see cref="M:ElsaParser.expr"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
+        <member name="M:IElsaParserVisitor`1.VisitMethodCallExpr(ElsaParser.MethodCallExprContext)">
+            <summary>
+            Visit a parse tree produced by the <c>methodCallExpr</c>
+            labeled alternative in <see cref="M:ElsaParser.expr"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
+        <member name="M:IElsaParserVisitor`1.VisitVariableExpr(ElsaParser.VariableExprContext)">
+            <summary>
+            Visit a parse tree produced by the <c>variableExpr</c>
+            labeled alternative in <see cref="M:ElsaParser.expr"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
+        <member name="M:IElsaParserVisitor`1.VisitNotExpr(ElsaParser.NotExprContext)">
+            <summary>
+            Visit a parse tree produced by the <c>notExpr</c>
+            labeled alternative in <see cref="M:ElsaParser.expr"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
+        <member name="M:IElsaParserVisitor`1.VisitIntegerValueExpr(ElsaParser.IntegerValueExprContext)">
+            <summary>
+            Visit a parse tree produced by the <c>integerValueExpr</c>
+            labeled alternative in <see cref="M:ElsaParser.expr"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
+        <member name="M:IElsaParserVisitor`1.VisitAddExpr(ElsaParser.AddExprContext)">
+            <summary>
+            Visit a parse tree produced by the <c>addExpr</c>
+            labeled alternative in <see cref="M:ElsaParser.expr"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
+        <member name="M:IElsaParserVisitor`1.VisitExpressionMarkerExpr(ElsaParser.ExpressionMarkerExprContext)">
+            <summary>
+            Visit a parse tree produced by the <c>expressionMarkerExpr</c>
+            labeled alternative in <see cref="M:ElsaParser.expr"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
+        <member name="M:IElsaParserVisitor`1.VisitBackTickStringValueExpr(ElsaParser.BackTickStringValueExprContext)">
+            <summary>
+            Visit a parse tree produced by the <c>backTickStringValueExpr</c>
+            labeled alternative in <see cref="M:ElsaParser.expr"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
+        <member name="M:IElsaParserVisitor`1.VisitBracketsExpr(ElsaParser.BracketsExprContext)">
+            <summary>
+            Visit a parse tree produced by the <c>bracketsExpr</c>
+            labeled alternative in <see cref="M:ElsaParser.expr"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
+        <member name="M:IElsaParserVisitor`1.VisitCompareExpr(ElsaParser.CompareExprContext)">
+            <summary>
+            Visit a parse tree produced by the <c>compareExpr</c>
+            labeled alternative in <see cref="M:ElsaParser.expr"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
+        <member name="M:IElsaParserVisitor`1.VisitExprList(ElsaParser.ExprListContext)">
+            <summary>
+            Visit a parse tree produced by <see cref="M:ElsaParser.exprList"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+            <return>The visitor result.</return>
+        </member>
+        <member name="T:Elsa.Dsl.Contracts.IDslEngine">
+            <summary>
+            Represents a DSL engine that parse a workflow definition script into a <see cref="T:Elsa.Workflows.Core.Activities.Workflow"/> instance.
+            </summary>
+        </member>
+        <member name="M:Elsa.Dsl.Contracts.IDslEngine.ParseAsync(System.String,System.Threading.CancellationToken)">
+            <summary>
+            Parses the specified script into a <see cref="T:Elsa.Workflows.Core.Activities.Workflow"/> instance.
+            </summary>
+        </member>
+        <member name="T:Elsa.Dsl.Contracts.IFunctionActivityRegistry">
+            <summary>
+            Provides a registry for mapping functions to activities that can be invoked from a DSL script.
+            </summary>
+        </member>
+        <member name="M:Elsa.Dsl.Contracts.IFunctionActivityRegistry.RegisterFunction(System.String,System.String,System.Collections.Generic.IEnumerable{System.String},System.Action{Elsa.Workflows.Core.Contracts.IActivity})">
+            <summary>
+            Registers a function that is mapped to an activity that can be invoked from a DSL script.
+            </summary>
+            <param name="functionName">The name of the function.</param>
+            <param name="activityTypeName">The name of the activity type.</param>
+            <param name="propertyNames">The names of the properties that are mapped to the function arguments.</param>
+            <param name="configure">An optional action that can be used to configure the activity.</param>
+        </member>
+        <member name="M:Elsa.Dsl.Contracts.IFunctionActivityRegistry.RegisterFunction(Elsa.Dsl.Models.FunctionActivityDescriptor)">
+            <summary>
+            Registers a function that is mapped to an activity that can be invoked from a DSL script.
+            </summary>
+            <param name="descriptor">The descriptor that describes the function.</param>
+        </member>
+        <member name="M:Elsa.Dsl.Contracts.IFunctionActivityRegistry.ResolveFunction(System.String,System.Collections.Generic.IEnumerable{System.Object})">
+            <summary>
+            Resolves a function to an activity that can be invoked from a DSL script.
+            </summary>
+            <param name="functionName">The name of the function.</param>
+            <param name="arguments">The arguments that are passed to the function.</param>
+            <returns>An activity that can be invoked from a DSL script.</returns>
+        </member>
+        <member name="T:Elsa.Dsl.Interpreters.WorkflowDefinitionBuilderInterpreter">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Dsl.Interpreters.WorkflowDefinitionBuilderInterpreter.VisitBracketsExpr(ElsaParser.BracketsExprContext)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Dsl.Interpreters.WorkflowDefinitionBuilderInterpreter.VisitProgram(ElsaParser.ProgramContext)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Dsl.Interpreters.WorkflowDefinitionBuilderInterpreter.VisitObjectExpr(ElsaParser.ObjectExprContext)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Dsl.Interpreters.WorkflowDefinitionBuilderInterpreter.VisitObjectStat(ElsaParser.ObjectStatContext)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Dsl.Interpreters.WorkflowDefinitionBuilderInterpreter.VisitObject(ElsaParser.ObjectContext)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Dsl.Interpreters.WorkflowDefinitionBuilderInterpreter.VisitProperty(ElsaParser.PropertyContext)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Dsl.Interpreters.WorkflowDefinitionBuilderInterpreter.#ctor(Elsa.Dsl.Contracts.ITypeSystem,Elsa.Workflows.Core.Contracts.IActivityRegistry,Elsa.Dsl.Contracts.IFunctionActivityRegistry,Elsa.Workflows.Core.Contracts.IWorkflowBuilderFactory)">
+            <inheritdoc />
+        </member>
+        <member name="P:Elsa.Dsl.Interpreters.WorkflowDefinitionBuilderInterpreter.DefaultResult">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.Dsl.Models.FunctionActivityDescriptor">
+            <summary>
+            Describes a function that is mapped to an activity that can be invoked from a DSL script.
+            </summary>
+            <param name="FunctionName">The name of the function.</param>
+            <param name="ActivityTypeName">The name of the activity type.</param>
+            <param name="PropertyNames">The names of the properties that are mapped to the function arguments.</param>
+            <param name="Configure">An optional action that can be used to configure the activity.</param>
+        </member>
+        <member name="M:Elsa.Dsl.Models.FunctionActivityDescriptor.#ctor(System.String,System.String,System.Collections.Generic.IEnumerable{System.String},System.Action{Elsa.Workflows.Core.Contracts.IActivity})">
+            <summary>
+            Describes a function that is mapped to an activity that can be invoked from a DSL script.
+            </summary>
+            <param name="FunctionName">The name of the function.</param>
+            <param name="ActivityTypeName">The name of the activity type.</param>
+            <param name="PropertyNames">The names of the properties that are mapped to the function arguments.</param>
+            <param name="Configure">An optional action that can be used to configure the activity.</param>
+        </member>
+        <member name="P:Elsa.Dsl.Models.FunctionActivityDescriptor.FunctionName">
+            <summary>The name of the function.</summary>
+        </member>
+        <member name="P:Elsa.Dsl.Models.FunctionActivityDescriptor.ActivityTypeName">
+            <summary>The name of the activity type.</summary>
+        </member>
+        <member name="P:Elsa.Dsl.Models.FunctionActivityDescriptor.PropertyNames">
+            <summary>The names of the properties that are mapped to the function arguments.</summary>
+        </member>
+        <member name="P:Elsa.Dsl.Models.FunctionActivityDescriptor.Configure">
+            <summary>An optional action that can be used to configure the activity.</summary>
+        </member>
+        <member name="T:Elsa.Dsl.Services.DslEngine">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Dsl.Services.DslEngine.#ctor(Elsa.Dsl.Contracts.ITypeSystem,Elsa.Workflows.Core.Contracts.IActivityRegistry,Elsa.Dsl.Contracts.IFunctionActivityRegistry,Elsa.Workflows.Core.Contracts.IWorkflowBuilderFactory)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Elsa.Dsl.Services.DslEngine"/> class.
+            </summary>
+        </member>
+        <member name="M:Elsa.Dsl.Services.DslEngine.ParseAsync(System.String,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.Dsl.Services.FunctionActivityRegistry">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Dsl.Services.FunctionActivityRegistry.#ctor(Elsa.Workflows.Core.Contracts.IActivityRegistry)">
+            <summary>
+            Creates a new instance of the <see cref="T:Elsa.Dsl.Services.FunctionActivityRegistry"/> class.
+            </summary>
+        </member>
+        <member name="M:Elsa.Dsl.Services.FunctionActivityRegistry.RegisterFunction(System.String,System.String,System.Collections.Generic.IEnumerable{System.String},System.Action{Elsa.Workflows.Core.Contracts.IActivity})">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Dsl.Services.FunctionActivityRegistry.RegisterFunction(Elsa.Dsl.Models.FunctionActivityDescriptor)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Dsl.Services.FunctionActivityRegistry.ResolveFunction(System.String,System.Collections.Generic.IEnumerable{System.Object})">
+            <inheritdoc />
+        </member>
+    </members>
+</doc>

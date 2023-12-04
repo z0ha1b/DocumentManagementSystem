@@ -14,16 +14,24 @@
     
     <ItemGroup>
         <PackageReference Include="Elsa" Version="3.0.0-preview.727" />
+        <PackageReference Include="Elsa.Email" Version="3.0.0-preview.727" />
+        <PackageReference Include="Elsa.EntityFrameworkCore" Version="3.0.0-preview.727" />
         <PackageReference Include="Elsa.EntityFrameworkCore.Sqlite" Version="3.0.0-preview.727" />
         <PackageReference Include="Elsa.EntityFrameworkCore.SqlServer" Version="3.0.0-preview.727" />
+        <PackageReference Include="Elsa.Hangfire" Version="3.0.0-preview.727" />
         <PackageReference Include="Elsa.Http" Version="3.0.0-preview.727" />
         <PackageReference Include="Elsa.Identity" Version="3.0.0-preview.727" />
         <PackageReference Include="Elsa.Liquid" Version="3.0.0-preview.727" />
+        <PackageReference Include="Elsa.Quartz" Version="3.0.0-preview.727" />
+        <PackageReference Include="Elsa.Studio.Webhooks" Version="3.0.0-preview.94" />
+        <PackageReference Include="Elsa.Webhooks" Version="3.0.0-preview.727" />
         <PackageReference Include="Elsa.Workflows.Api" Version="3.0.0-preview.727" />
         <PackageReference Include="Elsa.Workflows.Core" Version="3.0.0-preview.727" />
         <PackageReference Include="Elsa.Workflows.Management" Version="3.0.0-preview.727" />
         <PackageReference Include="Elsa.Workflows.Runtime" Version="3.0.0-preview.727" />
         <PackageReference Include="iTextSharp" Version="5.5.13.3" />
+        <PackageReference Include="Microsoft.Extensions.Options" Version="8.0.0" />
+        <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="8.0.0" />
     </ItemGroup> 
     
     <ItemGroup>

@@ -1,0 +1,33 @@
+{
+  "Files": [
+    {
+      "Id": "C:\\GitHub\\DocumentManagementSystem\\apps\\DocumentManagement.Studio.WebAssembly\\bin\\Debug\\net7.0\\wwwroot\\_framework\\blazor.webassembly.js",
+      "PackagePath": "staticwebassets\\_framework\\blazor.webassembly.js"
+    },
+    {
+      "Id": "C:\\GitHub\\DocumentManagementSystem\\apps\\DocumentManagement.Studio.WebAssembly\\obj\\Debug\\net7.0\\build-gz\\MjHnSO6O.gz",
+      "PackagePath": "staticwebassets\\_framework\\blazor.webassembly.js.gz"
+    },
+    {
+      "Id": "C:\\GitHub\\DocumentManagementSystem\\apps\\DocumentManagement.Studio.WebAssembly\\obj\\Debug\\net7.0\\scopedcss\\bundle\\DocumentManagement.Studio.WebAssembly.styles.css",
+      "PackagePath": "staticwebassets\\DocumentManagement.Studio.WebAssembly.styles.css"
+    },
+    {
+      "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.DocumentManagement.Studio.WebAssembly.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.build.DocumentManagement.Studio.WebAssembly.props",
+      "PackagePath": "build\\DocumentManagement.Studio.WebAssembly.props"
+    },
+    {
+      "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.buildMultiTargeting.DocumentManagement.Studio.WebAssembly.props",
+      "PackagePath": "buildMultiTargeting\\DocumentManagement.Studio.WebAssembly.props"
+    },
+    {
+      "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.buildTransitive.DocumentManagement.Studio.WebAssembly.props",
+      "PackagePath": "buildTransitive\\DocumentManagement.Studio.WebAssembly.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

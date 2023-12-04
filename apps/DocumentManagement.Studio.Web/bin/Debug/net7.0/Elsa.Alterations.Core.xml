@@ -1,0 +1,749 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Elsa.Alterations.Core</name>
+    </assembly>
+    <members>
+        <member name="T:Elsa.Alterations.Core.Abstractions.AlterationBase">
+            <summary>
+            A base class for alterations.
+            </summary>
+        </member>
+        <member name="T:Elsa.Alterations.Core.Abstractions.AlterationHandlerBase">
+            <summary>
+            A base class for alterations.
+            </summary>
+        </member>
+        <member name="M:Elsa.Alterations.Core.Abstractions.AlterationHandlerBase.CanHandle(Elsa.Alterations.Core.Contracts.IAlteration)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Alterations.Core.Abstractions.AlterationHandlerBase.HandleAsync(Elsa.Alterations.Core.Contexts.AlterationContext)">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.Alterations.Core.Abstractions.AlterationHandlerBase`1">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Alterations.Core.Abstractions.AlterationHandlerBase`1.CanHandle(Elsa.Alterations.Core.Contracts.IAlteration)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Alterations.Core.Abstractions.AlterationHandlerBase`1.HandleAsync(Elsa.Alterations.Core.Contexts.AlterationContext)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Alterations.Core.Abstractions.AlterationHandlerBase`1.HandleAsync(Elsa.Alterations.Core.Contexts.AlterationContext,`0)">
+            <summary>
+            Applies the alteration to the specified context.
+            </summary>
+            <param name="context">A context object that contains information for the alteration and provides a way to alter the workflow instance and control the alteration process.</param>
+            <param name="alteration">A strongly typed alteration.</param>
+        </member>
+        <member name="T:Elsa.Alterations.Core.Contexts.AlterationContext">
+            <summary>
+            Provides contextual information about an alteration.
+            </summary>
+        </member>
+        <member name="M:Elsa.Alterations.Core.Contexts.AlterationContext.#ctor(Elsa.Alterations.Core.Contracts.IAlteration,Elsa.Workflows.Core.WorkflowExecutionContext,Elsa.Alterations.Core.Models.AlterationLog,System.Threading.CancellationToken)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Elsa.Alterations.Core.Contexts.AlterationContext"/> class.
+            </summary>
+        </member>
+        <member name="P:Elsa.Alterations.Core.Contexts.AlterationContext.Alteration">
+            <summary>
+            The alteration being handled.
+            </summary>
+        </member>
+        <member name="P:Elsa.Alterations.Core.Contexts.AlterationContext.WorkflowExecutionContext">
+            <summary>
+            A workflow execution context of the workflow instance being altered. This offers maximum flexibility for altering the workflow state.
+            </summary>
+        </member>
+        <member name="P:Elsa.Alterations.Core.Contexts.AlterationContext.Workflow">
+            <summary>
+            The workflow of the workflow instance being altered.
+            </summary>
+        </member>
+        <member name="P:Elsa.Alterations.Core.Contexts.AlterationContext.CancellationToken">
+            <summary>
+            The cancellation token.
+            </summary>
+        </member>
+        <member name="P:Elsa.Alterations.Core.Contexts.AlterationContext.ServiceProvider">
+            <summary>
+            The service provider.
+            </summary>
+        </member>
+        <member name="P:Elsa.Alterations.Core.Contexts.AlterationContext.AlterationLog">
+            <summary>
+            The alteration log.
+            </summary>
+        </member>
+        <member name="P:Elsa.Alterations.Core.Contexts.AlterationContext.HasSucceeded">
+            <summary>
+            A flag indicating whether the alteration has succeeded.
+            </summary>
+        </member>
+        <member name="P:Elsa.Alterations.Core.Contexts.AlterationContext.HasFailed">
+            <summary>
+            A flag indicating whether the alteration has failed.
+            </summary>
+        </member>
+        <member name="P:Elsa.Alterations.Core.Contexts.AlterationContext.CommitAction">
+            <summary>
+            An optional action to be executed when the alteration is committed. Set this to perform permanent side effects such as deleting records form the database.
+            </summary>
+        </member>
+        <member name="M:Elsa.Alterations.Core.Contexts.AlterationContext.Log(System.String,Microsoft.Extensions.Logging.LogLevel)">
+            <summary>
+            Logs a message.
+            </summary>
+            <param name="message">The message to log.</param>
+            <param name="logLevel">The log level.</param>
+        </member>
+        <member name="M:Elsa.Alterations.Core.Contexts.AlterationContext.Succeed">
+            <summary>
+            Marks the alteration as succeeded.
+            </summary>
+        </member>
+        <member name="M:Elsa.Alterations.Core.Contexts.AlterationContext.Succeed(System.Func{System.Threading.Tasks.Task})">
+            <summary>
+            Marks the alteration as succeeded.
+            </summary>
+        </member>
+        <member name="M:Elsa.Alterations.Core.Contexts.AlterationContext.Succeed(System.String)">
+            <summary>
+            Marks the alteration as succeeded.
+            </summary>
+        </member>
+        <member name="M:Elsa.Alterations.Core.Contexts.AlterationContext.Succeed(System.String,System.Func{System.Threading.Tasks.Task})">
+            <summary>
+            Marks the alteration as succeeded.
+            </summary>
+        </member>
+        <member name="M:Elsa.Alterations.Core.Contexts.AlterationContext.Fail(System.String)">
+            <summary>
+            Marks the alteration as failed.
+            </summary>
+            <param name="message">An optional message.</param>
+        </member>
+        <member name="T:Elsa.Alterations.Core.Contracts.DefaultAlteredWorkflowDispatcher">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Alterations.Core.Contracts.DefaultAlteredWorkflowDispatcher.#ctor(Elsa.Workflows.Runtime.Contracts.IWorkflowDispatcher)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Elsa.Alterations.Core.Contracts.DefaultAlteredWorkflowDispatcher"/> class.
+            </summary>
+        </member>
+        <member name="M:Elsa.Alterations.Core.Contracts.DefaultAlteredWorkflowDispatcher.DispatchAsync(System.Collections.Generic.IEnumerable{Elsa.Alterations.Core.Results.RunAlterationsResult},System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Alterations.Core.Contracts.DefaultAlteredWorkflowDispatcher.DispatchAsync(Elsa.Alterations.Core.Results.RunAlterationsResult,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.Alterations.Core.Contracts.IAlteration">
+            <summary>
+            Represents an alteration.
+            </summary>
+        </member>
+        <member name="T:Elsa.Alterations.Core.Contracts.IAlterationHandler">
+            <summary>
+            Represents a change to a given type <c>T</c>.
+            </summary>
+        </member>
+        <member name="M:Elsa.Alterations.Core.Contracts.IAlterationHandler.CanHandle(Elsa.Alterations.Core.Contracts.IAlteration)">
+            <summary>
+            Returns <c>true</c> if the alteration is supported by this handler; otherwise, <c>false</c>.
+            </summary>
+            <param name="alteration"></param>
+        </member>
+        <member name="M:Elsa.Alterations.Core.Contracts.IAlterationHandler.HandleAsync(Elsa.Alterations.Core.Contexts.AlterationContext)">
+            <summary>
+            Applies the alteration to the specified context.
+            </summary>
+            <param name="context">A context object that contains information for the alteration and provides a way to alter the workflow instance and control the alteration process.</param>
+        </member>
+        <member name="T:Elsa.Alterations.Core.Contracts.IAlterationJobDispatcher">
+            <summary>
+             Dispatches an alteration job for execution.
+            </summary>
+        </member>
+        <member name="M:Elsa.Alterations.Core.Contracts.IAlterationJobDispatcher.DispatchAsync(System.String,System.Threading.CancellationToken)">
+            <summary>
+            Dispatches an alteration job for execution.
+            </summary>
+            <param name="jobId">The ID of the job to dispatch.</param>
+            <param name="cancellationToken">An optional cancellation token.</param>
+        </member>
+        <member name="T:Elsa.Alterations.Core.Contracts.IAlterationJobRunner">
+            <summary>
+            Executes an alteration job.
+            </summary>
+        </member>
+        <member name="M:Elsa.Alterations.Core.Contracts.IAlterationJobRunner.RunAsync(System.String,System.Threading.CancellationToken)">
+            <summary>
+            Executes the specified alteration plan.
+            </summary>
+            <param name="jobId">The Id of the alteration job to execute.</param>
+            <param name="cancellationToken">An optional cancellation token.</param>
+            <returns>The job with updated state.</returns>
+        </member>
+        <member name="T:Elsa.Alterations.Core.Contracts.IAlterationJobStore">
+            <summary>
+            A store for alteration jobs.
+            </summary>
+        </member>
+        <member name="M:Elsa.Alterations.Core.Contracts.IAlterationJobStore.SaveAsync(Elsa.Alterations.Core.Entities.AlterationJob,System.Threading.CancellationToken)">
+            <summary>
+            Saves the specified alteration job.
+            </summary>
+        </member>
+        <member name="M:Elsa.Alterations.Core.Contracts.IAlterationJobStore.SaveManyAsync(System.Collections.Generic.IEnumerable{Elsa.Alterations.Core.Entities.AlterationJob},System.Threading.CancellationToken)">
+            <summary>
+            Saves the specified alteration jobs.
+            </summary>
+        </member>
+        <member name="M:Elsa.Alterations.Core.Contracts.IAlterationJobStore.FindAsync(Elsa.Alterations.Core.Filters.AlterationJobFilter,System.Threading.CancellationToken)">
+            <summary>
+            Finds the alteration job matching the specified filter.
+            </summary>
+        </member>
+        <member name="M:Elsa.Alterations.Core.Contracts.IAlterationJobStore.FindManyAsync(Elsa.Alterations.Core.Filters.AlterationJobFilter,System.Threading.CancellationToken)">
+            <summary>
+            Finds all alteration jobs matching the specified filter.
+            </summary>
+        </member>
+        <member name="M:Elsa.Alterations.Core.Contracts.IAlterationJobStore.FindManyIdsAsync(Elsa.Alterations.Core.Filters.AlterationJobFilter,System.Threading.CancellationToken)">
+            <summary>
+            Finds the IDs of all alteration jobs matching the specified filter.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Elsa.Alterations.Core.Contracts.IAlterationJobStore.CountAsync(Elsa.Alterations.Core.Filters.AlterationJobFilter,System.Threading.CancellationToken)">
+            <summary>
+            Returns the number of alteration jobs matching the specified filter.
+            </summary>
+        </member>
+        <member name="T:Elsa.Alterations.Core.Contracts.IAlterationPlanScheduler">
+            <summary>
+            Scheduler for alteration plans.
+            </summary>
+        </member>
+        <member name="M:Elsa.Alterations.Core.Contracts.IAlterationPlanScheduler.SubmitAsync(Elsa.Alterations.Core.Models.NewAlterationPlan,System.Threading.CancellationToken)">
+            <summary>
+            Submits an alteration plan for execution.
+            </summary>
+        </member>
+        <member name="T:Elsa.Alterations.Core.Contracts.IAlterationPlanStore">
+            <summary>
+            A store for alteration plans.
+            </summary>
+        </member>
+        <member name="M:Elsa.Alterations.Core.Contracts.IAlterationPlanStore.SaveAsync(Elsa.Alterations.Core.Entities.AlterationPlan,System.Threading.CancellationToken)">
+            <summary>
+            Saves the specified alteration plan.
+            </summary>
+        </member>
+        <member name="M:Elsa.Alterations.Core.Contracts.IAlterationPlanStore.FindAsync(Elsa.Alterations.Core.Filters.AlterationPlanFilter,System.Threading.CancellationToken)">
+            <summary>
+            Finds the alteration plan matching the specified filter.
+            </summary>
+        </member>
+        <member name="M:Elsa.Alterations.Core.Contracts.IAlterationPlanStore.CountAsync(Elsa.Alterations.Core.Filters.AlterationPlanFilter,System.Threading.CancellationToken)">
+            <summary>
+            Returns the number of alteration plans matching the specified filter.
+            </summary>
+        </member>
+        <member name="T:Elsa.Alterations.Core.Contracts.IAlterationRunner">
+            <summary>
+            Runs a series of alterations on the specified workflow execution context.
+            </summary>
+        </member>
+        <member name="M:Elsa.Alterations.Core.Contracts.IAlterationRunner.RunAsync(System.Collections.Generic.IEnumerable{System.String},System.Collections.Generic.IEnumerable{Elsa.Alterations.Core.Contracts.IAlteration},System.Threading.CancellationToken)">
+            <summary>
+            Runs a series of alterations on the specified workflow instances.
+            </summary>
+            <param name="workflowInstanceIds">The IDs of the workflow instances to alter.</param>
+            <param name="alterations">The alterations to run.</param>
+            <param name="cancellationToken">An optional cancellation token.</param>
+        </member>
+        <member name="M:Elsa.Alterations.Core.Contracts.IAlterationRunner.RunAsync(System.String,System.Collections.Generic.IEnumerable{Elsa.Alterations.Core.Contracts.IAlteration},System.Threading.CancellationToken)">
+            <summary>
+            Runs a series of alterations on the specified workflow instances.
+            </summary>
+            <param name="workflowInstanceId">The ID of the workflow instance to alter.</param>
+            <param name="alterations">The alterations to run.</param>
+            <param name="cancellationToken">An optional cancellation token.</param>
+        </member>
+        <member name="T:Elsa.Alterations.Core.Contracts.IAlterationSerializer">
+            <summary>
+            Serializes and deserializes <see cref="T:Elsa.Alterations.Core.Contracts.IAlteration"/> objects.
+            </summary>
+        </member>
+        <member name="M:Elsa.Alterations.Core.Contracts.IAlterationSerializer.Serialize(Elsa.Alterations.Core.Contracts.IAlteration)">
+            <summary>
+            Serializes the specified <see cref="T:Elsa.Alterations.Core.Contracts.IAlteration"/> object.
+            </summary>
+        </member>
+        <member name="M:Elsa.Alterations.Core.Contracts.IAlterationSerializer.SerializeMany(System.Collections.Generic.IEnumerable{Elsa.Alterations.Core.Contracts.IAlteration})">
+            <summary>
+            Serializes the specified set of <see cref="T:Elsa.Alterations.Core.Contracts.IAlteration"/> objects.
+            </summary>
+        </member>
+        <member name="M:Elsa.Alterations.Core.Contracts.IAlterationSerializer.Deserialize(System.String)">
+            <summary>
+            Deserializes the specified JSON string into an <see cref="T:Elsa.Alterations.Core.Contracts.IAlteration"/> object.
+            </summary>
+        </member>
+        <member name="M:Elsa.Alterations.Core.Contracts.IAlterationSerializer.DeserializeMany(System.String)">
+            <summary>
+            Deserializes the specified JSON string into a set of <see cref="T:Elsa.Alterations.Core.Contracts.IAlteration"/> objects.
+            </summary>
+        </member>
+        <member name="T:Elsa.Alterations.Core.Contracts.IAlteredWorkflowDispatcher">
+            <summary>
+            Schedules a workflow instance to be resumed when an alteration job has been completed.
+            </summary>
+        </member>
+        <member name="M:Elsa.Alterations.Core.Contracts.IAlteredWorkflowDispatcher.DispatchAsync(System.Collections.Generic.IEnumerable{Elsa.Alterations.Core.Results.RunAlterationsResult},System.Threading.CancellationToken)">
+            <summary>
+            Schedules the altered workflow instances to be resumed.
+            </summary>
+            <param name="results">The results of running a series of alterations.</param>
+            <param name="cancellationToken">An optional cancellation token.</param>
+        </member>
+        <member name="M:Elsa.Alterations.Core.Contracts.IAlteredWorkflowDispatcher.DispatchAsync(Elsa.Alterations.Core.Results.RunAlterationsResult,System.Threading.CancellationToken)">
+            <summary>
+            Schedules the altered workflow instance to be resumed.
+            </summary>
+            <param name="result">The result of running a series of alterations.</param>
+            <param name="cancellationToken">An optional cancellation token.</param>
+        </member>
+        <member name="T:Elsa.Alterations.Core.Entities.AlterationJob">
+            <summary>
+            Represents the execution of the plan for an individual workflow instance.
+            </summary>
+        </member>
+        <member name="P:Elsa.Alterations.Core.Entities.AlterationJob.PlanId">
+            <summary>
+            The ID of the plan that this job belongs to.
+            </summary>
+        </member>
+        <member name="P:Elsa.Alterations.Core.Entities.AlterationJob.WorkflowInstanceId">
+            <summary>
+            The ID of the workflow instance that this job applies to.
+            </summary>
+        </member>
+        <member name="P:Elsa.Alterations.Core.Entities.AlterationJob.Status">
+            <summary>
+            The status of the job.
+            </summary>
+        </member>
+        <member name="P:Elsa.Alterations.Core.Entities.AlterationJob.Log">
+            <summary>
+            The serialized log of the job.
+            </summary>
+        </member>
+        <member name="P:Elsa.Alterations.Core.Entities.AlterationJob.CreatedAt">
+            <summary>
+            The date and time at which the job was created.
+            </summary>
+        </member>
+        <member name="P:Elsa.Alterations.Core.Entities.AlterationJob.StartedAt">
+            <summary>
+            The date and time at which the job was started.
+            </summary>
+        </member>
+        <member name="P:Elsa.Alterations.Core.Entities.AlterationJob.CompletedAt">
+            <summary>
+            The date and time at which the job was completed.
+            </summary>
+        </member>
+        <member name="T:Elsa.Alterations.Core.Entities.AlterationPlan">
+            <summary>
+            A plan that contains a list of alterations to be applied to a set of workflow instances.
+            </summary>
+        </member>
+        <member name="P:Elsa.Alterations.Core.Entities.AlterationPlan.Alterations">
+            <summary>
+            The alterations to be applied.
+            </summary>
+        </member>
+        <member name="P:Elsa.Alterations.Core.Entities.AlterationPlan.WorkflowInstanceIds">
+            <summary>
+            The IDs of the workflow instances that this plan applies to.
+            </summary>
+        </member>
+        <member name="P:Elsa.Alterations.Core.Entities.AlterationPlan.Status">
+            <summary>
+            The status of the plan.
+            </summary>
+        </member>
+        <member name="P:Elsa.Alterations.Core.Entities.AlterationPlan.CreatedAt">
+            <summary>
+            The date and time at which the plan was created.
+            </summary>
+        </member>
+        <member name="P:Elsa.Alterations.Core.Entities.AlterationPlan.StartedAt">
+            <summary>
+            The date and time at which the plan was started.
+            </summary>
+        </member>
+        <member name="P:Elsa.Alterations.Core.Entities.AlterationPlan.CompletedAt">
+            <summary>
+            The date and time at which the plan was completed.
+            </summary>
+        </member>
+        <member name="T:Elsa.Alterations.Core.Enums.AlterationJobStatus">
+            <summary>
+            The status of an alteration plan for a workflow instance.
+            </summary>
+        </member>
+        <member name="F:Elsa.Alterations.Core.Enums.AlterationJobStatus.Pending">
+            <summary>
+            The plan is pending execution.
+            </summary>
+        </member>
+        <member name="F:Elsa.Alterations.Core.Enums.AlterationJobStatus.Running">
+            <summary>
+            The plan is currently being executed.
+            </summary>
+        </member>
+        <member name="F:Elsa.Alterations.Core.Enums.AlterationJobStatus.Completed">
+            <summary>
+            The plan has been completed.
+            </summary>
+        </member>
+        <member name="F:Elsa.Alterations.Core.Enums.AlterationJobStatus.Failed">
+            <summary>
+            The job has failed.
+            </summary>
+        </member>
+        <member name="T:Elsa.Alterations.Core.Enums.AlterationPlanStatus">
+            <summary>
+            The status of an alteration plan.
+            </summary>
+        </member>
+        <member name="F:Elsa.Alterations.Core.Enums.AlterationPlanStatus.Pending">
+            <summary>
+            The plan is pending execution.
+            </summary>
+        </member>
+        <member name="F:Elsa.Alterations.Core.Enums.AlterationPlanStatus.Running">
+            <summary>
+            The plan is currently being executed.
+            </summary>
+        </member>
+        <member name="F:Elsa.Alterations.Core.Enums.AlterationPlanStatus.Completed">
+            <summary>
+            The plan has been completed.
+            </summary>
+        </member>
+        <member name="F:Elsa.Alterations.Core.Enums.AlterationPlanStatus.Failed">
+            <summary>
+            The plan has failed.
+            </summary>
+        </member>
+        <member name="T:Elsa.Alterations.Core.Extensions.ServiceCollectionExtensions">
+            <summary>
+            Extension methods for <see cref="T:Microsoft.Extensions.DependencyInjection.IServiceCollection"/>.
+            </summary>
+        </member>
+        <member name="M:Elsa.Alterations.Core.Extensions.ServiceCollectionExtensions.AddAlterationsCore(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            Adds the core Elsa alterations services.
+            </summary>
+        </member>
+        <member name="M:Elsa.Alterations.Core.Extensions.ServiceCollectionExtensions.AddAlteration``2(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            Adds an alteration handler.
+            </summary>
+        </member>
+        <member name="T:Elsa.Alterations.Core.Filters.AlterationJobFilter">
+            <summary>
+            A filter for querying alteration jobs.
+            </summary>
+        </member>
+        <member name="P:Elsa.Alterations.Core.Filters.AlterationJobFilter.Id">
+            <summary>
+            The ID of the job.
+            </summary>
+        </member>
+        <member name="P:Elsa.Alterations.Core.Filters.AlterationJobFilter.PlanId">
+            <summary>
+            The ID of the plan.
+            </summary>
+        </member>
+        <member name="P:Elsa.Alterations.Core.Filters.AlterationJobFilter.Status">
+            <summary>
+            The status of the job.
+            </summary>
+        </member>
+        <member name="P:Elsa.Alterations.Core.Filters.AlterationJobFilter.Statuses">
+            <summary>
+            The statuses of the job to match.
+            </summary>
+        </member>
+        <member name="M:Elsa.Alterations.Core.Filters.AlterationJobFilter.Apply(System.Linq.IQueryable{Elsa.Alterations.Core.Entities.AlterationJob})">
+            <summary>
+            Applies the filter to the specified query.
+            </summary>
+        </member>
+        <member name="T:Elsa.Alterations.Core.Filters.AlterationPlanFilter">
+            <summary>
+            A filter for querying alteration plans.
+            </summary>
+        </member>
+        <member name="P:Elsa.Alterations.Core.Filters.AlterationPlanFilter.Id">
+            <summary>
+            The ID of the plan.
+            </summary>
+        </member>
+        <member name="M:Elsa.Alterations.Core.Filters.AlterationPlanFilter.Apply(System.Linq.IQueryable{Elsa.Alterations.Core.Entities.AlterationPlan})">
+            <summary>
+            Applies the filter to the specified query.
+            </summary>
+        </member>
+        <member name="T:Elsa.Alterations.Core.Models.AlterationLog">
+            <summary>
+            Represents a log of alterations.
+            </summary>
+        </member>
+        <member name="M:Elsa.Alterations.Core.Models.AlterationLog.#ctor(Elsa.Common.Contracts.ISystemClock)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Elsa.Alterations.Core.Models.AlterationLog"/> class.
+            </summary>
+        </member>
+        <member name="P:Elsa.Alterations.Core.Models.AlterationLog.LogEntries">
+            <summary>
+            Gets the log entries.
+            </summary>
+        </member>
+        <member name="M:Elsa.Alterations.Core.Models.AlterationLog.Add(System.String,Microsoft.Extensions.Logging.LogLevel)">
+            <summary>
+            Adds a log entry.
+            </summary>
+            <param name="message">The message.</param>
+            <param name="logLevel">The log level.</param>
+        </member>
+        <member name="M:Elsa.Alterations.Core.Models.AlterationLog.AddRange(System.Collections.Generic.IEnumerable{Elsa.Alterations.Core.Models.AlterationLogEntry})">
+            <summary>
+            Adds a set of log entries.
+            </summary>
+            <param name="entries"></param>
+        </member>
+        <member name="T:Elsa.Alterations.Core.Models.AlterationLogEntry">
+            <summary>
+            A log entry for an alteration.
+            </summary>
+            <param name="Message">The log message.</param>
+            <param name="LogLevel">The log level.</param>
+            <param name="Timestamp">The timestamp when the log entry was created.</param>
+        </member>
+        <member name="M:Elsa.Alterations.Core.Models.AlterationLogEntry.#ctor(System.String,Microsoft.Extensions.Logging.LogLevel,System.DateTimeOffset)">
+            <summary>
+            A log entry for an alteration.
+            </summary>
+            <param name="Message">The log message.</param>
+            <param name="LogLevel">The log level.</param>
+            <param name="Timestamp">The timestamp when the log entry was created.</param>
+        </member>
+        <member name="P:Elsa.Alterations.Core.Models.AlterationLogEntry.Message">
+            <summary>The log message.</summary>
+        </member>
+        <member name="P:Elsa.Alterations.Core.Models.AlterationLogEntry.LogLevel">
+            <summary>The log level.</summary>
+        </member>
+        <member name="P:Elsa.Alterations.Core.Models.AlterationLogEntry.Timestamp">
+            <summary>The timestamp when the log entry was created.</summary>
+        </member>
+        <member name="T:Elsa.Alterations.Core.Models.NewAlterationPlan">
+            <summary>
+            Represents a new alteration plan.
+            </summary>
+        </member>
+        <member name="P:Elsa.Alterations.Core.Models.NewAlterationPlan.Alterations">
+            <summary>
+            The alterations to be applied.
+            </summary>
+        </member>
+        <member name="P:Elsa.Alterations.Core.Models.NewAlterationPlan.WorkflowInstanceIds">
+            <summary>
+            The IDs of the workflow instances that this plan applies to.
+            </summary>
+        </member>
+        <member name="T:Elsa.Alterations.Core.Notifications.AlterationJobCompleted">
+            <summary>
+            A notification that is published when an alteration job is completed.
+            </summary>
+        </member>
+        <member name="M:Elsa.Alterations.Core.Notifications.AlterationJobCompleted.#ctor(Elsa.Alterations.Core.Entities.AlterationJob,System.Boolean)">
+            <summary>
+            A notification that is published when an alteration job is completed.
+            </summary>
+        </member>
+        <member name="T:Elsa.Alterations.Core.Notifications.AlterationPlanSubmitted">
+            <summary>
+            A notification that is published when an alteration plan is submitted.
+            </summary>
+        </member>
+        <member name="M:Elsa.Alterations.Core.Notifications.AlterationPlanSubmitted.#ctor(Elsa.Alterations.Core.Entities.AlterationPlan)">
+            <summary>
+            A notification that is published when an alteration plan is submitted.
+            </summary>
+        </member>
+        <member name="T:Elsa.Alterations.Core.Options.AlterationOptions">
+            <summary>
+            Options for the Alteration module.
+            </summary>
+        </member>
+        <member name="P:Elsa.Alterations.Core.Options.AlterationOptions.AlterationTypes">
+            <summary>
+            The types of alterations that are supported.
+            </summary>
+        </member>
+        <member name="T:Elsa.Alterations.Core.Results.RunAlterationsResult">
+            <summary>
+            The result of running a series of alterations.
+            </summary>
+        </member>
+        <member name="M:Elsa.Alterations.Core.Results.RunAlterationsResult.#ctor(System.String,Elsa.Alterations.Core.Models.AlterationLog)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Elsa.Alterations.Core.Results.RunAlterationsResult"/> class.
+            </summary>
+        </member>
+        <member name="P:Elsa.Alterations.Core.Results.RunAlterationsResult.WorkflowInstanceId">
+            <summary>
+            The ID of the workflow instance that was altered.
+            </summary>
+        </member>
+        <member name="P:Elsa.Alterations.Core.Results.RunAlterationsResult.Log">
+            <summary>
+            A log of the alterations that were run.
+            </summary>
+        </member>
+        <member name="P:Elsa.Alterations.Core.Results.RunAlterationsResult.WorkflowHasScheduledWork">
+            <summary>
+            A flag indicating whether the workflow has scheduled work.
+            </summary>
+        </member>
+        <member name="P:Elsa.Alterations.Core.Results.RunAlterationsResult.IsSuccessful">
+            <summary>
+            A flag indicating whether the alterations have succeeded.
+            </summary>
+        </member>
+        <member name="T:Elsa.Alterations.Core.Serialization.AlterationSerializationOptionConfigurator">
+            <summary>
+            Add additional <see cref="T:System.Text.Json.Serialization.JsonConverter"/> objects.
+            </summary>
+        </member>
+        <member name="M:Elsa.Alterations.Core.Serialization.AlterationSerializationOptionConfigurator.#ctor(Microsoft.Extensions.Options.IOptions{Elsa.Alterations.Core.Options.AlterationOptions})">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Alterations.Core.Serialization.AlterationSerializationOptionConfigurator.GetModifiers">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.Alterations.Core.Serialization.AlterationSerializer">
+            <summary>
+            A serializer for <see cref="T:Elsa.Alterations.Core.Contracts.IAlteration"/> objects.
+            </summary>
+        </member>
+        <member name="M:Elsa.Alterations.Core.Serialization.AlterationSerializer.#ctor(System.IServiceProvider)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Alterations.Core.Serialization.AlterationSerializer.Serialize(Elsa.Alterations.Core.Contracts.IAlteration)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Alterations.Core.Serialization.AlterationSerializer.SerializeMany(System.Collections.Generic.IEnumerable{Elsa.Alterations.Core.Contracts.IAlteration})">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Alterations.Core.Serialization.AlterationSerializer.Deserialize(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Alterations.Core.Serialization.AlterationSerializer.DeserializeMany(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.Alterations.Core.Services.DefaultAlterationJobRunner">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Alterations.Core.Services.DefaultAlterationJobRunner.#ctor(Elsa.Alterations.Core.Contracts.IAlterationPlanStore,Elsa.Alterations.Core.Contracts.IAlterationJobStore,Elsa.Alterations.Core.Contracts.IAlterationRunner,Elsa.Mediator.Contracts.INotificationSender,Elsa.Common.Contracts.ISystemClock)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Elsa.Alterations.Core.Services.DefaultAlterationJobRunner"/> class.
+            </summary>
+        </member>
+        <member name="M:Elsa.Alterations.Core.Services.DefaultAlterationJobRunner.RunAsync(System.String,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.Alterations.Core.Services.DefaultAlterationPlanScheduler">
+            <summary>
+            Stores the new plan and schedules it for immediate execution.
+            </summary>
+        </member>
+        <member name="M:Elsa.Alterations.Core.Services.DefaultAlterationPlanScheduler.#ctor(Elsa.Alterations.Core.Contracts.IAlterationPlanStore,Elsa.Alterations.Core.Contracts.IAlterationJobStore,Elsa.Mediator.Contracts.INotificationSender,Elsa.Workflows.Core.Contracts.IIdentityGenerator,Elsa.Common.Contracts.ISystemClock)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Elsa.Alterations.Core.Services.DefaultAlterationPlanScheduler"/> class.
+            </summary>
+        </member>
+        <member name="M:Elsa.Alterations.Core.Services.DefaultAlterationPlanScheduler.SubmitAsync(Elsa.Alterations.Core.Models.NewAlterationPlan,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.Alterations.Core.Services.DefaultAlterationRunner">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Alterations.Core.Services.DefaultAlterationRunner.#ctor(System.Collections.Generic.IEnumerable{Elsa.Alterations.Core.Contracts.IAlterationHandler},Elsa.Workflows.Runtime.Contracts.IWorkflowRuntime,Elsa.Workflows.Management.Contracts.IWorkflowDefinitionService,Elsa.Workflows.Core.Contracts.IWorkflowStateExtractor,Elsa.Common.Contracts.ISystemClock,System.IServiceProvider)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Elsa.Alterations.Core.Services.DefaultAlterationRunner"/> class.
+            </summary>
+        </member>
+        <member name="M:Elsa.Alterations.Core.Services.DefaultAlterationRunner.RunAsync(System.Collections.Generic.IEnumerable{System.String},System.Collections.Generic.IEnumerable{Elsa.Alterations.Core.Contracts.IAlteration},System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Alterations.Core.Services.DefaultAlterationRunner.RunAsync(System.String,System.Collections.Generic.IEnumerable{Elsa.Alterations.Core.Contracts.IAlteration},System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.Alterations.Core.Stores.MemoryAlterationJobStore">
+            <summary>
+            A memory-based store for alteration jobs.
+            </summary>
+        </member>
+        <member name="M:Elsa.Alterations.Core.Stores.MemoryAlterationJobStore.#ctor(Elsa.Common.Services.MemoryStore{Elsa.Alterations.Core.Entities.AlterationJob})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Elsa.Alterations.Core.Stores.MemoryAlterationJobStore"/> class.
+            </summary>
+        </member>
+        <member name="M:Elsa.Alterations.Core.Stores.MemoryAlterationJobStore.SaveAsync(Elsa.Alterations.Core.Entities.AlterationJob,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Alterations.Core.Stores.MemoryAlterationJobStore.SaveManyAsync(System.Collections.Generic.IEnumerable{Elsa.Alterations.Core.Entities.AlterationJob},System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Alterations.Core.Stores.MemoryAlterationJobStore.FindAsync(Elsa.Alterations.Core.Filters.AlterationJobFilter,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Alterations.Core.Stores.MemoryAlterationJobStore.FindManyAsync(Elsa.Alterations.Core.Filters.AlterationJobFilter,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Alterations.Core.Stores.MemoryAlterationJobStore.FindManyIdsAsync(Elsa.Alterations.Core.Filters.AlterationJobFilter,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Alterations.Core.Stores.MemoryAlterationJobStore.CountAsync(Elsa.Alterations.Core.Filters.AlterationJobFilter,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.Alterations.Core.Stores.MemoryAlterationPlanStore">
+            <summary>
+            A memory-based store for alteration plans.
+            </summary>
+        </member>
+        <member name="M:Elsa.Alterations.Core.Stores.MemoryAlterationPlanStore.#ctor(Elsa.Common.Services.MemoryStore{Elsa.Alterations.Core.Entities.AlterationPlan})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Elsa.Alterations.Core.Stores.MemoryAlterationPlanStore"/> class.
+            </summary>
+        </member>
+        <member name="M:Elsa.Alterations.Core.Stores.MemoryAlterationPlanStore.SaveAsync(Elsa.Alterations.Core.Entities.AlterationPlan,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Alterations.Core.Stores.MemoryAlterationPlanStore.FindAsync(Elsa.Alterations.Core.Filters.AlterationPlanFilter,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Alterations.Core.Stores.MemoryAlterationPlanStore.CountAsync(Elsa.Alterations.Core.Filters.AlterationPlanFilter,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+    </members>
+</doc>

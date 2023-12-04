@@ -1,0 +1,265 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Elsa.Features</name>
+    </assembly>
+    <members>
+        <member name="T:Elsa.Features.Abstractions.FeatureBase">
+            <summary>
+            Base type for classes that represent a feature. 
+            </summary>
+        </member>
+        <member name="M:Elsa.Features.Abstractions.FeatureBase.#ctor(Elsa.Features.Services.IModule)">
+            <summary>
+            Constructor.
+            </summary>
+        </member>
+        <member name="P:Elsa.Features.Abstractions.FeatureBase.Module">
+            <summary>
+            The module this feature is a part of.
+            </summary>
+        </member>
+        <member name="P:Elsa.Features.Abstractions.FeatureBase.Services">
+            <summary>
+            A reference to the <see cref="T:Microsoft.Extensions.DependencyInjection.IServiceCollection"/> to which services can be added.
+            </summary>
+        </member>
+        <member name="M:Elsa.Features.Abstractions.FeatureBase.Configure">
+            <summary>
+            Override this method to configure your feature.
+            </summary>
+        </member>
+        <member name="M:Elsa.Features.Abstractions.FeatureBase.ConfigureHostedServices">
+            <summary>
+            Override this method to register any hosted services provided by your feature.
+            </summary>
+        </member>
+        <member name="M:Elsa.Features.Abstractions.FeatureBase.Apply">
+            <summary>
+            Override this to register services with <see cref="P:Elsa.Features.Abstractions.FeatureBase.Services"/>.
+            </summary>
+        </member>
+        <member name="M:Elsa.Features.Abstractions.FeatureBase.ConfigureHostedService``1(System.Int32)">
+            <summary>
+            Configures the specified hosted service using an optional priority to control in which order it will be registered with the service container.
+            </summary>
+            <param name="priority">The priority.</param>
+            <typeparam name="T">The type of hosted service to configure.</typeparam>
+        </member>
+        <member name="T:Elsa.Features.Attributes.DependsOn">
+            <summary>
+            Specifies that the feature depends on another feature.
+            </summary>
+        </member>
+        <member name="M:Elsa.Features.Attributes.DependsOn.#ctor(System.Type)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Elsa.Features.Attributes.DependsOn"/> class.
+            </summary>
+            <param name="type">The type of the feature this feature depends on.</param>
+        </member>
+        <member name="P:Elsa.Features.Attributes.DependsOn.Type">
+            <summary>
+            The type of the feature this feature depends on.
+            </summary>
+        </member>
+        <member name="T:Elsa.Features.Contracts.IInstalledFeatureRegistry">
+            <summary>
+            Represents a registry of installed features.
+            </summary>
+        </member>
+        <member name="M:Elsa.Features.Contracts.IInstalledFeatureRegistry.Add(Elsa.Features.Models.FeatureDescriptor)">
+            <summary>
+            Adds a feature descriptor to the registry.
+            </summary>
+            <param name="descriptor">The feature descriptor.</param>
+        </member>
+        <member name="M:Elsa.Features.Contracts.IInstalledFeatureRegistry.List">
+            <summary>
+            Gets all installed features.
+            </summary>
+            <returns>All installed features.</returns>
+        </member>
+        <member name="M:Elsa.Features.Contracts.IInstalledFeatureRegistry.Find(System.String)">
+            <summary>
+            Finds a feature descriptor by its full name.
+            </summary>
+            <param name="fullName">The full name of the feature.</param>
+            <returns>The feature descriptor or null if not found.</returns>
+        </member>
+        <member name="T:Elsa.Features.Implementations.Module">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Features.Implementations.Module.#ctor(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            Constructor.
+            </summary>
+        </member>
+        <member name="P:Elsa.Features.Implementations.Module.Services">
+            <inheritdoc />
+        </member>
+        <member name="P:Elsa.Features.Implementations.Module.Properties">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Features.Implementations.Module.Configure``1(System.Action{``0})">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Features.Implementations.Module.Configure``1(System.Func{Elsa.Features.Services.IModule,``0},System.Action{``0})">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Features.Implementations.Module.ConfigureHostedService``1(System.Int32)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Features.Implementations.Module.ConfigureHostedService(System.Type,System.Int32)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Features.Implementations.Module.Apply">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.Features.Models.FeatureDescriptor">
+            <summary>
+            Represents a feature descriptor.
+            </summary>
+        </member>
+        <member name="M:Elsa.Features.Models.FeatureDescriptor.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Elsa.Features.Models.FeatureDescriptor"/> class.
+            </summary>
+        </member>
+        <member name="M:Elsa.Features.Models.FeatureDescriptor.#ctor(System.String,System.String,System.String,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Elsa.Features.Models.FeatureDescriptor"/> class.
+            </summary>
+            <param name="name">The name of the feature.</param>
+            <param name="ns">The namespace of the feature.</param>
+            <param name="displayName">The display name for the feature.</param>
+            <param name="description">The description of the feature.</param>
+        </member>
+        <member name="P:Elsa.Features.Models.FeatureDescriptor.Name">
+            <summary>
+            Gets or sets the name of the feature.
+            </summary>
+        </member>
+        <member name="P:Elsa.Features.Models.FeatureDescriptor.Namespace">
+            <summary>
+            Gets or sets the namespace of the feature.
+            </summary>
+        </member>
+        <member name="P:Elsa.Features.Models.FeatureDescriptor.FullName">
+            <summary>
+            Gets the full name of the feature.
+            </summary>
+        </member>
+        <member name="P:Elsa.Features.Models.FeatureDescriptor.DisplayName">
+            <summary>
+            The display name for the feature.
+            </summary>
+        </member>
+        <member name="P:Elsa.Features.Models.FeatureDescriptor.Description">
+            <summary>
+            The description of the feature.
+            </summary>
+        </member>
+        <member name="T:Elsa.Features.Services.IFeature">
+            <summary>
+            Represents a feature.
+            </summary>
+        </member>
+        <member name="P:Elsa.Features.Services.IFeature.Module">
+            <summary>
+            Gets the module that this feature belongs to.
+            </summary>
+        </member>
+        <member name="M:Elsa.Features.Services.IFeature.Configure">
+            <summary>
+            Configures the feature.
+            </summary>
+        </member>
+        <member name="M:Elsa.Features.Services.IFeature.ConfigureHostedServices">
+            <summary>
+            Configures the hosted services.
+            </summary>
+        </member>
+        <member name="M:Elsa.Features.Services.IFeature.Apply">
+            <summary>
+            Applies the feature by adding services to the service collection.
+            </summary>
+        </member>
+        <member name="T:Elsa.Features.Services.IModule">
+            <summary>
+            A thin abstraction on top of <see cref="T:Microsoft.Extensions.DependencyInjection.IServiceCollection"/> to help organize features and dependencies. 
+            </summary>
+        </member>
+        <member name="P:Elsa.Features.Services.IModule.Services">
+            <summary>
+            The service collection being populated.
+            </summary>
+        </member>
+        <member name="P:Elsa.Features.Services.IModule.Properties">
+            <summary>
+            A dictionary into which features can stash away values for later use. 
+            </summary>
+        </member>
+        <member name="M:Elsa.Features.Services.IModule.Configure``1(System.Action{``0})">
+            <summary>
+            Creates and configures a feature of the specified type.
+            </summary>
+        </member>
+        <member name="M:Elsa.Features.Services.IModule.Configure``1(System.Func{Elsa.Features.Services.IModule,``0},System.Action{``0})">
+            <summary>
+            Creates and configures a feature of the specified type.
+            </summary>
+        </member>
+        <member name="M:Elsa.Features.Services.IModule.ConfigureHostedService``1(System.Int32)">
+            <summary>
+            Configures a <see cref="T:Microsoft.Extensions.Hosting.IHostedService"/> using an optional priority to control in which order it will be registered with the service container.
+            </summary>
+        </member>
+        <member name="M:Elsa.Features.Services.IModule.ConfigureHostedService(System.Type,System.Int32)">
+            <summary>
+            Configures a <see cref="T:Microsoft.Extensions.Hosting.IHostedService"/> using an optional priority to control in which order it will be registered with the service container.
+            </summary>
+        </member>
+        <member name="M:Elsa.Features.Services.IModule.Apply">
+            <summary>
+            Will apply all configured features, causing the <see cref="P:Elsa.Features.Services.IModule.Services"/> collection to be populated. 
+            </summary>
+        </member>
+        <member name="T:Elsa.Features.Services.InstalledFeatureRegistry">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Features.Services.InstalledFeatureRegistry.Add(Elsa.Features.Models.FeatureDescriptor)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Features.Services.InstalledFeatureRegistry.List">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Features.Services.InstalledFeatureRegistry.Find(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.Extensions.DependencyInjectionExtensions">
+            <summary>
+            Adds extension methods to <see cref="T:Microsoft.Extensions.DependencyInjection.IServiceCollection"/> that creates and configures modules.  
+            </summary>
+        </member>
+        <member name="M:Elsa.Extensions.DependencyInjectionExtensions.CreateModule(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            Returns a new instance of an <see cref="T:Elsa.Features.Services.IModule"/> implementation.
+            </summary>
+        </member>
+        <member name="M:Elsa.Extensions.DependencyInjectionExtensions.Use``1(Elsa.Features.Services.IModule,System.Action{``0})">
+            <summary>
+            Installs and configures the specified feature. If the feature was already installed, it is not added twice, which means it is safe to call this method multiple times.
+            </summary>
+        </member>
+        <member name="T:Elsa.Extensions.EnumerableTopologicalSortExtensions">
+            <summary>
+            Adds extension methods to sort collections by their dependencies, also known as a topological sort.
+            </summary>
+        </member>
+        <member name="M:Elsa.Extensions.EnumerableTopologicalSortExtensions.TSort``1(System.Collections.Generic.IEnumerable{``0},System.Func{``0,System.Collections.Generic.IEnumerable{``0}},System.Boolean)">
+            <summary>
+            Returns a topologically sorted copy of the specified list.
+            </summary>
+        </member>
+    </members>
+</doc>

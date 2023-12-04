@@ -1,0 +1,60 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Elsa</name>
+    </assembly>
+    <members>
+        <member name="T:Elsa.Extensions.ModuleExtensions">
+            <summary>
+            Provides extension methods to <see cref="T:Microsoft.Extensions.DependencyInjection.IServiceCollection"/>. 
+            </summary>
+        </member>
+        <member name="M:Elsa.Extensions.ModuleExtensions.AddElsa(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.Action{Elsa.Features.Services.IModule})">
+            <summary>
+            Creates a new Elsa module and adds the <see cref="T:Elsa.Features.ElsaFeature"/> to it.
+            </summary>
+        </member>
+        <member name="T:Elsa.Extensions.ServiceProviderExtensions">
+            <summary>
+            Provides extension methods to the <see cref="T:System.IServiceProvider"/>.
+            </summary>
+        </member>
+        <member name="M:Elsa.Extensions.ServiceProviderExtensions.ConfigureDefaultActivityExecutionPipeline(System.IServiceProvider,System.Action{Elsa.Workflows.Core.Contracts.IActivityExecutionPipelineBuilder})">
+            <summary>
+            Configure the default activity execution pipeline.
+            </summary>
+        </member>
+        <member name="T:Elsa.Features.AppFeature">
+            <summary>
+            A wrapper for invoking application-specific configuration, ensuring it is invoked lastly.
+            </summary>
+        </member>
+        <member name="M:Elsa.Features.AppFeature.#ctor(Elsa.Features.Services.IModule)">
+            <inheritdoc />
+        </member>
+        <member name="P:Elsa.Features.AppFeature.Configurator">
+            <summary>
+            The configurator to invoke.
+            </summary>
+        </member>
+        <member name="M:Elsa.Features.AppFeature.Configure">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.Features.ElsaFeature">
+            <summary>
+            Represents Elsa as a feature of the system.
+            </summary>
+        </member>
+        <member name="P:Elsa.Features.ElsaFeature.DisableAutomaticActivityRegistration">
+            <summary>
+            Set this to true to opt out of automatically registering activities from Elsa.Workflows.Core.
+            </summary>
+        </member>
+        <member name="M:Elsa.Features.ElsaFeature.#ctor(Elsa.Features.Services.IModule)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Features.ElsaFeature.Configure">
+            <inheritdoc />
+        </member>
+    </members>
+</doc>

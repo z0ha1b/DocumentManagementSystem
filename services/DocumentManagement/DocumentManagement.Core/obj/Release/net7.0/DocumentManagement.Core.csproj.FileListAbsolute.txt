@@ -1,0 +1,12 @@
+C:\GitHub\DocumentManagementSystem\services\DocumentManagement\DocumentManagement.Core\bin\Release\net7.0\DocumentManagement.Core.deps.json
+C:\GitHub\DocumentManagementSystem\services\DocumentManagement\DocumentManagement.Core\bin\Release\net7.0\DocumentManagement.Core.dll
+C:\GitHub\DocumentManagementSystem\services\DocumentManagement\DocumentManagement.Core\bin\Release\net7.0\DocumentManagement.Core.pdb
+C:\GitHub\DocumentManagementSystem\services\DocumentManagement\DocumentManagement.Core\obj\Release\net7.0\DocumentManagement.Core.csproj.AssemblyReference.cache
+C:\GitHub\DocumentManagementSystem\services\DocumentManagement\DocumentManagement.Core\obj\Release\net7.0\DocumentManagement.Core.GeneratedMSBuildEditorConfig.editorconfig
+C:\GitHub\DocumentManagementSystem\services\DocumentManagement\DocumentManagement.Core\obj\Release\net7.0\DocumentManagement.Core.AssemblyInfoInputs.cache
+C:\GitHub\DocumentManagementSystem\services\DocumentManagement\DocumentManagement.Core\obj\Release\net7.0\DocumentManagement.Core.AssemblyInfo.cs
+C:\GitHub\DocumentManagementSystem\services\DocumentManagement\DocumentManagement.Core\obj\Release\net7.0\DocumentManagement.Core.csproj.CoreCompileInputs.cache
+C:\GitHub\DocumentManagementSystem\services\DocumentManagement\DocumentManagement.Core\obj\Release\net7.0\DocumentManagement.Core.dll
+C:\GitHub\DocumentManagementSystem\services\DocumentManagement\DocumentManagement.Core\obj\Release\net7.0\refint\DocumentManagement.Core.dll
+C:\GitHub\DocumentManagementSystem\services\DocumentManagement\DocumentManagement.Core\obj\Release\net7.0\DocumentManagement.Core.pdb
+C:\GitHub\DocumentManagementSystem\services\DocumentManagement\DocumentManagement.Core\obj\Release\net7.0\ref\DocumentManagement.Core.dll

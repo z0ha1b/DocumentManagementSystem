@@ -1,38 +1,53 @@
-using Elsa.Studio.Backend.Extensions;
-using Elsa.Studio.Dashboard.Extensions;
-using Elsa.Studio.Shell;
-using Elsa.Studio.Shell.Extensions;
-using Elsa.Studio.Workflows.Extensions;
-using Elsa.Studio.Contracts;
-using Elsa.Studio.Core.BlazorWasm.Extensions;
-using Elsa.Studio.Login.BlazorWasm.Extensions;
-using Elsa.Studio.Workflows.Designer.Extensions;
-using Microsoft.AspNetCore.Components.Web;
-using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
+using DocumentManagement.Core.Extensions;
+using DocumentManagement.Core.Options;
+using DocumentManagement.Persistence.Extensions;
+using DocumentManagement.Workflows.Extensions;
+using Microsoft.AspNetCore.Mvc;
+using Storage.Net;
 
-// Build the host.
-var builder = WebAssemblyHostBuilder.CreateDefault(args);
+var builder = WebApplication.CreateBuilder(args);
+builder.WebHost.UseStaticWebAssets();
 var configuration = builder.Configuration;
+var dbConnectionString = configuration.GetConnectionString("Sqlite");
 
-// Register root components.
-builder.RootComponents.Add<App>("#app");
-builder.RootComponents.Add<HeadOutlet>("head::after");
-builder.RootComponents.RegisterCustomElsaStudioElements();
+var services = builder.Services;
 
-// Register shell services and modules.
-builder.Services.AddCore();
-builder.Services.AddShell();
-builder.Services.AddRemoteBackendModule(options => configuration.GetSection("Backend").Bind(options));
-builder.Services.AddLoginModule();
-builder.Services.AddDashboardModule();
-builder.Services.AddWorkflowsModule();
+services.AddDomainServices();
 
-// Build the application.
+// Configure Storage for DocumentStorage.
+
+services.Configure<DocumentStorageOptions>(options => options.BlobStorageFactory = () => StorageFactory.Blobs.DirectoryFiles("Uploads"));
+services.AddDomainPersistence(dbConnectionString);
+
+builder.Services.AddControllers();
+
+builder.Services.AddRazorPages();
+
+builder.Services.AddWorkflowServices(configuration);
+// Razor Pages.
+services.AddRazorPages(options => options.Conventions.ConfigureFilter(new IgnoreAntiforgeryTokenAttribute()));
+
+// Configure middleware pipeline.
 var app = builder.Build();
 
-// Run each startup task.
-var startupTaskRunner = app.Services.GetRequiredService<IStartupTaskRunner>();
-await startupTaskRunner.RunStartupTasksAsync();
+// Configure the HTTP request pipeline.
+if (!app.Environment.IsDevelopment())
+{
+    app.UseExceptionHandler("/Error");
+    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
+    app.UseHsts();
+}
 
-// Run the application.
-await app.RunAsync();
+app.UseHttpsRedirection();
+app.UseBlazorFrameworkFiles();
+app.MapHealthChecks("/health");
+app.UseRouting();
+app.UseCors();
+app.UseStaticFiles();
+app.UseAuthentication();
+app.UseAuthorization();
+app.AddWorkflowMiddlewares();
+app.MapFallbackToPage("/_Host");
+
+
+app.Run();

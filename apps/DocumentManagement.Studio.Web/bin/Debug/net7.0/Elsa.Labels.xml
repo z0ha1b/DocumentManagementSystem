@@ -1,0 +1,215 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Elsa.Labels</name>
+    </assembly>
+    <members>
+        <member name="M:Elsa.Labels.Contracts.IWorkflowDefinitionLabelStore.FindByWorkflowDefinitionVersionIdAsync(System.String,System.Threading.CancellationToken)">
+            <summary>
+            Returns a list of label IDs associated with the specified workflow definition version ID.
+            </summary>
+        </member>
+        <member name="M:Elsa.Labels.Contracts.IWorkflowDefinitionLabelStore.ReplaceAsync(System.Collections.Generic.IEnumerable{Elsa.Labels.Entities.WorkflowDefinitionLabel},System.Collections.Generic.IEnumerable{Elsa.Labels.Entities.WorkflowDefinitionLabel},System.Threading.CancellationToken)">
+            <summary>
+            Removes and adds the specified sets of label IDs for the specified workflow definition version ID.
+            </summary>
+        </member>
+        <member name="M:Elsa.Labels.Contracts.IWorkflowDefinitionLabelStore.DeleteByWorkflowDefinitionIdAsync(System.String,System.Threading.CancellationToken)">
+            <summary>
+            Deletes all associated labels for the specified workflow definition ID.
+            </summary>
+        </member>
+        <member name="M:Elsa.Labels.Contracts.IWorkflowDefinitionLabelStore.DeleteByWorkflowDefinitionVersionIdAsync(System.String,System.Threading.CancellationToken)">
+            <summary>
+            Deletes all associated labels for the specified workflow definition version ID.
+            </summary>
+        </member>
+        <member name="M:Elsa.Labels.Contracts.IWorkflowDefinitionLabelStore.DeleteByWorkflowDefinitionIdsAsync(System.Collections.Generic.IEnumerable{System.String},System.Threading.CancellationToken)">
+            <summary>
+            Deletes all associated labels for the specified workflow definition IDs.
+            </summary>
+        </member>
+        <member name="M:Elsa.Labels.Contracts.IWorkflowDefinitionLabelStore.DeleteByWorkflowDefinitionVersionIdsAsync(System.Collections.Generic.IEnumerable{System.String},System.Threading.CancellationToken)">
+            <summary>
+            Deletes all associated labels for the specified workflow definition version IDs.
+            </summary>
+        </member>
+        <member name="T:Elsa.Labels.Endpoints.Labels.Delete.Constants">
+            <summary>
+            Provides policy names accepted by the <see cref="T:Elsa.Labels.Endpoints.Labels.Delete.Delete"/> endpoint.
+            </summary>
+        </member>
+        <member name="F:Elsa.Labels.Endpoints.Labels.Delete.Constants.PolicyName">
+            <summary>
+            The policy name accepted by this endpoint.
+            </summary>
+        </member>
+        <member name="T:Elsa.Labels.Endpoints.Labels.Get.Constants">
+            <summary>
+            Provides policy names accepted by the <see cref="T:Elsa.Labels.Endpoints.Labels.Get.Get"/> endpoint.
+            </summary>
+        </member>
+        <member name="F:Elsa.Labels.Endpoints.Labels.Get.Constants.PolicyName">
+            <summary>
+            The policy name accepted by this endpoint.
+            </summary>
+        </member>
+        <member name="T:Elsa.Labels.Endpoints.Labels.List.Constants">
+            <summary>
+            Provides policy names accepted by the <see cref="T:Elsa.Labels.Endpoints.Labels.List.List"/> endpoint.
+            </summary>
+        </member>
+        <member name="F:Elsa.Labels.Endpoints.Labels.List.Constants.PolicyName">
+            <summary>
+            The policy name accepted by this endpoint.
+            </summary>
+        </member>
+        <member name="T:Elsa.Labels.Endpoints.Labels.Post.Constants">
+            <summary>
+            Provides policy names accepted by the <see cref="N:Elsa.Labels.Endpoints.Labels.Post"/> endpoint.
+            </summary>
+        </member>
+        <member name="F:Elsa.Labels.Endpoints.Labels.Post.Constants.PolicyName">
+            <summary>
+            The policy name accepted by this endpoint.
+            </summary>
+        </member>
+        <member name="T:Elsa.Labels.Endpoints.Labels.Update.Constants">
+            <summary>
+            Provides policy names accepted by the <see cref="T:Elsa.Labels.Endpoints.Labels.Update.Update"/> endpoint.
+            </summary>
+        </member>
+        <member name="F:Elsa.Labels.Endpoints.Labels.Update.Constants.PolicyName">
+            <summary>
+            The policy name accepted by this endpoint.
+            </summary>
+        </member>
+        <member name="T:Elsa.Labels.Endpoints.WorkflowDefinitionLabels.List.Constants">
+            <summary>
+            Provides policy names accepted by the <see cref="T:Elsa.Labels.Endpoints.WorkflowDefinitionLabels.List.List"/> endpoint.
+            </summary>
+        </member>
+        <member name="F:Elsa.Labels.Endpoints.WorkflowDefinitionLabels.List.Constants.PolicyName">
+            <summary>
+            The policy name accepted by this endpoint.
+            </summary>
+        </member>
+        <member name="T:Elsa.Labels.Endpoints.WorkflowDefinitionLabels.Update.Constants">
+            <summary>
+            Provides policy names accepted by the <see cref="T:Elsa.Labels.Endpoints.WorkflowDefinitionLabels.Update.Update"/> endpoint.
+            </summary>
+        </member>
+        <member name="F:Elsa.Labels.Endpoints.WorkflowDefinitionLabels.Update.Constants.PolicyName">
+            <summary>
+            The policy name accepted by this endpoint.
+            </summary>
+        </member>
+        <member name="T:Elsa.Labels.Entities.Label">
+            <summary>
+            Represents an individual label.
+            </summary>
+        </member>
+        <member name="T:Elsa.Labels.Entities.WorkflowDefinitionLabel">
+            <summary>
+            Represents a lookup between a label and a workflow definition.
+            </summary>
+        </member>
+        <member name="T:Elsa.Labels.Features.LabelsFeature">
+            <summary>
+            Enables functionality to tag workflows with labels.
+            </summary>
+        </member>
+        <member name="M:Elsa.Labels.Features.LabelsFeature.#ctor(Elsa.Features.Services.IModule)">
+            <inheritdoc />
+        </member>
+        <member name="P:Elsa.Labels.Features.LabelsFeature.LabelStore">
+            <summary>
+            A delegate that provides an instance of an implementation of <see cref="T:Elsa.Labels.Contracts.ILabelStore"/>.
+            </summary>
+        </member>
+        <member name="P:Elsa.Labels.Features.LabelsFeature.WorkflowDefinitionLabelStore">
+            <summary>
+            A delegate that provides an instance of an implementation of <see cref="T:Elsa.Labels.Contracts.IWorkflowDefinitionLabelStore"/>.
+            </summary>
+        </member>
+        <member name="M:Elsa.Labels.Features.LabelsFeature.Configure">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Labels.Features.LabelsFeature.Apply">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.Labels.Handlers.DeleteWorkflowLabels">
+            <summary>
+            A handler that removes associated workflow labels in response to workflow definitions being deleted. 
+            </summary>
+        </member>
+        <member name="T:Elsa.Labels.Services.InMemoryLabelStore">
+            <summary>
+            An in-memory store of labels.
+            </summary>
+        </member>
+        <member name="M:Elsa.Labels.Services.InMemoryLabelStore.#ctor(Elsa.Common.Services.MemoryStore{Elsa.Labels.Entities.Label},Elsa.Common.Services.MemoryStore{Elsa.Labels.Entities.WorkflowDefinitionLabel})">
+            <summary>
+            Constructor.
+            </summary>
+        </member>
+        <member name="M:Elsa.Labels.Services.InMemoryLabelStore.SaveAsync(Elsa.Labels.Entities.Label,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Labels.Services.InMemoryLabelStore.SaveManyAsync(System.Collections.Generic.IEnumerable{Elsa.Labels.Entities.Label},System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Labels.Services.InMemoryLabelStore.DeleteAsync(System.String,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Labels.Services.InMemoryLabelStore.DeleteManyAsync(System.Collections.Generic.IEnumerable{System.String},System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Labels.Services.InMemoryLabelStore.FindByIdAsync(System.String,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Labels.Services.InMemoryLabelStore.ListAsync(Elsa.Common.Models.PageArgs,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Labels.Services.InMemoryLabelStore.FindManyByIdAsync(System.Collections.Generic.IEnumerable{System.String},System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.Labels.Services.InMemoryWorkflowDefinitionLabelStore">
+            <summary>
+            An in-memory store of workflow-label associations.
+            </summary>
+        </member>
+        <member name="M:Elsa.Labels.Services.InMemoryWorkflowDefinitionLabelStore.#ctor(Elsa.Common.Services.MemoryStore{Elsa.Labels.Entities.WorkflowDefinitionLabel})">
+            <summary>
+            Constructor.
+            </summary>
+        </member>
+        <member name="M:Elsa.Labels.Services.InMemoryWorkflowDefinitionLabelStore.SaveAsync(Elsa.Labels.Entities.WorkflowDefinitionLabel,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Labels.Services.InMemoryWorkflowDefinitionLabelStore.SaveManyAsync(System.Collections.Generic.IEnumerable{Elsa.Labels.Entities.WorkflowDefinitionLabel},System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Labels.Services.InMemoryWorkflowDefinitionLabelStore.DeleteAsync(System.String,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Labels.Services.InMemoryWorkflowDefinitionLabelStore.FindByWorkflowDefinitionVersionIdAsync(System.String,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Labels.Services.InMemoryWorkflowDefinitionLabelStore.ReplaceAsync(System.Collections.Generic.IEnumerable{Elsa.Labels.Entities.WorkflowDefinitionLabel},System.Collections.Generic.IEnumerable{Elsa.Labels.Entities.WorkflowDefinitionLabel},System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Labels.Services.InMemoryWorkflowDefinitionLabelStore.DeleteByWorkflowDefinitionIdAsync(System.String,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Labels.Services.InMemoryWorkflowDefinitionLabelStore.DeleteByWorkflowDefinitionVersionIdAsync(System.String,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Labels.Services.InMemoryWorkflowDefinitionLabelStore.DeleteByWorkflowDefinitionIdsAsync(System.Collections.Generic.IEnumerable{System.String},System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Labels.Services.InMemoryWorkflowDefinitionLabelStore.DeleteByWorkflowDefinitionVersionIdsAsync(System.Collections.Generic.IEnumerable{System.String},System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+    </members>
+</doc>

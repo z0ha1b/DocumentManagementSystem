@@ -1,0 +1,26 @@
+is_global = true
+build_property.RefitInternalNamespace = DocumentManagement.Studio.WebAssembly
+build_property.TargetFramework = net7.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = 
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = false
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = browser
+build_property.RootNamespace = DocumentManagement.Studio.WebAssembly
+build_property.RootNamespace = DocumentManagement.Studio.WebAssembly
+build_property.ProjectDir = C:\GitHub\DocumentManagementSystem\apps\DocumentManagement.Studio.WebAssembly\
+build_property.RazorLangVersion = 7.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = C:\GitHub\DocumentManagementSystem\apps\DocumentManagement.Studio.WebAssembly
+build_property._RazorSourceGeneratorDebug = 
+
+[C:/GitHub/DocumentManagementSystem/apps/DocumentManagement.Studio.WebAssembly/MainLayout.razor]
+build_metadata.AdditionalFiles.TargetPath = TWFpbkxheW91dC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/GitHub/DocumentManagementSystem/apps/DocumentManagement.Studio.WebAssembly/_Imports.razor]
+build_metadata.AdditionalFiles.TargetPath = X0ltcG9ydHMucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 

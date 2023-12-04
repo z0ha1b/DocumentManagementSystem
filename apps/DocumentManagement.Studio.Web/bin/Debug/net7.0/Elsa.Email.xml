@@ -1,0 +1,233 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Elsa.Email</name>
+    </assembly>
+    <members>
+        <member name="T:Elsa.Email.Activities.SendEmail">
+            <summary>
+            Send an email message.
+            </summary>
+        </member>
+        <member name="M:Elsa.Email.Activities.SendEmail.#ctor(System.String,System.Nullable{System.Int32})">
+            <inheritdoc />
+        </member>
+        <member name="P:Elsa.Email.Activities.SendEmail.From">
+            <summary>
+            The sender's email address.
+            </summary>
+        </member>
+        <member name="P:Elsa.Email.Activities.SendEmail.To">
+            <summary>
+            The recipients email addresses.
+            </summary>
+        </member>
+        <member name="P:Elsa.Email.Activities.SendEmail.Cc">
+            <summary>
+            The CC recipient email addresses.
+            </summary>
+        </member>
+        <member name="P:Elsa.Email.Activities.SendEmail.Bcc">
+            <summary>
+            The BCC recipients email addresses.
+            </summary>
+        </member>
+        <member name="P:Elsa.Email.Activities.SendEmail.Subject">
+            <summary>
+            The subject of the email message.
+            </summary>
+        </member>
+        <member name="P:Elsa.Email.Activities.SendEmail.Attachments">
+            <summary>
+            The attachments to send with the email message.
+            </summary>
+        </member>
+        <member name="P:Elsa.Email.Activities.SendEmail.Body">
+            <summary>
+            The body of the email message.
+            </summary>
+        </member>
+        <member name="P:Elsa.Email.Activities.SendEmail.Error">
+            <summary>
+            The activity to execute when an error occurs while trying to send the email.
+            </summary>
+        </member>
+        <member name="M:Elsa.Email.Activities.SendEmail.ExecuteAsync(Elsa.Workflows.Core.ActivityExecutionContext)">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.Email.Contracts.IDownloader">
+            <summary>
+            Download files from the Internet.
+            </summary>
+        </member>
+        <member name="M:Elsa.Email.Contracts.IDownloader.DownloadAsync(System.Uri,System.Threading.CancellationToken)">
+            <summary>
+            Download whatever is returned at the specified URL.
+            </summary>
+        </member>
+        <member name="T:Elsa.Email.Contracts.ISmtpService">
+            <summary>
+            Use this service to send emails.
+            </summary>
+        </member>
+        <member name="M:Elsa.Email.Contracts.ISmtpService.SendAsync(MimeKit.MimeMessage,System.Threading.CancellationToken)">
+            <summary>
+            Send the specified <see cref="T:MimeKit.MimeMessage"/>.
+            </summary>
+        </member>
+        <member name="T:Elsa.Email.Features.EmailFeature">
+            <summary>
+            Setup email features.
+            </summary>
+        </member>
+        <member name="M:Elsa.Email.Features.EmailFeature.#ctor(Elsa.Features.Services.IModule)">
+            <inheritdoc />
+        </member>
+        <member name="P:Elsa.Email.Features.EmailFeature.ConfigureOptions">
+            <summary>
+            Set a callback to configure <see cref="T:Elsa.Email.Options.SmtpOptions"/>.
+            </summary>
+        </member>
+        <member name="P:Elsa.Email.Features.EmailFeature.SmtpService">
+            <summary>
+            Gets or sets a callback for configuring the <see cref="T:Elsa.Email.Contracts.ISmtpService"/> implementation.
+            </summary>
+        </member>
+        <member name="P:Elsa.Email.Features.EmailFeature.ConfigureDownloaderHttpClient">
+            <summary>
+            Gets or sets a callback for configuring the HTTP client use by the default implementation of <see cref="T:Elsa.Email.Contracts.IDownloader"/>.
+            </summary>
+        </member>
+        <member name="M:Elsa.Email.Features.EmailFeature.Configure">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Email.Features.EmailFeature.Apply">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.Email.Models.EmailAttachment">
+            <summary>
+            Represents an email attachment.
+            </summary>
+            <param name="Content">The content of the attachment.</param>
+            <param name="FileName">The name of the attachment.</param>
+            <param name="ContentType">The content type of the attachment.</param>
+        </member>
+        <member name="M:Elsa.Email.Models.EmailAttachment.#ctor(System.Object,System.String,System.String)">
+            <summary>
+            Represents an email attachment.
+            </summary>
+            <param name="Content">The content of the attachment.</param>
+            <param name="FileName">The name of the attachment.</param>
+            <param name="ContentType">The content type of the attachment.</param>
+        </member>
+        <member name="P:Elsa.Email.Models.EmailAttachment.Content">
+            <summary>The content of the attachment.</summary>
+        </member>
+        <member name="P:Elsa.Email.Models.EmailAttachment.FileName">
+            <summary>The name of the attachment.</summary>
+        </member>
+        <member name="P:Elsa.Email.Models.EmailAttachment.ContentType">
+            <summary>The content type of the attachment.</summary>
+        </member>
+        <member name="T:Elsa.Email.Options.SmtpEncryptionMethod">
+            <summary>
+            Represents the encryption method to use when connecting to an SMTP server.
+            </summary>
+        </member>
+        <member name="F:Elsa.Email.Options.SmtpEncryptionMethod.None">
+            <summary>
+            No encryption.
+            </summary>
+        </member>
+        <member name="F:Elsa.Email.Options.SmtpEncryptionMethod.SslTlS">
+            <summary>
+            SSL/TLS encryption.
+            </summary>
+        </member>
+        <member name="F:Elsa.Email.Options.SmtpEncryptionMethod.StartTls">
+            <summary>
+            STARTTLS encryption.
+            </summary>
+        </member>
+        <member name="T:Elsa.Email.Options.SmtpOptions">
+            <summary>
+            Options to configure the SMTP client with.
+            </summary>
+        </member>
+        <member name="P:Elsa.Email.Options.SmtpOptions.DefaultSender">
+            <summary>
+            The default sender address when no sender is specified while sending emails.
+            </summary>
+        </member>
+        <member name="P:Elsa.Email.Options.SmtpOptions.Host">
+            <summary>
+            The SMTP server IP address or hostname.
+            </summary>
+        </member>
+        <member name="P:Elsa.Email.Options.SmtpOptions.Port">
+            <summary>
+            The SMTP server port
+            </summary>
+        </member>
+        <member name="P:Elsa.Email.Options.SmtpOptions.SecureSocketOptions">
+            <summary>
+            Secure socket options.
+            </summary>
+        </member>
+        <member name="P:Elsa.Email.Options.SmtpOptions.RequireCredentials">
+            <summary>
+            True if the SMTP host requires credentials.
+            </summary>
+        </member>
+        <member name="P:Elsa.Email.Options.SmtpOptions.UserName">
+            <summary>
+            The username to authenticate with.
+            </summary>
+        </member>
+        <member name="P:Elsa.Email.Options.SmtpOptions.Password">
+            <summary>
+            The password to authenticate with.
+            </summary>
+        </member>
+        <member name="T:Elsa.Email.Services.DefaultDownloader">
+            <summary>
+            Download files from the Internet.
+            </summary>
+        </member>
+        <member name="M:Elsa.Email.Services.DefaultDownloader.#ctor(System.Net.Http.HttpClient)">
+            <summary>
+            Constructor.
+            </summary>
+        </member>
+        <member name="M:Elsa.Email.Services.DefaultDownloader.DownloadAsync(System.Uri,System.Threading.CancellationToken)">
+            <summary>
+            Download whatever is returned at the specified URL.
+            </summary>
+        </member>
+        <member name="T:Elsa.Email.Services.MailKitSmtpService">
+            <summary>
+            A MailKit implementation of <see cref="T:Elsa.Email.Contracts.ISmtpService"/>.
+            </summary>
+        </member>
+        <member name="M:Elsa.Email.Services.MailKitSmtpService.#ctor(Microsoft.Extensions.Options.IOptions{Elsa.Email.Options.SmtpOptions},Microsoft.Extensions.Logging.ILogger{Elsa.Email.Services.MailKitSmtpService})">
+            <summary>
+            Constructor.
+            </summary>
+        </member>
+        <member name="M:Elsa.Email.Services.MailKitSmtpService.SendAsync(MimeKit.MimeMessage,System.Threading.CancellationToken)">
+            <summary>
+            Sends the specified message.
+            </summary>
+        </member>
+        <member name="T:Elsa.Extensions.ModuleExtensions">
+            <summary>
+            Provides methods to install and configure email related features.
+            </summary>
+        </member>
+        <member name="M:Elsa.Extensions.ModuleExtensions.UseEmail(Elsa.Features.Services.IModule,System.Action{Elsa.Email.Features.EmailFeature})">
+            <summary>
+            Adds the <see cref="T:Elsa.Email.Features.EmailFeature"/> feature to the system.
+            </summary>
+        </member>
+    </members>
+</doc>

@@ -27,7 +27,8 @@
         "sources": {
           "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {},
-          "https://nuget.pkg.github.com/QuarterCall/index.json": {}
+          "https://nuget.pkg.github.com/QuarterCall/index.json": {},
+          "https://nuget.telerik.com/v3/index.json": {}
         },
         "frameworks": {
           "net7.0": {

@@ -1,0 +1,179 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Elsa.Quartz</name>
+    </assembly>
+    <members>
+        <member name="T:Elsa.Extensions.JobDataMapExtensions">
+            <summary>
+            Provides extension methods for <see cref="T:Quartz.JobDataMap"/>.
+            </summary>
+        </member>
+        <member name="M:Elsa.Extensions.JobDataMapExtensions.AddIfNotEmpty(Quartz.JobDataMap,System.String,System.String)">
+            <summary>
+            Adds a key/value pair to the map if the value is not null or whitespace.
+            </summary>
+        </member>
+        <member name="M:Elsa.Extensions.JobDataMapExtensions.AddIfNotEmpty(Quartz.JobDataMap,System.String,System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <summary>
+            Adds a key/value pair to the map if the value is not null or empty.
+            </summary>
+        </member>
+        <member name="M:Elsa.Extensions.JobDataMapExtensions.GetDictionary(Quartz.JobDataMap,System.String)">
+            <summary>
+            Gets a dictionary from the map.
+            </summary>
+        </member>
+        <member name="T:Elsa.Extensions.ModuleExtensions">
+            <summary>
+            Provides extension methods for the <see cref="T:Elsa.Scheduling.Features.SchedulingFeature"/>.
+            </summary>
+        </member>
+        <member name="M:Elsa.Extensions.ModuleExtensions.UseQuartz(Elsa.Features.Services.IModule,System.Action{Elsa.Quartz.Features.QuartzFeature})">
+            <summary>
+            Installs and configures Quartz.NET. Only use this feature if you are not configuring Quartz.NET yourself.
+            </summary>
+        </member>
+        <member name="M:Elsa.Extensions.ModuleExtensions.UseQuartzScheduler(Elsa.Scheduling.Features.SchedulingFeature,System.Action{Elsa.Quartz.Features.QuartzSchedulerFeature})">
+            <summary>
+            Installs a Quartz.NET implementation for <see cref="T:Elsa.Scheduling.Contracts.IWorkflowScheduler"/>.
+            </summary>
+        </member>
+        <member name="T:Elsa.Quartz.Features.QuartzFeature">
+            <summary>
+            A feature that installs and configures Quartz.NET. Only enable this feature if you are not configuring Quartz.NET yourself.
+            </summary>
+        </member>
+        <member name="M:Elsa.Quartz.Features.QuartzFeature.#ctor(Elsa.Features.Services.IModule)">
+            <inheritdoc />
+        </member>
+        <member name="P:Elsa.Quartz.Features.QuartzFeature.ConfigureQuartzOptions">
+            <summary>
+            A delegate that can be used to configure Quartz.NET options.
+            </summary>
+        </member>
+        <member name="P:Elsa.Quartz.Features.QuartzFeature.ConfigureQuartz">
+            <summary>
+            A delegate that can be used to configure Quartz.NET itself.
+            </summary>
+        </member>
+        <member name="P:Elsa.Quartz.Features.QuartzFeature.ConfigureQuartzHostedService">
+            <summary>
+            A delegate that can be used to configure Quartz.NET hosted service.
+            </summary>
+        </member>
+        <member name="M:Elsa.Quartz.Features.QuartzFeature.ConfigureHostedServices">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Quartz.Features.QuartzFeature.Apply">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.Quartz.Features.QuartzSchedulerFeature">
+            <summary>
+            A feature that installs Quartz.NET implementations for <see cref="T:Elsa.Scheduling.Contracts.IWorkflowScheduler"/>.
+            </summary>
+        </member>
+        <member name="M:Elsa.Quartz.Features.QuartzSchedulerFeature.#ctor(Elsa.Features.Services.IModule)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Quartz.Features.QuartzSchedulerFeature.Configure">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Quartz.Features.QuartzSchedulerFeature.Apply">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.Quartz.Handlers.CronActivityDescriptorModifier">
+            <summary>
+            Modifies the <see cref="T:Elsa.Workflows.Core.Models.ActivityDescriptor"/> of the <see cref="T:Elsa.Scheduling.Activities.Cron"/> activity.
+            </summary>
+        </member>
+        <member name="M:Elsa.Quartz.Handlers.CronActivityDescriptorModifier.Modify(Elsa.Workflows.Core.Models.ActivityDescriptor)">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.Quartz.Jobs.ResumeWorkflowJob">
+            <summary>
+            A job that resumes a workflow.
+            </summary>
+        </member>
+        <member name="F:Elsa.Quartz.Jobs.ResumeWorkflowJob.JobKey">
+            <summary>
+            The job key.
+            </summary>
+        </member>
+        <member name="M:Elsa.Quartz.Jobs.ResumeWorkflowJob.#ctor(Elsa.Workflows.Runtime.Contracts.IWorkflowDispatcher)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Elsa.Quartz.Jobs.ResumeWorkflowJob"/> class.
+            </summary>
+        </member>
+        <member name="M:Elsa.Quartz.Jobs.ResumeWorkflowJob.Execute(Quartz.IJobExecutionContext)">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.Quartz.Jobs.RunWorkflowJob">
+            <summary>
+            A job that runs a workflow.
+            </summary>
+        </member>
+        <member name="F:Elsa.Quartz.Jobs.RunWorkflowJob.JobKey">
+            <summary>
+            The job key.
+            </summary>
+        </member>
+        <member name="M:Elsa.Quartz.Jobs.RunWorkflowJob.#ctor(Elsa.Workflows.Runtime.Contracts.IWorkflowDispatcher)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Elsa.Quartz.Jobs.RunWorkflowJob"/> class.
+            </summary>
+        </member>
+        <member name="P:Elsa.Quartz.Jobs.RunWorkflowJob.Request">
+            <summary>
+            The workflow request.
+            </summary>
+        </member>
+        <member name="M:Elsa.Quartz.Jobs.RunWorkflowJob.Execute(Quartz.IJobExecutionContext)">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.Quartz.Services.QuartzCronParser">
+            <summary>
+            A cron parser that uses Quartz.
+            </summary>
+        </member>
+        <member name="M:Elsa.Quartz.Services.QuartzCronParser.#ctor(Elsa.Common.Contracts.ISystemClock)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Elsa.Quartz.Services.QuartzCronParser"/> class.
+            </summary>
+        </member>
+        <member name="M:Elsa.Quartz.Services.QuartzCronParser.GetNextOccurrence(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.Quartz.Services.QuartzWorkflowScheduler">
+            <summary>
+            An implementation of <see cref="T:Elsa.Scheduling.Contracts.IWorkflowScheduler"/> that uses Quartz.NET.
+            </summary>
+        </member>
+        <member name="M:Elsa.Quartz.Services.QuartzWorkflowScheduler.#ctor(Quartz.ISchedulerFactory)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Elsa.Scheduling.Services.DefaultWorkflowScheduler"/> class.
+            </summary>
+        </member>
+        <member name="M:Elsa.Quartz.Services.QuartzWorkflowScheduler.ScheduleAtAsync(System.String,Elsa.Workflows.Runtime.Requests.DispatchWorkflowDefinitionRequest,System.DateTimeOffset,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Quartz.Services.QuartzWorkflowScheduler.ScheduleAtAsync(System.String,Elsa.Workflows.Runtime.Requests.DispatchWorkflowInstanceRequest,System.DateTimeOffset,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Quartz.Services.QuartzWorkflowScheduler.ScheduleRecurringAsync(System.String,Elsa.Workflows.Runtime.Requests.DispatchWorkflowDefinitionRequest,System.DateTimeOffset,System.TimeSpan,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Quartz.Services.QuartzWorkflowScheduler.ScheduleRecurringAsync(System.String,Elsa.Workflows.Runtime.Requests.DispatchWorkflowInstanceRequest,System.DateTimeOffset,System.TimeSpan,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Quartz.Services.QuartzWorkflowScheduler.ScheduleCronAsync(System.String,Elsa.Workflows.Runtime.Requests.DispatchWorkflowDefinitionRequest,System.String,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Quartz.Services.QuartzWorkflowScheduler.ScheduleCronAsync(System.String,Elsa.Workflows.Runtime.Requests.DispatchWorkflowInstanceRequest,System.String,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Quartz.Services.QuartzWorkflowScheduler.UnscheduleAsync(System.String,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+    </members>
+</doc>

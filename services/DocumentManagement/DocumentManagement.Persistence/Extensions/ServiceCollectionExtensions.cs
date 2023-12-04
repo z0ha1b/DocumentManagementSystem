@@ -15,7 +15,7 @@ public static class ServiceCollectionExtensions
         var migrationsAssemblyName = typeof(SqlServerDocumentDbContextFactory).Assembly.GetName().Name;
 
         return services
-            .AddPooledDbContextFactory<DocumentDbContext>(x => x.UseSqlServer(connectionString, db => db.MigrationsAssembly(migrationsAssemblyName)))
+            .AddPooledDbContextFactory<DocumentDbContext>(x => x.UseSqlite(connectionString, db => db.MigrationsAssembly(migrationsAssemblyName)))
             .AddSingleton<IDocumentStore, EFCoreDocumentStore>()
             .AddSingleton<IDocumentTypeStore, EFCoreDocumentTypeStore>()
             .AddHostedService<RunMigrations>();

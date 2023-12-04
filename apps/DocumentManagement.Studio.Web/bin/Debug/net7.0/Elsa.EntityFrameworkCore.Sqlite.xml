@@ -1,0 +1,118 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Elsa.EntityFrameworkCore.Sqlite</name>
+    </assembly>
+    <members>
+        <member name="T:Elsa.EntityFrameworkCore.Sqlite.Migrations.Alterations.Initial">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.EntityFrameworkCore.Sqlite.Migrations.Alterations.Initial.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.EntityFrameworkCore.Sqlite.Migrations.Alterations.Initial.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.EntityFrameworkCore.Sqlite.Migrations.Alterations.Initial.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.EntityFrameworkCore.Sqlite.Migrations.Identity.Initial">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.EntityFrameworkCore.Sqlite.Migrations.Identity.Initial.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.EntityFrameworkCore.Sqlite.Migrations.Identity.Initial.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.EntityFrameworkCore.Sqlite.Migrations.Identity.Initial.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.EntityFrameworkCore.Sqlite.Migrations.Labels.Initial">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.EntityFrameworkCore.Sqlite.Migrations.Labels.Initial.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.EntityFrameworkCore.Sqlite.Migrations.Labels.Initial.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.EntityFrameworkCore.Sqlite.Migrations.Labels.Initial.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.EntityFrameworkCore.Sqlite.Migrations.Management.Initial">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.EntityFrameworkCore.Sqlite.Migrations.Management.Initial.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.EntityFrameworkCore.Sqlite.Migrations.Management.Initial.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.EntityFrameworkCore.Sqlite.Migrations.Management.Initial.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.EntityFrameworkCore.Sqlite.Migrations.Runtime.Initial">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.EntityFrameworkCore.Sqlite.Migrations.Runtime.Initial.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.EntityFrameworkCore.Sqlite.Migrations.Runtime.Initial.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.EntityFrameworkCore.Sqlite.Migrations.Runtime.Initial.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.EntityFrameworkCore.Extensions.DbContextOptionsBuilderExtensions">
+            <summary>
+            Contains extension methods for <see cref="T:Microsoft.EntityFrameworkCore.DbContextOptionsBuilder"/>.
+            </summary>
+        </member>
+        <member name="M:Elsa.EntityFrameworkCore.Extensions.DbContextOptionsBuilderExtensions.UseElsaSqlite(Microsoft.EntityFrameworkCore.DbContextOptionsBuilder,System.Reflection.Assembly,System.String,Elsa.EntityFrameworkCore.Common.ElsaDbContextOptions,System.Action{Microsoft.EntityFrameworkCore.Infrastructure.SqliteDbContextOptionsBuilder})">
+            <summary>
+            Configures Entity Framework Core with SQLite.
+            </summary>
+        </member>
+        <member name="T:Elsa.EntityFrameworkCore.Extensions.SqliteProvidersExtensions">
+            <summary>
+            Provides extensions to configure EF Core to use Sqlite.
+            </summary>
+        </member>
+        <member name="M:Elsa.EntityFrameworkCore.Extensions.SqliteProvidersExtensions.UseSqlite(Elsa.EntityFrameworkCore.Modules.Identity.EFCoreIdentityPersistenceFeature,System.String,Elsa.EntityFrameworkCore.Common.ElsaDbContextOptions)">
+            <summary>
+            Configures the <see cref="T:Elsa.EntityFrameworkCore.Modules.Identity.EFCoreIdentityPersistenceFeature"/> to use Sqlite.
+            </summary>
+        </member>
+        <member name="M:Elsa.EntityFrameworkCore.Extensions.SqliteProvidersExtensions.UseSqlite(Elsa.EntityFrameworkCore.Modules.Alterations.EFCoreAlterationsPersistenceFeature,System.String,Elsa.EntityFrameworkCore.Common.ElsaDbContextOptions)">
+            <summary>
+            Configures the <see cref="T:Elsa.EntityFrameworkCore.Modules.Alterations.EFCoreAlterationsPersistenceFeature"/> to use Sqlite.
+            </summary>
+        </member>
+        <member name="M:Elsa.EntityFrameworkCore.Extensions.SqliteProvidersExtensions.UseSqlite(Elsa.EntityFrameworkCore.Modules.Labels.EFCoreLabelPersistenceFeature,System.String,Elsa.EntityFrameworkCore.Common.ElsaDbContextOptions)">
+            <summary>
+            Configures the <see cref="T:Elsa.EntityFrameworkCore.Modules.Labels.EFCoreLabelPersistenceFeature"/> to use Sqlite.
+            </summary>
+        </member>
+        <member name="M:Elsa.EntityFrameworkCore.Extensions.SqliteProvidersExtensions.UseSqlite(Elsa.EntityFrameworkCore.Modules.Management.EFCoreWorkflowDefinitionPersistenceFeature,System.String,Elsa.EntityFrameworkCore.Common.ElsaDbContextOptions)">
+            <summary>
+            Configures the <see cref="T:Elsa.EntityFrameworkCore.Modules.Management.EFCoreWorkflowDefinitionPersistenceFeature"/> to use Sqlite.
+            </summary>
+        </member>
+        <member name="M:Elsa.EntityFrameworkCore.Extensions.SqliteProvidersExtensions.UseSqlite(Elsa.EntityFrameworkCore.Modules.Management.EFCoreWorkflowInstancePersistenceFeature,System.String,Elsa.EntityFrameworkCore.Common.ElsaDbContextOptions)">
+            <summary>
+            Configures the <see cref="T:Elsa.EntityFrameworkCore.Modules.Management.EFCoreWorkflowInstancePersistenceFeature"/> to use Sqlite.
+            </summary>
+        </member>
+        <member name="M:Elsa.EntityFrameworkCore.Extensions.SqliteProvidersExtensions.UseSqlite(Elsa.EntityFrameworkCore.Modules.Management.WorkflowManagementPersistenceFeature,System.String,Elsa.EntityFrameworkCore.Common.ElsaDbContextOptions)">
+            <summary>
+            Configures the <see cref="T:Elsa.EntityFrameworkCore.Modules.Management.WorkflowManagementPersistenceFeature"/> to use Sqlite.
+            </summary>
+        </member>
+        <member name="M:Elsa.EntityFrameworkCore.Extensions.SqliteProvidersExtensions.UseSqlite(Elsa.EntityFrameworkCore.Modules.Runtime.EFCoreWorkflowRuntimePersistenceFeature,System.String,Elsa.EntityFrameworkCore.Common.ElsaDbContextOptions)">
+            <summary>
+            Configures the <see cref="T:Elsa.EntityFrameworkCore.Modules.Runtime.EFCoreWorkflowRuntimePersistenceFeature"/> to use Sqlite.
+            </summary>
+        </member>
+    </members>
+</doc>

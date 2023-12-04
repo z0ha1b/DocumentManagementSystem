@@ -1,0 +1,1567 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Elsa.Http</name>
+    </assembly>
+    <members>
+        <member name="T:Elsa.Http.Abstractions.DownloadableContentHandlerBase">
+            <summary>
+            Provides a base class for <see cref="T:Elsa.Http.Contracts.IDownloadableContentHandler"/> implementations.
+            </summary>
+        </member>
+        <member name="P:Elsa.Http.Abstractions.DownloadableContentHandlerBase.Priority">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Http.Abstractions.DownloadableContentHandlerBase.GetSupportsContent(System.Object)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Http.Abstractions.DownloadableContentHandlerBase.GetDownloadablesAsync(Elsa.Http.Contexts.DownloadableContext)">
+            <summary>
+            Returns a list of downloadables from the specified content.
+            </summary>
+        </member>
+        <member name="M:Elsa.Http.Abstractions.DownloadableContentHandlerBase.GetDownloadableAsync(Elsa.Http.Contexts.DownloadableContext)">
+            <summary>
+            Returns a downloadable from the specified content.
+            </summary>
+        </member>
+        <member name="M:Elsa.Http.Abstractions.DownloadableContentHandlerBase.GetDownloadable(Elsa.Http.Contexts.DownloadableContext)">
+            <summary>
+            Returns a downloadable from the specified content.
+            </summary>
+            <exception cref="T:System.NotImplementedException">This method is not implemented. The derived class must implement at least one of the GetDownloadable methods.</exception>
+        </member>
+        <member name="T:Elsa.Http.Abstractions.HttpCorrelationIdSelectorBase">
+            <summary>
+            Provides a base class for implementing <see cref="T:Elsa.Http.Contracts.IHttpCorrelationIdSelector"/>.
+            </summary>
+        </member>
+        <member name="P:Elsa.Http.Abstractions.HttpCorrelationIdSelectorBase.Priority">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Http.Abstractions.HttpCorrelationIdSelectorBase.GetCorrelationIdAsync(Microsoft.AspNetCore.Http.HttpContext,System.Threading.CancellationToken)">
+            <summary>
+            Override this method to return the correlation ID for the specified HTTP context, or <c>null</c> if no correlation ID could be found.
+            </summary>
+        </member>
+        <member name="M:Elsa.Http.Abstractions.HttpCorrelationIdSelectorBase.GetCorrelationId(Microsoft.AspNetCore.Http.HttpContext)">
+            <summary>
+            Override this method to return the correlation ID for the specified HTTP context, or <c>null</c> if no correlation ID could be found.
+            </summary>
+        </member>
+        <member name="T:Elsa.Http.Abstractions.HttpWorkflowInstanceIdSelectorBase">
+            <summary>
+            Provides a base class for implementing <see cref="T:Elsa.Http.Contracts.IHttpCorrelationIdSelector"/>.
+            </summary>
+        </member>
+        <member name="P:Elsa.Http.Abstractions.HttpWorkflowInstanceIdSelectorBase.Priority">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Http.Abstractions.HttpWorkflowInstanceIdSelectorBase.GetWorkflowInstanceIdAsync(Microsoft.AspNetCore.Http.HttpContext,System.Threading.CancellationToken)">
+            <summary>
+            Override this method to return the workflow instance ID for the specified HTTP context, or <c>null</c> if no workflow instance ID could be found.
+            </summary>
+        </member>
+        <member name="M:Elsa.Http.Abstractions.HttpWorkflowInstanceIdSelectorBase.GetWorkflowInstanceId(Microsoft.AspNetCore.Http.HttpContext)">
+            <summary>
+            Override this method to return the workflow instance ID for the specified HTTP context, or <c>null</c> if no workflow instance ID could be found.
+            </summary>
+        </member>
+        <member name="T:Elsa.Http.FlowSendHttpRequest">
+            <summary>
+            Send an HTTP request.
+            </summary>
+        </member>
+        <member name="M:Elsa.Http.FlowSendHttpRequest.#ctor(System.String,System.Nullable{System.Int32})">
+            <inheritdoc />
+        </member>
+        <member name="P:Elsa.Http.FlowSendHttpRequest.ExpectedStatusCodes">
+            <summary>
+            A list of expected status codes to handle.
+            </summary>
+        </member>
+        <member name="M:Elsa.Http.FlowSendHttpRequest.HandleResponseAsync(Elsa.Workflows.Core.ActivityExecutionContext,System.Net.Http.HttpResponseMessage)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Http.FlowSendHttpRequest.HandleRequestExceptionAsync(Elsa.Workflows.Core.ActivityExecutionContext,System.Net.Http.HttpRequestException)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Http.FlowSendHttpRequest.HandleTaskCanceledExceptionAsync(Elsa.Workflows.Core.ActivityExecutionContext,System.Threading.Tasks.TaskCanceledException)">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.Http.HttpEndpoint">
+            <summary>
+            Wait for an inbound HTTP request that matches the specified path and methods.
+            </summary>
+        </member>
+        <member name="M:Elsa.Http.HttpEndpoint.#ctor(System.String,System.Nullable{System.Int32})">
+            <inheritdoc />
+        </member>
+        <member name="P:Elsa.Http.HttpEndpoint.Path">
+            <summary>
+            The path to associate with the workflow.
+            </summary>
+        </member>
+        <member name="P:Elsa.Http.HttpEndpoint.SupportedMethods">
+            <summary>
+            The HTTP methods to accept.
+            </summary>
+        </member>
+        <member name="P:Elsa.Http.HttpEndpoint.Authorize">
+            <summary>
+            Allow authenticated requests only.
+            </summary>
+        </member>
+        <member name="P:Elsa.Http.HttpEndpoint.Policy">
+            <summary>
+            Provide a policy to evaluate. If the policy fails, the request is forbidden.
+            </summary>
+        </member>
+        <member name="P:Elsa.Http.HttpEndpoint.RequestTimeout">
+            <summary>
+            The maximum time allowed to process the request.
+            </summary>
+        </member>
+        <member name="P:Elsa.Http.HttpEndpoint.RequestSizeLimit">
+            <summary>
+            The maximum request size allowed in bytes.
+            </summary>
+        </member>
+        <member name="P:Elsa.Http.HttpEndpoint.FileSizeLimit">
+            <summary>
+            The maximum request size allowed in bytes.
+            </summary>
+        </member>
+        <member name="P:Elsa.Http.HttpEndpoint.AllowedFileExtensions">
+            <summary>
+            The allowed file extensions,
+            </summary>
+        </member>
+        <member name="P:Elsa.Http.HttpEndpoint.BlockedFileExtensions">
+            <summary>
+            The allowed file extensions,
+            </summary>
+        </member>
+        <member name="P:Elsa.Http.HttpEndpoint.AllowedMimeTypes">
+            <summary>
+            The allowed file extensions,
+            </summary>
+        </member>
+        <member name="P:Elsa.Http.HttpEndpoint.ExposeRequestTooLargeOutcome">
+            <summary>
+            A value indicating whether to expose the "Request too large" outcome.
+            </summary>
+        </member>
+        <member name="P:Elsa.Http.HttpEndpoint.ExposeFileTooLargeOutcome">
+            <summary>
+            A value indicating whether to expose the "File too large" outcome.
+            </summary>
+        </member>
+        <member name="P:Elsa.Http.HttpEndpoint.ExposeInvalidFileExtensionOutcome">
+            <summary>
+            A value indicating whether to expose the "Invalid file extension" outcome.
+            </summary>
+        </member>
+        <member name="P:Elsa.Http.HttpEndpoint.ExposeInvalidFileMimeTypeOutcome">
+            <summary>
+            A value indicating whether to expose the "Invalid file MIME type" outcome.
+            </summary>
+        </member>
+        <member name="P:Elsa.Http.HttpEndpoint.ParsedContent">
+            <summary>
+            The parsed request content, if any.
+            </summary>
+        </member>
+        <member name="P:Elsa.Http.HttpEndpoint.Files">
+            <summary>
+            The uploaded files, if any.
+            </summary>
+        </member>
+        <member name="P:Elsa.Http.HttpEndpoint.RouteData">
+            <summary>
+            The parsed route data, if any.
+            </summary>
+        </member>
+        <member name="P:Elsa.Http.HttpEndpoint.QueryStringData">
+            <summary>
+            The querystring data, if any.
+            </summary>
+        </member>
+        <member name="P:Elsa.Http.HttpEndpoint.Headers">
+            <summary>
+            The headers, if any.
+            </summary>
+        </member>
+        <member name="M:Elsa.Http.HttpEndpoint.GetTriggerPayloads(Elsa.Workflows.Core.TriggerIndexingContext)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Http.HttpEndpoint.ExecuteAsync(Elsa.Workflows.Core.ActivityExecutionContext)">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.Http.SendHttpRequest">
+            <summary>
+            Send an HTTP request.
+            </summary>
+        </member>
+        <member name="M:Elsa.Http.SendHttpRequest.#ctor(System.String,System.Nullable{System.Int32})">
+            <inheritdoc />
+        </member>
+        <member name="P:Elsa.Http.SendHttpRequest.ExpectedStatusCodes">
+            <summary>
+            A list of expected status codes to handle and the corresponding activity to execute when the status code matches.
+            </summary>
+        </member>
+        <member name="P:Elsa.Http.SendHttpRequest.UnmatchedStatusCode">
+            <summary>
+            The activity to execute when the HTTP status code does not match any of the expected status codes.
+            </summary>
+        </member>
+        <member name="P:Elsa.Http.SendHttpRequest.FailedToConnect">
+            <summary>
+            The activity to execute when the HTTP request fails to connect.
+            </summary>
+        </member>
+        <member name="P:Elsa.Http.SendHttpRequest.Timeout">
+            <summary>
+            The activity to execute when the HTTP request times out.
+            </summary>
+        </member>
+        <member name="M:Elsa.Http.SendHttpRequest.HandleResponseAsync(Elsa.Workflows.Core.ActivityExecutionContext,System.Net.Http.HttpResponseMessage)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Http.SendHttpRequest.HandleRequestExceptionAsync(Elsa.Workflows.Core.ActivityExecutionContext,System.Net.Http.HttpRequestException)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Http.SendHttpRequest.HandleTaskCanceledExceptionAsync(Elsa.Workflows.Core.ActivityExecutionContext,System.Threading.Tasks.TaskCanceledException)">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.Http.SendHttpRequestBase">
+            <summary>
+            Base class for activities that send HTTP requests.
+            </summary>
+        </member>
+        <member name="M:Elsa.Http.SendHttpRequestBase.#ctor(System.String,System.Nullable{System.Int32})">
+            <inheritdoc />
+        </member>
+        <member name="P:Elsa.Http.SendHttpRequestBase.Url">
+            <summary>
+            The URL to send the request to.
+            </summary>
+        </member>
+        <member name="P:Elsa.Http.SendHttpRequestBase.Method">
+            <summary>
+            The HTTP method to use when sending the request.
+            </summary>
+        </member>
+        <member name="P:Elsa.Http.SendHttpRequestBase.Content">
+            <summary>
+            The content to send with the request. Can be a string, an object, a byte array or a stream.
+            </summary>
+        </member>
+        <member name="P:Elsa.Http.SendHttpRequestBase.ContentType">
+            <summary>
+            The content type to use when sending the request.
+            </summary>
+        </member>
+        <member name="P:Elsa.Http.SendHttpRequestBase.Authorization">
+            <summary>
+            The Authorization header value to send with the request.
+            </summary>
+            <example>Bearer {some-access-token}</example>
+        </member>
+        <member name="P:Elsa.Http.SendHttpRequestBase.RequestHeaders">
+            <summary>
+            The headers to send along with the request.
+            </summary>
+        </member>
+        <member name="P:Elsa.Http.SendHttpRequestBase.ParsedContent">
+            <summary>
+            The parsed content, if any.
+            </summary>
+        </member>
+        <member name="M:Elsa.Http.SendHttpRequestBase.ExecuteAsync(Elsa.Workflows.Core.ActivityExecutionContext)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Http.SendHttpRequestBase.HandleResponseAsync(Elsa.Workflows.Core.ActivityExecutionContext,System.Net.Http.HttpResponseMessage)">
+            <summary>
+            Handles the response.
+            </summary>
+        </member>
+        <member name="M:Elsa.Http.SendHttpRequestBase.HandleRequestExceptionAsync(Elsa.Workflows.Core.ActivityExecutionContext,System.Net.Http.HttpRequestException)">
+            <summary>
+            Handles an exception that occurred while sending the request.
+            </summary>
+        </member>
+        <member name="M:Elsa.Http.SendHttpRequestBase.HandleTaskCanceledExceptionAsync(Elsa.Workflows.Core.ActivityExecutionContext,System.Threading.Tasks.TaskCanceledException)">
+            <summary>
+            Handles <see cref="T:System.Threading.Tasks.TaskCanceledException"/> that occurred while sending the request.
+            </summary>
+        </member>
+        <member name="T:Elsa.Http.WriteFileHttpResponse">
+            <summary>
+            Sends a file to the HTTP response.
+            </summary>
+        </member>
+        <member name="P:Elsa.Http.WriteFileHttpResponse.ContentType">
+            <summary>
+            The MIME type of the file to serve.
+            </summary>
+        </member>
+        <member name="P:Elsa.Http.WriteFileHttpResponse.Filename">
+            <summary>
+            The name of the file to serve.
+            </summary>
+        </member>
+        <member name="P:Elsa.Http.WriteFileHttpResponse.EntityTag">
+            <summary>
+            The Entity Tag of the file to serve.
+            </summary>
+        </member>
+        <member name="P:Elsa.Http.WriteFileHttpResponse.Content">
+            <summary>
+            The file content to serve. Supports byte array, streams, string, Uri and an array of the aforementioned types.
+            </summary>
+        </member>
+        <member name="P:Elsa.Http.WriteFileHttpResponse.EnableResumableDownloads">
+            <summary>
+            Whether to enable resumable downloads. When enabled, the client can resume a download if the connection is lost.
+            </summary>
+        </member>
+        <member name="P:Elsa.Http.WriteFileHttpResponse.DownloadCorrelationId">
+            <summary>
+            The correlation ID of the download. Used to resume a download.
+            </summary>
+        </member>
+        <member name="M:Elsa.Http.WriteFileHttpResponse.ExecuteAsync(Elsa.Workflows.Core.ActivityExecutionContext)">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.Http.WriteHttpResponse">
+            <summary>
+            Write a response to the current HTTP response object.
+            </summary>
+        </member>
+        <member name="M:Elsa.Http.WriteHttpResponse.#ctor(System.String,System.Nullable{System.Int32})">
+            <inheritdoc />
+        </member>
+        <member name="P:Elsa.Http.WriteHttpResponse.StatusCode">
+            <summary>
+            The status code to return.
+            </summary>
+        </member>
+        <member name="P:Elsa.Http.WriteHttpResponse.Content">
+            <summary>
+            The content to write back.
+            </summary>
+        </member>
+        <member name="P:Elsa.Http.WriteHttpResponse.ContentType">
+            <summary>
+            The content type to use when returning the response.
+            </summary>
+        </member>
+        <member name="P:Elsa.Http.WriteHttpResponse.ResponseHeaders">
+            <summary>
+            The headers to return along with the response.
+            </summary>
+        </member>
+        <member name="M:Elsa.Http.WriteHttpResponse.ExecuteAsync(Elsa.Workflows.Core.ActivityExecutionContext)">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.Http.ActivityOptionProviders.HttpContentTypeOptionsProvider">
+            <summary>
+            Provides options for the <see cref="T:Elsa.Http.SendHttpRequest"/> activity's <see cref="!:SendHttpRequest.ContentType"/> property.
+            </summary>
+        </member>
+        <member name="M:Elsa.Http.ActivityOptionProviders.HttpContentTypeOptionsProvider.#ctor(System.Collections.Generic.IEnumerable{Elsa.Http.ContentWriters.IHttpContentFactory})">
+            <summary>
+            Creates a new instance of the <see cref="T:Elsa.Http.ActivityOptionProviders.HttpContentTypeOptionsProvider"/> class.
+            </summary>
+        </member>
+        <member name="M:Elsa.Http.ActivityOptionProviders.HttpContentTypeOptionsProvider.GetOptionsAsync(System.Reflection.PropertyInfo,System.Object,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.Http.BookmarkMetadata">
+            <summary>
+            Provides metadata for HTTP bookmarks.
+            </summary>
+        </member>
+        <member name="F:Elsa.Http.BookmarkMetadata.HttpCrossBoundaryMetadataKey">
+            <summary>
+            The metadata key for cross-HTTP boundary activity execution.
+            </summary>
+        </member>
+        <member name="F:Elsa.Http.BookmarkMetadata.HttpCrossBoundary">
+            <summary>
+            Provides metadata for cross-HTTP boundary activity execution.
+            </summary>
+        </member>
+        <member name="T:Elsa.Http.Bookmarks.HttpEndpointBookmarkPayload">
+            <summary>
+            A bookmark used by the <see cref="T:Elsa.Http.HttpEndpoint"/> activity.
+            </summary>
+        </member>
+        <member name="M:Elsa.Http.Bookmarks.HttpEndpointBookmarkPayload.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Elsa.Http.Bookmarks.HttpEndpointBookmarkPayload"/> class.
+            </summary>
+        </member>
+        <member name="M:Elsa.Http.Bookmarks.HttpEndpointBookmarkPayload.#ctor(System.String,System.String,System.Nullable{System.Boolean},System.String,System.Nullable{System.TimeSpan},System.Nullable{System.Int64})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Elsa.Http.Bookmarks.HttpEndpointBookmarkPayload"/> class.
+            </summary>
+        </member>
+        <member name="P:Elsa.Http.Bookmarks.HttpEndpointBookmarkPayload.Path">
+            <summary>
+            Gets or sets the path of the HTTP endpoint.
+            </summary>
+        </member>
+        <member name="P:Elsa.Http.Bookmarks.HttpEndpointBookmarkPayload.Method">
+            <summary>
+            Gets or sets the HTTP method of the endpoint.
+            </summary>
+        </member>
+        <member name="P:Elsa.Http.Bookmarks.HttpEndpointBookmarkPayload.Policy">
+            <summary>
+            Gets or sets the policy to use for authorization.
+            </summary>
+        </member>
+        <member name="P:Elsa.Http.Bookmarks.HttpEndpointBookmarkPayload.Authorize">
+            <summary>
+            Gets or sets a value indicating whether the endpoint requires authorization.
+            </summary>
+        </member>
+        <member name="P:Elsa.Http.Bookmarks.HttpEndpointBookmarkPayload.RequestTimeout">
+            <summary>
+            Gets or sets the request timeout.
+            </summary>
+        </member>
+        <member name="P:Elsa.Http.Bookmarks.HttpEndpointBookmarkPayload.RequestSizeLimit">
+            <summary>
+            Gets or sets the max request size in bytes.
+            </summary>
+        </member>
+        <member name="T:Elsa.Http.ContentWriters.BinaryContentFactory">
+            <summary>
+            Creates a <see cref="T:System.Net.Http.HttpContent"/> object for application/octet-stream.
+            </summary>
+        </member>
+        <member name="P:Elsa.Http.ContentWriters.BinaryContentFactory.SupportedContentTypes">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Http.ContentWriters.BinaryContentFactory.CreateHttpContent(System.Object,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.Http.ContentWriters.FormUrlEncodedHttpContentFactory">
+            <summary>
+            A content writer that writes content in the application/x-www-form-urlencoded format. 
+            </summary>
+        </member>
+        <member name="P:Elsa.Http.ContentWriters.FormUrlEncodedHttpContentFactory.SupportedContentTypes">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Http.ContentWriters.FormUrlEncodedHttpContentFactory.CreateHttpContent(System.Object,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.Http.ContentWriters.IHttpContentFactory">
+            <summary>
+            Creates a concrete <see cref="T:System.Net.Http.HttpContent"/> instance based on the specified content type.
+            </summary>
+        </member>
+        <member name="P:Elsa.Http.ContentWriters.IHttpContentFactory.SupportedContentTypes">
+            <summary>
+            Returns a value indicating whether this factory supports the specified content type.
+            </summary>
+        </member>
+        <member name="M:Elsa.Http.ContentWriters.IHttpContentFactory.CreateHttpContent(System.Object,System.String)">
+            <summary>
+            Creates a concrete <see cref="T:System.Net.Http.HttpContent"/> derivative based on the specified content type.
+            </summary>
+        </member>
+        <member name="T:Elsa.Http.ContentWriters.JsonContentFactory">
+            <summary>
+            Creates a <see cref="T:System.Net.Http.HttpContent"/> object for application/json.
+            </summary>
+        </member>
+        <member name="P:Elsa.Http.ContentWriters.JsonContentFactory.SupportedContentTypes">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Http.ContentWriters.JsonContentFactory.CreateHttpContent(System.Object,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.Http.ContentWriters.TextContentFactory">
+            <summary>
+            Creates a <see cref="T:System.Net.Http.StringContent"/> object for text/plain, text/richtext and text/html content types.
+            </summary>
+        </member>
+        <member name="P:Elsa.Http.ContentWriters.TextContentFactory.SupportedContentTypes">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Http.ContentWriters.TextContentFactory.CreateHttpContent(System.Object,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.Http.ContentWriters.XmlContentFactory">
+            <summary>
+            Creates a <see cref="T:System.Net.Http.HttpContent"/> object for XML types.
+            </summary>
+        </member>
+        <member name="P:Elsa.Http.ContentWriters.XmlContentFactory.SupportedContentTypes">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Http.ContentWriters.XmlContentFactory.CreateHttpContent(System.Object,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.Http.Contexts.DownloadableContext">
+            <summary>
+            Provides context for downloadable providers.
+            </summary>
+            <param name="Manager">The manager.</param>
+            <param name="Content">The content to get downloadables from.</param>
+            <param name="ETag">An optional ETag.</param>
+            <param name="CancellationToken">The cancellation token.</param>
+        </member>
+        <member name="M:Elsa.Http.Contexts.DownloadableContext.#ctor(Elsa.Http.Contracts.IDownloadableManager,System.Object,Elsa.Http.Options.DownloadableOptions,System.Threading.CancellationToken)">
+            <summary>
+            Provides context for downloadable providers.
+            </summary>
+            <param name="Manager">The manager.</param>
+            <param name="Content">The content to get downloadables from.</param>
+            <param name="ETag">An optional ETag.</param>
+            <param name="CancellationToken">The cancellation token.</param>
+        </member>
+        <member name="P:Elsa.Http.Contexts.DownloadableContext.Manager">
+            <summary>The manager.</summary>
+        </member>
+        <member name="P:Elsa.Http.Contexts.DownloadableContext.Content">
+            <summary>The content to get downloadables from.</summary>
+        </member>
+        <member name="P:Elsa.Http.Contexts.DownloadableContext.CancellationToken">
+            <summary>The cancellation token.</summary>
+        </member>
+        <member name="T:Elsa.Http.Contracts.IAbsoluteUrlProvider">
+            <summary>
+            Provides a way to convert a relative URL to an absolute URL.
+            </summary>
+        </member>
+        <member name="M:Elsa.Http.Contracts.IAbsoluteUrlProvider.ToAbsoluteUrl(System.String)">
+            <summary>
+            Converts a relative URL to an absolute URL.
+            </summary>
+            <param name="relativePath">The relative URL.</param>
+            <returns>The absolute URL.</returns>
+        </member>
+        <member name="T:Elsa.Http.Contracts.IDownloadableContentHandler">
+            <summary>
+            Provides downloadables from the specified content, if supported.
+            </summary>
+        </member>
+        <member name="P:Elsa.Http.Contracts.IDownloadableContentHandler.Priority">
+            <summary>
+            The priority of this provider. Providers with lower priority are tried first.
+            </summary>
+        </member>
+        <member name="M:Elsa.Http.Contracts.IDownloadableContentHandler.GetSupportsContent(System.Object)">
+            <summary>
+            Returns true if this provider supports the specified content.
+            </summary>
+            <param name="content">The content to check.</param>
+        </member>
+        <member name="M:Elsa.Http.Contracts.IDownloadableContentHandler.GetDownloadablesAsync(Elsa.Http.Contexts.DownloadableContext)">
+            <summary>
+            Returns a list of downloadables from the specified content.
+            </summary>
+        </member>
+        <member name="T:Elsa.Http.Contracts.IDownloadableManager">
+            <summary>
+            Provides downloadables from the specified content, if supported.
+            </summary>
+        </member>
+        <member name="M:Elsa.Http.Contracts.IDownloadableManager.GetDownloadablesAsync(System.Object,Elsa.Http.Options.DownloadableOptions,System.Threading.CancellationToken)">
+            <summary>
+            Returns a list of downloadables from the specified content.
+            </summary>
+        </member>
+        <member name="T:Elsa.Http.Contracts.IFileCacheStorageProvider">
+            <summary>
+            Represents a provider of a file cache storage.
+            </summary>
+        </member>
+        <member name="M:Elsa.Http.Contracts.IFileCacheStorageProvider.GetStorage">
+            <summary>
+            Gets the storage.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Elsa.Http.Contracts.IFileDownloader">
+            <summary>
+            A general-purpose downloader of files from a given URL.
+            </summary>
+        </member>
+        <member name="M:Elsa.Http.Contracts.IFileDownloader.DownloadAsync(System.Uri,Elsa.Http.Options.FileDownloadOptions,System.Threading.CancellationToken)">
+            <summary>
+            Downloads a file from the specified URL.
+            </summary>
+        </member>
+        <member name="T:Elsa.Http.Contracts.IHttpBookmarkProcessor">
+            <summary>
+            A helper service that can process <see cref="T:Elsa.Workflows.Runtime.Results.TriggerWorkflowsResult"/>s within the current HTTP context.
+            </summary>
+        </member>
+        <member name="M:Elsa.Http.Contracts.IHttpBookmarkProcessor.ProcessBookmarks(System.Collections.Generic.IEnumerable{Elsa.Workflows.Runtime.Results.WorkflowExecutionResult},System.String,System.Collections.Generic.IDictionary{System.String,System.Object},Elsa.Workflows.Core.Models.CancellationTokens)">
+            <summary>
+            Processes the specified <see cref="!:executionResults"/> by resuming each HTTP bookmark while we are in an HTTP context.
+            </summary>
+        </member>
+        <member name="T:Elsa.Http.Contracts.IHttpContentParser">
+            <summary>
+            A strategy that reads a <see cref="T:System.Net.Http.HttpResponseMessage"/> of a given content type.
+            </summary>
+        </member>
+        <member name="P:Elsa.Http.Contracts.IHttpContentParser.Priority">
+            <summary>
+            The priority of the parser as compared to other parsers.
+            The higher the number, the higher priority.
+            </summary>
+        </member>
+        <member name="M:Elsa.Http.Contracts.IHttpContentParser.GetSupportsContentType(System.String)">
+            <summary>
+            Returns a value indicating whether this reader supports the specified content type.
+            </summary>
+        </member>
+        <member name="M:Elsa.Http.Contracts.IHttpContentParser.ReadAsync(System.IO.Stream,System.Type,System.Threading.CancellationToken)">
+            <summary>
+            Reads the specified <c>stream</c> and returns a parsed object of the specified type. If no type is specified, a string is returned. 
+            </summary>
+        </member>
+        <member name="T:Elsa.Http.Contracts.IHttpCorrelationIdSelector">
+            <summary>
+            Provides a way to select the correlation ID for a request.
+            </summary>
+        </member>
+        <member name="P:Elsa.Http.Contracts.IHttpCorrelationIdSelector.Priority">
+            <summary>
+            The priority of this selector. The selector with the highest priority will be used.
+            </summary>
+        </member>
+        <member name="M:Elsa.Http.Contracts.IHttpCorrelationIdSelector.GetCorrelationIdAsync(Microsoft.AspNetCore.Http.HttpContext,System.Threading.CancellationToken)">
+            <summary>
+            Returns the correlation ID for the specified HTTP context, or <c>null</c> if no correlation ID could be found.
+            </summary>
+        </member>
+        <member name="T:Elsa.Http.Contracts.IHttpEndpointAuthorizationHandler">
+            <summary>
+            A handler that is invoked when authorizing an inbound HTTP request.
+            </summary>
+        </member>
+        <member name="M:Elsa.Http.Contracts.IHttpEndpointAuthorizationHandler.AuthorizeAsync(Elsa.Http.Models.AuthorizeHttpEndpointContext)">
+            <summary>
+            Authorizes an inbound HTTP request.
+            </summary>
+            <param name="context">The context.</param>
+            <returns>True if the request is authorized, otherwise false.</returns>
+        </member>
+        <member name="T:Elsa.Http.Contracts.IHttpEndpointFaultHandler">
+            <summary>
+            Implement this to control what to return to the client in case an unhandled exception occurs while executing the workflow.
+            </summary>
+        </member>
+        <member name="T:Elsa.Http.Contracts.IHttpWorkflowInstanceIdSelector">
+            <summary>
+            Provides a way to select the workflow instance ID for a request.
+            </summary>
+        </member>
+        <member name="P:Elsa.Http.Contracts.IHttpWorkflowInstanceIdSelector.Priority">
+            <summary>
+            The priority of this selector. The selector with the highest priority will be used.
+            </summary>
+        </member>
+        <member name="M:Elsa.Http.Contracts.IHttpWorkflowInstanceIdSelector.GetWorkflowInstanceIdAsync(Microsoft.AspNetCore.Http.HttpContext,System.Threading.CancellationToken)">
+            <summary>
+            Returns the workflow instance ID for the specified HTTP context, or <c>null</c> if no workflow instance ID could be found.
+            </summary>
+        </member>
+        <member name="T:Elsa.Http.Contracts.IRouteMatcher">
+            <summary>
+            Matches a given request path against the specified route template.
+            </summary>
+        </member>
+        <member name="M:Elsa.Http.Contracts.IRouteMatcher.Match(System.String,System.String)">
+            <summary>
+            Matches a given request path against the specified route template.
+            </summary>
+        </member>
+        <member name="T:Elsa.Http.Contracts.IRouteTable">
+            <summary>
+            Stores a list of all routes provided by <see cref="T:Elsa.Http.HttpEndpoint"/> activities.
+            </summary>
+        </member>
+        <member name="M:Elsa.Http.Contracts.IRouteTable.Add(System.String)">
+            <summary>
+            Adds a route to the table.
+            </summary>
+            <param name="route">The route to add.</param>
+        </member>
+        <member name="M:Elsa.Http.Contracts.IRouteTable.Remove(System.String)">
+            <summary>
+            Removes a route from the table.
+            </summary>
+            <param name="route">The route to remove.</param>
+        </member>
+        <member name="M:Elsa.Http.Contracts.IRouteTable.AddRange(System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Adds a range of routes to the table.
+            </summary>
+            <param name="routes">The routes to add.</param>
+        </member>
+        <member name="M:Elsa.Http.Contracts.IRouteTable.RemoveRange(System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Removes a range of routes from the table.
+            </summary>
+            <param name="routes">The routes to remove.</param>
+        </member>
+        <member name="T:Elsa.Http.Contracts.IRouteTableUpdater">
+            <summary>
+            Updates the route table based on current workflow triggers and bookmarks.
+            </summary>
+        </member>
+        <member name="M:Elsa.Http.Contracts.IRouteTableUpdater.UpdateAsync(System.Threading.CancellationToken)">
+            <summary>
+            Updates the route table.
+            </summary>
+            <param name="cancellationToken">The cancellation token.</param>
+        </member>
+        <member name="T:Elsa.Http.DownloadableContentHandlers.BinaryDownloadableContentHandler">
+            <summary>
+            Handles content that represents a downloadable binary file.
+            </summary>
+        </member>
+        <member name="M:Elsa.Http.DownloadableContentHandlers.BinaryDownloadableContentHandler.GetSupportsContent(System.Object)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Http.DownloadableContentHandlers.BinaryDownloadableContentHandler.GetDownloadable(Elsa.Http.Contexts.DownloadableContext)">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.Http.DownloadableContentHandlers.DownloadableDownloadableContentHandler">
+            <summary>
+            Handles content that represents a downloadable.
+            </summary>
+        </member>
+        <member name="M:Elsa.Http.DownloadableContentHandlers.DownloadableDownloadableContentHandler.GetSupportsContent(System.Object)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Http.DownloadableContentHandlers.DownloadableDownloadableContentHandler.GetDownloadable(Elsa.Http.Contexts.DownloadableContext)">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.Http.DownloadableContentHandlers.FormFileDownloadableContentHandler">
+            <summary>
+            Handles content that represents a downloadable stream.
+            </summary>
+        </member>
+        <member name="M:Elsa.Http.DownloadableContentHandlers.FormFileDownloadableContentHandler.GetSupportsContent(System.Object)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Http.DownloadableContentHandlers.FormFileDownloadableContentHandler.GetDownloadable(Elsa.Http.Contexts.DownloadableContext)">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.Http.DownloadableContentHandlers.MultiDownloadableContentHandler">
+            <summary>
+            Handles content that represents a list of downloadable objects.
+            </summary>
+        </member>
+        <member name="M:Elsa.Http.DownloadableContentHandlers.MultiDownloadableContentHandler.GetSupportsContent(System.Object)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Http.DownloadableContentHandlers.MultiDownloadableContentHandler.GetDownloadablesAsync(Elsa.Http.Contexts.DownloadableContext)">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.Http.DownloadableContentHandlers.StreamDownloadableContentHandler">
+            <summary>
+            Handles content that represents a downloadable stream.
+            </summary>
+        </member>
+        <member name="M:Elsa.Http.DownloadableContentHandlers.StreamDownloadableContentHandler.GetSupportsContent(System.Object)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Http.DownloadableContentHandlers.StreamDownloadableContentHandler.GetDownloadable(Elsa.Http.Contexts.DownloadableContext)">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.Http.DownloadableContentHandlers.UrlDownloadableContentHandler">
+            <summary>
+            Handles content that represents a downloadable URL.
+            </summary>
+        </member>
+        <member name="M:Elsa.Http.DownloadableContentHandlers.UrlDownloadableContentHandler.#ctor(Elsa.Http.Contracts.IFileDownloader,Microsoft.AspNetCore.StaticFiles.IContentTypeProvider)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Http.DownloadableContentHandlers.UrlDownloadableContentHandler.GetSupportsContent(System.Object)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Http.DownloadableContentHandlers.UrlDownloadableContentHandler.GetDownloadableAsync(Elsa.Http.Contexts.DownloadableContext)">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.Http.Exceptions.HttpBadRequestException">
+            <summary>
+            Exception thrown when a bad request is received.
+            </summary>
+        </member>
+        <member name="M:Elsa.Http.Exceptions.HttpBadRequestException.#ctor(System.String,System.Exception)">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.Http.Features.HttpFeature">
+            <summary>
+            Installs services related to HTTP services and activities.
+            </summary>
+        </member>
+        <member name="M:Elsa.Http.Features.HttpFeature.#ctor(Elsa.Features.Services.IModule)">
+            <inheritdoc />
+        </member>
+        <member name="P:Elsa.Http.Features.HttpFeature.ConfigureHttpOptions">
+            <summary>
+            A delegate to configure <see cref="T:Elsa.Http.Options.HttpActivityOptions"/>.
+            </summary>
+        </member>
+        <member name="P:Elsa.Http.Features.HttpFeature.ConfigureHttpFileCacheOptions">
+            <summary>
+            A delegate to configure <see cref="T:Elsa.Http.Options.HttpFileCacheOptions"/>.
+            </summary>
+        </member>
+        <member name="P:Elsa.Http.Features.HttpFeature.HttpEndpointAuthorizationHandler">
+            <summary>
+            A delegate that is invoked when authorizing an inbound HTTP request.
+            </summary>
+        </member>
+        <member name="P:Elsa.Http.Features.HttpFeature.HttpEndpointWorkflowFaultHandler">
+            <summary>
+            A delegate that is invoked when an HTTP workflow faults. 
+            </summary>
+        </member>
+        <member name="P:Elsa.Http.Features.HttpFeature.ContentTypeProvider">
+            <summary>
+            A delegate to configure the <see cref="T:Microsoft.AspNetCore.StaticFiles.IContentTypeProvider"/>.
+            </summary>
+        </member>
+        <member name="P:Elsa.Http.Features.HttpFeature.FileCache">
+            <summary>
+            A delegate to configure the <see cref="T:Elsa.Http.Contracts.IFileCacheStorageProvider"/>.
+            </summary>
+        </member>
+        <member name="P:Elsa.Http.Features.HttpFeature.HttpClient">
+            <summary>
+            A delegate to configure the <see cref="P:Elsa.Http.Features.HttpFeature.HttpClient"/> used when by the <see cref="T:Elsa.Http.FlowSendHttpRequest"/> activity.
+            </summary>
+        </member>
+        <member name="P:Elsa.Http.Features.HttpFeature.HttpClientBuilder">
+            <summary>
+            A delegate to configure the <see cref="P:Elsa.Http.Features.HttpFeature.HttpClientBuilder"/> for <see cref="P:Elsa.Http.Features.HttpFeature.HttpClient"/>.
+            </summary>
+        </member>
+        <member name="P:Elsa.Http.Features.HttpFeature.HttpCorrelationIdSelectorTypes">
+            <summary>
+            A list of <see cref="T:Elsa.Http.Contracts.IHttpCorrelationIdSelector"/> types to register with the service collection.
+            </summary>
+        </member>
+        <member name="P:Elsa.Http.Features.HttpFeature.HttpWorkflowInstanceIdSelectorTypes">
+            <summary>
+            A list of <see cref="T:Elsa.Http.Contracts.IHttpWorkflowInstanceIdSelector"/> types to register with the service collection.
+            </summary>
+        </member>
+        <member name="M:Elsa.Http.Features.HttpFeature.Configure">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Http.Features.HttpFeature.ConfigureHostedServices">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Http.Features.HttpFeature.Apply">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.Http.FileCaches.BlobFileCacheStorageProvider">
+            <summary>
+            A file cache that stores files in blob storage using FluentStorage.
+            </summary>
+        </member>
+        <member name="M:Elsa.Http.FileCaches.BlobFileCacheStorageProvider.#ctor(FluentStorage.Blobs.IBlobStorage)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Elsa.Http.FileCaches.BlobFileCacheStorageProvider"/> class.
+            </summary>
+        </member>
+        <member name="M:Elsa.Http.FileCaches.BlobFileCacheStorageProvider.GetStorage">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.Http.Handlers.AllowAnonymousHttpEndpointAuthorizationHandler">
+            <summary>
+            A default <see cref="T:Elsa.Http.Contracts.IHttpEndpointAuthorizationHandler"/> that allows all requests.
+            </summary>
+        </member>
+        <member name="M:Elsa.Http.Handlers.AllowAnonymousHttpEndpointAuthorizationHandler.AuthorizeAsync(Elsa.Http.Models.AuthorizeHttpEndpointContext)">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.Http.Handlers.AuthenticationBasedHttpEndpointAuthorizationHandler">
+            <summary>
+            An <see cref="T:Elsa.Http.Contracts.IHttpEndpointAuthorizationHandler"/> that uses the <see cref="T:Microsoft.AspNetCore.Authorization.IAuthorizationService"/> to authorize an inbound HTTP request.
+            </summary>
+        </member>
+        <member name="M:Elsa.Http.Handlers.AuthenticationBasedHttpEndpointAuthorizationHandler.#ctor(Microsoft.AspNetCore.Authorization.IAuthorizationService)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Elsa.Http.Handlers.AuthenticationBasedHttpEndpointAuthorizationHandler"/> class.
+            </summary>
+        </member>
+        <member name="M:Elsa.Http.Handlers.AuthenticationBasedHttpEndpointAuthorizationHandler.AuthorizeAsync(Elsa.Http.Models.AuthorizeHttpEndpointContext)">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.Http.Handlers.ConfigureWorkflowStateSerialization">
+            <summary>
+            Configures the serialization of <see cref="T:Elsa.Workflows.Core.State.WorkflowState"/> objects.
+            </summary>
+        </member>
+        <member name="M:Elsa.Http.Handlers.ConfigureWorkflowStateSerialization.HandleAsync(Elsa.Workflows.Core.Notifications.SerializingWorkflowState,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Http.Handlers.ConfigureWorkflowStateSerialization.HandleAsync(Elsa.Workflows.Core.Notifications.SafeSerializerSerializing,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.Http.Handlers.DefaultHttpEndpointFaultHandler">
+            <summary>
+            A default fault handler that writes information about the fault to the <see cref="T:Microsoft.AspNetCore.Http.HttpResponse"/>.
+            </summary>
+        </member>
+        <member name="M:Elsa.Http.Handlers.DefaultHttpEndpointFaultHandler.HandleAsync(Elsa.Http.Models.HttpEndpointFaultContext)">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.Http.Handlers.DetailedHttpEndpointFaultHandler">
+            <summary>
+            A fault handler that writes detailed information about the fault to the <see cref="T:Microsoft.AspNetCore.Http.HttpResponse"/>.
+            </summary>
+        </member>
+        <member name="M:Elsa.Http.Handlers.DetailedHttpEndpointFaultHandler.#ctor(Elsa.Workflows.Core.Contracts.IApiSerializer)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Elsa.Http.Handlers.DefaultHttpEndpointFaultHandler"/> class.
+            </summary>
+        </member>
+        <member name="M:Elsa.Http.Handlers.DetailedHttpEndpointFaultHandler.HandleAsync(Elsa.Http.Models.HttpEndpointFaultContext)">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.Http.Handlers.UpdateRouteTable">
+            <summary>
+            A handler that updates the route table when workflow triggers and bookmarks are indexed.
+            </summary>
+        </member>
+        <member name="M:Elsa.Http.Handlers.UpdateRouteTable.#ctor(Elsa.Http.Contracts.IRouteTable)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Elsa.Http.Handlers.UpdateRouteTable"/> class.
+            </summary>
+        </member>
+        <member name="M:Elsa.Http.Handlers.UpdateRouteTable.HandleAsync(Elsa.Workflows.Runtime.Notifications.WorkflowTriggersIndexed,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Http.Handlers.UpdateRouteTable.HandleAsync(Elsa.Workflows.Runtime.Notifications.WorkflowBookmarksIndexed,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.Http.Handlers.ValidateWorkflowRequestHandler">
+            <summary>
+            A <see cref="T:Elsa.Workflows.Management.Requests.ValidateWorkflowRequest"/> handler that validates a workflow path and return any errors. 
+            </summary>
+        </member>
+        <member name="M:Elsa.Http.Handlers.ValidateWorkflowRequestHandler.#ctor(Elsa.Workflows.Runtime.Contracts.ITriggerStore,Elsa.Workflows.Runtime.Contracts.ITriggerIndexer)">
+            <summary>
+            Constructor.
+            </summary>
+        </member>
+        <member name="M:Elsa.Http.Handlers.ValidateWorkflowRequestHandler.HandleAsync(Elsa.Workflows.Management.Requests.ValidateWorkflowRequest,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.Http.HostedServices.UpdateRouteTableHostedService">
+            <summary>
+            Update the route table based on workflow triggers and bookmarks.
+            </summary>
+        </member>
+        <member name="M:Elsa.Http.HostedServices.UpdateRouteTableHostedService.#ctor(Elsa.Http.Contracts.IRouteTableUpdater)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Elsa.Http.HostedServices.UpdateRouteTableHostedService"/> class.
+            </summary>
+        </member>
+        <member name="M:Elsa.Http.HostedServices.UpdateRouteTableHostedService.ExecuteAsync(System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.Http.Middleware.WorkflowsMiddleware">
+            <summary>
+            An ASP.NET middleware component that tries to match the inbound request path to an associated workflow and then run that workflow.
+            </summary>
+        </member>
+        <member name="M:Elsa.Http.Middleware.WorkflowsMiddleware.#ctor(Microsoft.AspNetCore.Http.RequestDelegate,Elsa.Workflows.Runtime.Contracts.IWorkflowRuntime,Microsoft.Extensions.Options.IOptions{Elsa.Http.Options.HttpActivityOptions},Elsa.Http.Contracts.IHttpBookmarkProcessor,Elsa.Http.Contracts.IHttpEndpointFaultHandler,Elsa.Http.Contracts.IHttpEndpointAuthorizationHandler,Elsa.Workflows.Runtime.Contracts.IBookmarkStore,Elsa.Workflows.Runtime.Contracts.ITriggerStore,Elsa.Workflows.Core.Contracts.IBookmarkHasher,Elsa.Workflows.Core.Contracts.IBookmarkPayloadSerializer,Elsa.Http.Contracts.IRouteMatcher,Elsa.Http.Contracts.IRouteTable,System.Collections.Generic.IEnumerable{Elsa.Http.Contracts.IHttpCorrelationIdSelector},System.Collections.Generic.IEnumerable{Elsa.Http.Contracts.IHttpWorkflowInstanceIdSelector})">
+            <summary>
+            Constructor.
+            </summary>
+        </member>
+        <member name="M:Elsa.Http.Middleware.WorkflowsMiddleware.InvokeAsync(Microsoft.AspNetCore.Http.HttpContext)">
+            <summary>
+            Attempts to matches the inbound request path to an associated workflow and then run that workflow.
+            </summary>
+        </member>
+        <member name="T:Elsa.Http.Models.Downloadable">
+            <summary>
+            Represents a downloadable object.
+            </summary>
+        </member>
+        <member name="M:Elsa.Http.Models.Downloadable.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Elsa.Http.Models.Downloadable"/> class.
+            </summary>
+        </member>
+        <member name="M:Elsa.Http.Models.Downloadable.#ctor(System.IO.Stream,System.String,System.String,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Elsa.Http.Models.Downloadable"/> class.
+            </summary>
+            <param name="stream">The stream to download.</param>
+            <param name="filename">The filename to use when downloading the stream.</param>
+            <param name="contentType">The content type to use when downloading the stream.</param>
+            <param name="eTag">The ETag to use when downloading the stream.</param>
+        </member>
+        <member name="P:Elsa.Http.Models.Downloadable.Stream">
+            <summary>
+            The stream to download.
+            </summary>
+        </member>
+        <member name="P:Elsa.Http.Models.Downloadable.Filename">
+            <summary>
+            The filename to use when downloading the stream.
+            </summary>
+        </member>
+        <member name="P:Elsa.Http.Models.Downloadable.ContentType">
+            <summary>
+            The content type to use when downloading the stream.
+            </summary>
+        </member>
+        <member name="P:Elsa.Http.Models.Downloadable.ETag">
+            <summary>
+            The ETag to use when downloading the stream.
+            </summary>
+        </member>
+        <member name="T:Elsa.Http.Models.EventTokenPayload">
+            <summary>
+            Represents the payload of an event, serialized as a secured token.
+            </summary>
+            <param name="EventName">The name of the event.</param>
+            <param name="WorkflowInstanceId">The ID of the workflow instance to trigger with the event.</param>
+        </member>
+        <member name="M:Elsa.Http.Models.EventTokenPayload.#ctor(System.String,System.String)">
+            <summary>
+            Represents the payload of an event, serialized as a secured token.
+            </summary>
+            <param name="EventName">The name of the event.</param>
+            <param name="WorkflowInstanceId">The ID of the workflow instance to trigger with the event.</param>
+        </member>
+        <member name="P:Elsa.Http.Models.EventTokenPayload.EventName">
+            <summary>The name of the event.</summary>
+        </member>
+        <member name="P:Elsa.Http.Models.EventTokenPayload.WorkflowInstanceId">
+            <summary>The ID of the workflow instance to trigger with the event.</summary>
+        </member>
+        <member name="T:Elsa.Http.Models.HttpEndpointFaultContext">
+            <summary>
+            Provides context about the faulted workflow.
+            </summary>
+            <param name="HttpContext">The HTTP context.</param>
+            <param name="WorkflowState">The faulted workflow state.</param>
+            <param name="CancellationToken">The cancellation token.</param>
+        </member>
+        <member name="M:Elsa.Http.Models.HttpEndpointFaultContext.#ctor(Microsoft.AspNetCore.Http.HttpContext,Elsa.Workflows.Core.State.WorkflowState,System.Threading.CancellationToken)">
+            <summary>
+            Provides context about the faulted workflow.
+            </summary>
+            <param name="HttpContext">The HTTP context.</param>
+            <param name="WorkflowState">The faulted workflow state.</param>
+            <param name="CancellationToken">The cancellation token.</param>
+        </member>
+        <member name="P:Elsa.Http.Models.HttpEndpointFaultContext.HttpContext">
+            <summary>The HTTP context.</summary>
+        </member>
+        <member name="P:Elsa.Http.Models.HttpEndpointFaultContext.WorkflowState">
+            <summary>The faulted workflow state.</summary>
+        </member>
+        <member name="P:Elsa.Http.Models.HttpEndpointFaultContext.CancellationToken">
+            <summary>The cancellation token.</summary>
+        </member>
+        <member name="T:Elsa.Http.Models.HttpRequestHeaders">
+            <summary>
+            Represents the headers of an HTTP request.
+            </summary>
+        </member>
+        <member name="P:Elsa.Http.Models.HttpRequestHeaders.ContentType">
+            <summary>
+            Gets the content type of the request.
+            </summary>
+        </member>
+        <member name="T:Elsa.Http.Models.HttpResponseHeaders">
+            <summary>
+            Represents the headers of an HTTP response.
+            </summary>
+        </member>
+        <member name="P:Elsa.Http.Models.HttpResponseHeaders.ContentType">
+            <summary>
+            Gets the content type of the response.
+            </summary>
+        </member>
+        <member name="T:Elsa.Http.Models.HttpStatusCodeCase">
+            <summary>
+            A binding between an HTTP status code and an activity.
+            </summary>
+        </member>
+        <member name="M:Elsa.Http.Models.HttpStatusCodeCase.#ctor">
+            <summary>
+            Creates a new instance of the <see cref="T:Elsa.Http.Models.HttpStatusCodeCase"/> class.
+            </summary>
+        </member>
+        <member name="M:Elsa.Http.Models.HttpStatusCodeCase.#ctor(System.Int32,Elsa.Workflows.Core.Contracts.IActivity)">
+            <summary>
+            Creates a new instance of the <see cref="T:Elsa.Http.Models.HttpStatusCodeCase"/> class.
+            </summary>
+        </member>
+        <member name="P:Elsa.Http.Models.HttpStatusCodeCase.StatusCode">
+            <summary>
+            The HTTP status code to match.
+            </summary>
+        </member>
+        <member name="P:Elsa.Http.Models.HttpStatusCodeCase.Activity">
+            <summary>
+            The activity to execute when the HTTP status code matches.
+            </summary>
+        </member>
+        <member name="T:Elsa.Http.Options.DownloadableOptions">
+            <summary>
+            Options for downloading a file.
+            </summary>
+        </member>
+        <member name="P:Elsa.Http.Options.DownloadableOptions.ETag">
+            <summary>
+            Gets or sets the entity tag.
+            </summary>
+        </member>
+        <member name="P:Elsa.Http.Options.DownloadableOptions.Range">
+            <summary>
+            Gets or sets the range.
+            </summary>
+        </member>
+        <member name="T:Elsa.Http.Options.FileDownloadOptions">
+            <summary>
+            Options for downloading a file.
+            </summary>
+        </member>
+        <member name="P:Elsa.Http.Options.FileDownloadOptions.ETag">
+            <summary>
+            Gets or sets the entity tag.
+            </summary>
+        </member>
+        <member name="P:Elsa.Http.Options.FileDownloadOptions.Range">
+            <summary>
+            Gets or sets the range.
+            </summary>
+        </member>
+        <member name="T:Elsa.Http.Options.HttpActivityOptions">
+            <summary>
+            Provides various options related to the HTTP activities.
+            </summary>
+        </member>
+        <member name="P:Elsa.Http.Options.HttpActivityOptions.BasePath">
+            <summary>
+            The root path at which HTTP activities can be invoked.
+            </summary>
+        </member>
+        <member name="P:Elsa.Http.Options.HttpActivityOptions.BaseUrl">
+            <summary>
+            The base URL of the server. This should be set to the same value at which the Elsa Server is publicly available. It will be used when generating absolute URLs need to be generated by activities such as SendEmail. 
+            </summary>
+        </member>
+        <member name="P:Elsa.Http.Options.HttpActivityOptions.ApiRoutePrefix">
+            <summary>
+            The prefix used for API routes.
+            </summary>
+        </member>
+        <member name="P:Elsa.Http.Options.HttpActivityOptions.AvailableContentTypes">
+            <summary>
+            A configurable set of available content types available from the <see cref="T:Elsa.Http.WriteHttpResponse"/> activity.
+            </summary>
+        </member>
+        <member name="T:Elsa.Http.Options.HttpFileCacheOptions">
+            <summary>
+            Provides options for the HTTP file cache.
+            </summary>
+        </member>
+        <member name="P:Elsa.Http.Options.HttpFileCacheOptions.TimeToLive">
+            <summary>
+            The time to live for cached files.
+            </summary>
+        </member>
+        <member name="P:Elsa.Http.Options.HttpFileCacheOptions.LocalCacheDirectory">
+            <summary>
+            The local cache directory. Defaults to the system's temp directory.
+            </summary>
+        </member>
+        <member name="T:Elsa.Http.Parsers.JsonHttpContentParser">
+            <summary>
+            Reads application/json and text/json content type streams.
+            </summary>
+        </member>
+        <member name="P:Elsa.Http.Parsers.JsonHttpContentParser.Priority">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Http.Parsers.JsonHttpContentParser.GetSupportsContentType(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Http.Parsers.JsonHttpContentParser.ReadAsync(System.IO.Stream,System.Type,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.Http.Parsers.StringHttpContentParser">
+            <summary>
+            Reads any content type streams as a string and attempts to convert the string to the specified return type.
+            </summary>
+        </member>
+        <member name="P:Elsa.Http.Parsers.StringHttpContentParser.Priority">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Http.Parsers.StringHttpContentParser.GetSupportsContentType(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Http.Parsers.StringHttpContentParser.ReadAsync(System.IO.Stream,System.Type,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.Http.Parsers.XmlHttpContentParser">
+            <summary>
+            Reads application/xml and text/xml content type streams.
+            </summary>
+        </member>
+        <member name="P:Elsa.Http.Parsers.XmlHttpContentParser.Priority">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Http.Parsers.XmlHttpContentParser.GetSupportsContentType(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Http.Parsers.XmlHttpContentParser.ReadAsync(System.IO.Stream,System.Type,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.Http.PortResolvers.SendHttpRequestActivityResolver">
+            <summary>
+            Returns a list of outbound activities for a given <see cref="T:Elsa.Http.SendHttpRequest"/> activity's expected status codes.
+            </summary>
+        </member>
+        <member name="P:Elsa.Http.PortResolvers.SendHttpRequestActivityResolver.Priority">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Http.PortResolvers.SendHttpRequestActivityResolver.GetSupportsActivity(Elsa.Workflows.Core.Contracts.IActivity)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Http.PortResolvers.SendHttpRequestActivityResolver.GetActivitiesAsync(Elsa.Workflows.Core.Contracts.IActivity,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.Http.Scripting.JavaScript.HttpJavaScriptHandler">
+            <summary>
+            Configures the JavaScript engine with additional .NET types that can be instantiated.
+            </summary>
+        </member>
+        <member name="M:Elsa.Http.Scripting.JavaScript.HttpJavaScriptHandler.#ctor(Elsa.JavaScript.TypeDefinitions.Contracts.ITypeDescriber)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Elsa.Http.Scripting.JavaScript.HttpJavaScriptHandler"/> class.
+            </summary>
+        </member>
+        <member name="M:Elsa.Http.Scripting.JavaScript.HttpJavaScriptHandler.Elsa#Mediator#Contracts#INotificationHandler{Elsa#JavaScript#Notifications#EvaluatingJavaScript}#HandleAsync(Elsa.JavaScript.Notifications.EvaluatingJavaScript,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Http.Scripting.JavaScript.HttpJavaScriptHandler.Elsa#JavaScript#TypeDefinitions#Contracts#ITypeDefinitionProvider#GetTypeDefinitionsAsync(Elsa.JavaScript.TypeDefinitions.Models.TypeDefinitionContext)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Http.Scripting.JavaScript.HttpJavaScriptHandler.Elsa#JavaScript#TypeDefinitions#Contracts#IFunctionDefinitionProvider#GetFunctionDefinitionsAsync(Elsa.JavaScript.TypeDefinitions.Models.TypeDefinitionContext)">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.Http.Selectors.HeaderHttpCorrelationIdSelector">
+            <summary>
+            Returns the correlation ID from the <c>X-Correlation-ID</c> header, if any.
+            </summary>
+        </member>
+        <member name="M:Elsa.Http.Selectors.HeaderHttpCorrelationIdSelector.GetCorrelationId(Microsoft.AspNetCore.Http.HttpContext)">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.Http.Selectors.HeaderHttpWorkflowInstanceIdSelector">
+            <summary>
+            Returns the workflow instance ID from the <c>X-Workflow-Instance-ID</c> header, if any.
+            </summary>
+        </member>
+        <member name="M:Elsa.Http.Selectors.HeaderHttpWorkflowInstanceIdSelector.GetWorkflowInstanceId(Microsoft.AspNetCore.Http.HttpContext)">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.Http.Selectors.QueryStringHttpCorrelationIdSelector">
+            <summary>
+            Returns the correlation ID from the <c>correlationId</c> query string parameter.
+            </summary>
+        </member>
+        <member name="M:Elsa.Http.Selectors.QueryStringHttpCorrelationIdSelector.GetCorrelationId(Microsoft.AspNetCore.Http.HttpContext)">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.Http.Selectors.QueryStringHttpWorkflowInstanceIdSelector">
+            <summary>
+            Returns the workflow instance ID from the <c>X-Workflow-Instance-ID</c> header, if any.
+            </summary>
+        </member>
+        <member name="M:Elsa.Http.Selectors.QueryStringHttpWorkflowInstanceIdSelector.GetWorkflowInstanceId(Microsoft.AspNetCore.Http.HttpContext)">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.Http.Serialization.HttpRequestHeadersConverter">
+            <summary>
+            A custom JSON converter for <see cref="T:Elsa.Http.Models.HttpRequestHeaders"/> that supports both single and multiple values.
+            </summary>
+        </member>
+        <member name="M:Elsa.Http.Serialization.HttpRequestHeadersConverter.Read(System.Text.Json.Utf8JsonReader@,System.Type,System.Text.Json.JsonSerializerOptions)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Http.Serialization.HttpRequestHeadersConverter.Write(System.Text.Json.Utf8JsonWriter,Elsa.Http.Models.HttpRequestHeaders,System.Text.Json.JsonSerializerOptions)">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.Http.Serialization.HttpStatusCodeCaseForWorkflowInstanceConverter">
+            <summary>
+            A custom JSON converter for <see cref="T:Elsa.Http.Models.HttpStatusCodeCase"/> objects when serializing workflow states.
+            </summary>
+        </member>
+        <member name="M:Elsa.Http.Serialization.HttpStatusCodeCaseForWorkflowInstanceConverter.Read(System.Text.Json.Utf8JsonReader@,System.Type,System.Text.Json.JsonSerializerOptions)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Http.Serialization.HttpStatusCodeCaseForWorkflowInstanceConverter.Write(System.Text.Json.Utf8JsonWriter,Elsa.Http.Models.HttpStatusCodeCase,System.Text.Json.JsonSerializerOptions)">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.Http.Services.DefaultAbsoluteUrlProvider">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Http.Services.DefaultAbsoluteUrlProvider.#ctor(Microsoft.Extensions.Options.IOptions{Elsa.Http.Options.HttpActivityOptions})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Elsa.Http.Services.DefaultAbsoluteUrlProvider"/> class.
+            </summary>
+        </member>
+        <member name="M:Elsa.Http.Services.DefaultAbsoluteUrlProvider.ToAbsoluteUrl(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.Http.Services.DefaultDownloadableManager">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Http.Services.DefaultDownloadableManager.#ctor(System.Collections.Generic.IEnumerable{Elsa.Http.Contracts.IDownloadableContentHandler})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Elsa.Http.Services.DefaultDownloadableManager"/> class.
+            </summary>
+        </member>
+        <member name="M:Elsa.Http.Services.DefaultDownloadableManager.GetDownloadablesAsync(System.Object,Elsa.Http.Options.DownloadableOptions,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.Http.Services.DefaultRouteTableUpdater">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Http.Services.DefaultRouteTableUpdater.#ctor(Elsa.Http.Contracts.IRouteTable,Elsa.Workflows.Runtime.Contracts.ITriggerStore,Elsa.Workflows.Runtime.Contracts.IBookmarkStore)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Elsa.Http.Services.DefaultRouteTableUpdater"/> class.
+            </summary>
+        </member>
+        <member name="M:Elsa.Http.Services.DefaultRouteTableUpdater.UpdateAsync(System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.Http.Services.HttpBookmarkProcessor">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Http.Services.HttpBookmarkProcessor.#ctor(Elsa.Workflows.Runtime.Contracts.IWorkflowRuntime,Elsa.Workflows.Management.Contracts.IWorkflowDefinitionService,Elsa.Workflows.Runtime.Contracts.IWorkflowHostFactory,Microsoft.AspNetCore.Http.IHttpContextAccessor,Elsa.Workflows.Management.Contracts.IWorkflowInstanceManager,Elsa.Workflows.Management.Mappers.WorkflowStateMapper)">
+            <summary>
+            Constructor.
+            </summary>
+        </member>
+        <member name="M:Elsa.Http.Services.HttpBookmarkProcessor.ProcessBookmarks(System.Collections.Generic.IEnumerable{Elsa.Workflows.Runtime.Results.WorkflowExecutionResult},System.String,System.Collections.Generic.IDictionary{System.String,System.Object},Elsa.Workflows.Core.Models.CancellationTokens)">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.Http.Services.HttpClientFileDownloader">
+            <summary>
+            A general-purpose downloader of files from a given URL that uses <see cref="T:System.Net.Http.HttpClient"/>.
+            </summary>
+        </member>
+        <member name="M:Elsa.Http.Services.HttpClientFileDownloader.#ctor(System.Net.Http.HttpClient)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Elsa.Http.Services.HttpClientFileDownloader"/> class.
+            </summary>
+        </member>
+        <member name="M:Elsa.Http.Services.HttpClientFileDownloader.DownloadAsync(System.Uri,Elsa.Http.Options.FileDownloadOptions,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.Http.Services.RouteMatcher">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Http.Services.RouteMatcher.Match(System.String,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.Http.Services.RouteTable">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Http.Services.RouteTable.#ctor(Microsoft.Extensions.Caching.Memory.IMemoryCache,Microsoft.Extensions.Logging.ILogger{Elsa.Http.Services.RouteTable})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Elsa.Http.Services.RouteTable"/> class.
+            </summary>
+        </member>
+        <member name="M:Elsa.Http.Services.RouteTable.Add(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Http.Services.RouteTable.Remove(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Http.Services.RouteTable.AddRange(System.Collections.Generic.IEnumerable{System.String})">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Http.Services.RouteTable.RemoveRange(System.Collections.Generic.IEnumerable{System.String})">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Http.Services.RouteTable.GetEnumerator">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.Http.Services.ZipManager">
+            <summary>
+            Provides a helper service for zipping downloadable content.
+            </summary>
+        </member>
+        <member name="M:Elsa.Http.Services.ZipManager.#ctor(Elsa.Common.Contracts.ISystemClock,Elsa.Http.Contracts.IFileCacheStorageProvider,Microsoft.Extensions.Options.IOptions{Elsa.Http.Options.HttpFileCacheOptions},Microsoft.Extensions.Logging.ILogger{Elsa.Http.Services.ZipManager})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Elsa.Http.Services.ZipManager"/> class.
+            </summary>
+        </member>
+        <member name="M:Elsa.Http.Services.ZipManager.LoadAsync(System.String,System.Threading.CancellationToken)">
+            <summary>
+            Loads a cached zip blob for the specified download correlation ID.
+            </summary>
+            <param name="downloadCorrelationId">The download correlation ID.</param>
+            <param name="cancellationToken">An optional cancellation token.</param>
+            <returns>A tuple containing the blob and the stream.</returns>
+        </member>
+        <member name="M:Elsa.Http.Services.ZipManager.CreateZipArchiveAsync(System.String,System.Collections.Generic.IEnumerable{System.Func{System.Threading.Tasks.ValueTask{Elsa.Http.Models.Downloadable}}},System.Threading.CancellationToken)">
+            <summary>
+            Creates a zip archive from the specified <see cref="T:Elsa.Http.Models.Downloadable"/> instances.
+            </summary>
+        </member>
+        <member name="M:Elsa.Http.Services.ZipManager.CreateCachedZipBlobAsync(System.String,System.String,System.String,System.String,System.Threading.CancellationToken)">
+            <summary>
+            Creates a cached zip blob for the specified file.
+            </summary>
+            <param name="localPath">The full path of the file to upload.</param>
+            <param name="downloadCorrelationId">The download correlation ID.</param>
+            <param name="downloadAsFilename">The filename to use when downloading the file.</param>
+            <param name="contentType">The content type of the file.</param>
+            <param name="cancellationToken">An optional cancellation token.</param>
+        </member>
+        <member name="M:Elsa.Http.Services.ZipManager.CreateBlob(System.String,System.String,System.String,System.Nullable{System.DateTimeOffset})">
+            <summary>
+            Creates a blob for the specified file.
+            </summary>
+            <param name="fullPath">The full path of the file.</param>
+            <param name="downloadAsFilename">The filename to use when downloading the file.</param>
+            <param name="contentType">The content type of the file.</param>
+            <param name="expiresAt">The date and time at which the file expires.</param>
+            <returns>The blob.</returns>
+        </member>
+        <member name="T:Elsa.Extensions.ApplicationBuilderExtensions">
+            <summary>
+            Adds extension methods to <see cref="T:Microsoft.AspNetCore.Builder.IApplicationBuilder"/> related to workflow middleware components.
+            </summary>
+        </member>
+        <member name="M:Elsa.Extensions.ApplicationBuilderExtensions.UseWorkflows(Microsoft.AspNetCore.Builder.IApplicationBuilder)">
+            <summary>
+            Installs the <see cref="T:Elsa.Http.Middleware.WorkflowsMiddleware"/> component.
+            </summary>
+        </member>
+        <member name="T:Elsa.Extensions.ExpressionExecutionContextExtensions">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Elsa.Extensions.ExpressionExecutionContextExtensions.GenerateEventTriggerUrl(Elsa.Expressions.Models.ExpressionExecutionContext,System.String,System.TimeSpan)">
+            <summary>
+            Generates a URL that can be used to trigger an event.
+            </summary>
+            <param name="context">The expression execution context.</param>
+            <param name="eventName">The name of the event to trigger.</param>
+            <param name="lifetime">The lifetime of the event trigger token.</param>
+            <returns>A URL that can be used to trigger an event.</returns>
+        </member>
+        <member name="M:Elsa.Extensions.ExpressionExecutionContextExtensions.GenerateEventTriggerUrl(Elsa.Expressions.Models.ExpressionExecutionContext,System.String,System.DateTimeOffset)">
+            <summary>
+            Generates a URL that can be used to trigger an event.
+            </summary>
+            <param name="context">The expression execution context.</param>
+            <param name="eventName">The name of the event to trigger.</param>
+            <param name="expiresAt">The expiration date of the event trigger token.</param>
+            <returns>A URL that can be used to trigger an event.</returns>
+        </member>
+        <member name="M:Elsa.Extensions.ExpressionExecutionContextExtensions.GenerateEventTriggerUrl(Elsa.Expressions.Models.ExpressionExecutionContext,System.String)">
+            <summary>
+            Generates a URL that can be used to trigger an event.
+            </summary>
+            <param name="context">The expression execution context.</param>
+            <param name="eventName">The name of the event to trigger.</param>
+            <returns>A URL that can be used to trigger an event.</returns>
+        </member>
+        <member name="T:Elsa.Extensions.ModuleExtensions">
+            <summary>
+            Provides extensions to install the <see cref="T:Elsa.Http.Features.HttpFeature"/> feature.
+            </summary>
+        </member>
+        <member name="M:Elsa.Extensions.ModuleExtensions.UseHttp(Elsa.Features.Services.IModule,System.Action{Elsa.Http.Features.HttpFeature})">
+            <summary>
+            Install the <see cref="T:Elsa.Http.Features.HttpFeature"/> feature.
+            </summary>
+        </member>
+        <member name="M:Elsa.Extensions.OutputExtensions.GetTargetType(Elsa.Workflows.Core.Models.Output,Elsa.Workflows.Core.ActivityExecutionContext)">
+            <summary>
+            Gets the target type of the specified variable type.
+            </summary>
+        </member>
+        <member name="T:Elsa.Extensions.RouteExtensions">
+            <summary>
+            Provides extension methods for strings that represent a route.
+            </summary>
+        </member>
+        <member name="M:Elsa.Extensions.RouteExtensions.NormalizeRoute(System.String)">
+            <summary>
+            Normalizes a route by ensuring a leading slash, removing any trailing slash and converting the path to lowercase.
+            </summary>
+        </member>
+        <member name="T:Elsa.Extensions.RouteTableExtensions">
+            <summary>
+            Adds extensions to <see cref="T:Elsa.Http.Contracts.IRouteTable"/>.
+            </summary>
+        </member>
+        <member name="M:Elsa.Extensions.RouteTableExtensions.AddRoutes(Elsa.Http.Contracts.IRouteTable,System.Collections.Generic.IEnumerable{Elsa.Workflows.Runtime.Entities.StoredTrigger})">
+            <summary>
+            Adds routes from the specified set of triggers.
+            </summary>
+        </member>
+        <member name="M:Elsa.Extensions.RouteTableExtensions.AddRoutes(Elsa.Http.Contracts.IRouteTable,System.Collections.Generic.IEnumerable{Elsa.Workflows.Runtime.Entities.StoredBookmark})">
+            <summary>
+            Adds routes from the specified set of bookmarks.
+            </summary>
+        </member>
+        <member name="M:Elsa.Extensions.RouteTableExtensions.AddRoutes(Elsa.Http.Contracts.IRouteTable,System.Collections.Generic.IEnumerable{Elsa.Workflows.Core.Models.Bookmark})">
+            <summary>
+            Adds routes from the specified set of bookmarks.
+            </summary>
+        </member>
+        <member name="M:Elsa.Extensions.RouteTableExtensions.RemoveRoutes(Elsa.Http.Contracts.IRouteTable,System.Collections.Generic.IEnumerable{Elsa.Workflows.Runtime.Entities.StoredTrigger})">
+            <summary>
+            Removes routes from the specified set of triggers.
+            </summary>
+        </member>
+        <member name="M:Elsa.Extensions.RouteTableExtensions.RemoveRoutes(Elsa.Http.Contracts.IRouteTable,System.Collections.Generic.IEnumerable{Elsa.Workflows.Core.Models.Bookmark})">
+            <summary>
+            Removes routes from the specified set of bookmarks.
+            </summary>
+        </member>
+        <member name="T:Elsa.Extensions.ServiceCollectionExtensions">
+            <summary>
+            Contains extension methods for the <see cref="T:Microsoft.Extensions.DependencyInjection.IServiceCollection"/> interface.
+            </summary>
+        </member>
+        <member name="M:Elsa.Extensions.ServiceCollectionExtensions.AddHttpCorrelationIdSelector``1(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            Adds a <see cref="T:Elsa.Http.Contracts.IHttpCorrelationIdSelector"/> implementation to the service collection.
+            </summary>
+        </member>
+        <member name="M:Elsa.Extensions.ServiceCollectionExtensions.AddHttpCorrelationIdSelector(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.Func{System.IServiceProvider,Elsa.Http.Contracts.IHttpCorrelationIdSelector})">
+            <summary>
+            Adds a <see cref="T:Elsa.Http.Contracts.IHttpCorrelationIdSelector"/> implementation to the service collection.
+            </summary>
+        </member>
+    </members>
+</doc>

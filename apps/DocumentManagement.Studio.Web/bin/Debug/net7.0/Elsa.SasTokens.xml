@@ -1,0 +1,99 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Elsa.SasTokens</name>
+    </assembly>
+    <members>
+        <member name="T:Elsa.SasTokens.Contracts.DataProtectorTokenService">
+            <summary>
+            A service that can create and decrypt SAS (Shared Access Signature) tokens using the <see cref="T:Microsoft.AspNetCore.DataProtection.IDataProtector"/> service.
+            </summary>
+        </member>
+        <member name="M:Elsa.SasTokens.Contracts.DataProtectorTokenService.#ctor(Microsoft.AspNetCore.DataProtection.IDataProtectionProvider)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Elsa.SasTokens.Contracts.DataProtectorTokenService"/> class.
+            </summary>
+        </member>
+        <member name="M:Elsa.SasTokens.Contracts.DataProtectorTokenService.CreateToken``1(``0,System.TimeSpan)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.SasTokens.Contracts.DataProtectorTokenService.CreateToken``1(``0,System.DateTimeOffset)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.SasTokens.Contracts.DataProtectorTokenService.CreateToken``1(``0)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.SasTokens.Contracts.DataProtectorTokenService.TryDecryptToken``1(System.String,``0@)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.SasTokens.Contracts.DataProtectorTokenService.DecryptToken``1(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.SasTokens.Contracts.ITokenService">
+            <summary>
+            A service that can create and decrypt SAS (Shared Access Signature) tokens.
+            </summary>
+        </member>
+        <member name="M:Elsa.SasTokens.Contracts.ITokenService.CreateToken``1(``0,System.TimeSpan)">
+            <summary>
+            Creates a SAS (Shared Access Signature) token containing the specified data.
+            </summary>
+        </member>
+        <member name="M:Elsa.SasTokens.Contracts.ITokenService.CreateToken``1(``0,System.DateTimeOffset)">
+            <summary>
+            Creates a SAS (Shared Access Signature) token containing the specified data.
+            </summary>
+        </member>
+        <member name="M:Elsa.SasTokens.Contracts.ITokenService.CreateToken``1(``0)">
+            <summary>
+            Creates a SAS (Shared Access Signature) token containing the specified data.
+            </summary>
+        </member>
+        <member name="M:Elsa.SasTokens.Contracts.ITokenService.DecryptToken``1(System.String)">
+            <summary>
+            Decrypts the specified SAS token.
+            </summary>
+        </member>
+        <member name="M:Elsa.SasTokens.Contracts.ITokenService.TryDecryptToken``1(System.String,``0@)">
+            <summary>
+            Decrypts the specified SAS token.
+            </summary>
+        </member>
+        <member name="T:Elsa.SasTokens.Extensions.ServiceCollectionExtensions">
+            <summary>
+            Contains extension methods for the <see cref="T:Microsoft.Extensions.DependencyInjection.IServiceCollection"/> interface.
+            </summary>
+        </member>
+        <member name="M:Elsa.SasTokens.Extensions.ServiceCollectionExtensions.AddSasTokens(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.Func{System.IServiceProvider,Microsoft.AspNetCore.DataProtection.IDataProtectionProvider})">
+            <summary>
+            Adds the SAS tokens module to the service collection.
+            </summary>
+        </member>
+        <member name="T:Elsa.SasTokens.Features.SasTokensFeature">
+            <summary>
+            Adds the SAS tokens feature to the workflow runtime.
+            </summary>
+        </member>
+        <member name="M:Elsa.SasTokens.Features.SasTokensFeature.#ctor(Elsa.Features.Services.IModule)">
+            <inheritdoc />
+        </member>
+        <member name="P:Elsa.SasTokens.Features.SasTokensFeature.DataProtectionProvider">
+            <summary>
+            Gets or sets the data protection provider used to create the <see cref="T:Microsoft.AspNetCore.DataProtection.IDataProtector"/> used to encrypt and decrypt the SAS tokens.
+            </summary>
+        </member>
+        <member name="M:Elsa.SasTokens.Features.SasTokensFeature.Apply">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.Extensions.ModuleExtensions">
+            <summary>
+            Provides extensions to install the <see cref="N:Elsa.SasTokens"/> feature.
+            </summary>
+        </member>
+        <member name="M:Elsa.Extensions.ModuleExtensions.UseSasTokens(Elsa.Features.Services.IModule,System.Action{Elsa.SasTokens.Features.SasTokensFeature})">
+            <summary>
+            Install the <see cref="N:Elsa.SasTokens"/> feature.
+            </summary>
+        </member>
+    </members>
+</doc>

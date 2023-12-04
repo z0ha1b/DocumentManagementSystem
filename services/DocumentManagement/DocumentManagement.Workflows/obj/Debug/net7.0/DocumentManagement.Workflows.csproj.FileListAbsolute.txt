@@ -13,3 +13,5 @@ C:\GitHub\DocumentManagementSystem\services\DocumentManagement\DocumentManagemen
 C:\GitHub\DocumentManagementSystem\services\DocumentManagement\DocumentManagement.Workflows\obj\Debug\net7.0\refint\DocumentManagement.Workflows.dll
 C:\GitHub\DocumentManagementSystem\services\DocumentManagement\DocumentManagement.Workflows\obj\Debug\net7.0\DocumentManagement.Workflows.pdb
 C:\GitHub\DocumentManagementSystem\services\DocumentManagement\DocumentManagement.Workflows\obj\Debug\net7.0\ref\DocumentManagement.Workflows.dll
+C:\GitHub\DocumentManagementSystem\services\DocumentManagement\DocumentManagement.Workflows\bin\Debug\net7.0\DocumentManagement.Persistence.dll
+C:\GitHub\DocumentManagementSystem\services\DocumentManagement\DocumentManagement.Workflows\bin\Debug\net7.0\DocumentManagement.Persistence.pdb

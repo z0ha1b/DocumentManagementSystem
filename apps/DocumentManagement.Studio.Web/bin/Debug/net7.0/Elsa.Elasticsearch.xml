@@ -1,0 +1,404 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Elsa.Elasticsearch</name>
+    </assembly>
+    <members>
+        <member name="T:Elsa.Elasticsearch.Common.ElasticStore`1">
+            <summary>
+            A thin wrapper around <see cref="T:Elastic.Clients.Elasticsearch.ElasticsearchClient"/> for easy re-usability.
+            </summary>
+            <typeparam name="T">The document type.</typeparam>
+        </member>
+        <member name="M:Elsa.Elasticsearch.Common.ElasticStore`1.#ctor(Elastic.Clients.Elasticsearch.ElasticsearchClient,Microsoft.Extensions.Logging.ILogger{Elsa.Elasticsearch.Common.ElasticStore{`0}})">
+            <summary>
+            Constructor.
+            </summary>
+        </member>
+        <member name="M:Elsa.Elasticsearch.Common.ElasticStore`1.SearchAsync(System.Action{Elastic.Clients.Elasticsearch.SearchRequestDescriptor{`0}},System.Threading.CancellationToken)">
+            <summary>
+            Searches the index using the specified search descriptor.
+            </summary>
+        </member>
+        <member name="M:Elsa.Elasticsearch.Common.ElasticStore`1.SearchAsync(System.Action{Elastic.Clients.Elasticsearch.SearchRequestDescriptor{`0}},Elsa.Common.Models.PageArgs,System.Threading.CancellationToken)">
+            <summary>
+            Searches the index using the specified search descriptor.
+            </summary>
+        </member>
+        <member name="M:Elsa.Elasticsearch.Common.ElasticStore`1.CountAsync(System.Action{Elastic.Clients.Elasticsearch.CountRequestDescriptor{`0}},System.Threading.CancellationToken)">
+            <summary>
+            Counts the number of documents matching the given search descriptor.
+            </summary>
+        </member>
+        <member name="M:Elsa.Elasticsearch.Common.ElasticStore`1.SaveAsync(`0,System.Threading.CancellationToken)">
+            <summary>
+            Stores the specified document in the index.
+            </summary>
+        </member>
+        <member name="M:Elsa.Elasticsearch.Common.ElasticStore`1.SaveManyAsync(System.Collections.Generic.IEnumerable{`0},System.Threading.CancellationToken)">
+            <summary>
+            Stores the specified documents in the index.
+            </summary>
+        </member>
+        <member name="M:Elsa.Elasticsearch.Common.ElasticStore`1.DeleteManyAsync(System.Collections.Generic.IEnumerable{`0},System.Threading.CancellationToken)">
+            <summary>
+            Deletes the specified set of documents from the index.
+            </summary>
+        </member>
+        <member name="M:Elsa.Elasticsearch.Common.ElasticStore`1.DeleteByQueryAsync(System.Action{Elastic.Clients.Elasticsearch.DeleteByQueryRequestDescriptor{`0}},System.Threading.CancellationToken)">
+            <summary>
+            Deletes the documents matching the specified query.
+            </summary>
+        </member>
+        <member name="T:Elsa.Elasticsearch.Common.IndexConfiguration`1">
+            <summary>
+            A convenience base class for document type configurations.
+            </summary>
+        </member>
+        <member name="P:Elsa.Elasticsearch.Common.IndexConfiguration`1.DocumentType">
+            <inheritdoc />
+        </member>
+        <member name="P:Elsa.Elasticsearch.Common.IndexConfiguration`1.IndexNamingStrategy">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Elasticsearch.Common.IndexConfiguration`1.ConfigureClientSettings(Elastic.Clients.Elasticsearch.ElasticsearchClientSettings)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Elasticsearch.Common.IndexConfiguration`1.ConfigureClientAsync(Elastic.Clients.Elasticsearch.ElasticsearchClient,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.Elasticsearch.Common.ElasticPersistenceFeatureBase">
+            <summary>
+            Base class for features that configure Elasticsearch persistence.
+            </summary>
+        </member>
+        <member name="M:Elsa.Elasticsearch.Common.ElasticPersistenceFeatureBase.#ctor(Elsa.Features.Services.IModule)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Elasticsearch.Common.ElasticPersistenceFeatureBase.AddStore``2">
+            <summary>
+            Registers an <see cref="T:Elsa.Elasticsearch.Common.ElasticStore`1"/>.
+            </summary>
+            <typeparam name="TModel">The entity type of the store.</typeparam>
+            <typeparam name="TStore">The type of the store.</typeparam>
+        </member>
+        <member name="M:Elsa.Elasticsearch.Common.ElasticPersistenceFeatureBase.AddIndexConfiguration``1(System.Func{System.IServiceProvider,Elsa.Elasticsearch.Contracts.IIndexConfiguration{``0}})">
+            <summary>
+            Registers an <see cref="T:Elsa.Elasticsearch.Contracts.IIndexConfiguration"/>.
+            </summary>
+        </member>
+        <member name="T:Elsa.Elasticsearch.Contracts.IIndexConfiguration">
+            <summary>
+            Implement this interface to get a chance to configure some aspect of Elasticsearch, such as index mappings.
+            </summary>
+        </member>
+        <member name="P:Elsa.Elasticsearch.Contracts.IIndexConfiguration.DocumentType">
+            <summary>
+            The document type to configure.
+            </summary>
+        </member>
+        <member name="P:Elsa.Elasticsearch.Contracts.IIndexConfiguration.IndexNamingStrategy">
+            <summary>
+            The index naming strategy to use for rollovers.
+            </summary>
+        </member>
+        <member name="M:Elsa.Elasticsearch.Contracts.IIndexConfiguration.ConfigureClientSettings(Elastic.Clients.Elasticsearch.ElasticsearchClientSettings)">
+            <summary>
+            Invoked by the system to configure <see cref="!:settings"/>.
+            </summary>
+            <param name="settings">The settings to configure.</param>
+        </member>
+        <member name="M:Elsa.Elasticsearch.Contracts.IIndexConfiguration.ConfigureClientAsync(Elastic.Clients.Elasticsearch.ElasticsearchClient,System.Threading.CancellationToken)">
+            <summary>
+            Invoked by the system to configure the <see cref="!:client"/>.
+            </summary>
+            <param name="client">The <see cref="T:Elastic.Clients.Elasticsearch.ElasticsearchClient"/></param> to configure.
+            <param name="cancellationToken">A cancellation token.</param>
+        </member>
+        <member name="T:Elsa.Elasticsearch.Contracts.IIndexConfiguration`1">
+            <summary>
+            Implement this interface to get a chance to configure some aspect of Elasticsearch, such as index mappings.
+            </summary>
+        </member>
+        <member name="T:Elsa.Elasticsearch.Contracts.IIndexNamingStrategy">
+            <summary>
+            Represents a naming strategy to use when creating an index name from an alias.
+            </summary>
+        </member>
+        <member name="M:Elsa.Elasticsearch.Contracts.IIndexNamingStrategy.GenerateName(System.String)">
+            <summary>
+            Returns an index name from the specified alias.
+            </summary>
+        </member>
+        <member name="T:Elsa.Elasticsearch.Extensions.ModuleExtensions">
+            <summary>
+            Extends <see cref="T:Elsa.Features.Services.IModule"/> to configure the <see cref="T:Elsa.Elasticsearch.Features.ElasticsearchFeature"/> feature.
+            </summary>
+        </member>
+        <member name="M:Elsa.Elasticsearch.Extensions.ModuleExtensions.UseElasticsearch(Elsa.Features.Services.IModule,System.Action{Elsa.Elasticsearch.Options.ElasticsearchOptions},System.Action{Elsa.Elasticsearch.Features.ElasticsearchFeature})">
+            <summary>
+            Enables the <see cref="T:Elsa.Elasticsearch.Features.ElasticsearchFeature"/> feature.
+            </summary>
+        </member>
+        <member name="T:Elsa.Elasticsearch.Features.ElasticsearchFeature">
+            <summary>
+            Configures Elasticsearch.
+            </summary>
+        </member>
+        <member name="M:Elsa.Elasticsearch.Features.ElasticsearchFeature.#ctor(Elsa.Features.Services.IModule)">
+            <inheritdoc />
+        </member>
+        <member name="P:Elsa.Elasticsearch.Features.ElasticsearchFeature.Options">
+            <summary>
+            A delegate that configures Elasticsearch.
+            </summary>
+        </member>
+        <member name="M:Elsa.Elasticsearch.Features.ElasticsearchFeature.Apply">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.Elasticsearch.Modules.Management.ElasticWorkflowInstanceFeature">
+            <summary>
+            Configures the <see cref="T:Elsa.Workflows.Management.Features.WorkflowInstancesFeature"/> feature with Elasticsearch.
+            </summary>
+        </member>
+        <member name="M:Elsa.Elasticsearch.Modules.Management.ElasticWorkflowInstanceFeature.#ctor(Elsa.Features.Services.IModule)">
+            <inheritdoc />
+        </member>
+        <member name="P:Elsa.Elasticsearch.Modules.Management.ElasticWorkflowInstanceFeature.IndexConfiguration">
+            <summary>
+            A delegate that creates an instance of a concrete implementation if <see cref="T:Elsa.Elasticsearch.Contracts.IIndexConfiguration"/> for <see cref="T:Elsa.Workflows.Management.Entities.WorkflowInstance"/>.
+            </summary>
+        </member>
+        <member name="M:Elsa.Elasticsearch.Modules.Management.ElasticWorkflowInstanceFeature.Configure">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Elasticsearch.Modules.Management.ElasticWorkflowInstanceFeature.Apply">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.Elasticsearch.Modules.Management.Extensions">
+            <summary>
+            Extends the <see cref="T:Elsa.Workflows.Management.Features.WorkflowInstancesFeature"/> feature.
+            </summary>
+        </member>
+        <member name="M:Elsa.Elasticsearch.Modules.Management.Extensions.UseElasticsearch(Elsa.Workflows.Management.Features.WorkflowInstancesFeature,System.Action{Elsa.Elasticsearch.Modules.Management.ElasticWorkflowInstanceFeature})">
+            <summary>
+            Configures the <see cref="T:Elsa.Workflows.Management.Features.WorkflowInstancesFeature"/> to use the <see cref="T:Elsa.Elasticsearch.Modules.Management.ElasticWorkflowInstanceFeature"/>.
+            </summary>
+        </member>
+        <member name="T:Elsa.Elasticsearch.Modules.Management.WorkflowInstanceConfiguration">
+            <summary>
+            Configures Elasticsearch with mappings for <see cref="T:Elsa.Workflows.Management.Entities.WorkflowInstance"/>.
+            </summary>
+        </member>
+        <member name="M:Elsa.Elasticsearch.Modules.Management.WorkflowInstanceConfiguration.#ctor(Microsoft.Extensions.Options.IOptions{Elsa.Elasticsearch.Options.ElasticsearchOptions})">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Elasticsearch.Modules.Management.WorkflowInstanceConfiguration.ConfigureClientSettings(Elastic.Clients.Elasticsearch.ElasticsearchClientSettings)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Elasticsearch.Modules.Management.WorkflowInstanceConfiguration.ConfigureClientAsync(Elastic.Clients.Elasticsearch.ElasticsearchClient,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.Elasticsearch.Modules.Management.ElasticWorkflowInstanceStore">
+            <summary>
+            Stores and retrieves workflow instances from Elasticsearch.
+            </summary>
+        </member>
+        <member name="M:Elsa.Elasticsearch.Modules.Management.ElasticWorkflowInstanceStore.#ctor(Elsa.Elasticsearch.Common.ElasticStore{Elsa.Workflows.Management.Entities.WorkflowInstance})">
+            <summary>
+            Constructor.
+            </summary>
+        </member>
+        <member name="M:Elsa.Elasticsearch.Modules.Management.ElasticWorkflowInstanceStore.FindAsync(Elsa.Workflows.Management.Filters.WorkflowInstanceFilter,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Elasticsearch.Modules.Management.ElasticWorkflowInstanceStore.FindManyAsync(Elsa.Workflows.Management.Filters.WorkflowInstanceFilter,Elsa.Common.Models.PageArgs,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Elasticsearch.Modules.Management.ElasticWorkflowInstanceStore.FindManyAsync``1(Elsa.Workflows.Management.Filters.WorkflowInstanceFilter,Elsa.Common.Models.PageArgs,Elsa.Workflows.Management.Filters.WorkflowInstanceOrder{``0},System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Elasticsearch.Modules.Management.ElasticWorkflowInstanceStore.FindManyAsync(Elsa.Workflows.Management.Filters.WorkflowInstanceFilter,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Elasticsearch.Modules.Management.ElasticWorkflowInstanceStore.FindManyAsync``1(Elsa.Workflows.Management.Filters.WorkflowInstanceFilter,Elsa.Workflows.Management.Filters.WorkflowInstanceOrder{``0},System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Elasticsearch.Modules.Management.ElasticWorkflowInstanceStore.CountAsync(Elsa.Workflows.Management.Filters.WorkflowInstanceFilter,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Elasticsearch.Modules.Management.ElasticWorkflowInstanceStore.SummarizeManyAsync(Elsa.Workflows.Management.Filters.WorkflowInstanceFilter,Elsa.Common.Models.PageArgs,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Elasticsearch.Modules.Management.ElasticWorkflowInstanceStore.SummarizeManyAsync``1(Elsa.Workflows.Management.Filters.WorkflowInstanceFilter,Elsa.Common.Models.PageArgs,Elsa.Workflows.Management.Filters.WorkflowInstanceOrder{``0},System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Elasticsearch.Modules.Management.ElasticWorkflowInstanceStore.SummarizeManyAsync(Elsa.Workflows.Management.Filters.WorkflowInstanceFilter,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Elasticsearch.Modules.Management.ElasticWorkflowInstanceStore.SummarizeManyAsync``1(Elsa.Workflows.Management.Filters.WorkflowInstanceFilter,Elsa.Workflows.Management.Filters.WorkflowInstanceOrder{``0},System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Elasticsearch.Modules.Management.ElasticWorkflowInstanceStore.SaveAsync(Elsa.Workflows.Management.Entities.WorkflowInstance,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Elasticsearch.Modules.Management.ElasticWorkflowInstanceStore.SaveManyAsync(System.Collections.Generic.IEnumerable{Elsa.Workflows.Management.Entities.WorkflowInstance},System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Elasticsearch.Modules.Management.ElasticWorkflowInstanceStore.DeleteAsync(Elsa.Workflows.Management.Filters.WorkflowInstanceFilter,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.Elasticsearch.Modules.Runtime.ElasticExecutionLogRecordFeature">
+            <summary>
+            Configures the <see cref="T:Elsa.Workflows.Runtime.Features.WorkflowRuntimeFeature"/> feature with Elasticsearch persistence. 
+            </summary>
+        </member>
+        <member name="M:Elsa.Elasticsearch.Modules.Runtime.ElasticExecutionLogRecordFeature.#ctor(Elsa.Features.Services.IModule)">
+            <inheritdoc />
+        </member>
+        <member name="P:Elsa.Elasticsearch.Modules.Runtime.ElasticExecutionLogRecordFeature.IndexConfiguration">
+            <summary>
+            A delegate that creates an instance of a concrete implementation if <see cref="T:Elsa.Elasticsearch.Contracts.IIndexConfiguration"/> for <see cref="T:Elsa.Workflows.Runtime.Entities.WorkflowExecutionLogRecord"/>.
+            </summary>
+        </member>
+        <member name="M:Elsa.Elasticsearch.Modules.Runtime.ElasticExecutionLogRecordFeature.Configure">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Elasticsearch.Modules.Runtime.ElasticExecutionLogRecordFeature.Apply">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.Elasticsearch.Modules.Runtime.ExecutionLogConfiguration">
+            <summary>
+            Configures Elasticsearch with mappings for <see cref="T:Elsa.Workflows.Runtime.Entities.WorkflowExecutionLogRecord"/>.
+            </summary>
+        </member>
+        <member name="M:Elsa.Elasticsearch.Modules.Runtime.ExecutionLogConfiguration.#ctor(Microsoft.Extensions.Options.IOptions{Elsa.Elasticsearch.Options.ElasticsearchOptions})">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Elasticsearch.Modules.Runtime.ExecutionLogConfiguration.ConfigureClientSettings(Elastic.Clients.Elasticsearch.ElasticsearchClientSettings)">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.Elasticsearch.Modules.Runtime.Extensions">
+            <summary>
+            Provides extensions to the <see cref="T:Elsa.Workflows.Runtime.Features.WorkflowRuntimeFeature"/> feature.
+            </summary>
+        </member>
+        <member name="M:Elsa.Elasticsearch.Modules.Runtime.Extensions.UseElasticsearch(Elsa.Workflows.Runtime.Features.WorkflowRuntimeFeature,System.Action{Elsa.Elasticsearch.Modules.Runtime.ElasticExecutionLogRecordFeature})">
+            <summary>
+            Configures the <see cref="T:Elsa.Workflows.Runtime.Features.WorkflowRuntimeFeature"/> to use the <see cref="T:Elsa.Elasticsearch.Modules.Runtime.ElasticExecutionLogRecordFeature"/>.
+            </summary>
+        </member>
+        <member name="T:Elsa.Elasticsearch.Modules.Runtime.ElasticWorkflowExecutionLogStore">
+            <summary>
+            Store and retrieves <see cref="T:Elsa.Workflows.Runtime.Entities.WorkflowExecutionLogRecord"/> objects from an Elasticsearch.
+            </summary>
+        </member>
+        <member name="M:Elsa.Elasticsearch.Modules.Runtime.ElasticWorkflowExecutionLogStore.#ctor(Elsa.Elasticsearch.Common.ElasticStore{Elsa.Workflows.Runtime.Entities.WorkflowExecutionLogRecord})">
+            <summary>
+            Constructor.
+            </summary>
+        </member>
+        <member name="M:Elsa.Elasticsearch.Modules.Runtime.ElasticWorkflowExecutionLogStore.SaveAsync(Elsa.Workflows.Runtime.Entities.WorkflowExecutionLogRecord,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Elasticsearch.Modules.Runtime.ElasticWorkflowExecutionLogStore.SaveManyAsync(System.Collections.Generic.IEnumerable{Elsa.Workflows.Runtime.Entities.WorkflowExecutionLogRecord},System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Elasticsearch.Modules.Runtime.ElasticWorkflowExecutionLogStore.FindAsync(Elsa.Workflows.Runtime.Filters.WorkflowExecutionLogRecordFilter,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Elasticsearch.Modules.Runtime.ElasticWorkflowExecutionLogStore.FindAsync``1(Elsa.Workflows.Runtime.Filters.WorkflowExecutionLogRecordFilter,Elsa.Workflows.Runtime.OrderDefinitions.WorkflowExecutionLogRecordOrder{``0},System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Elasticsearch.Modules.Runtime.ElasticWorkflowExecutionLogStore.FindManyAsync(Elsa.Workflows.Runtime.Filters.WorkflowExecutionLogRecordFilter,Elsa.Common.Models.PageArgs,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Elasticsearch.Modules.Runtime.ElasticWorkflowExecutionLogStore.FindManyAsync``1(Elsa.Workflows.Runtime.Filters.WorkflowExecutionLogRecordFilter,Elsa.Common.Models.PageArgs,Elsa.Workflows.Runtime.OrderDefinitions.WorkflowExecutionLogRecordOrder{``0},System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Elsa.Elasticsearch.Modules.Runtime.ElasticWorkflowExecutionLogStore.DeleteManyAsync(Elsa.Workflows.Runtime.Filters.WorkflowExecutionLogRecordFilter,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.Elasticsearch.Options.ElasticsearchOptions">
+            <summary>
+            Contains Elasticsearch settings.
+            </summary>
+        </member>
+        <member name="P:Elsa.Elasticsearch.Options.ElasticsearchOptions.Endpoint">
+            <summary>
+            The URL of the Elasticsearch server or the name of a connection string that in turn stores the URL. 
+            </summary>
+        </member>
+        <member name="P:Elsa.Elasticsearch.Options.ElasticsearchOptions.Username">
+            <summary>
+            The username to use when connecting with the Elasticsearch server.
+            </summary>
+        </member>
+        <member name="P:Elsa.Elasticsearch.Options.ElasticsearchOptions.Password">
+            <summary>
+            The password to use when connecting with the Elasticsearch server.
+            </summary>
+        </member>
+        <member name="P:Elsa.Elasticsearch.Options.ElasticsearchOptions.ApiKey">
+            <summary>
+            The API key to use when connecting with the Elasticsearch server.
+            </summary>
+        </member>
+        <member name="P:Elsa.Elasticsearch.Options.ElasticsearchOptions.IndexNameMappings">
+            <summary>
+            A map between type and index name to use. When no index name is configured for a given type, the name of the type is used.
+            </summary>
+        </member>
+        <member name="M:Elsa.Elasticsearch.Options.ElasticsearchOptions.GetIndexNameFor``1">
+            <summary>
+            Returns an index name for the specified document type. If no mapping was found, the simple name of the type is used.
+            </summary>
+        </member>
+        <member name="M:Elsa.Elasticsearch.Options.ElasticsearchOptions.GetIndexNameFor(System.Type)">
+            <summary>
+            Returns an index name for the specified document type. If no mapping was found, the simple name of the type is used.
+            </summary>
+        </member>
+        <member name="T:Elsa.Elasticsearch.Shared.Models.OrderField">
+            <summary>
+            Represents a field by which to order.
+            </summary>
+            <param name="Field">The field.</param>
+            <param name="Direction">The direction.</param>
+        </member>
+        <member name="M:Elsa.Elasticsearch.Shared.Models.OrderField.#ctor(System.String,Elsa.Common.Entities.OrderDirection)">
+            <summary>
+            Represents a field by which to order.
+            </summary>
+            <param name="Field">The field.</param>
+            <param name="Direction">The direction.</param>
+        </member>
+        <member name="P:Elsa.Elasticsearch.Shared.Models.OrderField.Field">
+            <summary>The field.</summary>
+        </member>
+        <member name="P:Elsa.Elasticsearch.Shared.Models.OrderField.Direction">
+            <summary>The direction.</summary>
+        </member>
+        <member name="T:Elsa.Elasticsearch.Strategies.DefaultNaming">
+            <summary>
+            Returns the alias as the name for the index.
+            </summary>
+        </member>
+        <member name="M:Elsa.Elasticsearch.Strategies.DefaultNaming.GenerateName(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="T:Elsa.Elasticsearch.Strategies.YearAndMonthNaming">
+            <summary>
+            Returns an index name based on the specified alias, current year and month.
+            </summary>
+        </member>
+        <member name="M:Elsa.Elasticsearch.Strategies.YearAndMonthNaming.#ctor(Elsa.Common.Contracts.ISystemClock)">
+            <summary>
+            Constructor.
+            </summary>
+        </member>
+        <member name="M:Elsa.Elasticsearch.Strategies.YearAndMonthNaming.GenerateName(System.String)">
+            <inheritdoc />
+        </member>
+    </members>
+</doc>

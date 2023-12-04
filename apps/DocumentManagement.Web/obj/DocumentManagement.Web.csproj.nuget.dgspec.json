@@ -27,7 +27,8 @@
         "sources": {
           "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {},
-          "https://nuget.pkg.github.com/QuarterCall/index.json": {}
+          "https://nuget.pkg.github.com/QuarterCall/index.json": {},
+          "https://nuget.telerik.com/v3/index.json": {}
         },
         "frameworks": {
           "net7.0": {
@@ -55,30 +56,6 @@
         "net7.0": {
           "targetAlias": "net7.0",
           "dependencies": {
-            "Elsa": {
-              "target": "Package",
-              "version": "[3.0.0-preview.727, )"
-            },
-            "Elsa.Http": {
-              "target": "Package",
-              "version": "[3.0.0-preview.727, )"
-            },
-            "Elsa.Identity": {
-              "target": "Package",
-              "version": "[3.0.0-preview.727, )"
-            },
-            "Elsa.Workflows.Api": {
-              "target": "Package",
-              "version": "[3.0.0-preview.727, )"
-            },
-            "Hangfire.AspNetCore": {
-              "target": "Package",
-              "version": "[1.8.6, )"
-            },
-            "Hangfire.SQLite": {
-              "target": "Package",
-              "version": "[1.4.2, )"
-            },
             "Storage.Net": {
               "target": "Package",
               "version": "[9.3.0, )"
@@ -130,7 +107,8 @@
         "sources": {
           "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {},
-          "https://nuget.pkg.github.com/QuarterCall/index.json": {}
+          "https://nuget.pkg.github.com/QuarterCall/index.json": {},
+          "https://nuget.telerik.com/v3/index.json": {}
         },
         "frameworks": {
           "net7.0": {
@@ -204,7 +182,8 @@
         "sources": {
           "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {},
-          "https://nuget.pkg.github.com/QuarterCall/index.json": {}
+          "https://nuget.pkg.github.com/QuarterCall/index.json": {},
+          "https://nuget.telerik.com/v3/index.json": {}
         },
         "frameworks": {
           "net7.0": {
@@ -226,6 +205,10 @@
         "net7.0": {
           "targetAlias": "net7.0",
           "dependencies": {
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[7.0.13, )"
+            },
             "Microsoft.EntityFrameworkCore.Design": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
@@ -236,9 +219,19 @@
               "target": "Package",
               "version": "[7.0.13, )"
             },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[7.0.13, )"
+            },
             "Microsoft.Extensions.Hosting.Abstractions": {
               "target": "Package",
-              "version": "[7.0.0, )"
+              "version": "[7.0.13, )"
+            },
+            "iTextSharp": {
+              "target": "Package",
+              "version": "[5.5.13.3, )"
             }
           },
           "imports": [
@@ -284,7 +277,8 @@
         "sources": {
           "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {},
-          "https://nuget.pkg.github.com/QuarterCall/index.json": {}
+          "https://nuget.pkg.github.com/QuarterCall/index.json": {},
+          "https://nuget.telerik.com/v3/index.json": {}
         },
         "frameworks": {
           "net7.0": {
@@ -292,6 +286,9 @@
             "projectReferences": {
               "C:\\GitHub\\DocumentManagementSystem\\services\\DocumentManagement\\DocumentManagement.Core\\DocumentManagement.Core.csproj": {
                 "projectPath": "C:\\GitHub\\DocumentManagementSystem\\services\\DocumentManagement\\DocumentManagement.Core\\DocumentManagement.Core.csproj"
+              },
+              "C:\\GitHub\\DocumentManagementSystem\\services\\DocumentManagement\\DocumentManagement.Persistence\\DocumentManagement.Persistence.csproj": {
+                "projectPath": "C:\\GitHub\\DocumentManagementSystem\\services\\DocumentManagement\\DocumentManagement.Persistence\\DocumentManagement.Persistence.csproj"
               }
             }
           }
@@ -310,7 +307,23 @@
               "target": "Package",
               "version": "[3.0.0-preview.727, )"
             },
+            "Elsa.Email": {
+              "target": "Package",
+              "version": "[3.0.0-preview.727, )"
+            },
+            "Elsa.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[3.0.0-preview.727, )"
+            },
+            "Elsa.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[3.0.0-preview.727, )"
+            },
             "Elsa.EntityFrameworkCore.Sqlite": {
+              "target": "Package",
+              "version": "[3.0.0-preview.727, )"
+            },
+            "Elsa.Hangfire": {
               "target": "Package",
               "version": "[3.0.0-preview.727, )"
             },
@@ -323,6 +336,18 @@
               "version": "[3.0.0-preview.727, )"
             },
             "Elsa.Liquid": {
+              "target": "Package",
+              "version": "[3.0.0-preview.727, )"
+            },
+            "Elsa.Quartz": {
+              "target": "Package",
+              "version": "[3.0.0-preview.727, )"
+            },
+            "Elsa.Studio.Webhooks": {
+              "target": "Package",
+              "version": "[3.0.0-preview.94, )"
+            },
+            "Elsa.Webhooks": {
               "target": "Package",
               "version": "[3.0.0-preview.727, )"
             },
@@ -341,6 +366,18 @@
             "Elsa.Workflows.Runtime": {
               "target": "Package",
               "version": "[3.0.0-preview.727, )"
+            },
+            "Microsoft.Extensions.DependencyInjection.Abstractions": {
+              "target": "Package",
+              "version": "[8.0.0, )"
+            },
+            "Microsoft.Extensions.Options": {
+              "target": "Package",
+              "version": "[8.0.0, )"
+            },
+            "iTextSharp": {
+              "target": "Package",
+              "version": "[5.5.13.3, )"
             }
           },
           "imports": [
